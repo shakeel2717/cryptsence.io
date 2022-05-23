@@ -22,10 +22,13 @@ return new class extends Migration
             $table->string('password');
             $table->string('status')->default('pending');
             $table->string('refer')->default('default');
-            $table->string('phone')->nullable();
-            $table->string('city')->nullable();
             $table->string('country')->nullable();
+            $table->string('region')->nullable();
+            $table->string('city')->nullable();
             $table->string('zip')->nullable();
+            $table->string('latitude')->nullable();
+            $table->string('longitude')->nullable();
+            $table->string('phone')->nullable();
             $table->string('role')->default('user');
             $table->rememberToken();
             $table->timestamps();
