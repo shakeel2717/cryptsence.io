@@ -55,8 +55,7 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
-                                {{-- <i data-feather="circle" class="report-box__icon text-theme-10"></i> --}}
-                                <img src="/assets/images/svg/icon.svg" alt="">
+                                <img src="/assets/images/svg/icon.svg" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
                                         title="33% Higher than last month">{{ now() }} </div>
@@ -64,6 +63,36 @@
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
                             <div class="fs-base text-gray-600 mt-1">Available CTSE</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> 0.00 on Stacking </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="fs-base text-gray-600 mt-1">Stacking CTSE</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> 0 Total Refers </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="fs-base text-gray-600 mt-1">CTSE Rewards</div>
                         </div>
                     </div>
                 </div>
