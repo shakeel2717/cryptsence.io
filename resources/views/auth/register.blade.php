@@ -1,59 +1,40 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
-
-        <form method="POST" action="{{ route('register') }}">
+@extends('layout.auth')
+@section('title')
+    Create a new Account
+@endsection
+@section('form')
+    <div
+        class="my-auto mx-auto ms-xl-20 bg-white dark-bg-dark-1 bg-xl-transparent px-5 px-sm-8 py-8 p-xl-0 rounded-2 shadow-md shadow-xl-none w-full w-sm-3/4 w-lg-2/4 w-xl-auto">
+        <h2 class="intro-x fw-bold fs-2xl fs-xl-3xl text-center text-xl-start">
+            Sign Up
+        </h2>
+        <form action="{{ route('register') }}" method="POST">
             @csrf
-
-            <!-- Name -->
-            <div>
-                <x-label for="name" :value="__('Name')" />
-
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus />
+            <div class="intro-x mt-2 text-gray-500 d-xl-none text-center">Create a new Account</div>
+            <div class="intro-x mt-8">
+                <input type="text" class="intro-x form-control py-3 px-4 border-gray-300 d-block" name="name"
+                    placeholder="Name" value="{{ old('name') }}">
+                <input type="text" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
+                    name="username" placeholder="Username" value="{{ old('username') }}">
+                <input type="email" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
+                    name="email" placeholder="Email" value="{{ old('email') }}">
+                <input type="password" name="password"
+                    class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4" placeholder="Password">
+                <input type="password" name="password_confirmation"
+                    class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
+                    placeholder="Confirm Password">
             </div>
-
-            <!-- Email Address -->
-            <div class="mt-4">
-                <x-label for="email" :value="__('Email')" />
-
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
+            <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
+                <button type="submit" class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Sign up</button>
+                <a href="{{ route('login') }}"
+                    class="btn btn-outline-secondary py-3 px-4 w-full w-xl-32 mt-3 mt-xl-0 align-top">Login</a>
             </div>
-
-            <!-- Password -->
-            <div class="mt-4">
-                <x-label for="password" :value="__('Password')" />
-
-                <x-input id="password" class="block mt-1 w-full"
-                                type="password"
-                                name="password"
-                                required autocomplete="new-password" />
-            </div>
-
-            <!-- Confirm Password -->
-            <div class="mt-4">
-                <x-label for="password_confirmation" :value="__('Confirm Password')" />
-
-                <x-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required />
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
-                    {{ __('Already registered?') }}
-                </a>
-
-                <x-button class="ml-4">
-                    {{ __('Register') }}
-                </x-button>
+            <div class="intro-x mt-10 mt-xl-24 text-gray-700 dark-text-gray-600 text-center text-xl-start">
+                By signin up, you agree to our
+                <br>
+                <a class="text-theme-1 dark-text-theme-10" href="">Terms and Conditions</a> & <a
+                    class="text-theme-1 dark-text-theme-10" href="">Privacy Policy</a>
             </div>
         </form>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+@endsection
