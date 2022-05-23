@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\LoginHistory;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Facades\Agent;
 
@@ -15,7 +16,8 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('user.dashboard.index');
+        $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
+        return view('user.dashboard.index', compact('histories'));
     }
 
     /**

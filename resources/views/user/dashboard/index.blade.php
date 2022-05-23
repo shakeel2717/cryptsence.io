@@ -86,38 +86,33 @@
                     <thead>
                         <tr>
                             <th class="text-nowrap">Device</th>
-                            <th class="text-nowrap">Operating System</th>
+                            <th class="text-nowrap">Device</th>
+                            <th class="text-center text-nowrap">Operating System</th>
                             <th class="text-center text-nowrap">Country</th>
-                            <th class="text-center text-nowrap">City</th>
-                            <th class="text-center text-nowrap">Region</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="intro-x">
-                            <td class="w-40">
-                                <div class="w-10 h-10 image-fit zoom-in">
-                                    <img alt="Rubick Bootstrap HTML Admin Template" class="tooltip rounded-circle"
-                                        src="/assets/images/preview-9.jpg" title="Uploaded at 14 July 2022">
-                                </div>
-                            </td>
-                            <td>
-                                <a href="" class="fw-medium text-nowrap">Dell XPS 13</a>
-                                <div class="text-gray-600 fs-xs text-nowrap mt-0.5">PC &amp; Laptop</div>
-                            </td>
-                            <td class="text-center">118</td>
-                            <td class="w-40">
-                                <div class="d-flex align-items-center justify-content-center text-theme-9"> <i
-                                        data-feather="check-square" class="w-4 h-4 me-2"></i> Active </div>
-                            </td>
-                            <td class="table-report__action w-56">
-                                <div class="d-flex justify-content-center align-items-center">
-                                    <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square"
-                                            class="w-4 h-4 me-1"></i> Edit </a>
-                                    <a class="d-flex align-items-center text-theme-6" href=""> <i data-feather="trash-2"
-                                            class="w-4 h-4 me-1"></i> Delete </a>
-                                </div>
-                            </td>
-                        </tr>
+                        @foreach ($histories as $login_history)
+                            <tr class="intro-x">
+                                <td class="w-40">
+                                    <div class="w-10 h-10 image-fit zoom-in">
+                                        <img alt="{{ env('APP_DESC') }}" class="tooltip rounded-circle"
+                                            src="/assets/images/devices/{{ strtolower($login_history->device) }}.png"
+                                            title="{{ $login_history->device }}">
+                                    </div>
+                                    {{ $login_history->device }}
+                                </td>
+                                <td>
+                                    <a href="" class="fw-medium text-nowrap">{{ $login_history->browser }}</a>
+                                    <div class="text-gray-600 fs-xs text-nowrap mt-0.5">
+                                        {{ $login_history->browser_version }}</div>
+                                </td>
+                                <td class="text-center">{{ $login_history->os }}, {{ $login_history->os_version }}
+                                </td>
+                                <td class="text-center">{{ $login_history->country }}, {{ $login_history->city }},
+                                    {{ $login_history->zip }}</td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>
