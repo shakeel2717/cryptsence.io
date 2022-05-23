@@ -39,6 +39,7 @@ class AuthenticatedSessionController extends Controller
 
         // creating Log Entry
         $history = new LoginHistory();
+        $history->user_id = Auth::user()->id;
         $history->device = Agent::device();
         $history->os = Agent::platform();
         $history->os_version = Agent::version($history->os);
