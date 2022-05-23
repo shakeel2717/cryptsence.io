@@ -4,9 +4,12 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\LoginHistory;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Jenssegers\Agent\Facades\Agent;
+use Stevebauman\Location\Facades\Location;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -31,6 +34,21 @@ class AuthenticatedSessionController extends Controller
         $request->authenticate();
 
         $request->session()->regenerate();
+
+        $location = Location::get();
+
+        // creating Log Entry
+        $history = new LoginHistory();
+        $history->user_id = Auth::user()->id;
+        $history->device = Agent::device();
+        $history->os = Agent::platform();
+        $history->os_version = Agent::version($history->os);
+        $history->browser = Agent::browser();
+        $history->browser_version = Agent::version($history->browser);
+        $history->country = $location->countryName;
+        $history->city = $location->cityName;
+        $history->zip = $location->zipCode;
+        $history->save();
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }

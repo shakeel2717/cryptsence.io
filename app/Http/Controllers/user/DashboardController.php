@@ -4,7 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Stevebauman\Location\Facades\Location;
+use Jenssegers\Agent\Facades\Agent;
 
 class DashboardController extends Controller
 {
@@ -15,9 +15,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        echo "<pre>";
-        print_r(Location::get());
-        echo "</pre>";
         return view('user.dashboard.index');
     }
 
