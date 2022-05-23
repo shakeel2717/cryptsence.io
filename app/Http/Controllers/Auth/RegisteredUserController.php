@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
+use Stevebauman\Location\Facades\Location;
 
 class RegisteredUserController extends Controller
 {
@@ -40,11 +41,20 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
+        $location = Location::get();
+
+
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
             'password' => Hash::make($request->password),
+            'country' => $location->countryName,
+            'region' => $location->regionName,
+            'city' => $location->cityName,
+            'zip' => $location->zipCode,
+            'latitude' => $location->latitude,
+            'longitude' => $location->longitude,
         ]);
 
         event(new Registered($user));
