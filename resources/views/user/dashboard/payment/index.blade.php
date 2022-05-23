@@ -27,7 +27,9 @@
                             </div>
                         </div>
                         <div class="form-group mt-5">
-                            <button type="submit" class="btn btn-primary">Deposit Now</button>
+                            <button type="submit"
+                                onclick="this.form.submit(); this.disabled=true; this.value='Processing…';"
+                                class="btn btn-primary">Deposit Now</button>
                         </div>
                     </form>
                 </div>
