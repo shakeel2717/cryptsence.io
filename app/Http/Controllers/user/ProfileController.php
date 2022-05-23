@@ -18,6 +18,32 @@ class ProfileController extends Controller
         return view('user.dashboard.profile.index');
     }
 
+
+    public function changePassword()
+    {
+        return view('user.dashboard.profile.change-password');
+    }
+
+
+    public function updatePassword()
+    {
+        $validatedData = request()->validate([
+            'cpassword' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+
+        // checking if this user password is correct
+        if (\Hash::check(request('cpassword'), auth()->user()->password)) {
+            // updating the user password
+            auth()->user()->update(['password' => bcrypt(request('password'))]);
+            // redirecting to the profile page
+            return redirect()->route('user.profile.index')->with('success', 'Password updated successfully');
+        } else {
+            // redirecting to the profile page
+            return redirect()->route('user.profile.index')->withErrors('Current password is incorrect');
+        }
+    }
+
     /**
      * Show the form for creating a new resource.
      *
