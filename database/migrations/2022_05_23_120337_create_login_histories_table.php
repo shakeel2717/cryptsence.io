@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('login_histories', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('device')->nullable();
             $table->string('os')->nullable();
             $table->string('os_version')->nullable();
