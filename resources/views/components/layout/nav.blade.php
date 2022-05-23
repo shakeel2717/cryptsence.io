@@ -21,13 +21,13 @@
             </a>
         </li>
         <li>
-            <a href="{{ $mode == true ? 'side-' : '' }}menu-light-dashboard-overview-2.html" class="{{ $mode == true ? 'side-' : '' }}menu">
+            <a href="{{ route('user.profile.password.change') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Change Password </div>
             </a>
         </li>
         <li>
-            <a href="{{ $mode == true ? 'side-' : '' }}menu-light-dashboard-overview-3.html" class="{{ $mode == true ? 'side-' : '' }}menu">
+            <a href="{{ route('user.profile.recent.login') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Recent Login </div>
             </a>

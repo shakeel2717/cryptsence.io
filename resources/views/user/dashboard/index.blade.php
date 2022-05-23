@@ -106,8 +106,8 @@
                     Recent Login History
                 </h2>
                 <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
-                    <button class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i
-                            data-feather="lock" class="d-none d-sm-block w-4 h-4 me-2"></i> Account Setting </button>
+                    <a href="{{ route('user.profile.recent.login') }}" class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i
+                            data-feather="lock" class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
                 </div>
             </div>
             <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\LoginHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -42,6 +43,13 @@ class ProfileController extends Controller
             // redirecting to the profile page
             return redirect()->route('user.profile.index')->withErrors('Current password is incorrect');
         }
+    }
+
+
+    public function recentLogin()
+    {
+        $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->get();
+        return view('user.dashboard.profile.recentLogin', compact('histories'));
     }
 
     /**
