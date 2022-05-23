@@ -52,7 +52,7 @@ class RegisteredUserController extends Controller
             'country' => $location->countryName,
             'region' => $location->regionName,
             'city' => $location->cityName,
-            'zipCode' => $location->zipCode,
+            'zip' => $location->zipCode,
             'latitude' => $location->latitude,
             'longitude' => $location->longitude,
         ]);
