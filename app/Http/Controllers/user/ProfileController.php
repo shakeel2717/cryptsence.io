@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoginHistory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -34,9 +35,11 @@ class ProfileController extends Controller
         ]);
 
         // checking if this user password is correct
-        if (\Hash::check(request('cpassword'), auth()->user()->password)) {
+        if (Hash::check(request('cpassword'), auth()->user()->password)) {
             // updating the user password
-            auth()->user()->update(['password' => bcrypt(request('password'))]);
+            $user = User::find(auth()->user()->id);
+            $user->password = Hash::make(request('password'));
+            $user->save();
             // redirecting to the profile page
             return redirect()->route('user.profile.index')->with('success', 'Password updated successfully');
         } else {
