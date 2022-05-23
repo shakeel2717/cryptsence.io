@@ -15,9 +15,6 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        echo "<pre>";
-        print_r(Location::get());
-        echo "</pre>";
         return view('user.dashboard.index');
     }
 

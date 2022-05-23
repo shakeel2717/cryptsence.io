@@ -67,7 +67,59 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="g-col-12 mt-6">
+            <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    Recent Login History
+                </h2>
+                <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
+                    <button class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i
+                            data-feather="lock" class="d-none d-sm-block w-4 h-4 me-2"></i> Account Setting </button>
+                </div>
+            </div>
+            <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">
+                <table class="table table-report mt-sm-2">
+                    <thead>
+                        <tr>
+                            <th class="text-nowrap">Device</th>
+                            <th class="text-nowrap">Operating System</th>
+                            <th class="text-center text-nowrap">Country</th>
+                            <th class="text-center text-nowrap">City</th>
+                            <th class="text-center text-nowrap">Region</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="intro-x">
+                            <td class="w-40">
+                                <div class="w-10 h-10 image-fit zoom-in">
+                                    <img alt="Rubick Bootstrap HTML Admin Template" class="tooltip rounded-circle"
+                                        src="/assets/images/preview-9.jpg" title="Uploaded at 14 July 2022">
+                                </div>
+                            </td>
+                            <td>
+                                <a href="" class="fw-medium text-nowrap">Dell XPS 13</a>
+                                <div class="text-gray-600 fs-xs text-nowrap mt-0.5">PC &amp; Laptop</div>
+                            </td>
+                            <td class="text-center">118</td>
+                            <td class="w-40">
+                                <div class="d-flex align-items-center justify-content-center text-theme-9"> <i
+                                        data-feather="check-square" class="w-4 h-4 me-2"></i> Active </div>
+                            </td>
+                            <td class="table-report__action w-56">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <a class="d-flex align-items-center me-3" href=""> <i data-feather="check-square"
+                                            class="w-4 h-4 me-1"></i> Edit </a>
+                                    <a class="d-flex align-items-center text-theme-6" href=""> <i data-feather="trash-2"
+                                            class="w-4 h-4 me-1"></i> Delete </a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
