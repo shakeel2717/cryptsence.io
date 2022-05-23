@@ -15,7 +15,7 @@
     </a>
     <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
         <li>
-            <a href="index.html" class="{{ $mode == true ? 'side-' : '' }}menu">
+            <a href="{{ route('user.profile.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> My Profile </div>
             </a>
