@@ -6,6 +6,13 @@
 </li>
 
 <li>
+    <a href="{{ route('user.payment.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Add Funds </div>
+    </a>
+</li>
+
+<li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="settings"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">

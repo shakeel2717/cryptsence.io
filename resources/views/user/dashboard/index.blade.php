@@ -106,8 +106,9 @@
                     Recent Login History
                 </h2>
                 <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
-                    <a href="{{ route('user.profile.recent.login') }}" class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i
-                            data-feather="lock" class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
+                    <a href="{{ route('user.profile.recent.login') }}"
+                        class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="lock"
+                            class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
                 </div>
             </div>
             <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">
@@ -136,9 +137,11 @@
                                     <div class="text-gray-600 fs-xs text-nowrap mt-0.5">
                                         {{ $login_history->browser_version }}</div>
                                 </td>
-                                <td class="text-center">{{ $login_history->os }}, {{ $login_history->os_version }}
+                                <td class="text-center">{{ $login_history->os }},
+                                    {{ $login_history->os_version }}
                                 </td>
-                                <td class="text-center">{{ $login_history->country }}, {{ $login_history->city }},
+                                <td class="text-center">{{ $login_history->country }},
+                                    {{ $login_history->city }},
                                     {{ $login_history->zip }}</td>
                             </tr>
                         @endforeach

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
 
@@ -15,4 +16,13 @@ function getDevice()
     } else {
         return 'Unknown';
     }
+}
+
+
+
+function edie($message)
+{
+    // store this message into log
+    Log::info($message);
+    die();
 }
