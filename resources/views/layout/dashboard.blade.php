@@ -22,7 +22,11 @@
                     data-feather="bar-chart-2" class="w-8 h-8 text-white"></i> </a>
         </div>
         <ul class="mobile-menu-wrapper border-top border-theme-29 dark-border-dark-3 py-5">
-            <x-layout.nav mode="0" />
+            @if (auth()->user()->role == 'admin')
+                <x-admin.nav mode="0" />
+            @elseif (auth()->user()->role == 'user')
+                <x-layout.nav mode="0" />
+            @endif
         </ul>
     </div>
     <div class="d-flex">
@@ -32,7 +36,11 @@
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
-                <x-layout.nav mode="1" />
+                @if (auth()->user()->role == 'admin')
+                    <x-admin.nav mode="1" />
+                @elseif (auth()->user()->role == 'user')
+                    <x-layout.nav mode="1" />
+                @endif
             </ul>
         </nav>
         <div class="content">
@@ -66,11 +74,13 @@
                                 <hr class="dropdown-divider border-theme-27 dark-border-dark-3">
                             </li>
                             <li>
-                                <a href="" class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover"> <i
+                                <a href="{{ route('user.profile.index') }}"
+                                    class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover"> <i
                                         data-feather="user" class="w-4 h-4 me-2"></i> Profile </a>
                             </li>
                             <li>
-                                <a href="" class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover"> <i
+                                <a href="{{ route('user.profile.password.change') }}"
+                                    class="dropdown-item text-white bg-theme-1-hover dark-bg-dark-3-hover"> <i
                                         data-feather="lock" class="w-4 h-4 me-2"></i> Reset Password </a>
                             </li>
                             <li>
@@ -96,10 +106,8 @@
             @yield('content')
         </div>
     </div>
-    <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js">
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=[" your-google-map-api"]&libraries=places"></script>
     <script src="/assets/js/app.js"></script>
+    <x-alert />
 </body>
 
 </html>

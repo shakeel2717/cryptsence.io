@@ -33,8 +33,6 @@ class Clean extends Command
         $this->call('config:clear');
         $this->call('view:clear');
         $this->call('route:clear');
-        $this->call('clear-compiled');
-        $this->call('optimize');
 
 
         $user = new User();
@@ -42,6 +40,14 @@ class Clean extends Command
         $user->username = "shakeel2717";
         $user->email = "shakeel2717@gmail.com";
         $user->password = bcrypt('asdfasdf');
+        $user->save();
+
+        $user = new User();
+        $user->name = "Administrator";
+        $user->username = "admin";
+        $user->email = "admin@gmail.com";
+        $user->password = bcrypt('asdfasdf');
+        $user->role = "admin";
         $user->save();
 
 
