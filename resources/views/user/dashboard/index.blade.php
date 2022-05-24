@@ -15,13 +15,13 @@
                             title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                         </div>
                         <div class="mt-4 text-gray-600 dark-text-gray-600">Track and trade your coins in one place.</div>
-                        <button
+                        <a href="{{ route('user.convert.index') }}"
                             class="btn btn-outline-secondary position-relative justify-content-start rounded-pill mt-12">
                             Get CTSE Coin
                             <span
                                 class="w-8 h-8 position-absolute d-flex justify-content-center align-items-center bg-theme-1 text-white rounded-pill end-0 top-0 bottom-0 my-auto ms-auto me-0.5">
                                 <i data-feather="arrow-right" class="w-4 h-4"></i> </span>
-                        </button>
+                        </a>
                     </div>
                     <div
                         class="px-8 py-12 d-flex flex-column justify-content-center flex-1 border-top border-top-sm-0 border-start-sm border-gray-300 dark-border-dark-5 border-dashed">
@@ -62,7 +62,7 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format(balance('CTSE', auth()->user()->id)) }}</div>
+                                {{ number_format(balance('CTSE', auth()->user()->id), 8) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Available CTSE</div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format(balance('USDT.TRC20', auth()->user()->id)) }}</div>
+                                {{ number_format(balance('USDT.TRC20', auth()->user()->id), 6) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Available USDT</div>
                         </div>
                     </div>
@@ -94,7 +94,8 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format(balance('USDT.TRC20', auth()->user()->id)) }}</div>
+                                0.00
+                            </div>
                             <div class="fs-base text-gray-600 mt-1">CTSE Reward</div>
                         </div>
                     </div>
@@ -109,12 +110,15 @@
                         <div class="intro-y box p-5 mt-12 mt-sm-5">
                             <div class="justify-content-center-between">
                                 <div class="left">
-                                    <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!</div>
-                                    <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your friends &
+                                    <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!
+                                    </div>
+                                    <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your
+                                        friends &
                                         Family.</p>
                                 </div>
                                 <div class="right">
-                                    <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">
+                                    <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}"
+                                        width="80">
                                 </div>
                             </div>
                             <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="Copy referral link">
