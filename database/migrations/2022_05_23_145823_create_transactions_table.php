@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('amount');
             $table->string('status');
             $table->string('sum');
+            $table->string('currency');
             $table->string('txn_id')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();

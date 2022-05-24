@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Coin;
 use App\Models\User;
 use Illuminate\Console\Command;
 
@@ -51,6 +52,20 @@ class Clean extends Command
         $user->save();
 
 
+        // supported coins
+
+        $coin = new Coin();
+        $coin->name = "Thather";
+        $coin->symbol = "USDT.TRC20";
+        $coin->image = "thather.png";
+        $coin->save();
+
+
+        $coin = new Coin();
+        $coin->name = "Cryptsence";
+        $coin->symbol = "CTSE";
+        $coin->image = "ctse.png";
+        $coin->save();
 
         return 0;
     }

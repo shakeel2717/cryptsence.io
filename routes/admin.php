@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -14,4 +15,5 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('payment/pending', [PaymentController::class, 'pending'])->name('payment.pending');
     Route::get('payment/complete', [PaymentController::class, 'complete'])->name('payment.complete');
     Route::resource('payment', PaymentController::class);
+    Route::resource('finance', FinanceController::class);
 });

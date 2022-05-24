@@ -73,6 +73,7 @@ class CoinPaymentController extends Controller
                 $deposit->amount = $amount1;
                 $deposit->type = 'deposit';
                 $deposit->sum = 'in';
+                $deposit->currency = 'usdt';
                 $deposit->status = 'approved';
                 $deposit->txn_id = $txn_id;
                 $deposit->note = 'coinPayment Gateway';
@@ -95,6 +96,7 @@ class CoinPaymentController extends Controller
                 $deposit->amount = $amount1;
                 $deposit->type = 'deposit';
                 $deposit->sum = 'in';
+                $deposit->currency = 'usdt';
                 $deposit->status = 'approved';
                 $deposit->txn_id = $txn_id;
                 $deposit->note = 'coinPayment Gateway';
