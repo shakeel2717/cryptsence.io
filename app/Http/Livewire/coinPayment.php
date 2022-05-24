@@ -44,13 +44,13 @@ final class coinPayment extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\btcPayments>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\btcPayments>
+     */
     public function datasource(): Builder
     {
-        return btcPayments::query();
+        return btcPayments::query()->join('users', 'users.id', '=', 'btc_payments.user_id')->select('btc_payments.*', 'users.name');
     }
 
     /*
@@ -68,7 +68,11 @@ final class coinPayment extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'user' => [
+                'name',
+            ],
+        ];
     }
 
     /*
@@ -83,7 +87,7 @@ final class coinPayment extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('id')
-            ->addColumn('user_id')
+            ->addColumn('user')
             ->addColumn('amount')
             ->addColumn('address')
             ->addColumn('txn_id')
@@ -102,7 +106,7 @@ final class coinPayment extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -113,7 +117,7 @@ final class coinPayment extends PowerGridComponent
             Column::make('ID', 'id')
                 ->makeInputRange(),
 
-            Column::make('USER ID', 'user_id')
+            Column::make('USER', 'name')
                 ->makeInputRange(),
 
             Column::make('AMOUNT', 'amount')
@@ -151,8 +155,7 @@ final class coinPayment extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-        ]
-;
+        ];
     }
 
     /*
@@ -163,7 +166,7 @@ final class coinPayment extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid btcPayments Action Buttons.
      *
      * @return array<int, Button>
@@ -193,7 +196,7 @@ final class coinPayment extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid btcPayments Action Rules.
      *
      * @return array<int, RuleActions>
