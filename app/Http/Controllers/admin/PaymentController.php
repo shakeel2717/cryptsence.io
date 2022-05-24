@@ -23,6 +23,12 @@ class PaymentController extends Controller
         return view('admin.dashboard.payment.pending');
     }
 
+
+    public function complete()
+    {
+        return view('admin.dashboard.payment.complete');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
