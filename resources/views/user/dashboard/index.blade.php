@@ -96,6 +96,26 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <div class="g-col-12 g-col-xl-8 mt-6">
+                        <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                            <h2 class="fs-lg fw-medium truncate me-5">
+                                Affiliate CTSE
+                            </h2>
+                        </div>
+                        <div class="intro-y box p-5 mt-12 mt-sm-5">
+                            <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!</div>
+                            <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your friends &
+                                Family.</p>
+                            <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="Copy referral link">
+                                <input class="form-control"
+                                    value="{{ route('register', ['refer' => auth()->user()->username]) }}" readonly>
+                                <i data-feather="copy" onclick="myFunction();"
+                                    class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -150,4 +170,15 @@
             </div>
         </div>
     </div>
+@endsection
+@section('footer')
+    <script>
+        // create a click to copy function
+        function myFunction() {
+            var copyText = document.getElementsByClassName("form-control")[0];
+            copyText.select();
+            copyText.setSelectionRange(0, 99999);
+            document.execCommand("copy");
+        }
+    </script>
 @endsection
