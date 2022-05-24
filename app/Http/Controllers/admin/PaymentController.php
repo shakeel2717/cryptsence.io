@@ -17,6 +17,12 @@ class PaymentController extends Controller
         return view('admin.dashboard.payment.index');
     }
 
+
+    public function pending()
+    {
+        return view('admin.dashboard.payment.pending');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

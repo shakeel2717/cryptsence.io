@@ -11,5 +11,6 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::post('profile/password/update', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('profile', ProfileController::class);
+    Route::get('payment/pending', [PaymentController::class, 'pending'])->name('payment.pending');
     Route::resource('payment', PaymentController::class);
 });

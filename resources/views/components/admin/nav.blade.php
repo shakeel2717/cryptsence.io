@@ -7,11 +7,31 @@
 
 
 <li>
-    <a href="{{ route('admin.payment.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
-        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Coin Payments</div>
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="list"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            Coin Payments
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
     </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('admin.payment.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Transactions </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.payment.pending') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Pending Transactions </div>
+            </a>
+        </li>
+    </ul>
 </li>
+
 
 
 <li>
