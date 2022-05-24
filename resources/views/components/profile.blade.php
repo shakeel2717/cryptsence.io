@@ -37,5 +37,9 @@
             </div>
         </div>
     </div>
+    @if (auth()->user()->role == 'admin')
+    <x-admin.profile-nav />
+    @elseif (auth()->user()->role == 'user')
     <x-profile-nav />
+    @endif
 </div>

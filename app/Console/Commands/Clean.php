@@ -42,6 +42,14 @@ class Clean extends Command
         $user->password = bcrypt('asdfasdf');
         $user->save();
 
+        $user = new User();
+        $user->name = "Administrator";
+        $user->username = "admin";
+        $user->email = "admin@gmail.com";
+        $user->password = bcrypt('asdfasdf');
+        $user->role = "admin";
+        $user->save();
+
 
 
         return 0;
