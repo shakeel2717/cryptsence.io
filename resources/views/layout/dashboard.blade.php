@@ -10,6 +10,7 @@
     <meta name="author" content="ASAN Webs Development">
     <title>@yield('title') - {{ env('APP_NAME') }} - {{ env('APP_DESC') }}</title>
     <link rel="stylesheet" href="/assets/css/app.css" />
+    @yield('head')
 </head>
 
 <body class="main">
@@ -49,7 +50,7 @@
                         href="{{ route('user.index.index') }}">Hi, {{ auth()->user()->name }}
                         ({{ auth()->user()->username }})</a></div>
                 <div class="intro-x dropdown me-auto me-sm-6">
-                    <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button"
+                    <div class="theme-dropdown-toggle notification notification--bullet cursor-pointer" role="button"
                         aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="bell"
                             class="notification__icon dark-text-gray-300"></i> </div>
                     <div class="notification-content pt-2 dropdown-menu">
@@ -59,7 +60,7 @@
                     </div>
                 </div>
                 <div class="intro-x dropdown w-8 h-8">
-                    <div class="dropdown-toggle w-8 h-8 rounded-pill overflow-hidden shadow-lg image-fit zoom-in"
+                    <div class="theme-dropdown-toggle w-8 h-8 rounded-pill overflow-hidden shadow-lg image-fit zoom-in"
                         role="button" aria-expanded="false" data-bs-toggle="dropdown">
                         <img alt="{{ env('APP_DESC') }}" src="/assets/images/brand/favi.svg">
                     </div>
@@ -108,6 +109,7 @@
     </div>
     <script src="/assets/js/app.js"></script>
     <x-alert />
+    @yield('footer')
 </body>
 
 </html>

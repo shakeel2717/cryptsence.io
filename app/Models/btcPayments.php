@@ -9,6 +9,14 @@ class btcPayments extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'amount',
+        'address',
+        'txn_id',
+        'to_currency',
+        'status',
+    ];
 
     public function user()
     {

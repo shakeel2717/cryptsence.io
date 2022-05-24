@@ -12,6 +12,8 @@
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",
         "laravel/tinker": "^2.7",
+        "livewire/livewire": "^2.10",
+        "power-components/livewire-powergrid": "^3.0",
         "stevebauman/location": "^6.5"
     },
     "require-dev": {
