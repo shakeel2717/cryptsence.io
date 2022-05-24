@@ -10,7 +10,7 @@
                     <div class="px-8 py-8 d-flex flex-column justify-content-center flex-1">
                         <img src="/assets/images/brand/favi.svg" class="w-20 h-20 text-theme-12" alt="">
                         {{-- <i data-feather="shopping-bag" class="w-10 h-10 text-theme-12"></i> --}}
-                        <div class="position-relative fs-3xl fw-medium mt-5 "><span>CTSE</span><br> 0.000 </div>
+                        <div class="position-relative fs-3xl fw-medium mt-5 "><span>Stack CTSE</span><br> 0.000 </div>
                         <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"
                             title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                         </div>
@@ -55,13 +55,14 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
-                                <img src="/assets/images/svg/icon.svg" alt="" class="w-10">
+                                <img src="/assets/images/coins/ctse.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
                                         title="33% Higher than last month">{{ now() }} </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(balance('CTSE', auth()->user()->id)) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Available CTSE</div>
                         </div>
                     </div>
@@ -70,14 +71,15 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
-                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <img src="/assets/images/coins/tether.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking </div>
+                                        title="33% Higher than last month">{{ now() }} </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
-                            <div class="fs-base text-gray-600 mt-1">Stacking CTSE</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(balance('USDT.TRC20', auth()->user()->id)) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">Available USDT</div>
                         </div>
                     </div>
                 </div>
@@ -85,14 +87,15 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
-                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <img src="/assets/images/coins/reward.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0 Total Refers </div>
+                                        title="33% Higher than last month">{{ now() }} </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
-                            <div class="fs-base text-gray-600 mt-1">CTSE Rewards</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(balance('USDT.TRC20', auth()->user()->id)) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">CTSE Reward</div>
                         </div>
                     </div>
                 </div>
@@ -104,9 +107,16 @@
                             </h2>
                         </div>
                         <div class="intro-y box p-5 mt-12 mt-sm-5">
-                            <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!</div>
-                            <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your friends &
-                                Family.</p>
+                            <div class="justify-content-center-between">
+                                <div class="left">
+                                    <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!</div>
+                                    <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your friends &
+                                        Family.</p>
+                                </div>
+                                <div class="right">
+                                    <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">
+                                </div>
+                            </div>
                             <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="Copy referral link">
                                 <input class="form-control"
                                     value="{{ route('register', ['refer' => auth()->user()->username]) }}" readonly>

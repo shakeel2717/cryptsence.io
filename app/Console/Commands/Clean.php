@@ -55,9 +55,9 @@ class Clean extends Command
         // supported coins
 
         $coin = new Coin();
-        $coin->name = "Thather";
+        $coin->name = "Tether";
         $coin->symbol = "USDT.TRC20";
-        $coin->image = "thather.png";
+        $coin->image = "tether.png";
         $coin->save();
 
 

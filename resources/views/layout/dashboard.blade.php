@@ -10,6 +10,7 @@
     <meta name="author" content="ASAN Webs Development">
     <title>@yield('title') - {{ env('APP_NAME') }} - {{ env('APP_DESC') }}</title>
     <link rel="stylesheet" href="/assets/css/app.css" />
+    <link rel="stylesheet" href="/assets/css/custom.css" />
     @yield('head')
 </head>
 
