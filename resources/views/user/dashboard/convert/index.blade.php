@@ -20,7 +20,7 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="text-sm-end my-4">
-                                    <h2 class="fw-medium fs-base mb-4">CTSE Price: {{ number_format(ctsePrice(),8) }}</h2>
+                                    <h2 class="fw-medium fs-base mb-4">CTSE Price: {{ number_format(options('coin_exchange_rate'),8) }}</h2>
                                     <h2 class="fw-medium fs-base mb-4">USDT Balance: {{ number_format(balance('USDT.TRC20', auth()->user()->id),6) }}</h2>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
     <script>
         $(document).ready(function() {
             var amount = $("#amount").val();
-            var price = {{ ctsePrice() }};
+            var price = {{ options('coin_exchange_rate') }};
             $("#amount").on('keyup', function() {
                 if ($(this).val() > 0) {
                     var amount = $(this).val();

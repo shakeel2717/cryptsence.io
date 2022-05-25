@@ -39,10 +39,14 @@ function getDevice()
 
 
 
-function ctsePrice()
+function options($name)
 {
-    $option = Option::where('name', 'coin_exchange_rate')->first();
-    return $option->value;
+    $option = Option::where('name', $name)->first();
+    if ($option) {
+        return $option->value;
+    } else {
+        return false;
+    }
 }
 
 

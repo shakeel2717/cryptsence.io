@@ -38,7 +38,7 @@
                             <a href="" class="fw-medium">Coin Price</a>
                             <div class="text-gray-600 me-5 me-sm-5">Change or Update Coin Price</div>
                         </div>
-                        <div class="fw-medium text-gray-700 dark-text-gray-500">${{ number_format(ctsePrice(), 2) }}</div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">${{ number_format(options("coin_exchange_rate"), 2) }}</div>
                     </div>
                 </div>
             </div>

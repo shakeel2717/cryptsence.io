@@ -70,7 +70,12 @@ class Clean extends Command
 
         $option = new Option();
         $option->name = "coin_exchange_rate";
-        $option->value = "0.1";
+        $option->value = "0.01";
+        $option->save();
+
+        $option = new Option();
+        $option->name = "min_convert_amount";
+        $option->value = "10";
         $option->save();
 
         return 0;

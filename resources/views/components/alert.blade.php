@@ -2,12 +2,17 @@
 @if ($errors->any())
     @foreach ($errors->all() as $error)
         <script>
-            swal("oops!", "{{ $error }}", "error");
+            swal("oops!", "{!! $error !!}", "error");
         </script>
     @endforeach
 @endif
-@if (session('message') || session('status') || session('success'))
+@if (session('success'))
     <script>
-        swal("Success!", "{{ session('message') }}", "success");
+        swal("Success!", "{!! session('success') !!}", "success");
+    </script>
+@endif
+@if (session('error'))
+    <script>
+        swal("oops!", "{!! session('error') !!}", "error");
     </script>
 @endif
