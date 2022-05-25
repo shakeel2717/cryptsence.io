@@ -21,6 +21,25 @@
 
 <li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="file"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            Finance Report
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
+    </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('user.report.transactions.recent') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Recent Transactions </div>
+            </a>
+        </li>
+    </ul>
+</li>
+
+
+<li>
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="settings"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
             My Account

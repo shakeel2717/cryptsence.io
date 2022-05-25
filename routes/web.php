@@ -5,6 +5,7 @@ use App\Http\Controllers\user\ConvertController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\user\ProfileController;
+use App\Http\Controllers\user\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -17,6 +18,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('payment', PaymentController::class);
     Route::resource('convert', ConvertController::class);
+    Route::get('report/transactions/recent', [ReportController::class, 'recent'])->name('report.transactions.recent');
 });
 
 
