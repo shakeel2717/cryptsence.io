@@ -10,7 +10,7 @@
                     <div class="px-8 py-8 d-flex flex-column justify-content-center flex-1">
                         <img src="/assets/images/brand/favi.svg" class="w-20 h-20 text-theme-12" alt="">
                         {{-- <i data-feather="shopping-bag" class="w-10 h-10 text-theme-12"></i> --}}
-                        <div class="position-relative fs-3xl fw-medium mt-5 "><span>Stack CTSE</span><br> 0.000 </div>
+                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">Stack CTSE</span><br> 0.000 </div>
                         <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"
                             title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                         </div>
@@ -63,7 +63,7 @@
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
                                 {{ number_format(balance('CTSE', auth()->user()->id), 8) }}</div>
-                            <div class="fs-base text-gray-600 mt-1">Available CTSE</div>
+                            <div class="fs-base text-theme-1  mt-1">Available CTSE</div>
                         </div>
                     </div>
                 </div>
