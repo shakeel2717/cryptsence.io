@@ -134,7 +134,37 @@
         </div>
     </div>
     <div class="row">
-        <div class="g-col-12 mt-6">
+        <div class="col-md-6 mt-6">
+            <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    Recent Transactions
+                </h2>
+                <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
+                    <a href="{{ route('user.profile.recent.login') }}"
+                        class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="lock"
+                            class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
+                </div>
+            </div>
+            <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">
+                @foreach ($transactions as $transaction)
+                    <div class="intro-x mt-5">
+                        <div class="box px-5 py-3 mb-3 d-flex align-items-center zoom-in">
+                            <div class="w-10 h-10 flex-none image-fit rounded-circle overflow-hidden">
+                                <img alt="Rubick Bootstrap HTML Admin Template" src="/assets/images/coins/{{ $transaction->currency }}.png">
+                            </div>
+                            <div class="ms-4 me-auto">
+                                <div class="fw-medium text-uppercase">{{ $transaction->type }}
+                                    <span>({{ $transaction->status }})</span>
+                                </div>
+                                <div class="text-gray-600 fs-xs mt-0.5">{{ $transaction->created_at }}</div>
+                            </div>
+                            <div class="text-theme-9">{{ number_format($transaction->amount, 2) }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="col-md-6 mt-6">
             <div class="intro-y d-block d-sm-flex align-items-center h-10">
                 <h2 class="fs-lg fw-medium truncate me-5">
                     Recent Login History

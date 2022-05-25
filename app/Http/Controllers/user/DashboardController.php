@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\LoginHistory;
+use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 use Jenssegers\Agent\Facades\Agent;
 
@@ -17,7 +18,8 @@ class DashboardController extends Controller
     public function index()
     {
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
-        return view('user.dashboard.index', compact('histories'));
+        $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(6)->get();
+        return view('user.dashboard.index', compact('histories', 'transactions'));
     }
 
     /**
