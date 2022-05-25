@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\admin\Option;
 use App\Models\Coin;
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -66,6 +67,11 @@ class Clean extends Command
         $coin->symbol = "CTSE";
         $coin->image = "ctse.png";
         $coin->save();
+
+        $option = new Option();
+        $option->name = "coin_exchange_rate";
+        $option->value = "0.1";
+        $option->save();
 
         return 0;
     }

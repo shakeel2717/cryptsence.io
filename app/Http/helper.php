@@ -1,6 +1,8 @@
 <?php
 
+use App\Models\admin\Option;
 use App\Models\Coin;
+use App\Models\Log as ModelsLog;
 use App\Models\User;
 use App\Models\user\Transaction;
 use Illuminate\Support\Facades\Log;
@@ -37,9 +39,26 @@ function getDevice()
 
 
 
+function ctsePrice()
+{
+    $option = Option::where('name', 'coin_exchange_rate')->first();
+    return $option->value;
+}
+
+
+
 function edie($message)
 {
     // store this message into log
     Log::info($message);
     die();
+}
+
+
+function logEntry($type, $message)
+{
+    $log = new ModelsLog();
+    $log->type = $type;
+    $log->message = $message;
+    $log->save();
 }

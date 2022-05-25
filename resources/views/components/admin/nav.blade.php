@@ -14,6 +14,14 @@
 
 
 <li>
+    <a href="{{ route('admin.logentry.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Log Entry </div>
+    </a>
+</li>
+
+
+<li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="list"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
