@@ -5,28 +5,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-4">
-            <div class="report-box zoom-in mt-12 mt-sm-5">
-                <div class="box p-5">
-                    <div class="d-flex">
-                        <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
-                        <div class="ms-auto">
-                            <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                title="2% Lower than last month"> 0.00 on Stacking </div>
-                        </div>
-                    </div>
-                    <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
-                    <div class="fs-base text-gray-600 mt-1">Stacking CTSE</div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
             <div class="intro-y box g-col-12 g-col-lg-6 mt-5">
                 <div class="d-flex align-items-center px-5 py-5 py-sm-3 border-bottom border-gray-200 dark-border-dark-5">
                     <h2 class="fw-medium fs-base me-auto">
                         Coin Price
                     </h2>
                     <div class="text-center"> <a href="javascript:;" data-bs-toggle="modal"
-                            data-bs-target="#basic-modal-preview" class="btn btn-primary">Update Rate</a> </div>
+                            data-bs-target="#basic-modal-preview" class="btn btn-primary">Update Record</a> </div>
                 </div>
                 <div class="p-5">
                     <div class="position-relative d-flex align-items-center">
@@ -38,8 +23,38 @@
                             <a href="" class="fw-medium">Coin Price</a>
                             <div class="text-gray-600 me-5 me-sm-5">Change or Update Coin Price</div>
                         </div>
-                        <div class="fw-medium text-gray-700 dark-text-gray-500">${{ number_format(options("coin_exchange_rate"), 2) }}</div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            ${{ number_format(options('coin_exchange_rate'), 2) }}</div>
                     </div>
+                </div>
+                <div class="p-5">
+                    <div class="position-relative d-flex align-items-center">
+                        <div class="w-12 h-12 flex-none image-fit">
+                            <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
+                                src="{{ asset('assets/images/coins/tether.png') }}">
+                        </div>
+                        <div class="ms-4 me-auto">
+                            <a href="" class="fw-medium">Min Convert USDT Limit</a>
+                            <div class="text-gray-600 me-5 me-sm-5">Select Min USDT Convert Limit</div>
+                        </div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            ${{ number_format(options('min_convert_amount'), 2) }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="report-box zoom-in mt-12 mt-sm-5">
+                <div class="box p-5">
+                    <div class="d-flex">
+                        <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                        <div class="ms-auto">
+                            <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                title="2% Lower than last month"> 0.00 on Stacking </div>
+                        </div>
+                    </div>
+                    <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                    <div class="fs-base text-gray-600 mt-1">Stacking CTSE</div>
                 </div>
             </div>
         </div>
@@ -100,15 +115,20 @@
     <div id="basic-modal-preview" class="modal fade" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-body p-10 text-center">
+                <div class="modal-body p-10">
                     <div class="row">
                         <div class="col-md-12">
                             <form action="{{ route('admin.option.priceUpdate') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="price" class="my-5">New Price</label>
-                                    <input type="text" class="form-control" id="price" name="price"
-                                        placeholder="Enter New Price">
+                                    <label for="price" class="mt-5 mb-2 text-left">New Price</label>
+                                    <input type="text" class="form-control mb-4" id="price" name="price"
+                                        placeholder="Enter New Price" value="{{ options('coin_exchange_rate') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="min_convert_amount" class="mb-2 text-left">USDT Min Convert Limit</label>
+                                    <input type="text" class="form-control mb-4" id="min_convert_amount" name="min_convert_amount"
+                                        placeholder="Enter New Price" value="{{ options('min_convert_amount') }}">
                                 </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Update</button>
