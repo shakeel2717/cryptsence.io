@@ -20,6 +20,13 @@
     </a>
 </li>
 
+<li>
+    <a href="{{ route('admin.report.users') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Users </div>
+    </a>
+</li>
+
 
 <li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">

@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\ReportController;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
@@ -20,4 +21,5 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('finance', FinanceController::class);
     Route::resource('logentry', AdminLogController::class);
     Route::post('/priceUpdate', [OptionController::class, 'priceUpdate'])->name('option.priceUpdate');
+    Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
 });
