@@ -22,6 +22,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('report/transactions/deposits', [ReportController::class, 'deposits'])->name('report.transactions.deposits');
     Route::get('report/transactions/withdrawals', [ReportController::class, 'withdrawals'])->name('report.transactions.withdrawals');
     Route::get('report/transactions/convert', [ReportController::class, 'convert'])->name('report.transactions.convert');
+    Route::get('report/transactions/dailyProfit', [ReportController::class, 'dailyProfit'])->name('report.transactions.dailyProfit');
 });
 
 
