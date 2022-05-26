@@ -27,4 +27,10 @@ class ReportController extends Controller
         return view('admin.dashboard.report.convert');
     }
 
+    function dailyProfit()
+    {
+        return view('admin.dashboard.report.dailyProfit');
+    }
+
+
 }
