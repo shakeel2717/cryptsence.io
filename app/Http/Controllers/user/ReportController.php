@@ -22,4 +22,9 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.withdrawals');
     }
+
+    public function convert()
+    {
+        return view('user.dashboard.report.transaction.convert');
+    }
 }
