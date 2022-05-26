@@ -11,4 +11,9 @@ class ReportController extends Controller
     {
         return view('admin.dashboard.report.users');
     }
+
+    function deposits()
+    {
+        return view('admin.dashboard.report.deposit');
+    }
 }
