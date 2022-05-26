@@ -17,4 +17,9 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.deposits');
     }
+
+    public function withdrawals()
+    {
+        return view('user.dashboard.report.transaction.withdrawals');
+    }
 }

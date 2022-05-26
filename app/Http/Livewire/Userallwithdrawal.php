@@ -9,7 +9,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class UserAllDeposit extends PowerGridComponent
+final class Userallwithdrawal extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,13 +44,13 @@ final class UserAllDeposit extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Transaction>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->where('user_id', auth()->user()->id)->where('type', 'deposit');
+        return Transaction::query()->where('user_id', auth()->user()->id)->where('type', 'withdraw');
     }
 
     /*
@@ -100,7 +100,7 @@ final class UserAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -144,8 +144,7 @@ final class UserAllDeposit extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-        ]
-;
+        ];
     }
 
     /*
@@ -156,7 +155,7 @@ final class UserAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
@@ -186,7 +185,7 @@ final class UserAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
