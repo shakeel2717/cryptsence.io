@@ -11,4 +11,10 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.recent');
     }
+
+
+    public function deposits()
+    {
+        return view('user.dashboard.report.transaction.deposits');
+    }
 }
