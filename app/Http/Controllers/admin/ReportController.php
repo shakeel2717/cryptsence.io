@@ -16,4 +16,15 @@ class ReportController extends Controller
     {
         return view('admin.dashboard.report.deposit');
     }
+
+    function withdrawals()
+    {
+        return view('admin.dashboard.report.withdrawals');
+    }
+
+    function convert()
+    {
+        return view('admin.dashboard.report.convert');
+    }
+
 }

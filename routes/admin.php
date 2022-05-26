@@ -23,4 +23,6 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::post('/priceUpdate', [OptionController::class, 'priceUpdate'])->name('option.priceUpdate');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
+    Route::get('report/withdrawals', [ReportController::class, 'withdrawals'])->name('report.withdrawals');
+    Route::get('report/convert', [ReportController::class, 'convert'])->name('report.convert');
 });
