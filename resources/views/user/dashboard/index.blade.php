@@ -58,7 +58,7 @@
                                 <img src="/assets/images/coins/ctse.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">{{ now() }} </div>
+                                        title="33% Higher than last month">0.00 </div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -74,7 +74,7 @@
                                 <img src="/assets/images/coins/tether.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">{{ now() }} </div>
+                                        title="33% Higher than last month">0.00 </div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -90,7 +90,7 @@
                                 <img src="/assets/images/coins/reward.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">{{ now() }} </div>
+                                        title="33% Higher than last month">0.00 </div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
