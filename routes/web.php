@@ -3,6 +3,7 @@
 use App\Http\Controllers\user\CoinPaymentController;
 use App\Http\Controllers\user\ConvertController;
 use App\Http\Controllers\user\DashboardController;
+use App\Http\Controllers\user\GoogleAuthController;
 use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\ReportController;
@@ -23,6 +24,8 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('report/transactions/withdrawals', [ReportController::class, 'withdrawals'])->name('report.transactions.withdrawals');
     Route::get('report/transactions/convert', [ReportController::class, 'convert'])->name('report.transactions.convert');
     Route::get('report/transactions/dailyProfit', [ReportController::class, 'dailyProfit'])->name('report.transactions.dailyProfit');
+    Route::resource('google', GoogleAuthController::class);
+
 });
 
 
