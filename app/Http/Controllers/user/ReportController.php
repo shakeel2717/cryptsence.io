@@ -32,4 +32,10 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.dailyProfit');
     }
+
+    public function allStackingBounces()
+    {
+        return view('user.dashboard.report.transaction.allStackingBounces');
+    }
+
 }

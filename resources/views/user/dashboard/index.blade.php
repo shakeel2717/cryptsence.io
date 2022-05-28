@@ -171,7 +171,7 @@
                     Recent Staking Bonus
                 </h2>
                 <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
-                    <a href="{{ route('user.report.transactions.recent') }}"
+                    <a href="{{ route('user.report.transactions.allStackingBounces') }}"
                         class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="file"
                             class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
                 </div>
