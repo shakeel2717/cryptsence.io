@@ -1,39 +1,28 @@
-<x-guest-layout>
-    <x-auth-card>
-        <x-slot name="logo">
-            <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
-        </x-slot>
-
-        <div class="mb-4 text-sm text-gray-600">
-            {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
-        </div>
-
-        @if (session('status') == 'verification-link-sent')
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-            </div>
-        @endif
-
-        <div class="mt-4 flex items-center justify-between">
-            <form method="POST" action="{{ route('verification.send') }}">
+@extends('layout.auth')
+@section('title')
+    Email Verfication of your account
+@endsection
+@section('form')
+    <div class="my-auto mx-auto ms-xl-20 bg-white dark-bg-dark-1 bg-xl-transparent px-5 px-sm-8 py-8 p-xl-0 rounded-2 shadow-md shadow-xl-none w-full w-sm-3/4 w-lg-2/4 w-xl-auto">
+        <h2 class="intro-x fw-bold fs-2xl fs-xl-3xl text-center text-xl-start">
+            Email Verfication for Your Account
+        </h2>
+        <p class="intro-x text-center text-xl-start">
+            Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
+        </p>
+        <div class="d-flex justify-content-center align-items-center">
+            <form action="{{ route('logout') }}" method="POST">
                 @csrf
-
-                <div>
-                    <x-button>
-                        {{ __('Resend Verification Email') }}
-                    </x-button>
+                <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
+                    <button class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Logout</button>
                 </div>
             </form>
-
-            <form method="POST" action="{{ route('logout') }}">
+            <form action="{{ route('verification.send') }}" method="POST">
                 @csrf
-
-                <button type="submit" class="underline text-sm text-gray-600 hover:text-gray-900">
-                    {{ __('Log Out') }}
-                </button>
+                <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
+                    <button class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Resend Email</button>
+                </div>
             </form>
         </div>
-    </x-auth-card>
-</x-guest-layout>
+    </div>
+@endsection
