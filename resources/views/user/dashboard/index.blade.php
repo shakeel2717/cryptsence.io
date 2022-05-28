@@ -181,8 +181,7 @@
                     <div class="intro-x mt-5">
                         <div class="box px-5 py-3 mb-3 d-flex align-items-center zoom-in">
                             <div class="w-10 h-10 flex-none image-fit rounded-circle overflow-hidden">
-                                <img alt="Rubick Bootstrap HTML Admin Template"
-                                    src="/assets/images/coins/ctse.png">
+                                <img alt="Rubick Bootstrap HTML Admin Template" src="/assets/images/coins/ctse.png">
                             </div>
                             <div class="ms-4 me-auto">
                                 <div class="fw-medium text-uppercase">Staking Bonus
@@ -190,7 +189,7 @@
                                 </div>
                                 <div class="text-gray-600 fs-xs mt-0.5">{{ $stakingBonus->created_at }}</div>
                             </div>
-                            <div class="text-theme-9">{{ number_format($stakingBonus->amount, 2) }}</div>
+                            <div class="text-theme-9">{{ number_format($stakingBonus->amount, 2) }} CTSE</div>
                         </div>
                     </div>
                 @endforeach

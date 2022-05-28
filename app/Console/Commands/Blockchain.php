@@ -69,6 +69,7 @@ class Blockchain extends Command
                 $stakingBonus = new StakingBonus();
                 $stakingBonus->user_id = $user->id;
                 $stakingBonus->sum = "in";
+                $stakingBonus->status = "approved";
                 $stakingBonus->amount = $profitHour;
                 $stakingBonus->stake_amount = $balance;
                 $stakingBonus->note = "Blockchain";
