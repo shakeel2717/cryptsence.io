@@ -11,6 +11,6 @@ class StakingBonus extends Model
 
 
     protected $fillable = [
-        'user_id', 'sum', 'amount', 'stake_amount', 'note'
+        'user_id', 'sum', 'amount', 'status', 'stake_amount', 'note'
     ];
 }

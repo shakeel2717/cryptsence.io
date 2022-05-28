@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('sum');
             $table->string('amount');
+            $table->string('status');
             $table->string('stake_amount');
             $table->string('note');
             $table->timestamps();
