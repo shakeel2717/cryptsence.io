@@ -82,4 +82,14 @@ class GoogleAuthController extends Controller
     {
         //
     }
+
+    public function googleEdit()
+    {
+        return view('user.dashboard.google.googleEdit');
+    }
+
+    public function googleUpdate()
+    {
+        return 1;
+    }
 }
