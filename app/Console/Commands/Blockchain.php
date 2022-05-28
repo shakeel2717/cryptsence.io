@@ -3,8 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\admin\Option;
-use App\Models\StakingBonus;
 use App\Models\User;
+use App\Models\user\StakingBonus;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 

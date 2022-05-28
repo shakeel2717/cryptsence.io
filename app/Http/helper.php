@@ -3,8 +3,8 @@
 use App\Models\admin\Option;
 use App\Models\Coin;
 use App\Models\Log as ModelsLog;
-use App\Models\StakingBonus;
 use App\Models\User;
+use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
