@@ -10,7 +10,8 @@
                     <div class="px-8 py-8 d-flex flex-column justify-content-center flex-1">
                         <img src="/assets/images/brand/favi.svg" class="w-20 h-20 text-theme-12" alt="">
                         {{-- <i data-feather="shopping-bag" class="w-10 h-10 text-theme-12"></i> --}}
-                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">Stack CTSE</span><br> 0.000 </div>
+                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">Stack
+                                CTSE</span><br> {{ number_format(balance('CTSE', auth()->user()->id), 8) }} </div>
                         <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"
                             title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                         </div>
@@ -27,7 +28,7 @@
                         class="px-8 py-12 d-flex flex-column justify-content-center flex-1 border-top border-top-sm-0 border-start-sm border-gray-300 dark-border-dark-5 border-dashed">
                         <div class="text-gray-600 dark-text-gray-600 fs-xs">CTSE Price</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">0.00</div>
+                            <div class="fs-base">{{ options('coin_exchange_rate') }}$</div>
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Market Cap</div>
                         <div class="mt-1.5 d-flex align-items-center">
@@ -39,7 +40,7 @@
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Max Supply</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">0.00</div>
+                            <div class="fs-base">88,00,00,000 CTSE</div>
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Total Supply</div>
                         <div class="mt-1.5 d-flex align-items-center">
@@ -71,6 +72,22 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
+                                <img src="/assets/images/coins/reward.png" alt="" class="w-10">
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="33% Higher than last month">0.00 </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(stakeBounsAll('CTSE', auth()->user()->id), 6) }}</div>
+                            <div class="fs-base text-theme-1  mt-1">CTSE Staking Bonus</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
                                 <img src="/assets/images/coins/tether.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
@@ -80,23 +97,6 @@
                             <div class="report-box__total fs-3xl fw-medium mt-6">
                                 {{ number_format(balance('USDT.TRC20', auth()->user()->id), 6) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Available USDT</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="report-box zoom-in mt-12 mt-sm-5">
-                        <div class="box p-5">
-                            <div class="d-flex">
-                                <img src="/assets/images/coins/reward.png" alt="" class="w-10">
-                                <div class="ms-auto">
-                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">0.00 </div>
-                                </div>
-                            </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">
-                                0.00
-                            </div>
-                            <div class="fs-base text-gray-600 mt-1">CTSE Reward</div>
                         </div>
                     </div>
                 </div>
@@ -150,7 +150,8 @@
                     <div class="intro-x mt-5">
                         <div class="box px-5 py-3 mb-3 d-flex align-items-center zoom-in">
                             <div class="w-10 h-10 flex-none image-fit rounded-circle overflow-hidden">
-                                <img alt="Rubick Bootstrap HTML Admin Template" src="/assets/images/coins/{{ $transaction->currency }}.png">
+                                <img alt="Rubick Bootstrap HTML Admin Template"
+                                    src="/assets/images/coins/{{ $transaction->currency }}.png">
                             </div>
                             <div class="ms-4 me-auto">
                                 <div class="fw-medium text-uppercase">{{ $transaction->type }}
@@ -165,6 +166,37 @@
             </div>
         </div>
         <div class="col-md-6 mt-6">
+            <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    Recent Staking Bonus
+                </h2>
+                <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
+                    <a href="{{ route('user.report.transactions.recent') }}"
+                        class="btn box d-flex align-items-center text-gray-700 dark-text-gray-300"> <i data-feather="file"
+                            class="d-none d-sm-block w-4 h-4 me-2"></i> Check all History </a>
+                </div>
+            </div>
+            <div class="intro-y overflow-auto overflow-lg-visible mt-8 mt-sm-0">
+                @foreach ($transactions as $transaction)
+                    <div class="intro-x mt-5">
+                        <div class="box px-5 py-3 mb-3 d-flex align-items-center zoom-in">
+                            <div class="w-10 h-10 flex-none image-fit rounded-circle overflow-hidden">
+                                <img alt="Rubick Bootstrap HTML Admin Template"
+                                    src="/assets/images/coins/{{ $transaction->currency }}.png">
+                            </div>
+                            <div class="ms-4 me-auto">
+                                <div class="fw-medium text-uppercase">{{ $transaction->type }}
+                                    <span>({{ $transaction->status }})</span>
+                                </div>
+                                <div class="text-gray-600 fs-xs mt-0.5">{{ $transaction->created_at }}</div>
+                            </div>
+                            <div class="text-theme-9">{{ number_format($transaction->amount, 2) }}</div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+        <div class="col-md-12 mt-6">
             <div class="intro-y d-block d-sm-flex align-items-center h-10">
                 <h2 class="fs-lg fw-medium truncate me-5">
                     Recent Login History

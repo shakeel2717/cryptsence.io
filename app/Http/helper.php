@@ -3,6 +3,7 @@
 use App\Models\admin\Option;
 use App\Models\Coin;
 use App\Models\Log as ModelsLog;
+use App\Models\StakingBonus;
 use App\Models\User;
 use App\Models\user\Transaction;
 use Illuminate\Support\Facades\Log;
@@ -20,6 +21,20 @@ function balance($method, $user_id)
 
     $in = Transaction::where('user_id', $user_id)->where('currency', $method)->where('sum', 'in')->sum('amount');
     $out = Transaction::where('user_id', $user_id)->where('currency', $method)->where('sum', 'out')->sum('amount');
+    return $in - $out;
+}
+
+
+function stakeBounsAll($method, $user_id)
+{
+    // checking if method is valid
+    $coin = Coin::where('symbol', $method)->firstOrFail();
+    if (!$coin) {
+        return 0;
+    }
+
+    $in = StakingBonus::where('user_id', $user_id)->where('sum', 'in')->sum('amount');
+    $out = StakingBonus::where('user_id', $user_id)->where('sum', 'out')->sum('amount');
     return $in - $out;
 }
 
