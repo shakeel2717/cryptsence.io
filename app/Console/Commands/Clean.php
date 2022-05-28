@@ -85,6 +85,20 @@ class Clean extends Command
         $option->value = "10";
         $option->save();
 
+
+        $option = new Option();
+        $option->name = "min_ctse_for_stake";
+        $option->value = "3000";
+        $option->save();
+
+
+        $option = new Option();
+        $option->name = "ctse_stake_bonus_monthly";
+        $option->value = "5";
+        $option->save();
+
+
+
         return 0;
     }
 }

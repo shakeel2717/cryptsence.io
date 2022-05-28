@@ -41,6 +41,34 @@
                             ${{ number_format(options('min_convert_amount'), 2) }}</div>
                     </div>
                 </div>
+                <div class="p-5">
+                    <div class="position-relative d-flex align-items-center">
+                        <div class="w-12 h-12 flex-none image-fit">
+                            <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
+                                src="{{ asset('assets/images/coins/ctse.png') }}">
+                        </div>
+                        <div class="ms-4 me-auto">
+                            <a href="" class="fw-medium">Min CTSE for Stake</a>
+                            <div class="text-gray-600 me-5 me-sm-5">Select Min CTSE for Stake</div>
+                        </div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            ${{ number_format(options('min_ctse_for_stake'), 2) }}</div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="position-relative d-flex align-items-center">
+                        <div class="w-12 h-12 flex-none image-fit">
+                            <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
+                                src="{{ asset('assets/images/coins/ctse.png') }}">
+                        </div>
+                        <div class="ms-4 me-auto">
+                            <a href="" class="fw-medium">Staking Bonus Monthly</a>
+                            <div class="text-gray-600 me-5 me-sm-5">Select Staking Bonus Monthly</div>
+                        </div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            {{ options('ctse_stake_bonus_monthly') }}%</div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="col-md-4">
@@ -129,6 +157,16 @@
                                     <label for="min_convert_amount" class="mb-2 text-left">USDT Min Convert Limit</label>
                                     <input type="text" class="form-control mb-4" id="min_convert_amount" name="min_convert_amount"
                                         placeholder="Enter New Price" value="{{ options('min_convert_amount') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="min_ctse_for_stake" class="mb-2 text-left">Min CTSE for Stake</label>
+                                    <input type="text" class="form-control mb-4" id="min_ctse_for_stake" name="min_ctse_for_stake"
+                                        placeholder="Enter New Price" value="{{ options('min_ctse_for_stake') }}">
+                                </div>
+                                <div class="form-group">
+                                    <label for="ctse_stake_bonus_monthly" class="mb-2 text-left">Stake Bonus Monthly</label>
+                                    <input type="text" class="form-control mb-4" id="ctse_stake_bonus_monthly" name="ctse_stake_bonus_monthly"
+                                        placeholder="Enter New Price" value="{{ options('ctse_stake_bonus_monthly') }}">
                                 </div>
                                 <br>
                                 <button type="submit" class="btn btn-primary">Update</button>
