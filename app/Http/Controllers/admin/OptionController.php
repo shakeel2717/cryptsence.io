@@ -13,6 +13,9 @@ class OptionController extends Controller
         $validatedData = $request->validate([
             'price' => 'required|digits_between:0.001,10',
             'min_convert_amount' => 'required|digits_between:1,10000',
+            'min_ctse_for_stake' => 'required|digits_between:1,10000000',
+            'ctse_stake_bonus_monthly' => 'required|digits_between:1,100',
+
         ]);
 
 
@@ -24,6 +27,14 @@ class OptionController extends Controller
 
         $option = Option::where('name', 'min_convert_amount')->firstOrFail();
         $option->value = $validatedData['min_convert_amount'];
+        $option->save();
+
+        $option = Option::where('name', 'min_ctse_for_stake')->firstOrFail();
+        $option->value = $validatedData['min_ctse_for_stake'];
+        $option->save();
+
+        $option = Option::where('name', 'ctse_stake_bonus_monthly')->firstOrFail();
+        $option->value = $validatedData['ctse_stake_bonus_monthly'];
         $option->save();
 
         logEntry('Price Update', 'Admin has updated Min convert amount');
