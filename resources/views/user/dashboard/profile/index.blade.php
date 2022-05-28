@@ -21,7 +21,7 @@
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="name" class="form-label mt-3">Display Name</label>
-                                        <input id="name" name="name" type="text" class="form-control"
+                                        <input id="name" name="name" type="text"  class="form-control"
                                             placeholder="Full Name" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>

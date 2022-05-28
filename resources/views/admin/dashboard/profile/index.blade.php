@@ -28,14 +28,14 @@
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="username" class="form-label mt-3">Username</label>
-                                        <input id="username" type="text" class="form-control" placeholder="Username"
+                                        <input id="username" type="text" class="form-control" value="{{ old('username') }}" placeholder="Username"
                                             value="{{ auth()->user()->username }}" disabled readonly>
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="email" class="form-label mt-3">Email</label>
-                                        <input id="email" name="email" type="email" class="form-control"
+                                        <input id="email" name="email" type="email" value="{{ old('email') }}" class="form-control"
                                             placeholder="Full Name" value="{{ auth()->user()->email }}">
                                     </div>
                                 </div>

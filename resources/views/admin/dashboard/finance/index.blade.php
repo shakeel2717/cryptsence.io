@@ -15,7 +15,7 @@
                         <div>
                             <label class="mt-4">User's Email</label>
                             <div class="mt-2">
-                                <input type="text" class="form-control" name="email" id="email"
+                                <input type="text" class="form-control" name="email" value="{{ old('email') }}" id="email"
                                 placeholder="Enter User Email">
                             </div>
                         </div>
