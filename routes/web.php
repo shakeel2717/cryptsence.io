@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\CalculatorController;
 use App\Http\Controllers\user\CoinPaymentController;
 use App\Http\Controllers\user\ConvertController;
 use App\Http\Controllers\user\DashboardController;
@@ -27,6 +28,8 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('google/googleEdit', [GoogleAuthController::class, 'googleEdit'])->name('dashboard.google.googleEdit');
     Route::post('google/googleUpdate', [GoogleAuthController::class, 'googleUpdate'])->name('dashboard.google.googleUpdate');
     Route::resource('google', GoogleAuthController::class);
+    Route::post('calculator/calReq', [CalculatorController::class, 'calculateReq'])->name('calculator.calculateReq');
+    Route::resource('calculator', CalculatorController::class);
 
 });
 

@@ -81,3 +81,20 @@ function logEntry($type, $message)
     $log->message = $message;
     $log->save();
 }
+
+
+function calculator($amount, $duration)
+{
+    for ($i = 0; $i < $duration; $i++) {
+        $new = continueCalculator($amount);
+        $amount = $amount + $new;
+    }
+    return $amount;
+}
+
+function continueCalculator($amount)
+{
+    $profitMonthly = Option::where('name', 'ctse_stake_bonus_monthly')->first()->value;
+    $profitDaily = ($amount * $profitMonthly / 100) / 30;
+    return $profitDaily;
+}
