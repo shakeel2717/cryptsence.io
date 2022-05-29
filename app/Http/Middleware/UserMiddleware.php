@@ -18,6 +18,11 @@ class UserMiddleware
     public function handle(Request $request, Closure $next)
     {
         if (Auth::user()->role == 'user') {
+            if (auth()->user()->google != null) {
+                if (!$request->session()->exists('googleauth')) {
+                    return redirect()->route('googleauth')->withErrors('Google Authentication Required');
+                }
+            }
             return $next($request);
         } elseif (Auth::user()->role == 'admin') {
             return redirect()->route('admin.index.index');

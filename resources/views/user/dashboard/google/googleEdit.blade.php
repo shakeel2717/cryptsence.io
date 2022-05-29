@@ -13,8 +13,9 @@
                     <form action="{{ route('user.dashboard.google.googleUpdate') }}" method="post">
                         @csrf
                         <div class="form-group">
-                            <label for="2FAcode">Enter 2FA Code</label>
-                            <input type="text" class="form-control" id="2FAcode" name="2FAcode" placeholder="Enter 2FA Code">
+                            <label for="pin">Enter 2FA Code</label>
+                            <input type="text" class="form-control" id="pin" name="pin"
+                                placeholder="Enter 2FA Code">
                         </div>
                         <div class="form-group">
                             <label for="code">Enter Login Password</label>
@@ -23,7 +24,7 @@
                         <div class="form-group mt-5">
                             <button type="submit"
                                 onclick="this.form.submit(); this.disabled=true; this.value='Processing…';"
-                                class="btn btn-primary">Activate 2FA</button>
+                                class="btn btn-primary">Deactivate 2FA</button>
                         </div>
                     </form>
                 </div>

@@ -60,4 +60,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Transaction::class);
     }
+
+
+    function google_auths()
+    {
+        return $this->hasOne(GoogleAuth::class);
+    }
 }

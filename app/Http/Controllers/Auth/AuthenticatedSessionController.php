@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Models\Authenticator;
 use App\Models\LoginHistory;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
@@ -21,6 +22,33 @@ class AuthenticatedSessionController extends Controller
     public function create()
     {
         return view('auth.login');
+    }
+
+
+    public function googleauth()
+    {
+        if (session()->has('googleauth')) {
+            return redirect()->route('user.index.index');
+        }
+        return view('auth.googleauth');
+    }
+
+    public function googleauthReq(Request $request)
+    {
+        $validatedData = $request->validate([
+            'secret' => 'required|min:6|max:6',
+        ]);
+
+        // checking if this Code is match.
+        $Authenticator = new Authenticator();
+        $checkCode = $Authenticator->verifyCode(auth()->user()->google, $validatedData['secret'], 0);
+        if (!$checkCode) {
+            return redirect()->back()->withErrors('Invalid Code, Please try again! Authentication Failed!.');
+        }
+
+        session(['googleauth' => true]);
+
+        return redirect()->route('user.index.index');
     }
 
     /**
@@ -64,6 +92,8 @@ class AuthenticatedSessionController extends Controller
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();
+
+        session()->forget('googleauth');
 
         $request->session()->regenerateToken();
 

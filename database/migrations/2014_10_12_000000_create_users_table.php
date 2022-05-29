@@ -29,6 +29,7 @@ return new class extends Migration
             $table->string('latitude')->nullable();
             $table->string('longitude')->nullable();
             $table->string('phone')->nullable();
+            $table->string('google')->nullable();
             $table->string('role')->default('user');
             $table->rememberToken();
             $table->timestamps();

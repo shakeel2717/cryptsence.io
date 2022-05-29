@@ -13,16 +13,16 @@
                     <form action="{{ route('user.google.store') }}" method="post">
                         @csrf
                             <div class="d-flex justify-content-center">
-                                <img src="/assets/images/QR(1).jpg " alt="QR Code" width="150" height="150">
+                                <img src="{{ $qrCode }} " alt="QR Code" width="150" height="150">
 
                             </div>
                         <div class="form-group">
                             <label for="backup_key">Enter BackUp Key</label>
-                            <input type="text" class="form-control" id="backup_key" name="backup_key" placeholder="Enter BackUP Key">
+                            <input type="text" class="form-control" id="backup_key" name="backup_key" placeholder="Enter BackUP Key" value="{{ $secret }}">
                         </div>
                         <div class="form-group">
-                            <label for="2FAcode">Enter 2FA Code</label>
-                            <input type="text" class="form-control" id="2FAcode" name="2FAcode" placeholder="Enter 2FA Code">
+                            <label for="pin">Enter 2FA Code</label>
+                            <input type="text" class="form-control" id="pin" name="pin" placeholder="Enter 2FA Code">
                         </div>
                         <div class="form-group">
                             <label for="code">Enter Login Password</label>
