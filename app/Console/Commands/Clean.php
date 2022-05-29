@@ -98,6 +98,12 @@ class Clean extends Command
         $option->save();
 
 
+        $option = new Option();
+        $option->name = "register_bonus_ctse";
+        $option->value = 1000;
+        $option->save();
+
+
 
         return 0;
     }

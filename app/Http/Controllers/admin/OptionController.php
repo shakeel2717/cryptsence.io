@@ -15,7 +15,7 @@ class OptionController extends Controller
             'min_convert_amount' => 'required|digits_between:1,10000',
             'min_ctse_for_stake' => 'required|digits_between:1,10000000',
             'ctse_stake_bonus_monthly' => 'required|digits_between:1,100',
-
+            'register_bonus_ctse' => 'required|digits_between:1,100',
         ]);
 
 
@@ -35,6 +35,10 @@ class OptionController extends Controller
 
         $option = Option::where('name', 'ctse_stake_bonus_monthly')->firstOrFail();
         $option->value = $validatedData['ctse_stake_bonus_monthly'];
+        $option->save();
+
+        $option = Option::where('name', 'register_bonus_ctse')->firstOrFail();
+        $option->value = $validatedData['register_bonus_ctse'];
         $option->save();
 
         logEntry('Price Update', 'Admin has updated Min convert amount');

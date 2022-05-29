@@ -65,18 +65,20 @@ class AuthenticatedSessionController extends Controller
 
         $location = Location::get();
 
-        // creating Log Entry
-        $history = new LoginHistory();
-        $history->user_id = Auth::user()->id;
-        $history->device = getDevice();
-        $history->os = Agent::platform();
-        $history->os_version = Agent::version($history->os);
-        $history->browser = Agent::browser();
-        $history->browser_version = Agent::version($history->browser);
-        $history->country = $location->countryName;
-        $history->city = $location->cityName;
-        $history->zip = $location->zipCode;
-        $history->save();
+        if (env('APP_ENV') != 'local') {
+            // creating Log Entry
+            $history = new LoginHistory();
+            $history->user_id = Auth::user()->id;
+            $history->device = getDevice();
+            $history->os = Agent::platform();
+            $history->os_version = Agent::version($history->os);
+            $history->browser = Agent::browser();
+            $history->browser_version = Agent::version($history->browser);
+            $history->country = $location->countryName;
+            $history->city = $location->cityName;
+            $history->zip = $location->zipCode;
+            $history->save();
+        }
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
