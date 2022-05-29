@@ -32,5 +32,10 @@ class ReportController extends Controller
         return view('admin.dashboard.report.dailyProfit');
     }
 
+    function allStackingBounces()
+    {
+        return view('admin.dashboard.report.allStackingBounces');
+    }
+
 
 }

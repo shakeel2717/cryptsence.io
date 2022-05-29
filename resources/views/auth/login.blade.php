@@ -12,7 +12,7 @@
             <div class="intro-x mt-2 text-gray-500 d-xl-none text-center">Sign in to your account</div>
             <div class="intro-x mt-8">
                 <input type="email" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block" name="email"
-                    placeholder="Email">
+                    placeholder="Email" value="{{ old('email') }}">
                 <input type="password" name="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
                     placeholder="Password">
             </div>

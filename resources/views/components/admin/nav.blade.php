@@ -79,6 +79,13 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.report.allStackingBounces') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Stacking Bounces </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('admin.report.withdrawals') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
                 </div>
