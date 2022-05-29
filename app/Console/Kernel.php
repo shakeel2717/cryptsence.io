@@ -16,9 +16,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('blockchain:run')
-        ->everyMinute()
-        ->emailOutputTo('shakeel2717@gmail.com');
-        ;
+            ->withoutOverlapping()
+            ->everyMinute()
+            ->runInBackground()
+            ->emailOutputTo('shakeel2717@gmail.com')
+            ->runsInMaintenanceMode();
+
+        $schedule->command('clean:only')
+            ->daily()
+            ->runInBackground()
+            ->emailOutputTo('shakeel2717@gmail.com')
+            ->runsInMaintenanceMode();
     }
 
     /**
