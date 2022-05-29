@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Log;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,7 +20,14 @@ class Kernel extends ConsoleKernel
             ->withoutOverlapping()
             ->everyMinute()
             ->emailOutputTo('shakeel2717@gmail.com')
+            ->before(function () {
+                Log::info('Running blockchain:run command Starting in Scheduler');
+            })
+            ->after(function () {
+                Log::info('Running blockchain:run command Finished in Scheduler');
+            })
             ->runsInMaintenanceMode();
+
 
         $schedule->command('clean:only')
             ->withoutOverlapping()
