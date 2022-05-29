@@ -18,13 +18,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('blockchain:run')
             ->withoutOverlapping()
             ->everyMinute()
-            ->runInBackground()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->runsInMaintenanceMode();
 
         $schedule->command('clean:only')
-            ->daily()
-            ->runInBackground()
+            ->withoutOverlapping()
+            ->twiceDaily()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->runsInMaintenanceMode();
     }

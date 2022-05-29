@@ -32,6 +32,8 @@ class CleanOnly extends Command
         $this->call('route:clear');
         $this->call('config:clear');
         $this->call('migrate');
+        $this->call('schedule:clear-cache');
+
 
         return 0;
     }
