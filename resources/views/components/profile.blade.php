@@ -2,7 +2,7 @@
     <div class="d-flex flex-column flex-lg-row border-bottom border-gray-200 dark-border-dark-5 pb-5 mx-n5">
         <div class="d-flex flex-1 px-5 align-items-center justify-content-center justify-content-lg-start">
             <div class="w-20 h-20 w-sm-24 h-sm-24 flex-none w-lg-32 h-lg-32 image-fit position-relative">
-                <img alt="{{ env('APP_DESC') }}" class="rounded-circle" src="/assets/images/brand/favi.svg">
+                <img alt="{{ env('APP_DESC') }}" class="rounded-circle" src="{{ asset('assets/images/brand/favi.svg') }}">
             </div>
             <div class="ms-5">
                 <div class="w-24 w-sm-40 truncate white-space-sm-wrap fw-medium fs-lg">{{ auth()->user()->name }}</div>
