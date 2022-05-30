@@ -36,21 +36,21 @@ Dashboard
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">CTSE</div>
                     </div>
-                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Start Price</div>
+                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">CTSE Pre-Lunch Price</div>
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">${{ number_format(0.005,3) }}</div>
                     </div>
-                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Launch Price</div>
+                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">CTSE Launching Price</div>
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">$0.025</div>
-                    </div>
-                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Total Supply</div>
-                    <div class="mt-1.5 d-flex align-items-center">
-                        <div class="fs-base">{{ number_format(431200000,2) }} CTSE</div>
                     </div>
                     <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Max Supply</div>
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">{{ number_format(880000000,2)}} CTSE</div>
+                    </div>
+                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Total Supply</div>
+                    <div class="mt-1.5 d-flex align-items-center">
+                        <div class="fs-base">{{ number_format(431200000,2) }} CTSE</div>
                     </div>
                     <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Circulating Supply</div>
                     <div class="mt-1.5 d-flex align-items-center">
