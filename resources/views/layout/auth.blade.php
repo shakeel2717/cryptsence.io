@@ -22,7 +22,7 @@
                 </a>
                 <div class="my-auto">
                     <img alt="{{ env('APP_DESC') }}" class="-intro-x w-1/2 mt-n16"
-                        src="/assets/images/svg/coin-light.svg">
+                        src="{{ asset('assets/images/svg/coin-dark.svg') }}">
                     <div class="-intro-x text-white fw-medium fs-4xl lh-base mt-10">
                         Welcome to {{ env('APP_NAME') }}
                         <br>
