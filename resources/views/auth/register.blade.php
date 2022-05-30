@@ -8,6 +8,15 @@
         <h2 class="intro-x fw-bold fs-2xl fs-xl-3xl text-center text-xl-start">
             Sign Up
         </h2>
+        @if ($user != null)
+            <div class="card mt-3">
+                <div class="card-body">
+                    <h2 class="card-title">
+                        Your Sponser: {{ $user->username }}
+                    </h2>
+                </div>
+            </div>
+        @endif
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="intro-x mt-2 text-gray-500 d-xl-none text-center">Create a new Account</div>
@@ -23,6 +32,11 @@
                 <input type="password" name="password_confirmation"
                     class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
                     placeholder="Confirm Password">
+                @if ($user != null)
+                    <input type="text" name="refer"
+                        class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
+                        placeholder="Refer Name" value="{{ $user->username }}" readonly>
+                @endif
             </div>
             <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
                 <button type="submit" class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Sign up</button>

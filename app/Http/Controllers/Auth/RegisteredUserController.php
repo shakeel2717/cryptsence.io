@@ -21,9 +21,17 @@ class RegisteredUserController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create($refer = null)
     {
-        return view('auth.register');
+        if ($refer != null) {
+            $user = User::where('username', $refer)->first();
+            if (!validateStaking($user->id)) {
+                // return "Not Eligible";
+            }
+        } else {
+            $user = null;
+        }
+        return view('auth.register',compact('user'));
     }
 
     /**
@@ -38,10 +46,20 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
+            'refer' => ['nullable', 'string', 'max:255', 'exists:users,username'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
+
+        $user = User::where('username', $request->refer)->first();
+        if ($user) {
+            if (!validateStaking($user->id)) {
+                return redirect()->back()->with('error', 'You are not eligible to signup under this sponser.');
+            }
+        } else {
+            $refer = 'default';
+        }
 
         $location = Location::get();
 
