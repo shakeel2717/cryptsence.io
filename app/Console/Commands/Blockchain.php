@@ -32,6 +32,7 @@ class Blockchain extends Command
      */
     public function handle()
     {
+        Log::info('Blockchain Command Start: ' . now());
         // getting all users
         $users = User::get();
 
