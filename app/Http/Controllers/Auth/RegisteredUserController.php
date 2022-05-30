@@ -26,7 +26,7 @@ class RegisteredUserController extends Controller
         if ($refer != null) {
             $user = User::where('username', $refer)->first();
             if (!validateStaking($user->id)) {
-                return "Not Eligible";
+                return "To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link";
             }
         } else {
             $user = null;

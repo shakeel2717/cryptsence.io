@@ -133,7 +133,7 @@ Dashboard
                         <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">
                     </div>
                 </div>
-                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="Copy referral link">
+                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link">
                     <input class="form-control" value="{{ route('register', ['refer' => auth()->user()->username]) }}"
                         readonly>
                     <i data-feather="copy" onclick="myFunction();"
