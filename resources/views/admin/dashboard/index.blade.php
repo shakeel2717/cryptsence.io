@@ -76,11 +76,11 @@
                                 src="{{ asset('assets/images/coins/ctse.png') }}">
                         </div>
                         <div class="ms-4 me-auto">
-                            <a href="" class="fw-medium">Sign up Bonus</a>
+                            <a href="" class="fw-medium">Sign up Reward</a>
                             <div class="text-gray-600 me-5 me-sm-5">Select Bonus Amount for new Account</div>
                         </div>
                         <div class="fw-medium text-gray-700 dark-text-gray-500">
-                            {{ options('register_bonus_ctse') }}%</div>
+                            {{ options('register_bonus_ctse') }}</div>
                     </div>
                 </div>
             </div>

@@ -77,7 +77,7 @@ class Clean extends Command
 
         $option = new Option();
         $option->name = "coin_exchange_rate";
-        $option->value = "0.01";
+        $option->value = "0.005";
         $option->save();
 
         $option = new Option();
@@ -88,7 +88,7 @@ class Clean extends Command
 
         $option = new Option();
         $option->name = "min_ctse_for_stake";
-        $option->value = "3000";
+        $option->value = "2000";
         $option->save();
 
 
@@ -102,8 +102,6 @@ class Clean extends Command
         $option->name = "register_bonus_ctse";
         $option->value = 1000;
         $option->save();
-
-
 
         return 0;
     }
