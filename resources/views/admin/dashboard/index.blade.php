@@ -8,7 +8,7 @@
             <div class="intro-y box g-col-12 g-col-lg-6 mt-5">
                 <div class="d-flex align-items-center px-5 py-5 py-sm-3 border-bottom border-gray-200 dark-border-dark-5">
                     <h2 class="fw-medium fs-base me-auto">
-                        Coin Price
+                        Website Setting
                     </h2>
                     <div class="text-center"> <a href="javascript:;" data-bs-toggle="modal"
                             data-bs-target="#basic-modal-preview" class="btn btn-primary">Update Record</a> </div>
@@ -24,7 +24,7 @@
                             <div class="text-gray-600 me-5 me-sm-5">Change or Update Coin Price</div>
                         </div>
                         <div class="fw-medium text-gray-700 dark-text-gray-500">
-                            ${{ number_format(options('coin_exchange_rate'), 2) }}</div>
+                            ${{ number_format(options('coin_exchange_rate'), 3) }}</div>
                     </div>
                 </div>
                 <div class="p-5">
