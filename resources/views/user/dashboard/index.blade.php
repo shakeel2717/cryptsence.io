@@ -36,7 +36,7 @@ Dashboard
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">CTSE</div>
                     </div>
-                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">CTSE Pre-Lunch Price</div>
+                    <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">CTSE Pre-Launch Price</div>
                     <div class="mt-1.5 d-flex align-items-center">
                         <div class="fs-base">${{ number_format(0.005,3) }}</div>
                     </div>
