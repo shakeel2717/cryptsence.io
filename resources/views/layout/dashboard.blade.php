@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <link href="/assets/images/brand/favi.svg" rel="shortcut icon">
+    <link href="{{ asset('assets/images/brand/favi.svg') }}" rel="shortcut icon">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ env('APP_DESC') }}">
     <meta name="keywords" content="{{ env('APP_KEYWORDS') }}">
     <meta name="author" content="ASAN Webs Development">
     <title>@yield('title') - {{ env('APP_NAME') }} - {{ env('APP_DESC') }}</title>
-    <link rel="stylesheet" href="/assets/css/app.css" />
-    <link rel="stylesheet" href="/assets/css/custom.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/app.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
     @yield('head')
 </head>
 
@@ -18,7 +18,7 @@
     <div class="mobile-menu d-md-none">
         <div class="mobile-menu-bar">
             <a href="" class="d-flex me-auto">
-                <img alt="{{ env('APP_DESC') }}" class="" src="/assets/images/brand/logo.svg">
+                <img alt="{{ env('APP_DESC') }}" class="" src="{{ asset('assets/images/brand/logo.svg') }}">
             </a>
             <a href="javascript:;" id="mobile-menu-toggler" class="mobile-menu-bar__toggler"> <i
                     data-feather="bar-chart-2" class="w-8 h-8 text-white"></i> </a>
@@ -34,7 +34,7 @@
     <div class="d-flex">
         <nav class="side-nav">
             <a href="" class="intro-x d-flex align-items-center ps-5 pt-4">
-                <img alt="{{ env('APP_DESC') }}" class="w-40" src="/assets/images/brand/logo.svg">
+                <img alt="{{ env('APP_DESC') }}" class="w-40" src="{{ asset('assets/images/brand/logo.svg') }}">
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -63,7 +63,7 @@
                 <div class="intro-x dropdown w-8 h-8">
                     <div class="theme-dropdown-toggle w-8 h-8 rounded-pill overflow-hidden shadow-lg image-fit zoom-in"
                         role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                        <img alt="{{ env('APP_DESC') }}" src="/assets/images/brand/favi.svg">
+                        <img alt="{{ env('APP_DESC') }}" src="{{ asset('assets/images/brand/favi.svg') }}">
                     </div>
                     <div class="dropdown-menu w-56">
                         <ul class="dropdown-content bg-theme-26 dark-bg-dark-6 text-white">
@@ -108,7 +108,7 @@
             @yield('content')
         </div>
     </div>
-    <script src="/assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <x-alert />
