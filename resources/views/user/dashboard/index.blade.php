@@ -38,11 +38,11 @@ Dashboard
                     </div>
                     <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Start Price</div>
                     <div class="mt-1.5 d-flex align-items-center">
-                        <div class="fs-base">{{ number_format(0.005,3) }}$</div>
+                        <div class="fs-base">${{ number_format(0.005,3) }}</div>
                     </div>
                     <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Launch Price</div>
                     <div class="mt-1.5 d-flex align-items-center">
-                        <div class="fs-base">0.025$</div>
+                        <div class="fs-base">$0.025</div>
                     </div>
                     <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Total Supply</div>
                     <div class="mt-1.5 d-flex align-items-center">
@@ -105,7 +105,7 @@ Dashboard
                             </div>
                         </div>
                         <div class="report-box__total fs-3xl fw-medium mt-6">
-                            {{ number_format(balance('USDT.TRC20', auth()->user()->id), 8) }}</div>
+                            ${{ number_format(balance('USDT.TRC20', auth()->user()->id), 8) }}</div>
                         <div class="fs-base text-gray-600 mt-1">Available USDT</div>
                     </div>
                 </div>
@@ -126,9 +126,7 @@ Dashboard
                     <div class="left">
                         <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!
                         </div>
-                        <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE 100 voucher by inviting your
-                            friends &
-                            Family.</p>
+                        <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE <b>100 CTSE</b> by inviting your friends & Family. they will also get <b>1000 CTSE</b> Bonus</p>
                     </div>
                     <div class="right">
                         <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">
