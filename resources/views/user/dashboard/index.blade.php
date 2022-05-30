@@ -26,25 +26,25 @@
                     </div>
                     <div
                         class="px-8 py-12 d-flex flex-column justify-content-center flex-1 border-top border-top-sm-0 border-start-sm border-gray-300 dark-border-dark-5 border-dashed">
-                        <div class="text-gray-600 dark-text-gray-600 fs-xs">CTSE Price</div>
+                        <div class="text-gray-600 dark-text-gray-600 fs-xs">Start Price</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">{{ options('coin_exchange_rate') }}$</div>
+                            <div class="fs-base">{{ number_format(0.005,3) }}$</div>
                         </div>
-                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Market Cap</div>
+                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Launch Price</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">0.00</div>
-                        </div>
-                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Volume</div>
-                        <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">0.00</div>
-                        </div>
-                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Max Supply</div>
-                        <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">88,00,00,000 CTSE</div>
+                            <div class="fs-base">0.025$</div>
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Total Supply</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">0.00</div>
+                            <div class="fs-base">{{ number_format(431200000,2) }} CTSE</div>
+                        </div>
+                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Max Supply</div>
+                        <div class="mt-1.5 d-flex align-items-center">
+                            <div class="fs-base">{{ number_format(880000000,2)}} CTSE</div>
+                        </div>
+                        <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Circulating Supply</div>
+                        <div class="mt-1.5 d-flex align-items-center">
+                            <div class="fs-base">{{ number_format(172640000,2) }}</div>
                         </div>
                     </div>
                 </div>
