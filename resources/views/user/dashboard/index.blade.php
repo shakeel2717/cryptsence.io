@@ -90,7 +90,7 @@ Dashboard
                         </div>
                         <div class="report-box__total fs-3xl fw-medium mt-6">
                             {{ number_format(stakeBounsAll('CTSE', auth()->user()->id), 8) }}</div>
-                        <div class="fs-base text-theme-1  mt-1">CTSE Staking Bonus</div>
+                        <div class="fs-base text-theme-1  mt-1">CTSE Staking Reward</div>
                     </div>
                 </div>
             </div>
