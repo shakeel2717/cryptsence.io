@@ -118,16 +118,16 @@ Dashboard
         <div class="g-col-12 g-col-xl-8 mt-6">
             <div class="intro-y d-block d-sm-flex align-items-center h-10">
                 <h2 class="fs-lg fw-medium truncate me-5">
-                    Affiliate CTSE
+                    CTSE Reward
                 </h2>
             </div>
             <div class="intro-y box p-5 mt-12 mt-sm-5">
                 <div class="justify-content-center-between">
                     <div class="left">
-                        <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!
+                        <div class="fs-2xl text-theme-1 fw-medium">Invite Friends to get <b>FREE</b> Reward!
                         </div>
-                        <p class="w-full lh-lg text-gray-600 mt-2">Share your refer link with your friends and family member, and get <b>15% CTSE Bonus</b> of their Total Staking Amount</p>
-                        <p class="w-full lh-lg text-gray-600 mt-2">To activate your refer link, You must Convert at least 1000 CTSE, <a href="{{ route('user.payment.index') }}"> Click here</a> to Deposit some USDT to buy CTSE </p>
+                        <p class="w-full lh-lg text-gray-600 mt-2">Share your refer link with your friends and family member, and get <b>15% CTSE Reward</b> of their Total Staking Amount</p>
+                        <p class="w-full lh-lg text-gray-600 mt-2">To activate your refer link, You must Convert at least 1000 CTSE, <a href="{{ route('user.payment.index') }}"> Click here</a> to Deposit USDT to buy CTSE </p>
                     </div>
                     <div class="right">
                         <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">

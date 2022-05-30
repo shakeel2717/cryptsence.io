@@ -26,7 +26,7 @@ class RegisteredUserController extends Controller
         if ($refer != null) {
             $user = User::where('username', $refer)->first();
             if (!validateStaking($user->id)) {
-                // return "Not Eligible";
+                return "Not Eligible";
             }
         } else {
             $user = null;
