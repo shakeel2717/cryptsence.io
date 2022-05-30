@@ -178,7 +178,7 @@ Dashboard
     <div class="col-md-6 mt-6">
         <div class="intro-y d-block d-sm-flex align-items-center h-10">
             <h2 class="fs-lg fw-medium truncate me-5">
-                Recent Staking Bonus
+                Recent Staking Reward
             </h2>
             <div class="d-flex align-items-center ms-sm-auto mt-3 mt-sm-0">
                 <a href="{{ route('user.report.transactions.allStackingBounces') }}"
@@ -194,7 +194,7 @@ Dashboard
                         <img alt="Rubick Bootstrap HTML Admin Template" src="/assets/images/coins/ctse.png">
                     </div>
                     <div class="ms-4 me-auto">
-                        <div class="fw-medium text-uppercase">Staking Bonus
+                        <div class="fw-medium text-uppercase">Staking Reward
                             <span>({{ $stakingBonus->status }})</span>
                         </div>
                         <div class="text-gray-600 fs-xs mt-0.5">{{ $stakingBonus->created_at }}</div>
