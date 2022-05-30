@@ -128,3 +128,9 @@
         </li>
     </ul>
 </li>
+<li>
+    <a href="#" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Exchange </div>
+    </a>
+</li>
