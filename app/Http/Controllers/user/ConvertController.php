@@ -47,10 +47,10 @@ class ConvertController extends Controller
             $price = options("coin_exchange_rate");
             // converting USDT to CTSE
             if ($validatedData['amount'] >= options("min_convert_amount")) {
-                $amount = $validatedData['amount'] * $price;
+                $amount = $validatedData['amount'] / $price;
 
                 // checking if user have enough balance
-                if (balance('USDT.TRC20', auth()->user()->id) >= $amount) {
+                if (balance('USDT.TRC20', auth()->user()->id) >= $validatedData['amount']) {
                     // deducting balance
                     Transaction::create([
                         'user_id' => auth()->user()->id,
@@ -65,7 +65,7 @@ class ConvertController extends Controller
                     Transaction::create([
                         'user_id' => auth()->user()->id,
                         'currency' => 'CTSE',
-                        'amount' => $validatedData['amount'],
+                        'amount' => $amount,
                         'sum' => 'in',
                         'type' => 'convert',
                         'status' => 'success',
