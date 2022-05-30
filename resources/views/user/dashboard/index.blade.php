@@ -11,7 +11,7 @@ Dashboard
                     <img src="/assets/images/brand/favi.svg" class="w-20 h-20 text-theme-12" alt="">
                     {{-- <i data-feather="shopping-bag" class="w-10 h-10 text-theme-12"></i> --}}
                     <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">Stack
-                            CTSE</span><br> {{ number_format(balance('CTSE', auth()->user()->id), 8) }} </div>
+                            CTSE</span><br> {{ (validateStaking(auth()->user()->id) == true) ? number_format(balance('CTSE', auth()->user()->id), 8) : "0.0000" }} </div>
                     <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"
                         title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                     </div>
@@ -126,7 +126,8 @@ Dashboard
                     <div class="left">
                         <div class="fs-2xl text-theme-1 fw-medium">Invite friends to get <b>FREE</b> bonuses!
                         </div>
-                        <p class="w-full lh-lg text-gray-600 mt-2">Get a CTSE <b>100 CTSE</b> by inviting your friends & Family. they will also get <b>1000 CTSE</b> Bonus</p>
+                        <p class="w-full lh-lg text-gray-600 mt-2">Share your refer link with your friends and family member, and get <b>15% CTSE Bonus</b> of their Total Staking Amount</p>
+                        <p class="w-full lh-lg text-gray-600 mt-2">To activate your refer link, You must Convert at least 1000 CTSE, <a href="{{ route('user.payment.index') }}"> Click here</a> to Deposit some USDT to buy CTSE </p>
                     </div>
                     <div class="right">
                         <img src="{{ asset('assets/images/coins/invite.png') }}" alt="{{ env('APP_DESC') }}" width="80">

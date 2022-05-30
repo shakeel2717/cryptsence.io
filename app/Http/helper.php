@@ -98,3 +98,17 @@ function continueCalculator($amount)
     $profitDaily = ($amount * $profitMonthly / 100) / 30;
     return $profitDaily;
 }
+
+
+function validateStaking($user_id)
+{
+    $user = User::find($user_id);
+    $staking_requirement = options('register_bonus_ctse');
+
+    $convertTransactions = Transaction::where('user_id', $user_id)->where('type', 'convert')->sum('amount');
+    if ($convertTransactions < $staking_requirement) {
+        return false;
+    } else {
+        return true;
+    }
+}
