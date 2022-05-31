@@ -7,10 +7,9 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:user.user-resent-tranction/>
+    <livewire:user.recent-transaction />
 @endsection
 @section('footer')
     @livewireScripts
     @powerGridScripts
 @endsection
-

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\user;
 
-use App\Models\user\Transaction;
+use App\Models\user\StakingBonus;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class Admindailyprofit extends PowerGridComponent
+final class StakingReward extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,15 +44,13 @@ final class Admindailyprofit extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\StakingBonus>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')
-            ->select('transactions.*', 'users.username')
-            ->where('transactions.type', '=', 'daily profit');
+        return StakingBonus::query()->where('user_id', auth()->user()->id)->where('sum', 'in');
     }
 
     /*
@@ -70,11 +68,7 @@ final class Admindailyprofit extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [
-            'User' => [
-                'username'
-            ]
-        ];
+        return [];
     }
 
     /*
@@ -88,17 +82,11 @@ final class Admindailyprofit extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
-            ->addColumn('user')
-            ->addColumn('type')
             ->addColumn('amount')
             ->addColumn('status')
-            ->addColumn('sum')
-            ->addColumn('currency')
-            ->addColumn('txn_id')
+            ->addColumn('stake_amount')
             ->addColumn('note')
-            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Transaction $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (StakingBonus $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -110,7 +98,7 @@ final class Admindailyprofit extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -118,17 +106,6 @@ final class Admindailyprofit extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
-
-            Column::make('USER', 'username')
-                ->makeInputRange(),
-
-            Column::make('TYPE', 'type')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
             Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
@@ -139,17 +116,7 @@ final class Admindailyprofit extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('SUM', 'sum')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('CURRENCY', 'currency')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('TXN ID', 'txn_id')
+            Column::make('STAKE AMOUNT', 'stake_amount')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -164,13 +131,7 @@ final class Admindailyprofit extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -181,8 +142,8 @@ final class Admindailyprofit extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Transaction Action Buttons.
+    /**
+     * PowerGrid StakingBonus Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -193,11 +154,11 @@ final class Admindailyprofit extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('transaction.edit', ['transaction' => 'id']),
+               ->route('staking-bonus.edit', ['staking-bonus' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('transaction.destroy', ['transaction' => 'id'])
+               ->route('staking-bonus.destroy', ['staking-bonus' => 'id'])
                ->method('delete')
         ];
     }
@@ -211,8 +172,8 @@ final class Admindailyprofit extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Transaction Action Rules.
+    /**
+     * PowerGrid StakingBonus Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -224,7 +185,7 @@ final class Admindailyprofit extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($transaction) => $transaction->id === 1)
+                ->when(fn($staking-bonus) => $staking-bonus->id === 1)
                 ->hide(),
         ];
     }

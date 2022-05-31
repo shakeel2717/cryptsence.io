@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\admin;
+namespace App\Http\Livewire\user;
 
 use App\Models\user\Transaction;
 use Illuminate\Support\Carbon;
@@ -9,7 +9,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AdminAllWithdrawal extends PowerGridComponent
+final class AllConvert extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,13 +44,18 @@ final class AdminAllWithdrawal extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Transaction>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*', 'users.name')->where('type', '=', 'withdrawal');
+        return Transaction::query()
+            ->join('coins', 'coins.id', '=', 'transactions.coin_id')
+            ->select('transactions.*', 'coins.symbol as coin_name')
+            ->where('user_id', auth()->user()->id)
+            ->where('type', 'convert')
+            ->latest();
     }
 
     /*
@@ -69,9 +74,9 @@ final class AdminAllWithdrawal extends PowerGridComponent
     public function relationSearch(): array
     {
         return [
-            'User' =>[
-                'name' => 'users.name',
-            ],
+            "coin" => [
+                'coins.symbol',
+            ]
         ];
     }
 
@@ -86,15 +91,12 @@ final class AdminAllWithdrawal extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
-            ->addColumn('user_id')
             ->addColumn('amount')
             ->addColumn('status')
             ->addColumn('sum')
-            ->addColumn('txn_id')
+            ->addColumn('currency')
             ->addColumn('note')
-            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Transaction $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -106,7 +108,7 @@ final class AdminAllWithdrawal extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -114,12 +116,6 @@ final class AdminAllWithdrawal extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
-
-            Column::make('USER', 'name')
-                ->makeInputRange(),
-
             Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
@@ -135,10 +131,8 @@ final class AdminAllWithdrawal extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('TXN ID', 'txn_id')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
+            Column::make('COIN ID', 'coin_name')
+                ->makeInputRange(),
 
             Column::make('NOTE', 'note')
                 ->sortable()
@@ -149,14 +143,7 @@ final class AdminAllWithdrawal extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -167,7 +154,7 @@ final class AdminAllWithdrawal extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
@@ -197,7 +184,7 @@ final class AdminAllWithdrawal extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>

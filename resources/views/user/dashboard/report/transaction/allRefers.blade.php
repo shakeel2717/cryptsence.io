@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:userreferal />
+    <livewire:user.all-refer />
 @endsection
 @section('footer')
     @livewireScripts

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\user;
 
-use App\Models\User;
+use App\Models\user\Withdraw;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AllUsers extends PowerGridComponent
+final class AllWithdraw extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,13 +44,18 @@ final class AllUsers extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\User>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Withdraw>
+     */
     public function datasource(): Builder
     {
-        return User::query();
+        return Withdraw::query()
+            ->join('coins', 'coins.id', '=', 'withdraws.coin_id')
+            ->select('withdraws.*', 'coins.symbol as coin_name')
+            ->where('user_id', auth()->user()->id)
+            ->where('type', 'withdraw')->latest();
+            ;
     }
 
     /*
@@ -68,7 +73,11 @@ final class AllUsers extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            "coin" => [
+                'coins.symbol',
+            ]
+        ];
     }
 
     /*
@@ -82,18 +91,12 @@ final class AllUsers extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
-            ->addColumn('name')
-            ->addColumn('email')
-            ->addColumn('username')
-            ->addColumn('country')
-            ->addColumn('region')
-            ->addColumn('city')
-            ->addColumn('zip')
-            ->addColumn('latitude')
-            ->addColumn('longitude')
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('currency')
+            ->addColumn('amount')
+            ->addColumn('address')
+            ->addColumn('status')
+            ->addColumn('txid')
+            ->addColumn('created_at_formatted', fn (Withdraw $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -105,7 +108,7 @@ final class AllUsers extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -113,50 +116,25 @@ final class AllUsers extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
+            Column::make('CURRENCY', 'coin_name')
                 ->makeInputRange(),
 
-            Column::make('NAME', 'name')
+            Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('EMAIL', 'email')
+            Column::make('ADDRESS', 'address')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('USERNAME', 'username')
+            Column::make('STATUS', 'status')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('COUNTRY', 'country')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('REGION', 'region')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('CITY', 'city')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('ZIP', 'zip')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('LATITUDE', 'latitude')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('LONGITUDE', 'longitude')
+            Column::make('TXID', 'txid')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -165,14 +143,7 @@ final class AllUsers extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -183,8 +154,8 @@ final class AllUsers extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid User Action Buttons.
+    /**
+     * PowerGrid Withdraw Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -195,11 +166,11 @@ final class AllUsers extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user.edit', ['user' => 'id']),
+               ->route('withdraw.edit', ['withdraw' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user.destroy', ['user' => 'id'])
+               ->route('withdraw.destroy', ['withdraw' => 'id'])
                ->method('delete')
         ];
     }
@@ -213,8 +184,8 @@ final class AllUsers extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid User Action Rules.
+    /**
+     * PowerGrid Withdraw Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -226,7 +197,7 @@ final class AllUsers extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($user) => $user->id === 1)
+                ->when(fn($withdraw) => $withdraw->id === 1)
                 ->hide(),
         ];
     }

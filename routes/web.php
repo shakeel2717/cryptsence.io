@@ -24,7 +24,6 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('report/transactions/deposits', [ReportController::class, 'deposits'])->name('report.transactions.deposits');
     Route::get('report/transactions/withdrawals', [ReportController::class, 'withdrawals'])->name('report.transactions.withdrawals');
     Route::get('report/transactions/convert', [ReportController::class, 'convert'])->name('report.transactions.convert');
-    Route::get('report/transactions/dailyProfit', [ReportController::class, 'dailyProfit'])->name('report.transactions.dailyProfit');
     Route::get('report/transactions/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.transactions.allStackingBounces');
     Route::get('report/transactions/allRefers', [ReportController::class, 'allRefers'])->name('report.transactions.allRefers');
     Route::get('google/googleEdit', [GoogleAuthController::class, 'googleEdit'])->name('dashboard.google.googleEdit');

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\user;
 
-use App\Models\user\StakingBonus;
+use App\Models\user\Transaction;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class Adminallstackingbounses extends PowerGridComponent
+final class AllDeposit extends PowerGridComponent
 {
     use ActionButton;
 
@@ -46,11 +46,15 @@ final class Adminallstackingbounses extends PowerGridComponent
     /**
     * PowerGrid datasource.
     *
-    * @return Builder<\App\Models\user\StakingBonus>
+    * @return Builder<\App\Models\user\Transaction>
     */
     public function datasource(): Builder
     {
-        return StakingBonus::query()->join('users', 'users.id', '=', 'staking_bonuses.user_id')->select('staking_bonuses.*', 'users.username');
+        return Transaction::query()
+        ->join('coins', 'coins.id', '=', 'transactions.coin_id')
+        ->select('transactions.*', 'coins.symbol as coin_name')
+        ->where('user_id', auth()->user()->id)->latest()
+        ->where('type', 'deposit');
     }
 
     /*
@@ -69,9 +73,9 @@ final class Adminallstackingbounses extends PowerGridComponent
     public function relationSearch(): array
     {
         return [
-            'User' => [
-                'name' => 'username',
-            ],
+            "coin" => [
+                'coins.symbol',
+            ]
         ];
     }
 
@@ -86,15 +90,12 @@ final class Adminallstackingbounses extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
-            ->addColumn('user_id')
-            ->addColumn('sum')
             ->addColumn('amount')
             ->addColumn('status')
-            ->addColumn('stake_amount')
+            ->addColumn('currency')
+            ->addColumn('txn_id')
             ->addColumn('note')
-            ->addColumn('created_at_formatted', fn (StakingBonus $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (StakingBonus $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -114,17 +115,6 @@ final class Adminallstackingbounses extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
-
-            Column::make('USER', 'username')
-                ->makeInputRange(),
-
-            Column::make('SUM', 'sum')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
             Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
@@ -135,7 +125,10 @@ final class Adminallstackingbounses extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('STAKE AMOUNT', 'stake_amount')
+            Column::make('CURRENCY', 'coin_name')
+                ->makeInputRange(),
+
+            Column::make('TXN ID', 'txn_id')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -146,11 +139,6 @@ final class Adminallstackingbounses extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
@@ -168,7 +156,7 @@ final class Adminallstackingbounses extends PowerGridComponent
     */
 
      /**
-     * PowerGrid StakingBonus Action Buttons.
+     * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -179,11 +167,11 @@ final class Adminallstackingbounses extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('staking-bonus.edit', ['staking-bonus' => 'id']),
+               ->route('transaction.edit', ['transaction' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('staking-bonus.destroy', ['staking-bonus' => 'id'])
+               ->route('transaction.destroy', ['transaction' => 'id'])
                ->method('delete')
         ];
     }
@@ -198,7 +186,7 @@ final class Adminallstackingbounses extends PowerGridComponent
     */
 
      /**
-     * PowerGrid StakingBonus Action Rules.
+     * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -210,7 +198,7 @@ final class Adminallstackingbounses extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($staking-bonus) => $staking-bonus->id === 1)
+                ->when(fn($transaction) => $transaction->id === 1)
                 ->hide(),
         ];
     }

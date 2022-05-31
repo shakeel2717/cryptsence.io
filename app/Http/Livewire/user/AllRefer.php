@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire\admin;
+namespace App\Http\Livewire\user;
 
-use App\Models\user\Transaction;
+use App\Models\User;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AdminAllDeposit extends PowerGridComponent
+final class AllRefer extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,13 +44,13 @@ final class AdminAllDeposit extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\User>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*', 'users.name')->where('type', '=', 'deposit');
+        return User::query()->where('refer', auth()->user()->username)->latest();
     }
 
     /*
@@ -68,11 +68,7 @@ final class AdminAllDeposit extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [
-            'User' => [
-                'name' => 'users.name',
-            ],
-        ];
+        return [];
     }
 
     /*
@@ -86,15 +82,14 @@ final class AdminAllDeposit extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
-            ->addColumn('user_id')
-            ->addColumn('amount')
-            ->addColumn('status')
-            ->addColumn('sum')
-            ->addColumn('txn_id')
-            ->addColumn('note')
-            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Transaction $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('name')
+            ->addColumn('email')
+            ->addColumn('username')
+            ->addColumn('country')
+            ->addColumn('region')
+            ->addColumn('city')
+            ->addColumn('zip')
+            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -106,7 +101,7 @@ final class AdminAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -114,33 +109,37 @@ final class AdminAllDeposit extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
-
-            Column::make('USER', 'name')
-                ->makeInputRange(),
-
-            Column::make('AMOUNT', 'amount')
+            Column::make('NAME', 'name')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('STATUS', 'status')
+            Column::make('EMAIL', 'email')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('SUM', 'sum')
+            Column::make('USERNAME', 'username')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('TXN ID', 'txn_id')
+            Column::make('COUNTRY', 'country')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('NOTE', 'note')
+            Column::make('REGION', 'region')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('CITY', 'city')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('ZIP', 'zip')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -149,14 +148,7 @@ final class AdminAllDeposit extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -167,8 +159,8 @@ final class AdminAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Transaction Action Buttons.
+    /**
+     * PowerGrid User Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -179,11 +171,11 @@ final class AdminAllDeposit extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('transaction.edit', ['transaction' => 'id']),
+               ->route('user.edit', ['user' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('transaction.destroy', ['transaction' => 'id'])
+               ->route('user.destroy', ['user' => 'id'])
                ->method('delete')
         ];
     }
@@ -197,8 +189,8 @@ final class AdminAllDeposit extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Transaction Action Rules.
+    /**
+     * PowerGrid User Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -210,7 +202,7 @@ final class AdminAllDeposit extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($transaction) => $transaction->id === 1)
+                ->when(fn($user) => $user->id === 1)
                 ->hide(),
         ];
     }

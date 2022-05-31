@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:allstacking-bounces/>
+    <livewire:user.staking-reward />
 @endsection
 @section('footer')
     @livewireScripts

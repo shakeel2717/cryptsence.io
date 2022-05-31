@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\user;
 
-use App\Models\Log;
+use App\Models\user\Transaction;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class LogEntry extends PowerGridComponent
+final class RecentTransaction extends PowerGridComponent
 {
     use ActionButton;
 
@@ -44,13 +44,16 @@ final class LogEntry extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\Log>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Transaction>
+     */
     public function datasource(): Builder
     {
-        return Log::query();
+        return Transaction::query()
+            ->join('coins', 'coins.id', '=', 'transactions.coin_id')
+            ->select('transactions.*', 'coins.symbol as coin_name')
+            ->where('user_id', auth()->user()->id)->latest();
     }
 
     /*
@@ -68,7 +71,11 @@ final class LogEntry extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            "coin" => [
+                'coins.symbol',
+            ]
+        ];
     }
 
     /*
@@ -82,11 +89,14 @@ final class LogEntry extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('id')
             ->addColumn('type')
-            ->addColumn('message')
-            ->addColumn('created_at_formatted', fn (Log $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Log $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('amount')
+            ->addColumn('status')
+            ->addColumn('sum')
+            ->addColumn('currency')
+            ->addColumn('txn_id')
+            ->addColumn('note')
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -98,7 +108,7 @@ final class LogEntry extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -106,15 +116,37 @@ final class LogEntry extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('ID', 'id')
-                ->makeInputRange(),
-
             Column::make('TYPE', 'type')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('MESSAGE', 'message')
+            Column::make('AMOUNT', 'amount')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('STATUS', 'status')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('SUM', 'sum')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('CURRENCY', 'coin_name')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('TXN ID', 'txn_id')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('NOTE', 'note')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -124,13 +156,7 @@ final class LogEntry extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -141,8 +167,8 @@ final class LogEntry extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Log Action Buttons.
+    /**
+     * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -153,11 +179,11 @@ final class LogEntry extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('log.edit', ['log' => 'id']),
+               ->route('transaction.edit', ['transaction' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('log.destroy', ['log' => 'id'])
+               ->route('transaction.destroy', ['transaction' => 'id'])
                ->method('delete')
         ];
     }
@@ -171,8 +197,8 @@ final class LogEntry extends PowerGridComponent
     |
     */
 
-     /**
-     * PowerGrid Log Action Rules.
+    /**
+     * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -184,7 +210,7 @@ final class LogEntry extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($log) => $log->id === 1)
+                ->when(fn($transaction) => $transaction->id === 1)
                 ->hide(),
         ];
     }

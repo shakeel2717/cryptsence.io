@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:user.user-all-deposit />
+    <livewire:user.all-deposit />
 @endsection
 @section('footer')
     @livewireScripts

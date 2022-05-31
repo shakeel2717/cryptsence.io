@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="text-sm-start my-4">
-                                <img src="{{ asset('assets/images/svg/icon.svg') }}" width="70" alt="">
+                                <img src="{{ asset('assets/images/coins/ctse.png') }}" width="70" alt="">
                             </div>
                         </div>
                         <div class="col-md-6">
