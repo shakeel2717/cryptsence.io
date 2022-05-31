@@ -7,10 +7,9 @@
     @powerGridStyles
 @endsection
 @section('content')
-<livewire:userallwithdrawal/>
+    <livewire:user.user-all-withdrawal />
 @endsection
 @section('footer')
     @livewireScripts
     @powerGridScripts
 @endsection
-
