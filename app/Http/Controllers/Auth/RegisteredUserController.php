@@ -89,7 +89,7 @@ class RegisteredUserController extends Controller
         $deposit->amount = $bonus;
         $deposit->type = 'bonus';
         $deposit->sum = 'in';
-        $deposit->currency = 'ctse';
+        $deposit->coin_id = 2;
         $deposit->status = 'approved';
         $deposit->note = 'Signup Bonus';
         $deposit->save();
