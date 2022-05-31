@@ -9,7 +9,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AdminAllConvert extends PowerGridComponent
+final class AdminAllDeposit extends PowerGridComponent
 {
     use ActionButton;
 
@@ -50,7 +50,7 @@ final class AdminAllConvert extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*', 'users.name')->where('type' , 'convert');
+        return Transaction::query()->join('users', 'users.id', '=', 'transactions.user_id')->select('transactions.*', 'users.name')->where('type', '=', 'deposit');
     }
 
     /*
@@ -91,7 +91,6 @@ final class AdminAllConvert extends PowerGridComponent
             ->addColumn('amount')
             ->addColumn('status')
             ->addColumn('sum')
-            ->addColumn('currency')
             ->addColumn('txn_id')
             ->addColumn('note')
             ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
@@ -132,11 +131,6 @@ final class AdminAllConvert extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('SUM', 'sum')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('CURRENCY', 'currency')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
