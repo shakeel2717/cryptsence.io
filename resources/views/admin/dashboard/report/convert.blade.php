@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:adminallconvert />
+    <livewire:admin.admin-all-convert/>
 @endsection
 @section('footer')
     @livewireScripts
