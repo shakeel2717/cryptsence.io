@@ -25,7 +25,7 @@ class RegisteredUserController extends Controller
     public function create($refer = null)
     {
         if ($refer != null) {
-            $refer = Referral::where('referral_code', $refer)->first();
+            $refer = Referral::where('referral_code', $refer)->firstOrFail();
             if (!validateStaking($refer->user_id)) {
                 return "<h1 style='text-align:center;'>To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link</h1>";
             }
