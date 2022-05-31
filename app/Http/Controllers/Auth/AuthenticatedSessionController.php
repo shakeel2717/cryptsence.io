@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Models\Authenticator;
 use App\Models\LoginHistory;
+use App\Models\user\Referral;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
 
@@ -78,6 +80,17 @@ class AuthenticatedSessionController extends Controller
             $history->city = $location->cityName;
             $history->zip = $location->zipCode;
             $history->save();
+        }
+
+        // checking if this user not have valid referral code
+        if (auth()->user()->referral == null) {
+            Log::info('User not have valid referral code');
+            $referral = Referral::create([
+                'user_id' => auth()->user()->id,
+                'referral_code' => random(10),
+            ]);
+        } else {
+            Log::info('User Have Valid');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);
