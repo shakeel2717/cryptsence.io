@@ -142,7 +142,7 @@
                     <div class="w-100 position-relative mt-6 cursor-pointer tooltip"
                         title="To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link">
                         <input class="form-control"
-                            value="{{ route('register', ['refer' => auth()->user()->username]) }}" readonly>
+                            value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}" readonly>
                         <i data-feather="copy" onclick="myFunction();"
                             class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                     </div>

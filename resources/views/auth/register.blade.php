@@ -8,11 +8,11 @@
         <h2 class="intro-x fw-bold fs-2xl fs-xl-3xl text-center text-xl-start">
             Sign Up
         </h2>
-        @if ($user != null)
+        @if ($refer != null)
             <div class="card mt-3">
                 <div class="card-body">
                     <h2 class="card-title">
-                        Your Sponser: {{ $user->username }}
+                        Your Sponser: {{ $refer->user->username }}
                     </h2>
                 </div>
             </div>
@@ -32,10 +32,10 @@
                 <input type="password" name="password_confirmation"
                     class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
                     placeholder="Confirm Password">
-                @if ($user != null)
-                    <input type="text" name="refer"
+                @if ($refer != null)
+                    <input type="text" name="referral_code"
                         class="intro-x login__input form-control py-3 px-4 border-gray-300 d-block mt-4"
-                        placeholder="Refer Name" value="{{ $user->username }}" readonly>
+                        placeholder="Refer Name" value="{{ $refer->referral_code }}">
                 @endif
             </div>
             <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">

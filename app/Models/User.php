@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\user\Referral;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -25,6 +26,7 @@ class User extends Authenticatable
         'country',
         'region',
         'city',
+        'refer',
         'zip',
         'latitude',
         'longitude',
@@ -65,5 +67,11 @@ class User extends Authenticatable
     function google_auths()
     {
         return $this->hasOne(GoogleAuth::class);
+    }
+
+
+    function referral()
+    {
+        return $this->hasOne(Referral::class);
     }
 }

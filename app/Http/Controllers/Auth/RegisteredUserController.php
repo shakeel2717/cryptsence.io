@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\user\Referral;
 use App\Models\user\Transaction;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -24,14 +25,14 @@ class RegisteredUserController extends Controller
     public function create($refer = null)
     {
         if ($refer != null) {
-            $user = User::where('username', $refer)->first();
-            if (!validateStaking($user->id)) {
+            $refer = Referral::where('referral_code', $refer)->first();
+            if (!validateStaking($refer->user_id)) {
                 return "<h1 style='text-align:center;'>To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link</h1>";
             }
         } else {
-            $user = null;
+            $refer = null;
         }
-        return view('auth.register',compact('user'));
+        return view('auth.register', compact('refer'));
     }
 
     /**
@@ -46,18 +47,22 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'refer' => ['nullable', 'string', 'max:255', 'exists:users,username'],
+            'referral_code' => ['nullable', 'string', 'max:255', 'exists:referrals'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::where('username', $request->refer)->first();
-        if ($user) {
-            if (!validateStaking($user->id)) {
+        $thisRefer = Referral::where('referral_code', $request->referral_code)->first();
+        if ($thisRefer) {
+            Log::info('Referral code is valid');
+            $refer = $thisRefer->user->username;
+            if (!validateStaking($thisRefer->user_id)) {
                 return redirect()->back()->with('error', 'You are not eligible to signup under this sponser.');
             }
+            Log::info('Refer Username Got');
         } else {
+            Log::info('NO Refer FOund');
             $refer = 'default';
         }
 
@@ -67,14 +72,24 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'username' => $request->username,
+            'refer' => $refer,
             'password' => Hash::make($request->password),
-            'country' => $location->countryName,
-            'region' => $location->regionName,
-            'city' => $location->cityName,
-            'zip' => $location->zipCode,
-            'latitude' => $location->latitude,
-            'longitude' => $location->longitude,
+            // 'country' => $location->countryName,
+            // 'region' => $location->regionName,
+            // 'city' => $location->cityName,
+            // 'zip' => $location->zipCode,
+            // 'latitude' => $location->latitude,
+            // 'longitude' => $location->longitude,
         ]);
+
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
+
 
 
         event(new Registered($user));
@@ -93,6 +108,8 @@ class RegisteredUserController extends Controller
         $deposit->status = 'approved';
         $deposit->note = 'Signup Bonus';
         $deposit->save();
+
+
         Log::info('Signup Bonus Added for user:' . auth()->user()->username);
 
 
