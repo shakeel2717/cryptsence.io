@@ -44,13 +44,14 @@ final class UserResentTranction extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Transaction>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->where('user_id', auth()->user()->id);
+        return Transaction::query()->where('user_id', auth()->user()->id)
+            ->join('coins', 'coins.id', '=', 'transactions.coin_id')->select('transactions.*', 'coins.symbol')->latest();
     }
 
     /*
@@ -68,7 +69,11 @@ final class UserResentTranction extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'coin' => [
+                'symbol'
+            ]
+        ];
     }
 
     /*
@@ -84,6 +89,8 @@ final class UserResentTranction extends PowerGridComponent
         return PowerGrid::eloquent()
             ->addColumn('amount')
             ->addColumn('status')
+            ->addColumn('currency')
+            ->addColumn('type')
             ->addColumn('sum')
             ->addColumn('txn_id')
             ->addColumn('note')
@@ -100,7 +107,7 @@ final class UserResentTranction extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -115,6 +122,16 @@ final class UserResentTranction extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('STATUS', 'status')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('COIN', 'symbol')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('TYPE', 'type')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -139,13 +156,7 @@ final class UserResentTranction extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-        ]
-;
+        ];
     }
 
     /*
@@ -156,7 +167,7 @@ final class UserResentTranction extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
@@ -186,7 +197,7 @@ final class UserResentTranction extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
