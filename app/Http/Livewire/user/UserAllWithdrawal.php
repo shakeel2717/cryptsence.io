@@ -50,7 +50,7 @@ final class UserAllWithdrawal extends PowerGridComponent
     */
     public function datasource(): Builder
     {
-        return Transaction::query()->where('user_id', auth()->user()->id)->where('type', '=', 'withdrawal');
+        return Transaction::query()->where('user_id', auth()->user()->id)->join('coins', 'coins.id', '=', 'transactions.coin_id')->select('transactions.*', 'coins.symbol')->latest()->where('type', '=', 'withdrawal');
     }
 
     /*
@@ -68,7 +68,11 @@ final class UserAllWithdrawal extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'coin' => [
+                'symbol'
+            ]
+        ];
     }
 
     /*
@@ -85,6 +89,7 @@ final class UserAllWithdrawal extends PowerGridComponent
             ->addColumn('amount')
             ->addColumn('status')
             ->addColumn('sum')
+            ->addColumn('currency')
             ->addColumn('txn_id')
             ->addColumn('note')
             ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
@@ -119,6 +124,11 @@ final class UserAllWithdrawal extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('SUM', 'sum')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+                Column::make('CURRENCY', 'symbol')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
