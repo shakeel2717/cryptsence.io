@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:adminallwithdrawals/>
+    <livewire:admin.admin-all-withdrawal />
 @endsection
 @section('footer')
     @livewireScripts
