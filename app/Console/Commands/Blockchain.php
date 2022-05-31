@@ -68,7 +68,7 @@ class Blockchain extends Command
                     ->where('stake_amount', $balance)
                     ->get();
                 if ($stakingBonus->count() > 0) {
-                    Log::info('User ' . $user->username . ' already got staking bonus');
+                    Log::info('User ' . $user->username . ' already got staking Reward');
                     goto endStakeBouns;
                 }
 
@@ -81,7 +81,7 @@ class Blockchain extends Command
                 $stakingBonus->note = "Blockchain";
                 $stakingBonus->save();
 
-                Log::info('Staking Bonus for user: ' . $user->username . ' has ' . $profitDay . ' Delivered Successfully');
+                Log::info('Staking Reward for user: ' . $user->username . ' has ' . $profitDay . ' Delivered Successfully');
                 endStakeBouns:
             }
         }

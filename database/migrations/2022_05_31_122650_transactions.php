@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('amount');
             $table->string('status');
             $table->string('sum');
-            $table->string('currency');
+            $table->foreignId('coin_id')->constrained()->onDelete('cascade');
             $table->string('txn_id')->nullable();
             $table->string('note')->nullable();
             $table->timestamps();
@@ -34,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transactions');
+        //
     }
 };

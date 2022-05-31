@@ -2,6 +2,7 @@
 
 namespace App\Models\user;
 
+use App\Models\Coin;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -17,7 +18,7 @@ class Transaction extends Model
         'amount',
         'status',
         'sum',
-        'currency',
+        'coin_id',
         'txn_id',
         'note',
     ];
@@ -25,5 +26,11 @@ class Transaction extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+
+    public function coin()
+    {
+        return $this->belongsTo(Coin::class);
     }
 }

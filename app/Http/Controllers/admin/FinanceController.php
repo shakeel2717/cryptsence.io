@@ -54,7 +54,7 @@ class FinanceController extends Controller
             $transaction = new Transaction();
             $transaction->user_id = $user->id;
             $transaction->amount = $validatedData['amount'];
-            $transaction->currency = $validatedData['method'];
+            $transaction->coin_id = $coin->id;
             $transaction->type = 'deposit';
             $transaction->status = 'approved';
             $transaction->note = 'admin deposit';

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Coin;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
@@ -41,69 +42,46 @@ class ConvertController extends Controller
             'amount' => 'required|max:255|min:1',
         ]);
 
-        // checking if this Form Currency is USDT.TRC20
-        if ($validatedData['method'] == 'USDT.TRC20') {
-            // getting CTSE Rate
-            $price = options("coin_exchange_rate");
-            // converting USDT to CTSE
-            if ($validatedData['amount'] >= options("min_convert_amount")) {
-                $amount = $validatedData['amount'] / $price;
+        $buyCoin = Coin::where('symbol', 'CTSE')->first();
 
-                // checking if user have enough balance
-                if (balance('USDT.TRC20', auth()->user()->id) >= $validatedData['amount']) {
-                    // deducting balance
-                    Transaction::create([
-                        'user_id' => auth()->user()->id,
-                        'currency' => 'USDT.TRC20',
-                        'amount' => $validatedData['amount'],
-                        'sum' => 'out',
-                        'type' => 'convert',
-                        'status' => 'success',
-                    ]);
+        $coin = Coin::where('symbol', $validatedData['method'])->where('status', 'active')->first();
 
-                    // adding balance
-                    Transaction::create([
-                        'user_id' => auth()->user()->id,
-                        'currency' => 'CTSE',
-                        'amount' => $amount,
-                        'sum' => 'in',
-                        'type' => 'convert',
-                        'status' => 'success',
-                    ]);
+        // getting CTSE Rate
+        $price = options("coin_exchange_rate");
+        // converting USDT to CTSE
+        if ($validatedData['amount'] >= options("min_convert_amount")) {
+            $amount = $validatedData['amount'] / $price;
 
-                    return redirect()->back()->with('success', 'Convert Successfully');
-                } else {
-                    return redirect()->back()->withErrors('You don\'t have enough balance');
-                }
+            // checking if user have enough balance
+            if (balance('USDT.TRC20', auth()->user()->id) >= $validatedData['amount']) {
+                // deducting balance
+                Transaction::create([
+                    'user_id' => auth()->user()->id,
+                    'coin_id' => $coin->id,
+                    'amount' => $validatedData['amount'],
+                    'sum' => 'out',
+                    'type' => 'convert',
+                    'status' => 'success',
+                ]);
 
-                // // adding transaction
-                // $transaction = new Transaction();
-                // $transaction->user_id = auth()->user()->id;
-                // $transaction->currency = 'CTSE';
-                // $transaction->amount = $amount;
-                // $transaction->type = 'convert';
-                // $transaction->sum = 'in';
-                // $transaction->status = 'approved';
-                // $transaction->note = 'convert from USDT';
-                // $transaction->save();
+                // adding balance
+                Transaction::create([
+                    'user_id' => auth()->user()->id,
+                    'coin_id' => $buyCoin->id,
+                    'amount' => $amount,
+                    'sum' => 'in',
+                    'type' => 'convert',
+                    'status' => 'success',
+                ]);
 
-                // // updating user balance
-                // $transaction = new Transaction();
-                // $transaction->user_id = auth()->user()->id;
-                // $transaction->currency = 'USDT.TRC20';
-                // $transaction->amount = $validatedData['amount'];
-                // $transaction->type = 'convert';
-                // $transaction->sum = 'out';
-                // $transaction->status = 'approved';
-                // $transaction->note = 'convert to CTSE';
-                // $transaction->save();
-
-                return redirect()->back()->with('success', 'USDT Convert Successfully');
+                return redirect()->back()->with('success', 'Convert Successfully');
             } else {
-                return redirect()->back()->withErrors('Minimum Convert Amount is ' . options("min_convert_amount") . " USDT");
+                return redirect()->back()->withErrors('You don\'t have enough balance');
             }
+
+            return redirect()->back()->with('success', 'USDT Convert Successfully');
         } else {
-            return redirect()->back()->withErrors('This Form Currency is not supported yet.');
+            return redirect()->back()->withErrors('Minimum Convert Amount is ' . options("min_convert_amount") . " USDT");
         }
     }
 
