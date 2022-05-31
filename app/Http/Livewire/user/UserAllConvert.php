@@ -44,13 +44,13 @@ final class UserAllConvert extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\user\Transaction>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\user\Transaction>
+     */
     public function datasource(): Builder
     {
-        return Transaction::query()->where('user_id', auth()->user()->id)->where('type', '=', 'convert');
+        return Transaction::query()->where('user_id', auth()->user()->id)->join('coins', 'coins.id', '=', 'transactions.coin_id')->select('transactions.*', 'coins.symbol')->latest()->where('type', '=', 'convert');
     }
 
     /*
@@ -68,7 +68,11 @@ final class UserAllConvert extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'coin' => [
+                'symbol',
+            ]
+        ];
     }
 
     /*
@@ -85,6 +89,7 @@ final class UserAllConvert extends PowerGridComponent
             ->addColumn('type')->addColumn('amount')
             ->addColumn('status')
             ->addColumn('sum')
+            ->addColumn('currency')
             ->addColumn('txn_id')
             ->addColumn('note')
             ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
@@ -100,7 +105,7 @@ final class UserAllConvert extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -120,6 +125,11 @@ final class UserAllConvert extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('SUM', 'sum')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+                Column::make('CURRENCY', 'symbol')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -144,8 +154,7 @@ final class UserAllConvert extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-        ]
-;
+        ];
     }
 
     /*
@@ -156,7 +165,7 @@ final class UserAllConvert extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
@@ -186,7 +195,7 @@ final class UserAllConvert extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
