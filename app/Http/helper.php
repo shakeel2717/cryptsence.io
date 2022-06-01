@@ -125,3 +125,11 @@ function validateStaking($user_id)
         return true;
     }
 }
+
+
+function checkRefers($user_id)
+{
+    $user = User::findOrFail($user_id);
+    $refer = User::where('refer', $user->username)->get();
+    return $refer;
+}

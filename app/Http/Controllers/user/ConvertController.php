@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Events\ReferralCommission;
 use App\Http\Controllers\Controller;
 use App\Models\Coin;
+use App\Models\User;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -87,6 +88,11 @@ class ConvertController extends Controller
                         event(new ReferralCommission(auth()->user()->id, $amount, $buyCoin->id,));
                     }
                 }
+
+                // updating this user status
+                $user = User::find(auth()->user()->id);
+                $user->status = "active";
+                $user->save();
 
                 return redirect()->back()->with('success', 'Convert Successfully');
             } else {
