@@ -51,10 +51,8 @@ final class AllWithdraw extends PowerGridComponent
     public function datasource(): Builder
     {
         return Withdraw::query()
-            ->join('coins', 'coins.id', '=', 'withdraws.coin_id')
-            ->select('withdraws.*', 'coins.symbol as coin_name')
-            ->where('user_id', auth()->user()->id)
-            ->where('type', 'withdraw')->latest();
+            ->join('users', 'users.id', '=', 'withdraws.user_id')
+            ->where('withdraws.user_id', auth()->user()->id)
             ;
     }
 

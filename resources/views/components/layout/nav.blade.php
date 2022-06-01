@@ -74,7 +74,7 @@
         <li>
             <a href="{{ route('user.report.transactions.allRefers') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Refers </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Referrals </div>
             </a>
         </li>
         <li>
