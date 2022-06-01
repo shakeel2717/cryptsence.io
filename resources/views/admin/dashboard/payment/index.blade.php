@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:coin-payment />
+    <livewire:admin.all-coin-payment />
 @endsection
 @section('footer')
     @livewireScripts

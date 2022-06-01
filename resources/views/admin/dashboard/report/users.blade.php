@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:all-users />
+    <livewire:admin.all-user/>
 @endsection
 @section('footer')
     @livewireScripts

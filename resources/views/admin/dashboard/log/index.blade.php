@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:log-entry />
+    <livewire:admin.all-logs />
 @endsection
 @section('footer')
     @livewireScripts
