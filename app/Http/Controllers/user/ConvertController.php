@@ -78,7 +78,7 @@ class ConvertController extends Controller
 
                 // checking if this is first convert
                 $allConvertTransactions = Transaction::where('user_id', auth()->user()->id)->where('type', 'convert')->count();
-                if ($allConvertTransactions > 1) {
+                if ($allConvertTransactions < 1) {
 
                     // checking if convert amount is enough
                     $minAmount = options("min_convert_amount_for_commission");

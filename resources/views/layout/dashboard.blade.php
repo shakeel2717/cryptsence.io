@@ -18,7 +18,8 @@
     <div class="mobile-menu d-md-none">
         <div class="mobile-menu-bar">
             <a href="" class="d-flex me-auto">
-                <img alt="{{ env('APP_DESC') }}" class="" src="{{ asset('assets/images/brand/logo.svg') }}">
+                <img alt="{{ env('APP_DESC') }}" class=""
+                    src="{{ asset('assets/images/brand/logo.svg') }}">
             </a>
             <a href="javascript:;" id="mobile-menu-toggler" class="mobile-menu-bar__toggler"> <i
                     data-feather="bar-chart-2" class="w-8 h-8 text-white"></i> </a>
@@ -34,7 +35,8 @@
     <div class="d-flex">
         <nav class="side-nav">
             <a href="" class="intro-x d-flex align-items-center ps-5 pt-4">
-                <img alt="{{ env('APP_DESC') }}" class="w-40" src="{{ asset('assets/images/brand/logo.svg') }}">
+                <img alt="{{ env('APP_DESC') }}" class="w-40"
+                    src="{{ asset('assets/images/brand/logo.svg') }}">
             </a>
             <div class="side-nav__devider my-6"></div>
             <ul>
@@ -57,6 +59,28 @@
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
                             <div class="notification-content__title dark-text-gray-300">Notifications</div>
+                            @foreach (auth()->user()->user_notifications as $notificaion)
+                                <div class="cursor-pointer position-relative d-flex align-items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit me-1">
+                                        <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-pill"
+                                            src="/assets/images/profile-8.jpg">
+                                        <div
+                                            class="w-3 h-3 bg-theme-9 position-absolute end-0 bottom-0 rounded-pill border-2 border-white dark-border-dark-3">
+                                        </div>
+                                    </div>
+                                    <div class="ms-2 overflow-hidden">
+                                        <div class="d-flex align-center">
+                                            <a href="javascript:;"
+                                                class="fw-medium truncate me-5 dark-text-gray-300">{{ $notificaion->title }}</a>
+                                            <div class="fs-xs text-gray-500 ms-auto text-nowrap">
+                                                {{ $notificaion->created_at->diffForHumans() }}
+                                            </div>
+                                        </div>
+                                        <div class="w-full truncate text-gray-600 mt-0.5">{{ $notificaion->content }}
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                 </div>

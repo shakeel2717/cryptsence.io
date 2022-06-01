@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\user\Referral;
+use App\Models\user\UserNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -73,5 +74,11 @@ class User extends Authenticatable
     function referral()
     {
         return $this->hasOne(Referral::class);
+    }
+
+
+    function user_notifications()
+    {
+        return $this->hasMany(UserNotification::class);
     }
 }
