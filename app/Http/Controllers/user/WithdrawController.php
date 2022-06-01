@@ -51,15 +51,16 @@ class WithdrawController extends Controller
             return redirect()->back()->withErrors('Your balance is not enough');
         }
 
+        $fees = $validateddata['amount'] * options('withdraw_fees') / 100;
+        $amount = $validateddata['amount'] - $fees;
+
         $withdraw = new Withdraw();
         $withdraw->user_id = auth()->user()->id;
         $withdraw->coin_id = $validateddata['coin_id'];
-        $withdraw->amount = $validateddata['amount'];
+        $withdraw->amount = $amount;
         $withdraw->address = $validateddata['wallet'];
         $withdraw->save();
 
-        $fees = $validateddata['amount'] * options('withdraw_fees') / 100;
-        $amount = $validateddata['amount'] - $fees;
 
         // deducting the balance
         Transaction::create([
