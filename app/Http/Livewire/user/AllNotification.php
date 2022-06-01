@@ -91,7 +91,6 @@ final class AllNotification extends PowerGridComponent
     {
         return PowerGrid::eloquent()
             ->addColumn('user')
-            ->addColumn('type')
             ->addColumn('title')
             ->addColumn('content')
             ->addColumn('created_at_formatted', fn (UserNotification $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
@@ -117,11 +116,6 @@ final class AllNotification extends PowerGridComponent
             Column::make('USER', 'user_name')
                 ->makeInputRange(),
 
-            Column::make('TYPE', 'type')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
             Column::make('TITLE', 'title')
                 ->sortable()
                 ->searchable()
@@ -136,7 +130,6 @@ final class AllNotification extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
         ]
 ;
     }
