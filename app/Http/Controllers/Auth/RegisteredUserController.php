@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Events\RegisterBonus;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\user\Referral;
@@ -82,36 +83,17 @@ class RegisteredUserController extends Controller
             // 'longitude' => $location->longitude,
         ]);
 
-
         $referral = Referral::create([
             'user_id' => $user->id,
             'referral_code' => random(10),
         ]);
-
-
-
-
 
         event(new Registered($user));
 
         // inserting bonus for this user
         Auth::login($user);
 
-        $bonus = options("register_bonus_ctse");
-
-        $deposit = new Transaction();
-        $deposit->user_id = auth()->user()->id;
-        $deposit->amount = $bonus;
-        $deposit->type = 'bonus';
-        $deposit->sum = 'in';
-        $deposit->coin_id = 2;
-        $deposit->status = 'approved';
-        $deposit->note = 'Signup Bonus';
-        $deposit->save();
-
-
-        Log::info('Signup Bonus Added for user:' . auth()->user()->username);
-
+        event(new RegisterBonus($user));
 
         return redirect(RouteServiceProvider::HOME);
     }
