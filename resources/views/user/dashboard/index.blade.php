@@ -147,7 +147,7 @@
                     </div>
                     <div class="w-100 position-relative mt-6 cursor-pointer tooltip"
                         title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
-                        <input class="form-control"
+                        <input class="form-control pe-10"
                             value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}"
                             readonly>
                         <i data-feather="copy" onclick="myFunction();"
