@@ -36,6 +36,10 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.allRefers');
     }
+    public function allCommisition()
+    {
+        return view('user.dashboard.report.transaction.allCommisitions');
+    }
 
 
 }

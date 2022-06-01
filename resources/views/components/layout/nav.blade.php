@@ -64,6 +64,14 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('user.report.transactions.allCommisition') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Withdrawals </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('user.report.transactions.convert') }}"
                 class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>

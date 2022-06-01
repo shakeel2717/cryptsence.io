@@ -26,6 +26,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('report/transactions/convert', [ReportController::class, 'convert'])->name('report.transactions.convert');
     Route::get('report/transactions/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.transactions.allStackingBounces');
     Route::get('report/transactions/allRefers', [ReportController::class, 'allRefers'])->name('report.transactions.allRefers');
+    Route::get('report/transactions/allCommisition', [ReportController::class, 'allCommisition'])->name('report.transactions.allCommisition');
     Route::get('google/googleEdit', [GoogleAuthController::class, 'googleEdit'])->name('dashboard.google.googleEdit');
     Route::post('google/googleUpdate', [GoogleAuthController::class, 'googleUpdate'])->name('dashboard.google.googleUpdate');
     Route::resource('google', GoogleAuthController::class);
