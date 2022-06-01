@@ -71,7 +71,9 @@
                                 <img src="/assets/images/coins/ctse.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">0.00 </div>
+                                        title="33% Higher than last month">$
+                                        {{ number_format(balance('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -87,7 +89,9 @@
                                 <img src="/assets/images/coins/reward.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">0.00 </div>
+                                        title="33% Higher than last month">$
+                                        {{ number_format(stakeBounsAll('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -103,7 +107,7 @@
                                 <img src="/assets/images/coins/tether.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">0.00 </div>
+                                        title="33% Higher than last month">{{ number_format(balance('USDT.TRC20', auth()->user()->id) / options('coin_exchange_rate'), 2) }} CTSE</div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -142,7 +146,8 @@
                     <div class="w-100 position-relative mt-6 cursor-pointer tooltip"
                         title="To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link">
                         <input class="form-control"
-                            value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}" readonly>
+                            value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}"
+                            readonly>
                         <i data-feather="copy" onclick="myFunction();"
                             class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                     </div>
