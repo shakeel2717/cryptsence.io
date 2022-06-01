@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\LoginHistory;
+use App\Models\user\Referral;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
+
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
         $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(6)->get();
         $stakingBonuses = StakingBonus::where('user_id', auth()->id())->latest()->limit(6)->get();

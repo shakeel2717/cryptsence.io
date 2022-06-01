@@ -86,6 +86,22 @@ class Blockchain extends Command
             }
         }
 
+
+        // Running Script to Update the rate
+        Log::info('Run Rate Update');
+
+        $monthlyRateUpdate = 10;
+        $currentRate = options("coin_exchange_rate");
+        $newRate = $currentRate * $monthlyRateUpdate / 100;
+        $rate = $newRate / 30;
+
+        $ctseRate = Option::where('name', 'coin_exchange_rate')->first();
+        $ctseRate->value += $rate;
+        $ctseRate->save();
+
+        Log::info('Rate Update');
+
+
         return 0;
     }
 }

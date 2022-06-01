@@ -9,6 +9,7 @@ use App\Http\Controllers\user\NotificationController;
 use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\user\ProfileController;
 use App\Http\Controllers\user\ReportController;
+use App\Http\Controllers\user\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 Route::redirect('/', '/login');
@@ -19,6 +20,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::post('profile/password/update', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::resource('profile', ProfileController::class);
     Route::resource('notification', NotificationController::class);
+    Route::resource('withdraw', WithdrawController::class);
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('payment', PaymentController::class);
     Route::resource('convert', ConvertController::class);

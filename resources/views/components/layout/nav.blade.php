@@ -13,6 +13,13 @@
 </li>
 
 <li>
+    <a href="{{ route('user.withdraw.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="dollar-sign"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Withdraw Fund </div>
+    </a>
+</li>
+
+<li>
     <a href="{{ route('user.calculator.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="slack"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Stacking Calculator </div>

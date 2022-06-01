@@ -114,6 +114,12 @@ class Clean extends Command
         $option->value = "5";
         $option->save();
 
+
+        $option = new Option();
+        $option->name = "withdraw_fees";
+        $option->value = "2";
+        $option->save();
+
         return 0;
     }
 }

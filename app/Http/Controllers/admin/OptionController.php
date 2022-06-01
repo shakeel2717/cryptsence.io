@@ -16,6 +16,11 @@ class OptionController extends Controller
             'min_ctse_for_stake' => 'required|digits_between:1,10000000',
             'ctse_stake_bonus_monthly' => 'required|digits_between:1,100',
             'register_bonus_ctse' => 'required|digits_between:1,100',
+            'referral_bonus_ctse' => 'required|digits_between:1,100',
+            'min_convert_amount_for_commission' => 'required|digits_between:1,100',
+            'withdraw_fees' => 'required|digits_between:1,100',
+            'register_bonus_ctse' => 'required|digits_between:1,100',
+            'register_bonus_ctse' => 'required|digits_between:1,100',
         ]);
 
 
@@ -39,6 +44,18 @@ class OptionController extends Controller
 
         $option = Option::where('name', 'register_bonus_ctse')->firstOrFail();
         $option->value = $validatedData['register_bonus_ctse'];
+        $option->save();
+
+        $option = Option::where('name', 'referral_bonus_ctse')->firstOrFail();
+        $option->value = $validatedData['referral_bonus_ctse'];
+        $option->save();
+
+        $option = Option::where('name', 'min_convert_amount_for_commission')->firstOrFail();
+        $option->value = $validatedData['min_convert_amount_for_commission'];
+        $option->save();
+
+        $option = Option::where('name', 'withdraw_fees')->firstOrFail();
+        $option->value = $validatedData['withdraw_fees'];
         $option->save();
 
         logEntry('Price Update', 'Admin has updated Min convert amount');
