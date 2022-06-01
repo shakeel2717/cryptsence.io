@@ -75,7 +75,6 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email|max:255',
             'country' => 'required|max:255',
             'city' => 'required|max:255',
             'phone' => 'required|max:255',
@@ -85,7 +84,6 @@ class ProfileController extends Controller
 
         $user = User::find(auth()->user()->id);
         $user->name = $validatedData['name'];
-        $user->email = $validatedData['email'];
         $user->country = $validatedData['country'];
         $user->city = $validatedData['city'];
         $user->phone = $validatedData['phone'];

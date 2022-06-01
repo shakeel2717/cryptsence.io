@@ -34,11 +34,11 @@ class ProccessRegisterBonus
         $deposit = new Transaction();
         $deposit->user_id = $event->user->id;
         $deposit->amount = $bonus;
-        $deposit->type = 'bonus';
+        $deposit->type = 'Airdrop';
         $deposit->sum = 'in';
         $deposit->coin_id = 2;
         $deposit->status = 'approved';
-        $deposit->note = 'Signup Bonus';
+        $deposit->note = 'Free Airdrop';
         $deposit->save();
 
         // notification for Bonus

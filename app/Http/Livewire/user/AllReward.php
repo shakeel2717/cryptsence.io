@@ -9,7 +9,7 @@ use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class AllCommisions extends PowerGridComponent
+final class AllReward extends PowerGridComponent
 {
     use ActionButton;
 
@@ -51,10 +51,11 @@ final class AllCommisions extends PowerGridComponent
     public function datasource(): Builder
     {
         return Transaction::query()
-        ->join('coins', 'coins.id', '=', 'transactions.coin_id')
-        ->select('transactions.*', 'coins.symbol as coin_name')
-        ->where('user_id', auth()->user()->id)->latest()
-        ->where('type', 'commisition');
+            ->join('users', 'users.id', '=', 'transactions.user_id')
+            ->join('coins', 'coins.id', '=', 'transactions.coin_id')
+            ->select('transactions.*', 'users.name', 'coins.symbol as coin_name')
+            ->where('type', '=', 'reward')
+            ->where('transactions.user_id', '=', auth()->user()->id);
     }
 
     /*
@@ -72,11 +73,7 @@ final class AllCommisions extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [
-            "coin" => [
-                'coins.symbol',
-            ]
-        ];
+        return [];
     }
 
     /*
@@ -90,12 +87,15 @@ final class AllCommisions extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
+            ->addColumn('type')
             ->addColumn('amount')
             ->addColumn('status')
-            ->addColumn('currency')
+            ->addColumn('sum')
+            ->addColumn('coin_id')
             ->addColumn('txn_id')
             ->addColumn('note')
-            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Transaction $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -116,6 +116,11 @@ final class AllCommisions extends PowerGridComponent
     {
         return [
 
+            Column::make('TYPE', 'type')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
             Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
@@ -126,10 +131,13 @@ final class AllCommisions extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('currency', 'coin_name')
+            Column::make('SUM', 'sum')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
+
+            Column::make('COIN ID', 'coin_name')
+                ->makeInputRange(),
 
             Column::make('TXN ID', 'txn_id')
                 ->sortable()
@@ -145,6 +153,12 @@ final class AllCommisions extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
+
+            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
+                ->searchable()
+                ->sortable()
+                ->makeInputDatePicker(),
+
         ]
 ;
     }

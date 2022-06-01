@@ -64,16 +64,8 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('user.report.transactions.allCommisition') }}"
-                class="{{ $mode == true ? 'side-' : '' }}menu">
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
-                </div>
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Commisitions </div>
-            </a>
-        </li>
-        <li>
             <a href="{{ route('user.report.transactions.convert') }}"
-                class="{{ $mode == true ? 'side-' : '' }}menu">
+            class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
                 </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All convert </div>
@@ -83,6 +75,14 @@
             <a href="{{ route('user.report.transactions.allRefers') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Refers </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.report.transactions.allRewards') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Rewards </div>
             </a>
         </li>
     </ul>

@@ -36,9 +36,9 @@ class ReportController extends Controller
     {
         return view('user.dashboard.report.transaction.allRefers');
     }
-    public function allCommisition()
+    public function allRewards()
     {
-        return view('user.dashboard.report.transaction.allCommisitions');
+        return view('user.dashboard.report.transaction.allRewards');
     }
 
 

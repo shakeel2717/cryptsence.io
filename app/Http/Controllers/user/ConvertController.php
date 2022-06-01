@@ -78,13 +78,13 @@ class ConvertController extends Controller
 
                 // checking if this is first convert
                 $allConvertTransactions = Transaction::where('user_id', auth()->user()->id)->where('type', 'convert')->count();
-                if ($allConvertTransactions < 1) {
+                if ($allConvertTransactions > 1) {
 
                     // checking if convert amount is enough
                     $minAmount = options("min_convert_amount_for_commission");
                     if ($validatedData['amount'] >= $minAmount) {
                         Log::info('Convert amount is enough for referral commission');
-                        event(new ReferralCommission(auth()->user()->id, balance('CTSE', auth()->user()->id), $buyCoin->id,));
+                        event(new ReferralCommission(auth()->user()->id, $amount, $buyCoin->id,));
                     }
                 }
 

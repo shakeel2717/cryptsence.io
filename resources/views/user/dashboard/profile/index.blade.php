@@ -22,7 +22,7 @@
                                     <div>
                                         <label for="name" class="form-label mt-3">Display Name</label>
                                         <input id="name" name="name" type="text"  class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->name }}">
+                                            placeholder="Display Name" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
@@ -36,49 +36,49 @@
                                     <div>
                                         <label for="email" class="form-label mt-3">Email</label>
                                         <input id="email" name="email" type="email" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->email }}">
+                                            placeholder="Email" value="{{ auth()->user()->email }}" readonly>
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="refer" class="form-label mt-3">Sponser</label>
                                         <input id="refer" name="refer" type="refer" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->refer }}" disabled readonly>
+                                            placeholder="Sponser" value="{{ auth()->user()->refer }}" disabled readonly>
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="country" class="form-label mt-3">Country</label>
                                         <input id="country" name="country" type="text" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->country }}">
+                                            placeholder="Country" value="{{ auth()->user()->country }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="city" class="form-label mt-3">City</label>
                                         <input id="city" name="city" type="text" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->city }}">
+                                            placeholder="City" value="{{ auth()->user()->city }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="region" class="form-label mt-3">Region</label>
                                         <input id="region" name="region" type="text" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->region }}">
+                                            placeholder="Region" value="{{ auth()->user()->region }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="zip" class="form-label mt-3">Zip</label>
                                         <input id="zip" name="zip" type="text" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->zip }}">
+                                            placeholder="Zip" value="{{ auth()->user()->zip }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="phone" class="form-label mt-3">Phone</label>
                                         <input id="phone" name="phone" type="text" class="form-control"
-                                            placeholder="Full Name" value="{{ auth()->user()->phone }}">
+                                            placeholder="Phone" value="{{ auth()->user()->phone }}">
                                     </div>
                                 </div>
                             </div>

@@ -7,7 +7,7 @@
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:user.all-commisions />
+<livewire:user.all-reward/>
 @endsection
 @section('footer')
     @livewireScripts
