@@ -86,7 +86,6 @@ class ConvertController extends Controller
                         Log::info('Convert amount is enough for referral commission');
                         event(new ReferralCommission(auth()->user()->id, balance('CTSE', auth()->user()->id), $buyCoin->id,));
                     }
-                    Log::info('Convert amount is not enough for referral commission');
                 }
 
                 return redirect()->back()->with('success', 'Convert Successfully');
