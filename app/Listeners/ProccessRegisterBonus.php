@@ -45,10 +45,10 @@ class ProccessRegisterBonus
         $notification = new UserNotification();
         $notification->user_id = $event->user->id;
         $notification->type = 'award';
-        $notification->title = 'Signup Bonus';
+        $notification->title = 'Signup Reward';
         $notification->content = 'You have received ' . $bonus . ' CTSE for signing up, thank you for joining us!';
         $notification->save();
 
-        Log::info('Signup Bonus Added for user:' . auth()->user()->username);
+        Log::info('Signup Reward Added for user:' . auth()->user()->username);
     }
 }

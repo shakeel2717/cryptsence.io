@@ -58,15 +58,15 @@
                             class="notification__icon dark-text-gray-300"></i> </div>
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
-                            <div class="notification-content__title dark-text-gray-300">Notifications</div>
+                            <div class="d-flex justify-content-center-between">
+                                <div class="notification-content__title dark-text-gray-300">Notifications</div>
+                                <div class="notification-content__title dark-text-gray-300"><a
+                                        href="{{ route('user.notification.index') }}">See All</a></div>
+                            </div>
                             @foreach (auth()->user()->user_notifications as $notificaion)
                                 <div class="cursor-pointer position-relative d-flex align-items-center mt-5">
-                                    <div class="w-12 h-12 flex-none image-fit me-1">
-                                        <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-pill"
-                                            src="/assets/images/profile-8.jpg">
-                                        <div
-                                            class="w-3 h-3 bg-theme-9 position-absolute end-0 bottom-0 rounded-pill border-2 border-white dark-border-dark-3">
-                                        </div>
+                                    <div class="w-12 h-12 flex-none image-fit me-1 justify-content-center-between">
+                                        <i data-feather="{{ $notificaion->type }}" class="w-6 h-6"></i>
                                     </div>
                                     <div class="ms-2 overflow-hidden">
                                         <div class="d-flex align-center">
