@@ -46,12 +46,12 @@ class ProccessReferralCommission
                 'coin_id' => $event->coin_id,
                 'amount' => $amount,
                 'sum' => 'in',
-                'type' => 'commission',
+                'type' => 'reward',
                 'status' => 'approved',
-                'note' => 'Referral Commission From ' . $user->username,
+                'note' => 'Referral Reward From ' . $user->username,
             ]);
 
-            Log::info('Refer Commission for ' . $user->username . ' has been added to ' . $upline->username);
+            Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $upline->username);
         } else {
             Log::info('NO Refer Fund');
         }
