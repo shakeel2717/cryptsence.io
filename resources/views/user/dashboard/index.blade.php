@@ -107,7 +107,9 @@
                                 <img src="/assets/images/coins/tether.png" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">{{ number_format(balance('USDT.TRC20', auth()->user()->id) / options('coin_exchange_rate'), 2) }} CTSE</div>
+                                        title="33% Higher than last month">
+                                        {{ number_format(balance('USDT.TRC20', auth()->user()->id) / options('coin_exchange_rate'), 2) }}
+                                        CTSE</div>
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
@@ -144,7 +146,7 @@
                         </div>
                     </div>
                     <div class="w-100 position-relative mt-6 cursor-pointer tooltip"
-                        title="To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link">
+                        title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
                         <input class="form-control"
                             value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}"
                             readonly>
