@@ -45,6 +45,20 @@
                     <div class="position-relative d-flex align-items-center">
                         <div class="w-12 h-12 flex-none image-fit">
                             <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
+                                src="{{ asset('assets/images/coins/tether.png') }}">
+                        </div>
+                        <div class="ms-4 me-auto">
+                            <a href="" class="fw-medium">Min USDT Convert Amount for Commission</a>
+                            <div class="text-gray-600 me-5 me-sm-5">Min USDT Convert Amount for Upliner Commission</div>
+                        </div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            {{ options('min_convert_amount_for_commission') }} USDT</div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="position-relative d-flex align-items-center">
+                        <div class="w-12 h-12 flex-none image-fit">
+                            <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
                                 src="{{ asset('assets/images/coins/ctse.png') }}">
                         </div>
                         <div class="ms-4 me-auto">
@@ -80,7 +94,21 @@
                             <div class="text-gray-600 me-5 me-sm-5">Select Bonus Amount for new Account</div>
                         </div>
                         <div class="fw-medium text-gray-700 dark-text-gray-500">
-                            {{ options('register_bonus_ctse') }}</div>
+                            {{ options('register_bonus_ctse') }} CTSE</div>
+                    </div>
+                </div>
+                <div class="p-5">
+                    <div class="position-relative d-flex align-items-center">
+                        <div class="w-12 h-12 flex-none image-fit">
+                            <img alt="Rubick Bootstrap HTML Admin Template" class="rounded-circle"
+                                src="{{ asset('assets/images/coins/ctse.png') }}">
+                        </div>
+                        <div class="ms-4 me-auto">
+                            <a href="" class="fw-medium">Referral Commission</a>
+                            <div class="text-gray-600 me-5 me-sm-5">Select Referral Reward for Upliner</div>
+                        </div>
+                        <div class="fw-medium text-gray-700 dark-text-gray-500">
+                            {{ options('referral_bonus_ctse') }}%</div>
                     </div>
                 </div>
             </div>
@@ -330,6 +358,20 @@
                                             name="register_bonus_ctse" placeholder="Enter New Price"
                                             value="{{ options('register_bonus_ctse') }}">
                                     </div>
+                                    <div class="form-group">
+                                        <label for="referral_bonus_ctse" class="mb-2 text-left">Referral Bonus</label>
+                                        <input type="text" class="form-control mb-4" id="referral_bonus_ctse"
+                                            name="referral_bonus_ctse" placeholder="Enter New Price"
+                                            value="{{ options('referral_bonus_ctse') }}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="min_convert_amount_for_commission" class="mb-2 text-left">Min Convert
+                                            for Commisson in USDT</label>
+                                        <input type="text" class="form-control mb-4" id="min_convert_amount_for_commission"
+                                            name="min_convert_amount_for_commission" placeholder="Enter New Price"
+                                            value="{{ options('min_convert_amount_for_commission') }}">
+                                    </div>
+
                                     <br>
                                     <button type="submit" class="btn btn-primary">Update</button>
                                 </form>

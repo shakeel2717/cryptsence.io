@@ -103,6 +103,17 @@ class Clean extends Command
         $option->value = 1000;
         $option->save();
 
+        $option = new Option();
+        $option->name = "referral_bonus_ctse";
+        $option->value = 15;
+        $option->save();
+
+
+        $option = new Option();
+        $option->name = "min_convert_amount_for_commission";
+        $option->value = "5";
+        $option->save();
+
         return 0;
     }
 }

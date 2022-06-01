@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Events\ReferralCommission;
 use App\Http\Controllers\Controller;
 use App\Models\Coin;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ConvertController extends Controller
 {
@@ -73,6 +75,19 @@ class ConvertController extends Controller
                     'type' => 'convert',
                     'status' => 'success',
                 ]);
+
+                // checking if this is first convert
+                $allConvertTransactions = Transaction::where('user_id', auth()->user()->id)->where('type', 'convert')->count();
+                if ($allConvertTransactions > 1) {
+
+                    // checking if convert amount is enough
+                    $minAmount = options("min_convert_amount_for_commission");
+                    if ($validatedData['amount'] >= $minAmount) {
+                        Log::info('Convert amount is enough for referral commission');
+                        event(new ReferralCommission(auth()->user()->id, balance('CTSE', auth()->user()->id), $buyCoin->id,));
+                    }
+                    Log::info('Convert amount is not enough for referral commission');
+                }
 
                 return redirect()->back()->with('success', 'Convert Successfully');
             } else {
