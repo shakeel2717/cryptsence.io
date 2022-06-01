@@ -2,6 +2,7 @@
 
 namespace App\Models\user;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -13,4 +14,9 @@ class StakingBonus extends Model
     protected $fillable = [
         'user_id', 'sum', 'amount', 'status', 'stake_amount', 'note'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -1,13 +1,13 @@
 @extends('layout.dashboard')
 @section('title')
-    Admin All Stacking Bounces History
+    Admin All Stacking Rewards History
 @endsection
 @section('head')
     @livewireStyles
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:adminallstackingbounses/>
+    <livewire:admin.all-staking-reward />
 @endsection
 @section('footer')
     @livewireScripts
