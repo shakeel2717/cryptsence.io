@@ -64,6 +64,9 @@
                                         href="{{ route('user.notification.index') }}">See All</a></div>
                             </div>
                             @foreach (auth()->user()->user_notifications as $notificaion)
+                                @if ($loop->iteration > 5)
+                                    @break
+                                @endif
                                 <div class="cursor-pointer position-relative d-flex align-items-center mt-5">
                                     <div class="w-12 h-12 flex-none image-fit me-1 justify-content-center-between">
                                         <i data-feather="{{ $notificaion->type }}" class="w-6 h-6"></i>
