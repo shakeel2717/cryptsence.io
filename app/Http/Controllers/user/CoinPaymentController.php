@@ -5,6 +5,7 @@ namespace App\Http\Controllers\user;
 use App\Http\Controllers\Controller;
 use App\Models\btcPayments;
 use App\Models\user\Transaction;
+use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -79,6 +80,14 @@ class CoinPaymentController extends Controller
                 $deposit->note = 'coinPayment Gateway';
                 $deposit->save();
                 Log::info('CoinPayment Payment Success');
+
+                // inserting notification
+                $notification = new UserNotification();
+                $notification->user_id = $payment->user_id;
+                $notification->type = 'plus-circle';
+                $notification->title = $amount1 . ' Deposit Successfull';
+                $notification->content = 'You have received ' . $amount1 . ' USDT for your deposit';
+                $notification->save();
             } else {
                 Log::info('CoinPayment Payment Already Inserted');
             }
@@ -101,6 +110,14 @@ class CoinPaymentController extends Controller
                 $deposit->txn_id = $txn_id;
                 $deposit->note = 'coinPayment Gateway';
                 $deposit->save();
+
+                // inserting notification
+                $notification = new UserNotification();
+                $notification->user_id = $payment->user_id;
+                $notification->type = 'plus-circle';
+                $notification->title = $amount1 . ' Deposit Successfull';
+                $notification->content = 'You have received ' . $amount1 . ' USDT for your deposit';
+                $notification->save();
                 Log::info('CoinPayment Payment Status 100 Success');
             } else {
                 Log::info('CoinPayment Payment Already Inserted 100');
@@ -109,10 +126,26 @@ class CoinPaymentController extends Controller
             // Payment Error
             $payment->status = "error";
             $payment->save();
+
+            // inserting notification
+            $notification = new UserNotification();
+            $notification->user_id = $payment->user_id;
+            $notification->type = 'x-circle';
+            $notification->title = $amount1 . ' Deposit Timeout';
+            $notification->content = 'Your deposit of ' . $amount1 . ' USDT has been timed out';
+            $notification->save();
         } else {
             // Payment Pending
             $payment->status = "pending";
             $payment->save();
+
+            // inserting notification
+            $notification = new UserNotification();
+            $notification->user_id = $payment->user_id;
+            $notification->type = 'clock';
+            $notification->title = $amount1 . ' Deposit Pending';
+            $notification->content = 'Waiting for payment to be completed, Please send ' . $amount1 . ' USDT to the address given';
+            $notification->save();
         }
     }
 }

@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\ReferralCommission;
 use App\Models\User;
 use App\Models\user\Transaction;
+use App\Models\user\UserNotification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
@@ -50,6 +51,14 @@ class ProccessReferralCommission
                 'status' => 'approved',
                 'note' => 'Referral Reward From ' . $user->username,
             ]);
+
+            // inserting notification
+            $notification = new UserNotification();
+            $notification->user_id = $user->id;
+            $notification->type = 'award';
+            $notification->title = 'Referral Reward';
+            $notification->content = 'You have received ' . $amount . ' CTSE for your referral Reward';
+            $notification->save();
 
             Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $upline->username);
         } else {

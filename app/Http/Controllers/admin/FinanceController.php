@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Coin;
 use App\Models\User;
 use App\Models\user\Transaction;
+use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 
 class FinanceController extends Controller
@@ -60,6 +61,14 @@ class FinanceController extends Controller
             $transaction->note = 'admin deposit';
             $transaction->sum = 'in';
             $transaction->save();
+
+            // inserting notification
+            $notification = new UserNotification();
+            $notification->user_id = $user->id;
+            $notification->type = 'plus-circle';
+            $notification->title = 'Deposit';
+            $notification->content = 'You have received ' . $validatedData['amount'] . ' ' . $coin->symbol . ' for your deposit';
+            $notification->save();
         }
 
         return redirect()->back()->with('success', 'Deposit has been added successfully');

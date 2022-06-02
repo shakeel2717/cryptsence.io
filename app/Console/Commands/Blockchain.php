@@ -6,6 +6,7 @@ use App\Models\admin\Option;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
+use App\Models\user\UserNotification;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
 
@@ -80,6 +81,14 @@ class Blockchain extends Command
                 $stakingBonus->stake_amount = $balance;
                 $stakingBonus->note = "Blockchain";
                 $stakingBonus->save();
+
+                // inserting notification
+                $notification = new UserNotification();
+                $notification->user_id = $user->id;
+                $notification->type = 'award';
+                $notification->title = 'Staking Bonus';
+                $notification->content = 'You have received ' . $profitDay . ' CTSE for your staking';
+                $notification->save();
 
                 Log::info('Staking Reward for user: ' . $user->username . ' has ' . $profitDay . ' Delivered Successfully');
                 endStakeBouns:
