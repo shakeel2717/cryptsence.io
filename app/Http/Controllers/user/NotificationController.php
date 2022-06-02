@@ -47,6 +47,8 @@ class NotificationController extends Controller
      */
     public function show(UserNotification $notification)
     {
+        $notification->seen = true;
+        $notification->save();
         return view('user.dashboard.report.notification.show', compact('notification'));
     }
 
