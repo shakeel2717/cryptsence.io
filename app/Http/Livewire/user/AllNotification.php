@@ -148,21 +148,22 @@ final class AllNotification extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user-notification.edit', ['user-notification' => 'id']),
+           Button::make('show', 'Read')
+               ->class('bg-theme-1 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->target("")
+               ->route('user.notification.show', ['notification' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user-notification.destroy', ['user-notification' => 'id'])
-               ->method('delete')
+        //    Button::make('destroy', 'Delete')
+        //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+        //        ->route('user-notification.destroy', ['user-notification' => 'id'])
+        //        ->method('delete')
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------

@@ -73,7 +73,7 @@
                                     </div>
                                     <div class="ms-2 overflow-hidden">
                                         <div class="d-flex align-center">
-                                            <a href="javascript:;"
+                                            <a href="{{ route('user.notification.show',['notification' => $notificaion->id]) }}"
                                                 class="fw-medium truncate me-5 dark-text-gray-300">{{ $notificaion->title }}</a>
                                             <div class="fs-xs text-gray-500 ms-auto text-nowrap">
                                                 {{ $notificaion->created_at->diffForHumans() }}

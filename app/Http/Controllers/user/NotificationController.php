@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 
 class NotificationController extends Controller
@@ -44,9 +45,9 @@ class NotificationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(UserNotification $notification)
     {
-        //
+        return view('user.dashboard.report.notification.show', compact('notification'));
     }
 
     /**

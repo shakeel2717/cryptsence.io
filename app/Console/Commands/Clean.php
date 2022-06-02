@@ -37,19 +37,12 @@ class Clean extends Command
         $this->call('route:clear');
 
 
-        $user = new User();
-        $user->name = "Shakeel Ahmad";
-        $user->username = "shakeel2717";
-        $user->email = "shakeel2717@gmail.com";
-        $user->password = bcrypt('asdfasdf');
-        $user->save();
-
-        $user = new User();
-        $user->name = "Rahel Anwaar";
-        $user->username = "raheel";
-        $user->email = "raheel@gmail.com";
-        $user->password = bcrypt('asdfasdf');
-        $user->save();
+        // $user = new User();
+        // $user->name = "Shakeel Ahmad";
+        // $user->username = "shakeel2717";
+        // $user->email = "shakeel2717@gmail.com";
+        // $user->password = bcrypt('asdfasdf');
+        // $user->save();
 
         $user = new User();
         $user->name = "Administrator";
