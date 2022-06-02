@@ -105,10 +105,18 @@ class Blockchain extends Command
         $rate = $newRate / 30;
 
         $ctseRate = Option::where('name', 'coin_exchange_rate')->first();
+
+        // checking if this rate is already updated today
+        if ($ctseRate->updated_at->format('Y-m-d') == date('Y-m-d')) {
+            Log::info('Rate Already Updated');
+            goto endRate;
+        }
+
         $ctseRate->value += $rate;
         $ctseRate->save();
 
         Log::info('Rate Update');
+        endRate:
 
 
         return 0;
