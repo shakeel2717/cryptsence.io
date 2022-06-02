@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Coin;
 use App\Models\User;
 use App\Models\user\Transaction;
+use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -76,6 +77,14 @@ class ConvertController extends Controller
                     'type' => 'convert',
                     'status' => 'success',
                 ]);
+
+                // inserting notification
+                $notification = new UserNotification();
+                $notification->user_id = auth()->user()->id;
+                $notification->type = 'refresh-ccw';
+                $notification->title = 'Convert from ' . $coin->symbol . ' to CTSE';
+                $notification->content = 'You have converted ' . $validatedData['amount'] . ' ' . $coin->symbol . ' to CTSE';
+                $notification->save();
 
                 // checking if this is first convert
                 $allConvertTransactions = Transaction::where('user_id', auth()->user()->id)->where('type', 'convert')->count();

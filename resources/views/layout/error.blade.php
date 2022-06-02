@@ -18,15 +18,10 @@
             class="error-page d-flex flex-column flex-lg-row align-items-center justify-content-center h-screen text-center text-lg-start">
             <div class="-intro-x me-lg-20">
                 <img alt="Rubick Bootstrap HTML Admin Template" class="h-48 h-lg-auto"
-                    src="{{ asset('assets/images/svg/coin-light.svg') }}">
+                    src="{{ asset('assets/images/svg/coin-dark.svg') }}">
             </div>
             <div class="text-white mt-10 mt-lg-0">
-                <div class="intro-x fs-8xl fw-medium">404</div>
-                <div class="intro-x fs-xl fs-lg-3xl fw-medium mt-5">Oops. This page has gone missing.</div>
-                <div class="intro-x fs-lg mt-3">You may have mistyped the address or the page may have moved.</div>
-                <a href="{{ route('user.index.index') }}"
-                    class="intro-x btn py-3 px-4 text-white border-white dark-border-dark-5 dark-text-gray-300 mt-10">Back
-                    to Home</a>
+                @yield('content')
             </div>
         </div>
     </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
 use App\Models\btcPayments;
+use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use CoinpaymentsAPI;
 
@@ -76,6 +77,14 @@ class PaymentController extends Controller
         $task->status_url = $information['result']['status_url'];
         $task->qrcode_url = $information['result']['qrcode_url'];
         $task->save();
+
+        // inserting notification
+        $notification = new UserNotification();
+        $notification->user_id = auth()->user()->id;
+        $notification->type = 'clock';
+        $notification->title = 'Waiting for Payment';
+        $notification->content = 'Please sent' . $information['result']['amount'] . ' ' . $currency2 . ' to ' . $information['result']['address'];
+        $notification->save();
 
         return redirect($task->checkout_url);
     }
