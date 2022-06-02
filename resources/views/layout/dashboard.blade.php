@@ -55,36 +55,39 @@
                     </a>
                 </div>
                 <div class="intro-x dropdown me-auto me-sm-6">
-                    <div class="theme-dropdown-toggle notification {{ (auth()->user()->user_notifications->where('seen',false)->count() > 0) ? "notification--bullet" : "" }} cursor-pointer" role="button"
-                        aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="bell"
+                    <div class="theme-dropdown-toggle notification {{ auth()->user()->user_notifications->where('seen', false)->count() > 0? 'notification--bullet': '' }} cursor-pointer"
+                        role="button" aria-expanded="false" data-bs-toggle="dropdown"> <i data-feather="bell"
                             class="notification__icon dark-text-gray-300"></i> </div>
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
                             <div class="d-flex justify-content-center-between">
-                                <div class="notification-content__title dark-text-gray-300">Notifications ({{ auth()->user()->user_notifications->where('seen',false)->count() }})</div>
+                                <div class="notification-content__title dark-text-gray-300">Notifications
+                                    ({{ auth()->user()->user_notifications->where('seen', false)->count() }})</div>
                                 <div class="notification-content__title dark-text-gray-300"><a
                                         href="{{ route('user.notification.index') }}">See All</a></div>
                             </div>
-                            @foreach (auth()->user()->user_notifications->where('seen',false) as $notificaion)
+                            @foreach (auth()->user()->user_notifications->where('seen', false) as $notificaion)
                                 @if ($loop->iteration > 5)
                                 @break
                             @endif
-                            <div class="cursor-pointer position-relative d-flex align-items-center mt-5">
-                                <div class="w-12 h-12 flex-none image-fit me-1 justify-content-center-between">
-                                    <i data-feather="{{ $notificaion->type }}" class="w-6 h-6"></i>
-                                </div>
-                                <div class="ms-2 overflow-hidden">
-                                    <div class="d-flex align-center">
-                                        <a href="{{ route('user.notification.show', ['notification' => $notificaion->id]) }}"
-                                            class="fw-medium truncate me-5 dark-text-gray-300">{{ $notificaion->title }}</a>
-                                        <div class="fs-xs text-gray-500 ms-auto text-nowrap">
-                                            {{ $notificaion->created_at->diffForHumans() }}
+                            <a href="{{ route('user.notification.show', ['notification' => $notificaion->id]) }}">
+                                <div class="cursor-pointer position-relative d-flex align-items-center mt-5">
+                                    <div class="w-12 h-12 flex-none image-fit me-1 justify-content-center-between">
+                                        <i data-feather="{{ $notificaion->type }}" class="w-6 h-6"></i>
+                                    </div>
+                                    <div class="ms-2 overflow-hidden">
+                                        <div class="d-flex align-center">
+                                            <div class="fw-medium truncate me-5 dark-text-gray-300">{{ $notificaion->title }}</div>
+                                            <div class="fs-xs text-gray-500 ms-auto text-nowrap">
+                                                {{ $notificaion->created_at->diffForHumans() }}
+                                            </div>
+                                        </div>
+                                        <div class="w-full truncate text-gray-600 mt-0.5">
+                                            {{ $notificaion->content }}
                                         </div>
                                     </div>
-                                    <div class="w-full truncate text-gray-600 mt-0.5">{{ $notificaion->content }}
-                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         @endforeach
                     </div>
                 </div>
