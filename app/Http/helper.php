@@ -152,6 +152,20 @@ function allUsersConvertedCoin($coin_id)
     return $in;
 }
 
+function myReferrals($user_id)
+{
+    $user = User::find($user_id);
+    $refers = User::where('refer',$user->username)->count();
+    return $refers;
+}
+
+function myReferralsRewards($user_id)
+{
+    $user = User::find($user_id);
+    $transaction = Transaction::where('user_id',auth()->user()->id)->where('type','award')->sum('amount');
+    return $transaction;
+}
+
 function allUsersConvertedOutCoin($coin_id)
 {
     $in = Transaction::where('type', 'convert')->where('coin_id', $coin_id)->where('sum', 'out')->sum('amount');

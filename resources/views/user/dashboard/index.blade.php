@@ -4,6 +4,74 @@
 @endsection
 @section('content')
     <div class="row">
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">{{ number_format(options('coin_exchange_rate'), 8) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">CTSE Rate:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/ctse.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">{{ number_format(myReferrals(auth()->user()->id), 0) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">My Referrals:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                {{ number_format(myReferralsRewards(auth()->user()->id), 8) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">My Referrals Rewards:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/icons/tree.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(balance('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">Estimated CTSE Value:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-7">
             <div class="report-box-2 intro-y mt-12 mt-sm-5">
                 <div class="box d-sm-flex">
@@ -68,7 +136,7 @@
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
-                                <img src="/assets/images/coins/ctse.png" alt="" class="w-10">
+                                <img src="{{ asset('assets/images/coins/ctse.png') }}" alt="" class="w-10">
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
                                         title="33% Higher than last month">$
