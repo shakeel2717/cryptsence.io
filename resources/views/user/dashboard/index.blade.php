@@ -230,7 +230,7 @@
                 class="g-col-12 g-col-md-6 g-col-xl-12 g-start-xl-1 g-row-start-xl-1 g-start-xxl-auto g-row-start-xxl-auto mt-6">
                 <div class="intro-x d-flex align-items-center h-10">
                     <h2 class="fs-lg fw-medium truncate me-auto">
-                        Important News
+                        Upcoming & Current Rewards Opportunities
                     </h2>
                     <button data-carousel="important-notes" data-target="prev"
                         class="tiny-slider-navigator btn px-2 border-gray-400 dark-border-dark-3 text-gray-700 dark-text-gray-300 me-2">

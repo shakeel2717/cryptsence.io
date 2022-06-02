@@ -4,6 +4,7 @@ namespace App\Http\Controllers\user;
 
 use App\Events\ReferralCommission;
 use App\Http\Controllers\Controller;
+use App\Models\BonusPolicy;
 use App\Models\Coin;
 use App\Models\User;
 use App\Models\user\Transaction;
@@ -102,6 +103,35 @@ class ConvertController extends Controller
                 $user = User::find(auth()->user()->id);
                 $user->status = "active";
                 $user->save();
+
+                // checking if there's any policy for this user.
+                $policies = BonusPolicy::whereIn('id', GetTodayActivePolicy())->get();
+                if ($policies->count() > 0) {
+                    Log::info('There is a policy available for user: ' . auth()->user()->username);
+                    foreach ($policies as $policy) {
+                        // getting this policy profit
+                        $profit = $policy->bonus;
+                        $bonusProfit = $amount * $profit / 100;
+                        // adding balance
+                        Transaction::create([
+                            'user_id' => auth()->user()->id,
+                            'coin_id' => $buyCoin->id,
+                            'amount' => $bonusProfit,
+                            'sum' => 'in',
+                            'type' => 'Policy Reward',
+                            'note' => 'Policy ' . $policy->title . ' Reward Added',
+                            'status' => 'success',
+                        ]);
+
+                        // inserting notification
+                        $notification = new UserNotification();
+                        $notification->user_id = auth()->user()->id;
+                        $notification->type = 'award';
+                        $notification->title = 'Policy ' . $policy->title . ' Reward Added';
+                        $notification->content = 'You have converted ' . $validatedData['amount'] . ' ' . $coin->symbol . ' to CTSE. and you have got ' . $bonusProfit . '% of this conversion Bonus';
+                        $notification->save();
+                    }
+                }
 
                 return redirect()->back()->with('success', 'Convert Successfully');
             } else {
