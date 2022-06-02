@@ -40,7 +40,7 @@ class PaymentController extends Controller
     {
         $validatedData = $request->validate([
             'method' => 'required|string',
-            'amount' => 'required|numeric|min:10',
+            'amount' => 'required|numeric|min:1',
         ]);
 
 
