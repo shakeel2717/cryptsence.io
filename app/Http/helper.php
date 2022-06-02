@@ -133,3 +133,33 @@ function checkRefers($user_id)
     $refer = User::where('refer', $user->username)->get();
     return $refer;
 }
+
+
+function allUsersBalance($method)
+{
+    $amount = 0;
+    $users = User::get();
+    foreach ($users as $user) {
+        $amount += balance($method, $user->id);
+    }
+
+    return $amount;
+}
+
+function allUsersConvertedCoin($coin_id)
+{
+    $in = Transaction::where('type', 'convert')->where('coin_id', $coin_id)->where('sum', 'in')->sum('amount');
+    return $in;
+}
+
+function allUsersConvertedOutCoin($coin_id)
+{
+    $in = Transaction::where('type', 'convert')->where('coin_id', $coin_id)->where('sum', 'out')->sum('amount');
+    return $in;
+}
+
+function allUserDeposit($coin_id)
+{
+    $in = Transaction::where('type', 'deposit')->where('coin_id', $coin_id)->where('sum', 'in')->sum('amount');
+    return $in;
+}

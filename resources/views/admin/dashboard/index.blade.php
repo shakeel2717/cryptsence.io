@@ -19,11 +19,11 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">{{ $users->count() }}</div>
                             <div class="fs-base text-gray-600 mt-1">All Users</div>
                         </div>
                     </div>
@@ -35,11 +35,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ $users->where('status', 'active')->count() }}</div>
                             <div class="fs-base text-gray-600 mt-1">Active Users</div>
                         </div>
                     </div>
@@ -51,11 +52,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ $users->where('status', 'pending')->count() }}</div>
                             <div class="fs-base text-gray-600 mt-1">Pending Users</div>
                         </div>
                     </div>
@@ -69,11 +71,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUsersBalance('CTSE'), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">User CTSE</div>
                         </div>
                     </div>
@@ -85,11 +88,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUsersConvertedCoin(2), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Converted CTSE</div>
                         </div>
                     </div>
@@ -101,11 +105,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUsersConvertedCoin(2), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Purchased CTSE</div>
                         </div>
                     </div>
@@ -119,11 +124,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUsersBalance('USDT.TRC20'), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">User USDT</div>
                         </div>
                     </div>
@@ -135,11 +141,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUserDeposit('USDT.TRC20'), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Deposit USDT</div>
                         </div>
                     </div>
@@ -151,11 +158,12 @@
                                 <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
                                 <div class="ms-auto">
                                     <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="2% Lower than last month"> 0.00 on Stacking
+                                        title="2% Lower than last month"> {{ now() }}
                                     </div>
                                 </div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">0.00</div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(allUsersConvertedOutCoin(1), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Convert USDT</div>
                         </div>
                     </div>
