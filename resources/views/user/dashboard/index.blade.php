@@ -190,7 +190,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="g-col-12 g-col-xl-8 mt-6">
                 <div class="intro-y d-block d-sm-flex align-items-center h-10">
                     <h2 class="fs-lg fw-medium truncate me-5">
@@ -223,6 +223,46 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="col-md-4">
+            <!-- BEGIN: Important Notes -->
+            <div
+                class="g-col-12 g-col-md-6 g-col-xl-12 g-start-xl-1 g-row-start-xl-1 g-start-xxl-auto g-row-start-xxl-auto mt-6">
+                <div class="intro-x d-flex align-items-center h-10">
+                    <h2 class="fs-lg fw-medium truncate me-auto">
+                        Important News
+                    </h2>
+                    <button data-carousel="important-notes" data-target="prev"
+                        class="tiny-slider-navigator btn px-2 border-gray-400 dark-border-dark-3 text-gray-700 dark-text-gray-300 me-2">
+                        <i data-feather="chevron-left" class="w-4 h-4"></i> </button>
+                    <button data-carousel="important-notes" data-target="next"
+                        class="tiny-slider-navigator btn px-2 border-gray-400 dark-border-dark-3 text-gray-700 dark-text-gray-300 me-2">
+                        <i data-feather="chevron-right" class="w-4 h-4"></i> </button>
+                </div>
+                <div class="mt-5 intro-x">
+                    <div class="box zoom-in">
+                        <div class="tiny-slider" id="important-notes">
+                            @forelse ($policies as $policy)
+                                <div class="p-5 bg-theme-3">
+                                    <div class="fs-base fw-medium truncate text-white">{{ $policy->title }}</div>
+                                    <div class="text-gray-500 mt-1">{{ $policy->created_at->diffForHumans() }}</div>
+                                    <div class="text-gray-600 text-justify mt-1 text-white">{{ $policy->description }}</div>
+                                    <div class="fw-medium d-flex mt-5">
+                                        <a href="{{ route('user.payment.index') }}" class="btn btn-secondary py-1 px-2">Deposit Funds</a>
+                                        <a href="{{ route('user.convert.index') }}" class="btn btn-outline-secondary text-white py-1 px-2 ms-auto">Get
+                                            CTSE</a>
+                                    </div>
+                                </div>
+                            @empty
+                                <div class="p-5">
+                                    <div class="fs-base fw-medium truncate">No Offers / Reward</div>
+                                </div>
+                            @endforelse
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END: Important Notes -->
         </div>
     </div>
     <div class="row">

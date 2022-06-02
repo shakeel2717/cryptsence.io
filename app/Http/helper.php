@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\admin\Option;
+use App\Models\BonusPolicy;
 use App\Models\Coin;
 use App\Models\Log as ModelsLog;
 use App\Models\User;
@@ -155,14 +156,14 @@ function allUsersConvertedCoin($coin_id)
 function myReferrals($user_id)
 {
     $user = User::find($user_id);
-    $refers = User::where('refer',$user->username)->count();
+    $refers = User::where('refer', $user->username)->count();
     return $refers;
 }
 
 function myReferralsRewards($user_id)
 {
     $user = User::find($user_id);
-    $transaction = Transaction::where('user_id',auth()->user()->id)->where('type','award')->sum('amount');
+    $transaction = Transaction::where('user_id', auth()->user()->id)->where('type', 'award')->sum('amount');
     return $transaction;
 }
 
@@ -176,4 +177,25 @@ function allUserDeposit($coin_id)
 {
     $in = Transaction::where('type', 'deposit')->where('coin_id', $coin_id)->where('sum', 'in')->sum('amount');
     return $in;
+}
+
+
+function GetTodayActivePolicy()
+{
+    $policies = BonusPolicy::get();
+    $policyPure = [];
+    foreach ($policies as $policy) {
+        $st_date = $policy->start_date;
+        $end_date = $policy->end_date;
+        $today = date('Y-m-d');
+        $today = date('Y-m-d');
+        $today = date('Y-m-d', strtotime($today));
+        $contractDateBegin = date('Y-m-d', strtotime($st_date));
+        $contractDateEnd = date('Y-m-d', strtotime($end_date));
+
+        if (($today >= $contractDateBegin) && ($today <= $contractDateEnd)) {
+            $policyPure[] = $policy->id;
+        }
+    }
+    return $policyPure;
 }

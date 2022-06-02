@@ -27,11 +27,31 @@
     </a>
 </li>
 
+
 <li>
-    <a href="{{ route('admin.policy.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="coffee"></i> </div>
-        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Policy Manager </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            Policy Manager
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
     </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('admin.policy.create') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Add new Policy </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('admin.policy.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> View all Polices </div>
+            </a>
+        </li>
+    </ul>
 </li>
 
 

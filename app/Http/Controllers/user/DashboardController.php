@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\BonusPolicy;
 use App\Models\LoginHistory;
 use App\Models\user\Referral;
 use App\Models\user\StakingBonus;
@@ -23,7 +24,8 @@ class DashboardController extends Controller
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
         $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(6)->get();
         $stakingBonuses = StakingBonus::where('user_id', auth()->id())->latest()->limit(6)->get();
-        return view('user.dashboard.index', compact('histories', 'transactions', 'stakingBonuses'));
+        $policies = BonusPolicy::whereIn('id', GetTodayActivePolicy())->get();
+        return view('user.dashboard.index', compact('histories', 'transactions', 'stakingBonuses', 'policies'));
     }
 
     /**
