@@ -20,7 +20,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('payment', PaymentController::class);
     Route::resource('finance', FinanceController::class);
     Route::resource('logentry', AdminLogController::class);
-    Route::post('/priceUpdate', [OptionController::class, 'priceUpdate'])->name('option.priceUpdate');
+    Route::get('/options/index', [OptionController::class, 'index'])->name('option.index');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
     Route::get('report/withdrawals', [ReportController::class, 'withdrawals'])->name('report.withdrawals');

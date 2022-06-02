@@ -4,8 +4,6 @@
             <h2 class="fw-medium fs-base me-auto">
                 Website Setting
             </h2>
-            <div class="text-center"> <a href="javascript:;" data-bs-toggle="modal"
-                    data-bs-target="#basic-modal-preview" class="btn btn-primary">Update Record</a> </div>
         </div>
         <div class="p-5">
             <div class="position-relative d-flex align-items-center">

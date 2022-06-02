@@ -7,10 +7,7 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-md-4">
-            @livewire('admin.admin-options')
-        </div>
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="row">
                 <div class="col-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
