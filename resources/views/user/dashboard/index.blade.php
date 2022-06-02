@@ -112,7 +112,7 @@
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">CTSE Launching Price</div>
                         <div class="mt-1.5 d-flex align-items-center">
-                            <div class="fs-base">$0.025 (5x)</div>
+                            <div class="fs-base">$0.015 (3x)</div>
                         </div>
                         <div class="text-gray-600 dark-text-gray-600 fs-xs mt-5">Max Supply</div>
                         <div class="mt-1.5 d-flex align-items-center">
