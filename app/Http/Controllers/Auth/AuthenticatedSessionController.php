@@ -89,8 +89,6 @@ class AuthenticatedSessionController extends Controller
                 'user_id' => auth()->user()->id,
                 'referral_code' => random(10),
             ]);
-        } else {
-            Log::info('User Have Valid');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME);
