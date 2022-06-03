@@ -163,7 +163,7 @@ function myReferrals($user_id)
 function myReferralsRewards($user_id)
 {
     $user = User::find($user_id);
-    $transaction = Transaction::where('user_id', auth()->user()->id)->where('type', 'award')->sum('amount');
+    $transaction = Transaction::where('user_id', auth()->user()->id)->where('type', 'reward')->sum('amount');
     return $transaction;
 }
 
