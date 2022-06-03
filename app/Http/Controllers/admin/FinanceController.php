@@ -58,7 +58,7 @@ class FinanceController extends Controller
             $transaction->coin_id = $coin->id;
             $transaction->type = 'deposit';
             $transaction->status = 'approved';
-            $transaction->note = 'admin deposit';
+            $transaction->note = 'binance payment gateway';
             $transaction->sum = 'in';
             $transaction->save();
 

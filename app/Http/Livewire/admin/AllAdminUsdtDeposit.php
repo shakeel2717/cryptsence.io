@@ -54,7 +54,7 @@ final class AllAdminUsdtDeposit extends PowerGridComponent
             ->join('users', 'users.id', '=', 'transactions.user_id')
             ->join('coins', 'coins.id', '=', 'transactions.coin_id')
             ->select('transactions.*', 'users.name as user_name', 'coins.symbol as coin_name')
-            ->where('transactions.note', '=', 'Binance Payment Gateway')
+            ->where('transactions.note', '=', 'binance payment gateway')
             ->where('transactions.coin_id', '=', 1);
     }
 
