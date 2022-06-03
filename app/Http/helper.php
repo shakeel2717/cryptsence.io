@@ -99,6 +99,10 @@ function logEntry($type, $message)
 
 function calculator($amount, $duration)
 {
+    // checking if both are numbers
+    if (!is_numeric($amount) || !is_numeric($duration)) {
+        return 0;
+    }
     for ($i = 0; $i < $duration; $i++) {
         $new = continueCalculator($amount);
         $amount = $amount + $new;
