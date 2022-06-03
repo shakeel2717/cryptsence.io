@@ -6,6 +6,8 @@ use App\Models\admin\Option;
 use App\Models\BonusPolicy;
 use App\Models\Coin;
 use App\Models\User;
+use App\Models\user\Referral;
+use App\Models\user\Transaction;
 use Illuminate\Console\Command;
 
 class Clean extends Command
@@ -61,6 +63,27 @@ class Clean extends Command
         $coin->symbol = "CTSE";
         $coin->image = "ctse.png";
         $coin->save();
+
+        $deposit = new Transaction();
+        $deposit->user_id = $user->id;
+        $deposit->amount = 1000;
+        $deposit->type = 'Airdrop';
+        $deposit->sum = 'in';
+        $deposit->coin_id = 2;
+        $deposit->status = 'approved';
+        $deposit->note = 'Free Airdrop';
+        $deposit->save();
+
+
+        // adding balance
+        Transaction::create([
+            'user_id' => $user->id,
+            'coin_id' => 2,
+            'amount' => 10000,
+            'sum' => 'in',
+            'type' => 'convert',
+            'status' => 'success',
+        ]);
 
         $option = new Option();
         $option->name = "coin_exchange_rate";
@@ -132,6 +155,10 @@ class Clean extends Command
         $bonusPolicy->save();
 
 
+        $referral = new Referral();
+        $referral->user_id = 1;
+        $referral->referral_code = "CTSE_ADMINISTRATOR";
+        $referral->save();
 
         return 0;
     }
