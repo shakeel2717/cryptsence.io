@@ -203,7 +203,7 @@
                             <div class="fs-2xl text-theme-1 fw-medium">Invite Friends to get <b>FREE</b> Reward!
                             </div>
                             <p class="w-full lh-lg text-gray-600 mt-2">Share your refer link with your friends and family
-                                member, and get <b>15% CTSE Reward</b> of their Total Staking Amount</p>
+                                member, and get <b>15% CTSE Reward</b> of their Total Purchase Amount</p>
                             <p class="w-full lh-lg text-gray-600 mt-2">To activate your refer link, You must Convert at
                                 least 1000 CTSE, <a href="{{ route('user.payment.index') }}"> Click here</a> to Deposit
                                 USDT to buy CTSE </p>
