@@ -198,7 +198,7 @@
                     </h2>
                 </div>
                 <div class="intro-y box p-5 mt-12 mt-sm-5">
-                    <div class="justify-content-center-between">
+                    <div class="justify-content-center-around">
                         <div class="left">
                             <div class="fs-2xl text-theme-1 fw-medium">Invite Friends to get <b>FREE</b> Reward!
                             </div>
@@ -246,10 +246,13 @@
                                 <div class="p-5 bg-theme-3">
                                     <div class="fs-base fw-medium truncate text-white">{{ $policy->title }}</div>
                                     <div class="text-gray-500 mt-1">{{ $policy->created_at->diffForHumans() }}</div>
-                                    <div class="text-gray-600 text-justify mt-1 text-white">{{ $policy->description }}</div>
+                                    <div class="text-gray-600 text-justify mt-1 text-white">{{ $policy->description }}
+                                    </div>
                                     <div class="fw-medium d-flex mt-5">
-                                        <a href="{{ route('user.payment.index') }}" class="btn btn-secondary py-1 px-2">Deposit Funds</a>
-                                        <a href="{{ route('user.convert.index') }}" class="btn btn-outline-secondary text-white py-1 px-2 ms-auto">Get
+                                        <a href="{{ route('user.payment.index') }}"
+                                            class="btn btn-secondary py-1 px-2">Deposit Funds</a>
+                                        <a href="{{ route('user.convert.index') }}"
+                                            class="btn btn-outline-secondary text-white py-1 px-2 ms-auto">Get
                                             CTSE</a>
                                     </div>
                                 </div>
@@ -266,7 +269,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 mt-6">
+        <div class="col-12 col-md-6 mt-5">
+            <div class="">
+                <div class="promotion">
+                    <img src="{{ asset('assets/images/promotion/ctse-malaysia-tour.jpg') }}" alt="" class="img-fluid">
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 mt-5">
+            <div class="counter justify-content-all-center " style="height: 100%">
+                <h1 id="timer" class="mt-2 intro-x fs-4xl text-center fw-medium text-theme-1"></h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 mt-6">
             <div class="intro-y d-block d-sm-flex align-items-center h-10">
                 <h2 class="fs-lg fw-medium truncate me-5">
                     Recent Transactions
@@ -388,5 +405,22 @@
             copyText.setSelectionRange(0, 99999);
             document.execCommand("copy");
         }
+
+        // make a timer countdown function for the timer
+        var countDownDate = new Date("{{ date('M d, Y H:i:s', strtotime('2022-07-13 12:59:59')) }}").getTime();
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            document.getElementById("timer").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds +
+                "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("timer").innerHTML = "EXPIRED";
+            }
+        }, 1000);
     </script>
 @endsection
