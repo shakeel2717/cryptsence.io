@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\admin\Option;
+use App\Models\BonusPolicy;
 use App\Models\Coin;
 use App\Models\User;
 use Illuminate\Console\Command;
@@ -37,16 +38,9 @@ class Clean extends Command
         $this->call('route:clear');
 
 
-        // $user = new User();
-        // $user->name = "Shakeel Ahmad";
-        // $user->username = "shakeel2717";
-        // $user->email = "shakeel2717@gmail.com";
-        // $user->password = bcrypt('asdfasdf');
-        // $user->save();
-
         $user = new User();
         $user->name = "Administrator";
-        $user->username = "admin";
+        $user->username = "ctse";
         $user->email = "admin@gmail.com";
         $user->password = bcrypt('asdfasdf');
         $user->role = "admin";
@@ -112,6 +106,32 @@ class Clean extends Command
         $option->name = "withdraw_fees";
         $option->value = "2";
         $option->save();
+
+        $bonusPolicy = new BonusPolicy();
+        $bonusPolicy->title = "Get 15% Instant CTSE Reward";
+        $bonusPolicy->description = "Purchase CTSE Today and get 15% more CTSE Reward Instantly. Let's play with CTSE";
+        $bonusPolicy->start_date = "2022-06-02";
+        $bonusPolicy->end_date = "2022-06-03";
+        $bonusPolicy->bonus = "15";
+        $bonusPolicy->save();
+
+        $bonusPolicy = new BonusPolicy();
+        $bonusPolicy->title = "Get 10% Instant CTSE Reward";
+        $bonusPolicy->description = "Purchase CTSE Today and get 10% more CTSE Reward Instantly. Let's play with CTSE";
+        $bonusPolicy->start_date = "2022-06-04";
+        $bonusPolicy->end_date = "2022-06-05";
+        $bonusPolicy->bonus = "10";
+        $bonusPolicy->save();
+
+        $bonusPolicy = new BonusPolicy();
+        $bonusPolicy->title = "Get 05% Instant CTSE Reward";
+        $bonusPolicy->description = "Purchase CTSE Today and get 05% more CTSE Reward Instantly. Let's play with CTSE";
+        $bonusPolicy->start_date = "2022-06-05";
+        $bonusPolicy->end_date = "2022-06-06";
+        $bonusPolicy->bonus = "05";
+        $bonusPolicy->save();
+
+
 
         return 0;
     }
