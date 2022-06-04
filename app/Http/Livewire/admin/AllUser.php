@@ -92,15 +92,8 @@ final class AllUser extends PowerGridComponent
             ->addColumn('usdt', function (User $model) {
                 return balance('usdt.trc20', $model->id);
             })
-            ->addColumn('country')
-            ->addColumn('region')
-            ->addColumn('city')
             ->addColumn('refer')
-            ->addColumn('zip')
-            ->addColumn('latitude')
-            ->addColumn('longitude')
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (User $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -142,37 +135,7 @@ final class AllUser extends PowerGridComponent
             Column::make('USDT', 'usdt'),
 
 
-            Column::make('COUNTRY', 'country')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('REGION', 'region')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('CITY', 'city')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
             Column::make('REFER', 'refer')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('ZIP', 'zip')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('LATITUDE', 'latitude')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('LONGITUDE', 'longitude')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -181,12 +144,6 @@ final class AllUser extends PowerGridComponent
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
         ];
     }
 
