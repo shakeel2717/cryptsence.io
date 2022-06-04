@@ -79,7 +79,9 @@ class PolicyController extends Controller
      */
     public function edit($id)
     {
-        //
+        $policy = BonusPolicy::find($id);
+
+        return view('admin.dashboard.policy.create', compact('policy'));
     }
 
     /**
@@ -91,7 +93,28 @@ class PolicyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|max:255',
+            'description' => 'nullable',
+            'st_date' => 'required|string',
+            'end_date' => 'required|string',
+            'bonus' => 'required|numeric',
+        ]);
+
+        // change date format
+        $validatedData['st_date'] = date('Y-m-d', strtotime($validatedData['st_date']));
+        $validatedData['end_date'] = date('Y-m-d', strtotime($validatedData['end_date']));
+
+        // adding a new policy
+        $policy = BonusPolicy::findOrFail($id);
+        $policy->title = $validatedData['title'];
+        $policy->description = $validatedData['description'];
+        $policy->start_date = $validatedData['st_date'];
+        $policy->end_date = $validatedData['end_date'];
+        $policy->bonus = $validatedData['bonus'];
+        $policy->save();
+
+        return redirect()->back()->with('success', 'Policy Updated successfully');
     }
 
     /**
@@ -100,7 +123,7 @@ class PolicyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         //
     }

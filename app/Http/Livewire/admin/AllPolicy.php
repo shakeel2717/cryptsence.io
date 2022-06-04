@@ -165,21 +165,22 @@ final class AllPolicy extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
        return [
            Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('bonus-policy.edit', ['bonus-policy' => 'id']),
+               ->class('bg-indigo-500 cursor-pointer text-theme-1 px-3 py-2.5 m-1 rounded text-sm')
+               ->target("")
+               ->route('admin.policy.edit', ['policy' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('bonus-policy.destroy', ['bonus-policy' => 'id'])
-               ->method('delete')
+        //    Button::make('destroy', 'Delete')
+        //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+        //        ->route('bonus-policy.destroy', ['bonus-policy' => 'id'])
+        //        ->method('delete')
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------

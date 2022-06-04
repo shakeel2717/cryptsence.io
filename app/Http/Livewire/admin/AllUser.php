@@ -44,10 +44,10 @@ final class AllUser extends PowerGridComponent
     */
 
     /**
-    * PowerGrid datasource.
-    *
-    * @return Builder<\App\Models\User>
-    */
+     * PowerGrid datasource.
+     *
+     * @return Builder<\App\Models\User>
+     */
     public function datasource(): Builder
     {
         return User::query();
@@ -86,6 +86,12 @@ final class AllUser extends PowerGridComponent
             ->addColumn('name')
             ->addColumn('email')
             ->addColumn('username')
+            ->addColumn('ctse', function (User $model) {
+                return balance('ctse', $model->id);
+            })
+            ->addColumn('usdt', function (User $model) {
+                return balance('usdt.trc20', $model->id);
+            })
             ->addColumn('country')
             ->addColumn('region')
             ->addColumn('city')
@@ -106,7 +112,7 @@ final class AllUser extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid Columns.
      *
      * @return array<int, Column>
@@ -131,6 +137,10 @@ final class AllUser extends PowerGridComponent
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
+
+            Column::make('CTSE', 'ctse'),
+            Column::make('USDT', 'usdt'),
+
 
             Column::make('COUNTRY', 'country')
                 ->sortable()
@@ -177,8 +187,7 @@ final class AllUser extends PowerGridComponent
                 ->sortable()
                 ->makeInputDatePicker(),
 
-        ]
-;
+        ];
     }
 
     /*
@@ -189,7 +198,7 @@ final class AllUser extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid User Action Buttons.
      *
      * @return array<int, Button>
@@ -219,7 +228,7 @@ final class AllUser extends PowerGridComponent
     |
     */
 
-     /**
+    /**
      * PowerGrid User Action Rules.
      *
      * @return array<int, RuleActions>
