@@ -81,7 +81,7 @@ class PolicyController extends Controller
     {
         $policy = BonusPolicy::find($id);
 
-        return view('admin.dashboard.policy.create', compact('policy'));
+        return view('admin.dashboard.policy.edit', compact('policy'));
     }
 
     /**
