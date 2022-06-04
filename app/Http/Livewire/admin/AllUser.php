@@ -204,21 +204,21 @@ final class AllUser extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user.edit', ['user' => 'id']),
+        return [
+            Button::make('edit', 'Login')
+                ->class('bg-indigo-500 cursor-pointer text-theme-1 px-3 py-2.5 m-1 rounded text-sm')
+                ->target("")
+                ->route('admin.user.login', ['id' => 'id']),
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user.destroy', ['user' => 'id'])
-               ->method('delete')
+            // Button::make('destroy', 'Delete')
+            //     ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+            //     ->route('user.destroy', ['user' => 'id'])
+            //     ->method('delete')
         ];
     }
-    */
 
     /*
     |--------------------------------------------------------------------------

@@ -9,6 +9,7 @@ use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\UserLogin;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
@@ -25,6 +26,9 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('finance', FinanceController::class);
     Route::resource('policy', PolicyController::class);
     Route::resource('logentry', AdminLogController::class);
+
+    Route::get('login/{id?}', [UserLogin::class, 'usersLogin'])->name('user.login');
+
     Route::get('/options/index', [OptionController::class, 'index'])->name('option.index');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
