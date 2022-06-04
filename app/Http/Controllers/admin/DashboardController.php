@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\LoginHistory;
 use App\Models\User;
+use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,7 +19,8 @@ class DashboardController extends Controller
     {
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
         $users = User::get();
-        return view('admin.dashboard.index', compact('histories', 'users'));
+        $airDrop = Transaction::where('note','Free Airdrop')->sum('amount');
+        return view('admin.dashboard.index', compact('histories', 'users', 'airDrop'));
     }
 
     /**
