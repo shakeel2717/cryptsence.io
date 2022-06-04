@@ -27,6 +27,22 @@ function balance($method, $user_id)
 }
 
 
+function balanceIn($method, $user_id)
+{
+    // checking if method is valid
+    $coin = Coin::where('symbol', $method)->firstOrFail();
+    if (!$coin) {
+        return 0;
+    }
+
+    $in = Transaction::where('user_id', $user_id)->where('coin_id', $coin->id)->where('sum', 'in')->sum('amount');
+    return $in;
+}
+
+
+
+
+
 function random($qtd)
 {
     $Caracteres = 'ABCDEFGHIJKLMOPQRSTUVXWYZ0123456789';
