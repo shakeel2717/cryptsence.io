@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -61,7 +61,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -114,7 +114,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -143,12 +143,12 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format(allUserDeposit('USDT.TRC20'), 2) }}</div>
+                                {{ number_format(allUserDeposit(1), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Deposit USDT</div>
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div class="col-md-4">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
                         <div class="box p-5">
                             <div class="d-flex">
@@ -162,6 +162,40 @@
                             <div class="report-box__total fs-3xl fw-medium mt-6">
                                 {{ number_format(allUsersConvertedOutCoin(1), 2) }}</div>
                             <div class="fs-base text-gray-600 mt-1">Convert USDT</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> {{ now() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(adminDeposit(1), 2) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">Admin Deposit USDT</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> {{ now() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6">
+                                {{ number_format(adminDeposit(2), 2) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">Admin Deposit CTSE</div>
                         </div>
                     </div>
                 </div>

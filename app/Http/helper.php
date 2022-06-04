@@ -203,3 +203,10 @@ function GetTodayActivePolicy()
     }
     return $policyPure;
 }
+
+
+function adminDeposit($coin_id)
+{
+    $in = Transaction::where('type', 'deposit')->where('note', 'binance payment gateway')->where('coin_id', $coin_id)->where('sum', 'in')->sum('amount');
+    return $in;
+}
