@@ -74,8 +74,6 @@ class RegisteredUserController extends Controller
         // convert to lowercase
         $username = strtolower($username);
 
-        return $username;
-
         $user = new User();
         $user->name = $request->name;
         $user->email = strtolower($request->email);

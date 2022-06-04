@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\user;
+namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\BonusPolicy;
-use App\Models\LoginHistory;
-use App\Models\user\Referral;
-use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
-use Jenssegers\Agent\Facades\Agent;
 
-class DashboardController extends Controller
+class CTSESellController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,11 +15,7 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
-        $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(6)->get();
-        $stakingBonuses = StakingBonus::where('user_id', auth()->id())->latest()->limit(6)->get();
-        $policies = BonusPolicy::whereIn('id', GetTodayActivePolicy())->get();
-        return view('user.dashboard.index', compact('histories', 'transactions', 'stakingBonuses', 'policies'));
+        return view('user.dashboard.sell.index');
     }
 
     /**
@@ -45,7 +36,44 @@ class DashboardController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'method' => 'required',
+            'amount' => 'required|numeric',
+        ]);
+
+        if (!$validatedData['method'] == 'CTSE') {
+            return redirect()->back()->withErrors("Please select CTSE method");
+        }
+
+        if (ReferralBalance(auth()->user()->id) < $validatedData['amount']) {
+            return redirect()->back()->withErrors("Insufficient CTSE Referral balance");
+        }
+
+        $usdtAmount = $validatedData['amount'] * options("coin_exchange_rate");
+
+        // adding a transaction for this user upliner
+        Transaction::create([
+            'user_id' => auth()->user()->id,
+            'coin_id' => 2,
+            'amount' => $validatedData['amount'],
+            'sum' => 'out',
+            'type' => 'reward',
+            'status' => 'approved',
+            'note' => 'CTSE Sell Referral Reward',
+        ]);
+
+
+        // adding balance
+        Transaction::create([
+            'user_id' => auth()->user()->id,
+            'coin_id' => 1,
+            'amount' => $usdtAmount,
+            'sum' => 'in',
+            'type' => 'Sell',
+            'status' => 'success',
+        ]);
+
+        return redirect()->back()->with('success', 'CTSE Sold Successfully');
     }
 
     /**

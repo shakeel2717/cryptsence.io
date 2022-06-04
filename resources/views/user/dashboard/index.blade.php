@@ -25,9 +25,9 @@
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
                         <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate">{{ number_format(myReferrals(auth()->user()->id), 0) }}
+                            <div class="fs-xl fw-medium truncate" title="Available For Sell"> {{ ReferralBalance(auth()->user()->id) }} CTSE
                             </div>
-                            <div class="text-gray-600 mt-1">My Referrals:</div>
+                            <div class="text-gray-600 mt-1">My Referrals: ({{ number_format(myReferrals(auth()->user()->id), 0) }})</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
@@ -44,7 +44,7 @@
                             <div class="fs-xl fw-medium truncate">
                                 {{ number_format(myReferralsRewards(auth()->user()->id), 8) }}
                             </div>
-                            <div class="text-gray-600 mt-1">My Referrals Rewards:</div>
+                            <div class="text-gray-600 mt-1">Total Referrals Rewards:</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/icons/tree.png') }}" alt="" class="w-10">

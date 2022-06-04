@@ -7,6 +7,7 @@ use App\Models\Log as ModelsLog;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
@@ -167,7 +168,7 @@ function myReferrals($user_id)
 function myReferralsRewards($user_id)
 {
     $user = User::find($user_id);
-    $transaction = Transaction::where('user_id', auth()->user()->id)->where('type', 'reward')->sum('amount');
+    $transaction = Transaction::where('user_id', auth()->user()->id)->where('type', 'reward')->where('sum', 'in')->sum('amount');
     return $transaction;
 }
 
@@ -217,4 +218,21 @@ function coinPaymentDeposit()
 {
     $in = Transaction::where('type', 'deposit')->where('note', 'coinPayment Gateway')->where('sum', 'in')->sum('amount');
     return $in;
+}
+
+
+function ReferralBalance($user_id)
+{
+    // get only 15 days old transactions
+    $transaction = Transaction::where('user_id', $user_id)
+        ->where('type', 'reward')
+        ->where('sum', 'in')
+        ->where('created_at', '<=', Carbon::now()->subDays(15))
+        ->sum('amount');
+
+    $transactionOut = Transaction::where('user_id', $user_id)
+        ->where('type', 'reward')
+        ->where('sum', 'out')
+        ->sum('amount');
+    return $transaction - $transactionOut;
 }

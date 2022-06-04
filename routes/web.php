@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\CTSESellController;
 use App\Http\Controllers\user\CalculatorController;
 use App\Http\Controllers\user\CoinPaymentController;
 use App\Http\Controllers\user\ConvertController;
@@ -24,6 +25,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('payment', PaymentController::class);
     Route::resource('convert', ConvertController::class);
+    Route::resource('sell', CTSESellController::class);
     Route::get('report/transactions/recent', [ReportController::class, 'recent'])->name('report.transactions.recent');
     Route::get('report/transactions/deposits', [ReportController::class, 'deposits'])->name('report.transactions.deposits');
     Route::get('report/transactions/withdrawals', [ReportController::class, 'withdrawals'])->name('report.transactions.withdrawals');

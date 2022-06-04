@@ -34,6 +34,13 @@
 </li>
 
 <li>
+    <a href="{{ route('user.sell.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="dollar-sign"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Sell CTSE </div>
+    </a>
+</li>
+
+<li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="file-text"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
