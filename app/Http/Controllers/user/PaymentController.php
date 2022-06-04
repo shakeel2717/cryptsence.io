@@ -27,7 +27,7 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        //
+        return view('user.dashboard.payment.create');
     }
 
     /**
@@ -86,7 +86,8 @@ class PaymentController extends Controller
         $notification->content = 'Please sent' . $information['result']['amount'] . ' ' . $currency2 . ' to ' . $information['result']['address'];
         $notification->save();
 
-        return redirect($task->checkout_url);
+        // return redirect($task->checkout_url);
+        return view('user.dashboard.payment.create', compact('task'));
     }
 
     /**
