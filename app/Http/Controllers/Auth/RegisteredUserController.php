@@ -69,19 +69,29 @@ class RegisteredUserController extends Controller
 
         $location = Location::get();
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'username' => $request->username,
-            'refer' => $refer,
-            'password' => Hash::make($request->password),
-            // 'country' => $location->countryName,
-            // 'region' => $location->regionName,
-            // 'city' => $location->cityName,
-            // 'zip' => $location->zipCode,
-            // 'latitude' => $location->latitude,
-            // 'longitude' => $location->longitude,
-        ]);
+        // remove all spaces from username
+        $username = str_replace(' ', '', $request->username);
+        // convert to lowercase
+        $username = strtolower($username);
+
+        return $username;
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->email = strtolower($request->email);
+        $user->username = $username;
+        $user->refer = $refer;
+        $user->password = Hash::make($request->password);
+        if (env('APP_ENV') != 'local') {
+            $user->country = $location->countryName;
+            $user->region = $location->regionName;
+            $user->city = $location->cityName;
+            $user->zip = $location->zipCode;
+            $user->latitude = $location->latitude;
+            $user->longitude = $location->longitude;
+        }
+        $user->save();
+
 
         $referral = Referral::create([
             'user_id' => $user->id,
