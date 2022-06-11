@@ -358,7 +358,7 @@
                                 </div>
                                 <div class="text-gray-600 fs-xs mt-0.5">{{ $stakingBonus->created_at }}</div>
                             </div>
-                            <div class="text-theme-9">{{ number_format($stakingBonus->amount, 2) }} CTSE</div>
+                            <div class="text-theme-9">{{ number_format($stakingBonus->amount, 6) }} CTSE</div>
                         </div>
                     </div>
                 @endforeach
