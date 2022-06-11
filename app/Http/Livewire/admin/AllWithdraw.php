@@ -189,13 +189,13 @@ final class AllWithdraw extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    
+
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Approve')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('admin.withdrawals.approve', ['id' => 'id']),
+        //    Button::make('edit', 'Approve')
+        //        ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+        //        ->route('admin.withdrawals.approve', ['id' => 'id']),
 
         //    Button::make('destroy', 'Delete')
         //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
@@ -203,7 +203,7 @@ final class AllWithdraw extends PowerGridComponent
         //        ->method('delete')
         ];
     }
-    
+
 
     /*
     |--------------------------------------------------------------------------
