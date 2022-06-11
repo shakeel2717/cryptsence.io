@@ -43,6 +43,7 @@
                             <div class="mt-2">
                                 <input type="text" class="form-control" name="amount" placeholder="Enter Amount">
                             </div>
+                            <small>Minimum Withdrawal fees: 10$</small>
                         </div>
                         <div class="form-group mt-5">
                             <button type="submit"
