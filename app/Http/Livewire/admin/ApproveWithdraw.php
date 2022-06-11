@@ -54,7 +54,7 @@ final class ApproveWithdraw extends PowerGridComponent
             ->join('users', 'users.id', '=', 'withdraws.user_id')
             ->join('coins', 'coins.id', '=', 'withdraws.coin_id')
             ->select('withdraws.*', 'users.name as user_name', 'coins.name as coin_name')
-            ->where('withdraws.status', 'pending');
+            ->where('withdraws.status', 'approved');
     }
 
     /*
