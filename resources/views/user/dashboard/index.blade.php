@@ -42,7 +42,7 @@
                     <div class="d-flex align-items-center">
                         <div class="w-2/4 flex-none">
                             <div class="fs-xl fw-medium truncate">
-                                {{ number_format(myReferralsRewards(auth()->user()->id), 8) }}
+                                {{ number_format(myReferralsRewards(auth()->user()->id), 8) }} CTSE
                             </div>
                             <div class="text-gray-600 mt-1">Total Referrals Rewards:</div>
                         </div>
