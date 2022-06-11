@@ -55,4 +55,21 @@ class ReportController extends Controller
 
         return redirect()->back()->with('success', 'Withdrawal Approved');
     }
+
+    public function withdrawReject($id)
+    {
+        $withdraw = Withdraw::findOrFail($id);
+        $withdraw->delete();
+
+        // approving this transaction
+        $transaction = Transaction::where('user_id', $withdraw->user_id)->where('type', 'withdraw')->where('amount', $withdraw->amount)->where('status', 'pending')->first();
+        // getting this Transaction fee
+        $transactionFees = Transaction::where('note',$transaction->id)->first();
+        $transactionFees->delete();
+        $transaction->delete();
+
+
+        return redirect()->back()->with('success', 'Withdrawal Request Rejected');
+    }
+
 }

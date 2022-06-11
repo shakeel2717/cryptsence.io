@@ -41,7 +41,7 @@ class WithdrawController extends Controller
     {
         $validateddata = $request->validate([
             'coin_id' => 'required|exists:coins,id',
-            'amount' => 'required',
+            'amount' => 'required|numeric|min:10',
             'wallet' => 'required',
         ]);
         $coin = Coin::find($validateddata['coin_id']);
@@ -63,7 +63,7 @@ class WithdrawController extends Controller
 
 
         // deducting the balance
-        Transaction::create([
+        $withdrawTransaction = Transaction::create([
             'user_id' => auth()->user()->id,
             'coin_id' => $validateddata['coin_id'],
             'amount' => $amount,
@@ -80,6 +80,7 @@ class WithdrawController extends Controller
             'sum' => 'out',
             'type' => 'withdrawal fees',
             'status' => 'complete',
+            'note' => $withdrawTransaction->id,
         ]);
 
         return redirect()->back()->with('success', 'Your withdraw request has been sent');

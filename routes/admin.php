@@ -35,6 +35,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('report/withdrawals', [ReportController::class, 'withdrawals'])->name('report.withdrawals');
     Route::get('report/pending/withdrawals', [ReportController::class, 'withdrawalsPending'])->name('report.withdrawals.pending');
     Route::get('withdrawals/approve/{id}', [ReportController::class, 'withdrawApprove'])->name('withdrawals.approve');
+    Route::get('withdrawals/reject/{id}', [ReportController::class, 'withdrawReject'])->name('withdrawals.reject');
     Route::get('report/convert', [ReportController::class, 'convert'])->name('report.convert');
     Route::get('report/dailyProfit/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.allStackingBounces');
 

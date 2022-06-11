@@ -163,16 +163,23 @@ final class PendingWithdraw extends PowerGridComponent
 
     public function actions(): array
     {
-       return [
-           Button::make('edit', 'Approve')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 bg-theme-3 py-2.5 m-1 rounded text-sm')
-               ->route('admin.withdrawals.approve', ['id' => 'id'])
-               ->target("")
+        return [
+            Button::make('edit', 'Approve')
+                ->class('cursor-pointer text-white px-3 bg-theme-9 py-2 m-1 rounded text-sm')
+                ->route('admin.withdrawals.approve', ['id' => 'id'])
+                ->target(""),
 
-        //    Button::make('destroy', 'Delete')
-        //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-        //        ->route('withdraw.destroy', ['withdraw' => 'id'])
-        //        ->method('delete')
+            Button::make('edit', 'Reject')
+                ->class('cursor-pointer text-white px-3 bg-theme-6 py-2 m-1 rounded text-sm')
+                ->route('admin.withdrawals.reject', ['id' => 'id'])
+                ->target(""),
+
+            // Button::make('destroy', 'Reject')
+            //     ->class('cursor-pointer text-white px-3 bg-theme-6 py-2 m-1 rounded text-sm')
+            //     ->route('admin.withdrawals.reject', ['id' => 'id'])
+            //     ->method('delete')
+            //     ->target(""),
+
         ];
     }
 
