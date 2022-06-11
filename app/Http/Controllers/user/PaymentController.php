@@ -7,6 +7,7 @@ use App\Models\btcPayments;
 use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use CoinpaymentsAPI;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -56,11 +57,13 @@ class PaymentController extends Controller
             $currency2 = $method;
             $buyer_email = auth()->user()->email;
             $ipn_url = env('IPN_URL');
-            $information = $cps_api->CreateSimpleTransactionWithConversion($amount, $currency1, $currency2, $buyer_email, $ipn_url);
+            $information = $cps_api->CreateSimpleTransaction($amount, $currency2, $buyer_email);
         } catch (Exception $e) {
             echo 'Error: ' . $e->getMessage();
             exit();
         }
+
+        Log::info(print_r($information, true) ."Result of create transaction");
 
         // Inserting New Transaction Request Storing into session
         $task = new btcPayments();

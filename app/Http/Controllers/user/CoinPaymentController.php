@@ -15,6 +15,8 @@ class CoinPaymentController extends Controller
     {
         Log::info('CoinPayment webhook Reached');
 
+        Log::info(print_r($request, true) ."Result of This Request");
+
         $merchant_id = env('COINPAYMENTSMERCHANT');
         $ipn_secret = env('IPN_SECRET');
         Log::info('CoinPayment webhook  Init');
