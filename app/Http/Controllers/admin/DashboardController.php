@@ -19,8 +19,8 @@ class DashboardController extends Controller
     {
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
         $users = User::get();
-        $airDrop = Transaction::where('note','Free Airdrop')->sum('amount');
-        return view('admin.dashboard.index', compact('histories', 'users', 'airDrop'));
+        $transactions = Transaction::get();
+        return view('admin.dashboard.index', compact('histories', 'users', 'transactions'));
     }
 
     /**
