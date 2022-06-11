@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mt-5">
+        {{-- <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
@@ -62,6 +62,23 @@
                                 ${{ number_format(balance('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
                             </div>
                             <div class="text-gray-600 mt-1">Estimated CTSE Value:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(ReferralsRewardsLevel(auth()->user()->id), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">3 Levels Business:</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">

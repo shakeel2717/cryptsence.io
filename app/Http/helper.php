@@ -181,6 +181,13 @@ function myReferrals($user_id)
     return $refers;
 }
 
+
+function myPurchase($user_id)
+{
+    $out = Transaction::where('user_id', $user_id)->where('type', 'convert')->where('coin_id', 1)->where('sum', 'out')->sum('amount');
+    return $out;
+}
+
 function myReferralsRewards($user_id)
 {
     $user = User::find($user_id);
@@ -251,4 +258,25 @@ function ReferralBalance($user_id)
         ->where('sum', 'out')
         ->sum('amount');
     return $transaction - $transactionOut;
+}
+
+
+function ReferralsRewardsLevel($user_id)
+{
+    $amount = 0;
+    $user = User::find($user_id);
+    // getting all downline users
+    $refers = User::where('refer', $user->username)->get();
+    foreach ($refers as $refer) {
+        $amount += myPurchase($refer->id);
+        $refers1 = User::where('refer', $refer->username)->get();
+        foreach ($refers1 as $refer1) {
+            $amount += myPurchase($refer1->id);
+            $refers2 = User::where('refer', $refer1->username)->get();
+            foreach ($refers2 as $refer2) {
+                $amount += myPurchase($refer2->id);
+            }
+        }
+    }
+    return $amount;
 }
