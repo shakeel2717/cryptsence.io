@@ -41,6 +41,10 @@ class ReportController extends Controller
     }
 
 
+    function withdrawalsApprove()
+    {
+        return view('admin.dashboard.report.withdrawalsApprove');
+    }
 
     public function withdrawApprove($id)
     {
