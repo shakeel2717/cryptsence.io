@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\user\Transaction;
+use App\Models\user\Withdraw;
 use Illuminate\Http\Request;
 
 class ReportController extends Controller
@@ -39,4 +41,18 @@ class ReportController extends Controller
     }
 
 
+
+    public function withdrawApprove($id)
+    {
+        $withdraw = Withdraw::findOrFail($id);
+        $withdraw->status = 'approved';
+        $withdraw->save();
+
+        // approving this transaction
+        $transaction = Transaction::where('user_id', $withdraw->user_id)->where('type', 'withdraw')->where('amount', $withdraw->amount)->where('status', 'pending')->first();
+        $transaction->status = 'approved';
+        $transaction->save();
+
+        return redirect()->back()->with('success', 'Withdrawal Approved');
+    }
 }

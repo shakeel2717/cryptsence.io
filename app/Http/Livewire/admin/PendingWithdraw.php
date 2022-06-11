@@ -53,7 +53,8 @@ final class PendingWithdraw extends PowerGridComponent
         return Withdraw::query()
             ->join('users', 'users.id', '=', 'withdraws.user_id')
             ->join('coins', 'coins.id', '=', 'withdraws.coin_id')
-            ->select('withdraws.*', 'users.name as user_name', 'coins.name as coin_name');
+            ->select('withdraws.*', 'users.name as user_name', 'coins.name as coin_name')
+            ->where('withdraws.status', 'pending');
     }
 
     /*
@@ -97,10 +98,7 @@ final class PendingWithdraw extends PowerGridComponent
             ->addColumn('coin_id')
             ->addColumn('amount')
             ->addColumn('address')
-            ->addColumn('status')
-            ->addColumn('txid')
-            ->addColumn('created_at_formatted', fn (Withdraw $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (Withdraw $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Withdraw $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -139,22 +137,8 @@ final class PendingWithdraw extends PowerGridComponent
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('STATUS', 'status')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
-
-            Column::make('TXID', 'txid')
-                ->sortable()
-                ->searchable()
-                ->makeInputText(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
-                ->searchable()
-                ->sortable()
-                ->makeInputDatePicker(),
-
-            Column::make('UPDATED AT', 'updated_at_formatted', 'updated_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
@@ -176,21 +160,22 @@ final class PendingWithdraw extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('withdraw.edit', ['withdraw' => 'id']),
+           Button::make('edit', 'Approve')
+               ->class('bg-indigo-500 cursor-pointer text-white px-3 bg-theme-3 py-2.5 m-1 rounded text-sm')
+               ->route('admin.withdrawals.approve', ['id' => 'id'])
+               ->target("")
 
-           Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('withdraw.destroy', ['withdraw' => 'id'])
-               ->method('delete')
+        //    Button::make('destroy', 'Delete')
+        //        ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+        //        ->route('withdraw.destroy', ['withdraw' => 'id'])
+        //        ->method('delete')
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------
