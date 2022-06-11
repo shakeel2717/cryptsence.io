@@ -186,22 +186,24 @@
                     </div>
                 </div>
                 <div class="col-lg-12">
-                    <div class="report-box zoom-in mt-12 mt-sm-5">
-                        <div class="box p-5">
-                            <div class="d-flex">
-                                <img src="/assets/images/coins/tether.png" alt="" class="w-10">
-                                <div class="ms-auto">
-                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">
-                                        {{ number_format(balance('USDT.TRC20', auth()->user()->id) / options('coin_exchange_rate'), 2) }}
-                                        CTSE</div>
+                    <a href="{{ route('user.withdraw.index') }}">
+                        <div class="report-box zoom-in mt-12 mt-sm-5">
+                            <div class="box p-5">
+                                <div class="d-flex">
+                                    <img src="/assets/images/coins/tether.png" alt="" class="w-10">
+                                    <div class="ms-auto">
+                                        <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                            title="33% Higher than last month">
+                                            {{ number_format(balance('USDT.TRC20', auth()->user()->id) / options('coin_exchange_rate'), 2) }}
+                                            CTSE</div>
+                                    </div>
                                 </div>
+                                <div class="report-box__total fs-3xl fw-medium mt-6">
+                                    ${{ number_format(balance('USDT.TRC20', auth()->user()->id), 8) }}</div>
+                                <div class="fs-base text-gray-600 mt-1">Available USDT</div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">
-                                ${{ number_format(balance('USDT.TRC20', auth()->user()->id), 8) }}</div>
-                            <div class="fs-base text-gray-600 mt-1">Available USDT</div>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </div>
