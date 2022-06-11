@@ -33,4 +33,10 @@ class ReportController extends Controller
     }
 
 
+    function withdrawalsPending()
+    {
+        return view('admin.dashboard.report.withdrawalsPending');
+    }
+
+
 }

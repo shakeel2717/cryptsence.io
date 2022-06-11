@@ -33,6 +33,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
     Route::get('report/withdrawals', [ReportController::class, 'withdrawals'])->name('report.withdrawals');
+    Route::get('report/pending/withdrawals', [ReportController::class, 'withdrawalsPending'])->name('report.withdrawals.pending');
     Route::get('report/convert', [ReportController::class, 'convert'])->name('report.convert');
     Route::get('report/dailyProfit/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.allStackingBounces');
 
