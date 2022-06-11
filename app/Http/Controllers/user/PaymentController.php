@@ -94,6 +94,7 @@ class PaymentController extends Controller
             // return redirect($task->checkout_url);
             return view('user.dashboard.payment.create', compact('task'));
         } else {
+            Log::info(print_r($information, true) . "Result of create transaction");
             return "Please send USDT TRC20 to this address(TD3JBrzzjJPANa3fDtacJ8wophuLaZtehR), and take a screenshot of your payment. After successful payment, don't forget to send the payment proof or transaction id for instant Deposit. Our WhatsApp Number: (+971561559810)";
         }
     }
