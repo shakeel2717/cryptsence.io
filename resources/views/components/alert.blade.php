@@ -6,7 +6,7 @@
         </script>
     @endforeach
 @endif
-@if (session('success'))
+@if (session('success') || session('status'))
     <script>
         swal("Success!", "{!! session('success') !!}", "success");
     </script>
