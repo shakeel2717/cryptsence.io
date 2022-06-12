@@ -25,8 +25,8 @@
             </div>
             <div class="intro-x mt-5 mt-xl-8 text-center text-xl-start">
                 <button class="btn btn-primary py-3 px-4 w-full w-xl-32 me-xl-3 align-top">Login</button>
-                {{-- <a href="{{ route('register') }}" class="btn btn-outline-secondary py-3 px-4 w-full w-xl-32 mt-3 mt-xl-0 align-top">Sign
-                    up</a> --}}
+                <a href="{{ route('register') }}" class="btn btn-outline-secondary py-3 px-4 w-full w-xl-32 mt-3 mt-xl-0 align-top">Sign
+                    up</a>
             </div>
             <div class="intro-x mt-10 mt-xl-24 text-gray-700 dark-text-gray-600 text-center text-xl-start">
                 By signin in, you agree to our
