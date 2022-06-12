@@ -25,9 +25,10 @@
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
                         <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate" title="Available For Sell"> {{ ReferralBalance(auth()->user()->id) }} CTSE
+                            <div class="fs-xl fw-medium truncate" title="Available For Sell">
+                                {{ ReferralBalance(auth()->user()->id) }} CTSE
                             </div>
-                            <div class="text-gray-600 mt-1">My Referrals: ({{ number_format(myReferrals(auth()->user()->id), 0) }})</div>
+                            <div class="text-gray-600 mt-1">My Referrals:</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
@@ -155,6 +156,57 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate text-uppercase">
+                                {{ auth()->user()->refer }}
+                            </div>
+                            <div class="text-gray-600 mt-1">My Sponser:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/icons/sponser.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate text-uppercase">
+                                {{ number_format(myReferrals(auth()->user()->id), 0) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">My Refferals:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/icons/refers.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate text-uppercase">
+                                {{ checkRefers(auth()->user()->id)->where('status','pending')->count() }}
+                            </div>
+                            <div class="text-gray-600 mt-1">Active Refferals:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/icons/check.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-12 col-sm-12 col-md-12 col-lg-7">
@@ -167,10 +219,11 @@
                                 CTSE</span><br>
                             {{ validateStaking(auth()->user()->id) == true ? number_format(balance('CTSE', auth()->user()->id), 8) : '0.0000' }}
                         </div>
-                        <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"
-                            title="0% Higher than last Day"> 0% <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
+                        <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"> {{ now() }} <i
+                                data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                         </div>
-                        <div class="mt-4 text-gray-600 dark-text-gray-600">This is your Current Staking Amount of CTSE, This
+                        <div class="mt-4 text-gray-600 dark-text-gray-600">This is your Current Staking Amount of CTSE,
+                            This
                             will auto update with your current Available CTSE Balance .</div>
                         <div class="mt-4 text-gray-600 dark-text-gray-600">Track and trade your coins in one place.</div>
                         <a href="{{ route('user.convert.index') }}"
@@ -359,7 +412,8 @@
         <div class="col-12 col-md-6 mt-5">
             <div class="">
                 <div class="promotion">
-                    <img src="{{ asset('assets/images/promotion/ctse-malaysia-tour.jpg') }}" alt="" class="img-fluid">
+                    <img src="{{ asset('assets/images/promotion/ctse-malaysia-tour.jpg') }}" alt=""
+                        class="img-fluid">
                 </div>
             </div>
         </div>

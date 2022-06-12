@@ -65,8 +65,6 @@ class Blockchain extends Command
                 // checking if this user has already got staking bonus
                 $stakingBonus = StakingBonus::where('user_id', $user->id)
                     ->whereDate('created_at', date('Y-m-d'))
-                    ->where('amount', $profitDay)
-                    ->where('stake_amount', $balance)
                     ->get();
                 if ($stakingBonus->count() > 0) {
                     Log::info('User ' . $user->username . ' already got staking Reward');
