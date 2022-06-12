@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CTSESellController;
+use App\Http\Controllers\ReferralReportController;
 use App\Http\Controllers\user\CalculatorController;
 use App\Http\Controllers\user\CoinPaymentController;
 use App\Http\Controllers\user\ConvertController;
@@ -38,6 +39,12 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::resource('google', GoogleAuthController::class);
     Route::post('calculator/calReq', [CalculatorController::class, 'calculateReq'])->name('calculator.calculateReq');
     Route::resource('calculator', CalculatorController::class);
+    Route::controller(ReferralReportController::class)->prefix('/referral')->name('referral.')->group(function (){
+        Route::get('direct','direct')->name('direct');
+        Route::get('level/1','level1')->name('level1');
+        Route::get('level/2','level2')->name('level2');
+        Route::get('level/3','level3')->name('level3');
+    });
 
 });
 
