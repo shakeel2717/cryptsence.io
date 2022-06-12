@@ -261,7 +261,8 @@ function ReferralBalance($user_id)
 }
 
 
-function ReferralsRewardsLevel($user_id)
+
+function ReferralsDirect($user_id)
 {
     $amount = 0;
     $user = User::find($user_id);
@@ -270,8 +271,35 @@ function ReferralsRewardsLevel($user_id)
     foreach ($refers as $refer) {
         $amount += myPurchase($refer->id);
         $refers1 = User::where('refer', $refer->username)->get();
+    }
+    return $amount;
+}
+
+
+function ReferralsFirstLevel($user_id)
+{
+    $amount = 0;
+    $user = User::find($user_id);
+    // getting all downline users
+    $refers = User::where('refer', $user->username)->get();
+    foreach ($refers as $refer) {
+        $refers1 = User::where('refer', $refer->username)->get();
         foreach ($refers1 as $refer1) {
             $amount += myPurchase($refer1->id);
+        }
+    }
+    return $amount;
+}
+
+function ReferralsSecondLevel($user_id)
+{
+    $amount = 0;
+    $user = User::find($user_id);
+    // getting all downline users
+    $refers = User::where('refer', $user->username)->get();
+    foreach ($refers as $refer) {
+        $refers1 = User::where('refer', $refer->username)->get();
+        foreach ($refers1 as $refer1) {
             $refers2 = User::where('refer', $refer1->username)->get();
             foreach ($refers2 as $refer2) {
                 $amount += myPurchase($refer2->id);
@@ -279,4 +307,31 @@ function ReferralsRewardsLevel($user_id)
         }
     }
     return $amount;
+}
+
+function ReferralsThirdLevel($user_id)
+{
+    $amount = 0;
+    $user = User::find($user_id);
+    // getting all downline users
+    $refers = User::where('refer', $user->username)->get();
+    foreach ($refers as $refer) {
+        $refers1 = User::where('refer', $refer->username)->get();
+        foreach ($refers1 as $refer1) {
+            $refers2 = User::where('refer', $refer1->username)->get();
+            foreach ($refers2 as $refer2) {
+                $refers3 = User::where('refer', $refer2->username)->get();
+                foreach ($refers3 as $refer3) {
+                    $amount += myPurchase($refer3->id);
+                }
+            }
+        }
+    }
+    return $amount;
+}
+
+
+function ReferralsRewardsLevel($user_id)
+{
+    return ReferralsFirstLevel($user_id) + ReferralsSecondLevel($user_id) + ReferralsThirdLevel($user_id);
 }

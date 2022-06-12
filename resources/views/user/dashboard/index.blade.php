@@ -53,7 +53,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-3 mt-5">
+        <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
@@ -69,7 +69,75 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(ReferralsDirect(auth()->user()->id), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">My Direct Business:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(ReferralsFirstLevel(auth()->user()->id), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">1st Level Business:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(ReferralsSecondLevel(auth()->user()->id), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">2nd Level Business:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <div class="box p-5 zoom-in">
+                    <div class="d-flex align-items-center">
+                        <div class="w-2/4 flex-none">
+                            <div class="fs-xl fw-medium truncate">
+                                ${{ number_format(ReferralsThirdLevel(auth()->user()->id), 2) }}
+                            </div>
+                            <div class="text-gray-600 mt-1">3rd Level Business:</div>
+                        </div>
+                        <div class="flex-none ms-auto position-relative">
+                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
