@@ -21,8 +21,8 @@ class DashboardController extends Controller
     public function index()
     {
         $histories = LoginHistory::where('user_id', auth()->user()->id)->latest()->limit(4)->get();
-        $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(6)->get();
-        $stakingBonuses = StakingBonus::where('user_id', auth()->id())->latest()->limit(6)->get();
+        $transactions = Transaction::where('user_id', auth()->id())->latest()->limit(3)->get();
+        $stakingBonuses = StakingBonus::where('user_id', auth()->id())->latest()->limit(3)->get();
         $policies = BonusPolicy::whereIn('id', GetTodayActivePolicy())->get();
         return view('user.dashboard.index', compact('histories', 'transactions', 'stakingBonuses', 'policies'));
     }
