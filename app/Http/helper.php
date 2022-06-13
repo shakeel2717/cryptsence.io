@@ -23,7 +23,7 @@ function balance($method, $user_id)
 
     $in = Transaction::where('user_id', $user_id)->where('coin_id', $coin->id)->where('sum', 'in')->sum('amount');
     $out = Transaction::where('user_id', $user_id)->where('coin_id', $coin->id)->where('sum', 'out')->sum('amount');
-    return (stakeBounsAll($method, $user_id) +  $in) - $out;
+    return $in - $out;
 }
 
 
