@@ -39,7 +39,7 @@ class Blockchain extends Command
 
         // looping through users
         foreach ($users as $user) {
-            $balance = balance('CTSE', $user->id);
+            $balance = balance('CTSE', $user->id) + stakeBounsAll('CTSE', $user->id);
             if ($balance > 0) {
                 // checking if this user fullfill the staking requirement
 
