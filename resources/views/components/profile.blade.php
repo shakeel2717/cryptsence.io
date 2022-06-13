@@ -30,11 +30,11 @@
                 <div class="text-gray-600">Total Refers</div>
             </div>
             <div class="text-center rounded-2 w-20 py-3">
-                <div class="fw-medium text-theme-1 dark-text-theme-10 fs-xl">{{ checkRefers(auth()->user()->id)->where('status','pending')->count() }}</div>
+                <div class="fw-medium text-theme-1 dark-text-theme-10 fs-xl">{{ checkRefers(auth()->user()->id)->where('status','active')->count() }}</div>
                 <div class="text-gray-600">Active</div>
             </div>
             <div class="text-center rounded-2 w-20 py-3">
-                <div class="fw-medium text-theme-1 dark-text-theme-10 fs-xl">{{ checkRefers(auth()->user()->id)->where('status','active')->count() }}</div>
+                <div class="fw-medium text-theme-1 dark-text-theme-10 fs-xl">{{ checkRefers(auth()->user()->id)->where('status','pending')->count() }}</div>
                 <div class="text-gray-600">Pending</div>
             </div>
         </div>

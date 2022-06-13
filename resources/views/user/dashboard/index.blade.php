@@ -196,7 +196,7 @@
                     <div class="d-flex align-items-center">
                         <div class="w-2/4 flex-none">
                             <div class="fs-xl fw-medium truncate text-uppercase">
-                                {{ checkRefers(auth()->user()->id)->where('status','pending')->count() }}
+                                {{ checkRefers(auth()->user()->id)->where('status','active')->count() }}
                             </div>
                             <div class="text-gray-600 mt-1">Active Refferals:</div>
                         </div>
