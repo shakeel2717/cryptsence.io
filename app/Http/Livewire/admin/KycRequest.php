@@ -50,7 +50,8 @@ final class KycRequest extends PowerGridComponent
      */
     public function datasource(): Builder
     {
-        return KYC::query();
+        return KYC::query()
+            ->where('status', 'pending');
     }
 
     /*
