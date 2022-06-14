@@ -79,7 +79,7 @@ class User extends Authenticatable
 
     function user_notifications()
     {
-        return $this->hasMany(UserNotification::class);
+        return $this->hasMany(UserNotification::class)->orderBy('id','desc');
     }
 
 
