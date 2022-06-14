@@ -113,8 +113,6 @@ final class AllNotification extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('USER', 'user_name')
-                ->makeInputRange(),
 
             Column::make('TITLE', 'title')
                 ->sortable()
