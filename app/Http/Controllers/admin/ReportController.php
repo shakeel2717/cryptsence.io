@@ -14,6 +14,11 @@ class ReportController extends Controller
         return view('admin.dashboard.report.users');
     }
 
+    function kyc()
+    {
+        return view('admin.dashboard.report.kyc');
+    }
+
     function deposits()
     {
         return view('admin.dashboard.report.deposit');

@@ -4,6 +4,7 @@ use App\Http\Controllers\admin\AdminDepositFundsController;
 use App\Http\Controllers\admin\AdminLogController;
 use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\FinanceController;
+use App\Http\Controllers\admin\KYCController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
@@ -31,6 +32,9 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
 
     Route::get('/options/index', [OptionController::class, 'index'])->name('option.index');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
+    Route::get('report/kyc', [ReportController::class, 'kyc'])->name('report.kyc');
+    Route::get('report/kyc/approve/{id}', [KYCController::class, 'approve'])->name('kyc.approve');
+    Route::get('report/kyc/decline/{id}', [KYCController::class, 'decline'])->name('kyc.decline');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
     Route::get('report/withdrawals', [ReportController::class, 'withdrawals'])->name('report.withdrawals');
     Route::get('report/pending/withdrawals', [ReportController::class, 'withdrawalsPending'])->name('report.withdrawals.pending');

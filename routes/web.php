@@ -7,6 +7,7 @@ use App\Http\Controllers\user\CoinPaymentController;
 use App\Http\Controllers\user\ConvertController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\GoogleAuthController;
+use App\Http\Controllers\user\KYCController;
 use App\Http\Controllers\user\NotificationController;
 use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\user\ProfileController;
@@ -23,6 +24,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::resource('profile', ProfileController::class);
     Route::resource('notification', NotificationController::class);
     Route::resource('withdraw', WithdrawController::class);
+    Route::resource('kyc', KYCController::class);
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('payment', PaymentController::class);
     Route::resource('convert', ConvertController::class);
