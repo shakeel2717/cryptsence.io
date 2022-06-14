@@ -22,19 +22,21 @@
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate" title="Available For Sell">
-                                {{ ReferralBalance(auth()->user()->id) }} CTSE
+                <a href="{{ route('user.sell.index') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate" title="Available For Sell">
+                                    {{ ReferralBalance(auth()->user()->id) }} CTSE
+                                </div>
+                                <div class="text-gray-600 mt-1">Available Rewards:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">Available Rewards:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
@@ -73,70 +75,78 @@
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate">
-                                ${{ number_format(ReferralsDirect(auth()->user()->id), 2) }}
+                <a href="{{ route('user.referral.direct') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate">
+                                    ${{ number_format(ReferralsDirect(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 mt-1">My Direct Business:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">My Direct Business:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate">
-                                ${{ number_format(ReferralsFirstLevel(auth()->user()->id), 2) }}
+                <a href="{{ route('user.referral.level1') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate">
+                                    ${{ number_format(ReferralsFirstLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 mt-1">1st Level Business:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">1st Level Business:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate">
-                                ${{ number_format(ReferralsSecondLevel(auth()->user()->id), 2) }}
+                <a href="{{ route('user.referral.level2') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate">
+                                    ${{ number_format(ReferralsSecondLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 mt-1">2nd Level Business:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">2nd Level Business:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate">
-                                ${{ number_format(ReferralsThirdLevel(auth()->user()->id), 2) }}
+                <a href="{{ route('user.referral.level3') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate">
+                                    ${{ number_format(ReferralsThirdLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 mt-1">3rd Level Business:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">3rd Level Business:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
@@ -175,36 +185,40 @@
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate text-uppercase">
-                                {{ number_format(myReferrals(auth()->user()->id), 0) }}
+                <a href="{{ route('user.report.transactions.allRefers') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate text-uppercase">
+                                    {{ number_format(myReferrals(auth()->user()->id), 0) }}
+                                </div>
+                                <div class="text-gray-600 mt-1">My Refferals:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">My Refferals:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/icons/refers.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/icons/refers.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <div class="box p-5 zoom-in">
-                    <div class="d-flex align-items-center">
-                        <div class="w-2/4 flex-none">
-                            <div class="fs-xl fw-medium truncate text-uppercase">
-                                {{ checkRefers(auth()->user()->id)->where('status','active')->count() }}
+                <a href="{{ route('user.report.transactions.allRefers') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate text-uppercase">
+                                    {{ checkRefers(auth()->user()->id)->where('status', 'active')->count() }}
+                                </div>
+                                <div class="text-gray-600 mt-1">Active Refferals:</div>
                             </div>
-                            <div class="text-gray-600 mt-1">Active Refferals:</div>
-                        </div>
-                        <div class="flex-none ms-auto position-relative">
-                            <img src="{{ asset('assets/images/icons/check.png') }}" alt="" class="w-10">
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/icons/check.png') }}" alt="" class="w-10">
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
@@ -290,20 +304,22 @@
                 </div>
                 <div class="col-lg-12">
                     <div class="report-box zoom-in mt-12 mt-sm-5">
-                        <div class="box p-5">
-                            <div class="d-flex">
-                                <img src="/assets/images/coins/reward.png" alt="" class="w-10">
-                                <div class="ms-auto">
-                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
-                                        title="33% Higher than last month">$
-                                        {{ number_format(stakeBounsAll('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
+                        <a href="{{ route('admin.report.allStackingBounces') }}">
+                            <div class="box p-5">
+                                <div class="d-flex">
+                                    <img src="/assets/images/coins/reward.png" alt="" class="w-10">
+                                    <div class="ms-auto">
+                                        <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                            title="33% Higher than last month">$
+                                            {{ number_format(stakeBounsAll('CTSE', auth()->user()->id) * options('coin_exchange_rate'), 2) }}
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="report-box__total fs-3xl fw-medium mt-6">
+                                    {{ number_format(stakeBounsAll('CTSE', auth()->user()->id), 8) }}</div>
+                                <div class="fs-base text-theme-1  mt-1">CTSE Staking Reward</div>
                             </div>
-                            <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format(stakeBounsAll('CTSE', auth()->user()->id), 8) }}</div>
-                            <div class="fs-base text-theme-1  mt-1">CTSE Staking Reward</div>
-                        </div>
+                        </a>
                     </div>
                 </div>
                 <div class="col-lg-12">

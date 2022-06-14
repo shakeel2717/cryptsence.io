@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div>
-                            <label>Sell CTSE From</label>
+                            <label>Select Coin</label>
                             <div class="mt-2">
                                 <select data-placeholder="Select Currency" name="method" class="tom-select w-full">
                                     <option value="CTSE">CTSE</option>
@@ -35,10 +35,11 @@
                         </div>
                         <div>
                             <label class="mt-4">Amount</label>
-                            <div class="mt-2">
+                            <div class="my-2">
                                 <input type="text" class="form-control" name="amount" id="amount"
                                     placeholder="Enter USDT Amount">
                             </div>
+                            <small class="mt-2">Available to Swap ({{ number_format(ReferralBalance(auth()->user()->id),6) }} CTSE)</small>
                         </div>
                         <div class="box p-4">
                             <div class="mt-4">
