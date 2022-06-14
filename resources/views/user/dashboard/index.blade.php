@@ -28,7 +28,7 @@
                             <div class="fs-xl fw-medium truncate" title="Available For Sell">
                                 {{ ReferralBalance(auth()->user()->id) }} CTSE
                             </div>
-                            <div class="text-gray-600 mt-1">My Referrals:</div>
+                            <div class="text-gray-600 mt-1">Available Rewards:</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/icons/teamwork.png') }}" alt="" class="w-10">
@@ -147,7 +147,7 @@
                             <div class="fs-xl fw-medium truncate">
                                 ${{ number_format(ReferralsRewardsLevel(auth()->user()->id), 2) }}
                             </div>
-                            <div class="text-gray-600 mt-1">3 Levels Business:</div>
+                            <div class="text-gray-600 mt-1">Total Business:</div>
                         </div>
                         <div class="flex-none ms-auto position-relative">
                             <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
