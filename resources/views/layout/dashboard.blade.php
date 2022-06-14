@@ -95,7 +95,7 @@
             <div class="intro-x dropdown w-8 h-8">
                 <div class="theme-dropdown-toggle w-8 h-8 rounded-pill overflow-hidden shadow-lg image-fit zoom-in"
                     role="button" aria-expanded="false" data-bs-toggle="dropdown">
-                    <img alt="{{ env('APP_DESC') }}" src="{{ asset('assets/images/brand/favi.svg') }}">
+                    <img alt="{{ env('APP_DESC') }}" src="{{ asset('assets/profile/'.auth()->user()->picture) }}">
                 </div>
                 <div class="dropdown-menu w-56">
                     <ul class="dropdown-content bg-theme-26 dark-bg-dark-6 text-white">

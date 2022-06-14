@@ -13,15 +13,21 @@
                 </h2>
             </div>
             <div class="p-5">
-                <form action="{{ route('user.profile.store') }}" method="POST">
+                <form action="{{ route('user.profile.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="d-flex flex-column-reverse flex-xl-row flex-column">
                         <div class="flex-1 mt-6 mt-xl-0">
                             <div class="grid columns-12 gap-x-5 gap-y-0">
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
+                                        <label for="profile" class="form-label mt-3">Update Profile Picture</label>
+                                        <input id="profile" name="profile" type="file" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-6">
+                                    <div>
                                         <label for="name" class="form-label mt-3">Display Name</label>
-                                        <input id="name" name="name" type="text"  class="form-control"
+                                        <input id="name" name="name" type="text" class="form-control"
                                             placeholder="Display Name" value="{{ auth()->user()->name }}">
                                     </div>
                                 </div>
@@ -56,8 +62,8 @@
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="city" class="form-label mt-3">City</label>
-                                        <input id="city" name="city" type="text" class="form-control"
-                                            placeholder="City" value="{{ auth()->user()->city }}">
+                                        <input id="city" name="city" type="text" class="form-control" placeholder="City"
+                                            value="{{ auth()->user()->city }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
@@ -70,8 +76,8 @@
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="zip" class="form-label mt-3">Zip</label>
-                                        <input id="zip" name="zip" type="text" class="form-control"
-                                            placeholder="Zip" value="{{ auth()->user()->zip }}">
+                                        <input id="zip" name="zip" type="text" class="form-control" placeholder="Zip"
+                                            value="{{ auth()->user()->zip }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
