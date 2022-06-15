@@ -95,6 +95,9 @@ final class AllUser extends PowerGridComponent
             ->addColumn('usdttotal', function (User $model) {
                 return balanceIn('usdt.trc20', $model->id);
             })
+            ->addColumn('reward', function (User $model) {
+                return ReferralBalance($model->id);
+            })
             ->addColumn('refer')
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -137,6 +140,7 @@ final class AllUser extends PowerGridComponent
             Column::make('CTSE', 'ctse'),
             Column::make('USDT', 'usdt'),
             Column::make('USDT Total', 'usdttotal'),
+            Column::make('Reward', 'reward'),
 
 
             Column::make('REFER', 'refer')
