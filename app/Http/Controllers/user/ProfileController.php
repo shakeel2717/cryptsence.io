@@ -75,12 +75,12 @@ class ProfileController extends Controller
     {
         $validatedData = $request->validate([
             'name' => 'required|max:255',
-            'country' => 'required|max:255',
-            'city' => 'required|max:255',
-            'phone' => 'required|max:255',
-            'region' => 'required|max:255',
-            'zip' => 'required|max:255',
-            'profile' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'country' => 'nullable|max:255',
+            'city' => 'nullable|max:255',
+            'phone' => 'nullable|max:255',
+            'region' => 'nullable|max:255',
+            'zip' => 'nullable|max:255',
+            'profile' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $user = User::find(auth()->user()->id);
