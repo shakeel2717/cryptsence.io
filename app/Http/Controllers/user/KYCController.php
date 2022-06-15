@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\user\KYC;
+use App\Models\user\Kyc;
 use Illuminate\Http\Request;
 
 class KYCController extends Controller
@@ -39,14 +39,16 @@ class KYCController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:255',
             'address' => 'required|max:255',
+            'phone' => 'required|max:255',
             'country' => 'required|max:255',
             'document' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $kyc = new KYC();
+        $kyc = new Kyc();
         $kyc->user_id = auth()->user()->id;
         $kyc->name = $validatedData['name'];
         $kyc->address = $validatedData['address'];
+        $kyc->phone = $validatedData['phone'];
         $kyc->country = $validatedData['country'];
         if (isset($validatedData['document'])) {
             // get picture

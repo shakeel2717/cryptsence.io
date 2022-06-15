@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('k_y_c_s', function (Blueprint $table) {
+        Schema::create('kycs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
+            $table->string('phone');
             $table->string('address');
             $table->string('country');
             $table->string('document');
@@ -32,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('k_y_c_s');
+        Schema::dropIfExists('kycs');
     }
 };

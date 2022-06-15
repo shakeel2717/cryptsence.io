@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire\admin;
 
-use App\Models\user\KYC;
+use App\Models\user\Kyc;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
@@ -44,14 +44,16 @@ final class KycRequest extends PowerGridComponent
     */
 
     /**
-     * PowerGrid datasource.
-     *
-     * @return Builder<\App\Models\user\KYC>
-     */
+    * PowerGrid datasource.
+    *
+    * @return Builder<\App\Models\user\Kyc>
+    */
     public function datasource(): Builder
     {
-        return KYC::query()
-            ->where('status', 'pending');
+        return Kyc::query()
+        ->join('users', 'users.id', '=', 'kycs.user_id')
+        ->select('kycs.*', 'users.username as user_name')
+        ->where('kycs.status','pending');
     }
 
     /*
@@ -87,12 +89,13 @@ final class KycRequest extends PowerGridComponent
             ->addColumn('user_id')
             ->addColumn('name')
             ->addColumn('address')
+            ->addColumn('phone')
             ->addColumn('country')
             ->addColumn('document', function ($model) {
                 return '<img src="/assets/kyc/' . $model->document . '" width="100" height="100">';
             })
-            ->addColumn('created_at_formatted', fn (KYC $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
-            ->addColumn('updated_at_formatted', fn (KYC $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
+            ->addColumn('created_at_formatted', fn (Kyc $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'))
+            ->addColumn('updated_at_formatted', fn (Kyc $model) => Carbon::parse($model->updated_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -112,7 +115,7 @@ final class KycRequest extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('USER ID', 'user_id')
+            Column::make('USER', 'user_name')
                 ->makeInputRange(),
 
             Column::make('NAME', 'name')
@@ -121,6 +124,11 @@ final class KycRequest extends PowerGridComponent
                 ->makeInputText(),
 
             Column::make('ADDRESS', 'address')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
+
+            Column::make('PHONE', 'phone')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
@@ -170,7 +178,6 @@ final class KycRequest extends PowerGridComponent
         ];
     }
 
-
     /*
     |--------------------------------------------------------------------------
     | Actions Rules
@@ -179,8 +186,8 @@ final class KycRequest extends PowerGridComponent
     |
     */
 
-    /**
-     * PowerGrid KYC Action Rules.
+     /**
+     * PowerGrid Kyc Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -192,7 +199,7 @@ final class KycRequest extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($k-y-c) => $k-y-c->id === 1)
+                ->when(fn($kyc) => $kyc->id === 1)
                 ->hide(),
         ];
     }

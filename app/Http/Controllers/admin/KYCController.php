@@ -4,14 +4,14 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\user\KYC;
+use App\Models\user\Kyc;
 use Illuminate\Http\Request;
 
 class KYCController extends Controller
 {
     public function approve($id)
     {
-        $kyc = KYC::findOrFail($id);
+        $kyc = Kyc::findOrFail($id);
         $kyc->status = 'approved';
         $kyc->save();
 
@@ -25,7 +25,7 @@ class KYCController extends Controller
 
     public function decline($id)
     {
-        $kyc = KYC::findOrFail($id);
+        $kyc = Kyc::findOrFail($id);
         $kyc->delete();
 
         $user = User::find($kyc->user_id);
