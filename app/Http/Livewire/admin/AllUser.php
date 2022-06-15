@@ -96,7 +96,7 @@ final class AllUser extends PowerGridComponent
                 return balanceIn('usdt.trc20', $model->id);
             })
             ->addColumn('reward', function (User $model) {
-                return ReferralBalance($model->id);
+                return number_format(ReferralBalance($model->id),2);
             })
             ->addColumn('refer')
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
