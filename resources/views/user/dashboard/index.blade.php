@@ -27,7 +27,7 @@
                         <div class="d-flex align-items-center">
                             <div class="w-2/4 flex-none">
                                 <div class="fs-xl fw-medium truncate" title="Available For Sell">
-                                    {{ ReferralBalance(auth()->user()->id) }} CTSE
+                                    {{ number_format(ReferralBalance(auth()->user()->id),2) }} CTSE
                                 </div>
                                 <div class="text-gray-600 mt-1">Available Rewards:</div>
                             </div>
