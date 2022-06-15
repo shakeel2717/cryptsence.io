@@ -250,7 +250,7 @@ function ReferralBalance($user_id)
     $transaction = Transaction::where('user_id', $user_id)
         ->where('type', 'reward')
         ->where('sum', 'in')
-        // ->where('created_at', '<=', Carbon::now()->subDays(15))
+        ->where('created_at', '<=', Carbon::now()->subDays(15))
         ->sum('amount');
 
     $transactionOut = Transaction::where('user_id', $user_id)
