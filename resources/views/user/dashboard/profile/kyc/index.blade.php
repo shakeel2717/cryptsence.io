@@ -34,13 +34,6 @@
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
-                                        <label for="phone" class="form-label mt-3">Phone #</label>
-                                        <input id="phone" name="phone" type="text" class="form-control"
-                                            placeholder="Phone">
-                                    </div>
-                                </div>
-                                <div class="g-col-12 g-col-xxl-6">
-                                    <div>
                                         <label for="country" class="form-label mt-3">Country</label>
                                         <select name="country" id="country" class="form-control">
                                             <option>select country</option>
@@ -297,6 +290,13 @@
                                             <option value="ZM">Zambia</option>
                                             <option value="ZW">Zimbabwe</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="g-col-12 g-col-xxl-6">
+                                    <div>
+                                        <label for="phone" class="form-label mt-3">Phone #</label>
+                                        <input id="phone" name="phone" type="text" class="form-control"
+                                            placeholder="Phone">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
