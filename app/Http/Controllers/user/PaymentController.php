@@ -7,6 +7,7 @@ use App\Models\btcPayments;
 use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use CoinpaymentsAPI;
+use Exception;
 use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
