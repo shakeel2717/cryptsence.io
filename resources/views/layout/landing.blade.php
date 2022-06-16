@@ -55,30 +55,11 @@
                             </button>
                             <nav class="sidebar-nav">
                                 <ul class="metismenu" id="mobile-menu">
-                                    <li><a class="has-arrow" href="#">Homes</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="index-2.html">Homepage 1</a></li>
-                                            <li><a href="index-3.html">Homepage 2</a></li>
-                                            <li><a href="index-4.html">Homepage 3</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="about.html">about</a></li>
-                                    <li><a href="services.html">services</a></li>
-                                    <li>
-                                        <a class="has-arrow" href="#">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="faq.html">faq</a></li>
-                                            <li><a href="team.html">team</a></li>
-                                            <li><a href="projects.html">portfolio</a></li>
-                                            <li><a href="pricing.html">pricing</a></li>
-                                            <li><a href="404.html">404</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="news.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
+                                    <li><a href="{{ route('user.index.index') }}">Dashboard</a></li>
                                 </ul>
-
-                                <a href="contact.html" class="theme-btn d-block mt-4 text-center ms-0">get started</a>
+                                <a href="{{ route('register') }}" class="theme-btn d-block mt-4 text-center ms-0">Buy CTSE</a>
                             </nav>
                         </div>
                     </div>
@@ -91,7 +72,7 @@
    @yield('content')
 
     <footer class="footer-wrapper footer-1">
-        <div class="footer-widgets-wrapper">
+        {{-- <div class="footer-widgets-wrapper">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-6 col-12">
@@ -122,7 +103,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="footer-bottom-wrapper">
             <div class="container">
                 <div class="footer-bottom-content d-md-flex justify-content-between">
