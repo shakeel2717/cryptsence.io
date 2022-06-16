@@ -18,6 +18,7 @@ use App\Http\Controllers\user\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingPageController::class, 'index'])->name('home');
+Route::get('/privacy', [LandingPageController::class, 'privacy'])->name('privacy');
 Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact');
 
 Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->group(function () {
