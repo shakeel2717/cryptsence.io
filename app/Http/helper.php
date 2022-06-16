@@ -3,6 +3,7 @@
 use App\Models\admin\Option;
 use App\Models\BonusPolicy;
 use App\Models\Coin;
+use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
 use App\Models\User;
 use App\Models\user\StakingBonus;
@@ -345,15 +346,22 @@ function ReferralsRewardsLevel($user_id)
 
 function getRate($coin)
 {
-    $private_key = env('PRIKEY');
-    $public_key = env('PUBKEY');
-    try {
-        $cps_api = new CoinpaymentsAPI($private_key, $public_key, 'json');
-        $ipn_url = env('IPN_URL');
-        $coins = $cps_api->GetRates();
-    } catch (Exception $e) {
-        echo 'Error: ' . $e->getMessage();
-        exit();
-    }
-    return $coins['result'][$coin]['rate_btc'] / $coins['result']['USD']['rate_btc'];
+    // // getting the live coin rates
+    // $private_key = env('PRIKEY');
+    // $public_key = env('PUBKEY');
+    // try {
+    //     $cps_api = new CoinpaymentsAPI($private_key, $public_key, 'json');
+    //     $ipn_url = env('IPN_URL');
+    //     $coins = $cps_api->GetRates();
+    // } catch (Exception $e) {
+    //     echo 'Error: ' . $e->getMessage();
+    //     exit();
+    // }
+
+
+    // return $coins['result'][$coin]['rate_btc'] / $coins['result']['USD']['rate_btc'];
+
+    // getting live rates from database
+    $rate = LiveRate::where('symbol', $coin)->first();
+    return $rate->price;
 }
