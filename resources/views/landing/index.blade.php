@@ -130,7 +130,7 @@
                         </div>
                         <div class="currency-rate-buy-btn d-flex align-items-center justify-content-between">
                             <div class="currency-rate">
-                                <h5>${{ number_format(getRate("BTC"),2) }}</h5>
+                                <h5>${{ number_format(getRate("Bitcoin"),2) }}</h5>
                             </div>
                             <div class="currency-buy-now">
                                 <a href="{{ route('register') }}">Open Account</a>
@@ -155,7 +155,7 @@
                         </div>
                         <div class="currency-rate-buy-btn d-flex align-items-center justify-content-between">
                             <div class="currency-rate">
-                                <h5>${{ number_format(getRate("ETH"),2) }}</h5>
+                                <h5>${{ number_format(getRate("Ether"),2) }}</h5>
                             </div>
                             <div class="currency-buy-now">
                                 <a href="{{ route('register') }}">Open Account</a>
@@ -205,7 +205,7 @@
                         </div>
                         <div class="currency-rate-buy-btn d-flex align-items-center justify-content-between">
                             <div class="currency-rate">
-                                <h5>${{ number_format(getRate("LTC"),2) }}</h5>
+                                <h5>${{ number_format(getRate("Litecoin"),2) }}</h5>
                             </div>
                             <div class="currency-buy-now">
                                 <a href="{{ route('register') }}">Open Account</a>
@@ -230,7 +230,7 @@
                         </div>
                         <div class="currency-rate-buy-btn d-flex align-items-center justify-content-between">
                             <div class="currency-rate">
-                                <h5>${{ number_format(getRate("BNB"),2) }}</h5>
+                                <h5>${{ number_format(getRate("BNB Coin (Mainnet)"),2) }}</h5>
                             </div>
                             <div class="currency-buy-now">
                                 <a href="{{ route('register') }}">Open Account</a>
@@ -255,7 +255,7 @@
                         </div>
                         <div class="currency-rate-buy-btn d-flex align-items-center justify-content-between">
                             <div class="currency-rate">
-                                <h5>${{ number_format(getRate("USDT.TRC20"),2) }}</h5>
+                                <h5>${{ number_format(getRate("Tether USD (Tron/TRC20)"),2) }}</h5>
                             </div>
                             <div class="currency-buy-now">
                                 <a href="{{ route('register') }}">Open Account</a>
