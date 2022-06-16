@@ -21,8 +21,14 @@ function balance($method, $user_id)
         return 0;
     }
 
-    $in = Transaction::where('user_id', $user_id)->where('coin_id', $coin->id)->where('sum', 'in')->sum('amount');
-    $out = Transaction::where('user_id', $user_id)->where('coin_id', $coin->id)->where('sum', 'out')->sum('amount');
+    $in = Transaction::where('user_id', $user_id)
+        ->where('coin_id', $coin->id)
+        ->where('type', '!=', 'reward')
+        ->where('sum', 'in')->sum('amount');
+    $out = Transaction::where('user_id', $user_id)
+        ->where('coin_id', $coin->id)
+        ->where('type', '!=', 'reward')
+        ->where('sum', 'out')->sum('amount');
     return $in - $out;
 }
 

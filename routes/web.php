@@ -11,6 +11,7 @@ use App\Http\Controllers\user\KYCController;
 use App\Http\Controllers\user\NotificationController;
 use App\Http\Controllers\user\PaymentController;
 use App\Http\Controllers\user\ProfileController;
+use App\Http\Controllers\user\ReferralRewardController;
 use App\Http\Controllers\user\ReportController;
 use App\Http\Controllers\user\WithdrawController;
 use Illuminate\Support\Facades\Route;
@@ -46,6 +47,9 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
         Route::get('level/1','level1')->name('level1');
         Route::get('level/2','level2')->name('level2');
         Route::get('level/3','level3')->name('level3');
+    });
+    Route::controller(ReferralRewardController::class)->prefix('/referral')->name('referral.')->group(function (){
+        Route::post('stack','stack')->name('stack');
     });
 
 });
