@@ -25,7 +25,7 @@
             <div class="row align-items-center justify-content-between">
                 <div class="col-lg-2 col-sm-5 col-md-4 col-6">
                     <div class="logo">
-                        <a href="index-2.html">
+                        <a href="{{ route('home') }}">
                             <img src="{{ asset('assets/images/brand/logo.svg') }}" alt="Transland">
                         </a>
                     </div>
@@ -78,7 +78,7 @@
                     <div class="col-xl-3 col-lg-4 col-md-6 col-12">
                         <div class="single-footer-widget wow fadeInLeft">
                             <div class="about-us-widget">
-                                <a href="index-2.html" class="footer-logo d-block">
+                                <a href="{{ route('home') }}" class="footer-logo d-block">
                                     <img src="{{ asset('assets/images/brand/logo.svg') }}"
                                         alt="{{ env('APP_NAME') }}">
                                 </a>
