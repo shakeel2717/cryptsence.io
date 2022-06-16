@@ -558,23 +558,20 @@
                             </div>
                             <form action="{{ route('user.referral.stack') }}" method="POST">
                                 @csrf
-                                <!-- BEGIN: Modal Body -->
                                 <div class="modal-body grid columns-12 gap-4 gap-y-3">
-                                    <div class="g-col-12"> <label for="amount"
-                                            class="form-label">Amount</label>
+                                    <div class="g-col-12"> <label for="amount" class="form-label">Amount</label>
                                         <input id="amount" name="amount" type="text" class="form-control"
                                             value="{{ ReferralBalance(auth()->user()->id) }}"
                                             placeholder="Enter Amount you want to Send CTSE to Stack">
                                     </div>
-                                </div> <!-- END: Modal Body -->
-                                <!-- BEGIN: Modal Footer -->
+                                </div>
                                 <div class="modal-footer text-end">
                                     <button type="submit" class="btn btn-primary w-40">Send to Stack</button>
-                                </div> <!-- END: Modal Footer -->
+                                </div>
                             </form>
                         </div>
                     </div>
-                </div> <!-- END: Modal Content -->
+                </div>
             </div>
         </div>
     </div>
