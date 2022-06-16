@@ -6,6 +6,7 @@ use App\Models\LiveRate;
 use Illuminate\Console\Command;
 use CoinpaymentsAPI;
 use Exception;
+use Illuminate\Support\Facades\Log;
 
 class GetRate extends Command
 {
@@ -44,16 +45,16 @@ class GetRate extends Command
 
         // convert into collection
         $coins = collect($coins);
-        $acceptedCoins = ["BTC","LTC","BNB","USDT.TRC20","ETH"];
+        $acceptedCoins = ["BTC", "LTC", "BNB", "USDT.TRC20", "ETH"];
         // getting only coins that are accepted
         foreach ($coins['result'] as $coinData) {
             // get rate in USD
             // return $coins['result'][$coin]['rate_btc'] / $coins['result']['USD']['rate_btc'];
-            $liveRate = new LiveRate();
-            $liveRate->symbol = $coinData['name'];
-            $liveRate->name = $coinData['name'];
-            $liveRate->price = $coinData['rate_btc'] / $coins['result']['USD']['rate_btc'];
-            $liveRate->save();
+
+            $liveRateUpdate = LiveRate::updateOrCreate(
+                ['symbol' => $coinData['name'], "name" => $coinData['name']],
+                ['price' => $coinData['rate_btc'] / $coins['result']['USD']['rate_btc']]
+            );
         }
     }
 }
