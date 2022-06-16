@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CTSESellController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReferralReportController;
 use App\Http\Controllers\user\CalculatorController;
 use App\Http\Controllers\user\CoinPaymentController;
@@ -16,7 +17,8 @@ use App\Http\Controllers\user\ReportController;
 use App\Http\Controllers\user\WithdrawController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/login');
+Route::get('/', [LandingPageController::class, 'index'])->name('home');
+Route::get('/contact', [LandingPageController::class, 'contact'])->name('contact');
 
 Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->group(function () {
     Route::resource('index', DashboardController::class);
@@ -42,16 +44,15 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::resource('google', GoogleAuthController::class);
     Route::post('calculator/calReq', [CalculatorController::class, 'calculateReq'])->name('calculator.calculateReq');
     Route::resource('calculator', CalculatorController::class);
-    Route::controller(ReferralReportController::class)->prefix('/referral')->name('referral.')->group(function (){
-        Route::get('direct','direct')->name('direct');
-        Route::get('level/1','level1')->name('level1');
-        Route::get('level/2','level2')->name('level2');
-        Route::get('level/3','level3')->name('level3');
+    Route::controller(ReferralReportController::class)->prefix('/referral')->name('referral.')->group(function () {
+        Route::get('direct', 'direct')->name('direct');
+        Route::get('level/1', 'level1')->name('level1');
+        Route::get('level/2', 'level2')->name('level2');
+        Route::get('level/3', 'level3')->name('level3');
     });
-    Route::controller(ReferralRewardController::class)->prefix('/referral')->name('referral.')->group(function (){
-        Route::post('stack','stack')->name('stack');
+    Route::controller(ReferralRewardController::class)->prefix('/referral')->name('referral.')->group(function () {
+        Route::post('stack', 'stack')->name('stack');
     });
-
 });
 
 // group route
