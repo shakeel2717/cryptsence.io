@@ -28,10 +28,10 @@
                                 <td>{{ $user->status }}</td>
                                 <td>{{ number_format(myPurchaseDirectSellUnderFivek($user->id), 2) }}</td>
                             </tr>
-                        @endif
                         @php
                             $i++;
                         @endphp
+                        @endif
                     @empty
                         <tr>
                             <td>No Record Found</td>
