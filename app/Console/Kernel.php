@@ -45,7 +45,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('get:rates')
             ->withoutOverlapping()
             ->everyTenMinutes()
-            ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
                 Log::info('get:rates command Starting in Scheduler');
             })
