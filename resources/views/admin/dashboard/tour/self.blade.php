@@ -9,6 +9,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Full Name</th>
                         <th>Username</th>
                         <th>Email</th>
                         <th>Status</th>
@@ -23,6 +24,7 @@
                         @if (myPurchase($user->id) > 4999)
                             <tr>
                                 <td>{{ $i }}</td>
+                                <td>{{ $user->name }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
