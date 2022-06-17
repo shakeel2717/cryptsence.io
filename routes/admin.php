@@ -10,6 +10,7 @@ use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\TourWinnerController;
 use App\Http\Controllers\admin\UserLogin;
 use Illuminate\Support\Facades\Route;
 
@@ -43,5 +44,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('withdrawals/reject/{id}', [ReportController::class, 'withdrawReject'])->name('withdrawals.reject');
     Route::get('report/convert', [ReportController::class, 'convert'])->name('report.convert');
     Route::get('report/dailyProfit/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.allStackingBounces');
+
+    Route::get('/report/tour/self', [TourWinnerController::class, 'tourSelf'])->name('report.tour.self');
 
 });
