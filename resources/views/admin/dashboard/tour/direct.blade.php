@@ -17,13 +17,13 @@
                 </thead>
                 <tbody>
                     @forelse ($users as $user)
-                        @if (myPurchase($user->id) > 4999)
+                        @if (myPurchaseDirectSellUnderFivek($user->id) > 9999)
                             <tr>
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
-                                <td>{{ number_format(myPurchase($user->id), 2) }}</td>
+                                <td>{{ number_format(myPurchaseDirectSellUnderFivek($user->id), 2) }}</td>
                             </tr>
                         @endif
                     @empty

@@ -46,5 +46,6 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('report/dailyProfit/allStackingBounces', [ReportController::class, 'allStackingBounces'])->name('report.allStackingBounces');
 
     Route::get('/report/tour/self', [TourWinnerController::class, 'tourSelf'])->name('report.tour.self');
+    Route::get('/report/tour/direct', [TourWinnerController::class, 'tourDirect'])->name('report.tour.direct');
 
 });

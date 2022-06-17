@@ -195,6 +195,21 @@ function myPurchase($user_id)
     return $out;
 }
 
+
+function myPurchaseDirectSellUnderFivek($user_id)
+{
+    $directSell = 0;
+    $user = User::find($user_id);
+    $refers = User::where('refer', $user->username)->where('status','active')->get();
+    foreach ($refers as $refer) {
+        $business = myPurchase($refer->id);
+        if ($business < 4999) {
+            $directSell += $business;
+        }
+    }
+    return $directSell;
+}
+
 function myReferralsRewards($user_id)
 {
     $user = User::find($user_id);
