@@ -103,6 +103,13 @@
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Direct Sell Winner </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.report.tour.levels') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Level Wise Winner </div>
+            </a>
+        </li>
     </ul>
 </li>
 

@@ -200,7 +200,7 @@ function myPurchaseDirectSellUnderFivek($user_id)
 {
     $directSell = 0;
     $user = User::find($user_id);
-    $refers = User::where('refer', $user->username)->where('status','active')->get();
+    $refers = User::where('refer', $user->username)->where('status', 'active')->get();
     foreach ($refers as $refer) {
         $business = myPurchase($refer->id);
         if ($business < 4999) {
@@ -209,6 +209,35 @@ function myPurchaseDirectSellUnderFivek($user_id)
     }
     return $directSell;
 }
+
+
+function levelsSellUnderFivek($user_id)
+{
+    $business = 0;
+    $user = User::find($user_id);
+    $directRefers = User::where('refer', $user->username)->where('status', 'active')->get();
+    foreach ($directRefers as $directRefer) {
+        $firstLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
+        foreach ($firstLevelRefers as $firstLevelRefer) {
+            if (myPurchase($firstLevelRefer->id) < 4999) {
+                $business += myPurchase($firstLevelRefer->id);
+            }
+            $secondLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
+            foreach ($secondLevelRefers as $secondLevelRefer) {
+                if (myPurchase($secondLevelRefer->id) < 4999) {
+                    $business += myPurchase($secondLevelRefer->id);
+                }
+                $thirdLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
+                foreach ($thirdLevelRefers as $thirdLevelRefer) {
+                    if (myPurchase($thirdLevelRefer->id) < 4999) {
+                        $business += myPurchase($thirdLevelRefer->id);
+                    }
+                }
+            }
+        }
+    }
+}
+
 
 function myReferralsRewards($user_id)
 {

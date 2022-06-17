@@ -20,4 +20,11 @@ class TourWinnerController extends Controller
         $users = User::where('status', 'active')->get();
         return view('admin.dashboard.tour.direct', compact('users'));
     }
+
+
+    public function tourLevel()
+    {
+        $users = User::where('status', 'active')->get();
+        return view('admin.dashboard.tour.level', compact('users'));
+    }
 }
