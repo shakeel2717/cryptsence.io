@@ -16,23 +16,15 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('blockchain:run')
-            ->withoutOverlapping()
+        $schedule->command('backup:run')
             ->everyMinute()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
-                Log::info('Running blockchain:run command Starting in Scheduler');
+                Log::info('backup:run command Starting in Scheduler');
             })
             ->after(function () {
-                Log::info('Running blockchain:run command Finished in Scheduler');
+                Log::info('backup:run command Finished in Scheduler');
             })
-            ->runsInMaintenanceMode();
-
-
-        $schedule->command('clean:only')
-            ->withoutOverlapping()
-            ->twiceDaily()
-            ->emailOutputTo('shakeel2717@gmail.com')
             ->runsInMaintenanceMode();
     }
 
