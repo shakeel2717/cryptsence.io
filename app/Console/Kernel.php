@@ -17,6 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('backup:run')
+            ->withoutOverlapping()
             ->hourly()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
@@ -29,6 +30,7 @@ class Kernel extends ConsoleKernel
 
 
         $schedule->command('blockchain:run')
+            ->withoutOverlapping()
             ->twiceDaily()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
@@ -41,6 +43,7 @@ class Kernel extends ConsoleKernel
 
 
         $schedule->command('get:rates')
+            ->withoutOverlapping()
             ->everyTenMinutes()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
