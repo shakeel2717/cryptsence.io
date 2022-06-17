@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('title')
-    Self Business History
+    3 Levels Business History
 @endsection
 @section('content')
     <div class="card mt-5">
