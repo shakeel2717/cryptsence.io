@@ -17,7 +17,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('backup:run')
-            ->everyMinute()
+            ->hourly()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
                 Log::info('backup:run command Starting in Scheduler');
@@ -26,6 +26,29 @@ class Kernel extends ConsoleKernel
                 Log::info('backup:run command Finished in Scheduler');
             })
             ->runsInMaintenanceMode();
+
+
+        $schedule->command('blockchain:run')
+            ->twiceDaily()
+            ->emailOutputTo('shakeel2717@gmail.com')
+            ->before(function () {
+                Log::info('blockchain:run command Starting in Scheduler');
+            })
+            ->after(function () {
+                Log::info('blockchain:run command Finished in Scheduler');
+            })
+            ->runsInMaintenanceMode();
+
+
+        $schedule->command('get:rates')
+            ->everyTenMinutes()
+            ->emailOutputTo('shakeel2717@gmail.com')
+            ->before(function () {
+                Log::info('get:rates command Starting in Scheduler');
+            })
+            ->after(function () {
+                Log::info('get:rates command Finished in Scheduler');
+            });
     }
 
     /**
