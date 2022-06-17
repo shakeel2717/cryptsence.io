@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('title')
-    Admin Deposit History
+    Direct Business History
 @endsection
 @section('content')
     <div class="card mt-5">
@@ -16,16 +16,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
                     @forelse ($users as $user)
                         @if (myPurchaseDirectSellUnderFivek($user->id) > 9999)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $i }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ number_format(myPurchaseDirectSellUnderFivek($user->id), 2) }}</td>
                             </tr>
                         @endif
+                        @php
+                            $i++;
+                        @endphp
                     @empty
                         <tr>
                             <td>No Record Found</td>

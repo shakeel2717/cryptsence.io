@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('title')
-    Admin Deposit History
+    Self Business History
 @endsection
 @section('content')
     <div class="card mt-5">
@@ -16,16 +16,22 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $i = 1;
+                    @endphp
                     @forelse ($users as $user)
                         @if (myPurchase($user->id) > 4999)
                             <tr>
-                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $i }}</td>
                                 <td>{{ $user->username }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ number_format(myPurchase($user->id), 2) }}</td>
                             </tr>
                         @endif
+                        @php
+                        $i++;
+                    @endphp
                     @empty
                         <tr>
                             <td>No Record Found</td>
