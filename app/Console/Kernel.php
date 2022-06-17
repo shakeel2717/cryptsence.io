@@ -18,17 +18,13 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('backup:run')
             ->withoutOverlapping()
-            ->everyMinute()
+            ->hourly()
             ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
                 Log::info('backup:run command Starting in Scheduler');
             })
             ->after(function () {
                 Log::info('backup:run command Finished in Scheduler');
-                // getting all latest modfied files from storage/app/Cryptsence/
-                $files = scandir(storage_path('app/Cryptsence/*'), SCANDIR_SORT_DESCENDING);
-                $newest_file = $files[0];
-                Log::info('backup:run command Newest file is: '.$newest_file);
             })
             ->runsInMaintenanceMode();
 
