@@ -98,6 +98,9 @@ final class AllUser extends PowerGridComponent
             ->addColumn('reward', function (User $model) {
                 return number_format(ReferralBalance($model->id),2);
             })
+            ->addColumn('business', function (User $model) {
+                return myPurchase($model->id);
+            })
             ->addColumn('refer')
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
@@ -141,6 +144,7 @@ final class AllUser extends PowerGridComponent
             Column::make('USDT', 'usdt'),
             Column::make('USDT Total', 'usdttotal'),
             Column::make('Reward', 'reward'),
+            Column::make('Business', 'business'),
 
 
             Column::make('REFER', 'refer')
