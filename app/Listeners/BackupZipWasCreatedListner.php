@@ -29,7 +29,7 @@ class BackupZipWasCreatedListner
     public function handle($event)
     {
         // sending Email to user
-        Log::info('Backup Zip was created' . $even->backupDestination);
+        Log::info('Backup Zip was created' . $event->backupDestination);
         // Mail::to(env('APP_BACKUP_EMAIL'))->send(new SendBackupMail($event->pathToZip));
     }
 }
