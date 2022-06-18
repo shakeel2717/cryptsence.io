@@ -219,15 +219,15 @@ function levelsSellUnderFivek($user_id)
     foreach ($directRefers as $directRefer) {
         $firstLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
         foreach ($firstLevelRefers as $firstLevelRefer) {
-            if (myPurchase($firstLevelRefer->id) < 4999) {
+            if (myPurchase($firstLevelRefer->id) < 5000) {
                 $business += myPurchase($firstLevelRefer->id);
             }
-            $secondLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
+            $secondLevelRefers = User::where('refer', $firstLevelRefer->username)->where('status', 'active')->get();
             foreach ($secondLevelRefers as $secondLevelRefer) {
                 if (myPurchase($secondLevelRefer->id) < 4999) {
                     $business += myPurchase($secondLevelRefer->id);
                 }
-                $thirdLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->get();
+                $thirdLevelRefers = User::where('refer', $secondLevelRefer->username)->where('status', 'active')->get();
                 foreach ($thirdLevelRefers as $thirdLevelRefer) {
                     if (myPurchase($thirdLevelRefer->id) < 4999) {
                         $business += myPurchase($thirdLevelRefer->id);
