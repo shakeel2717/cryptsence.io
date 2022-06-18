@@ -2,9 +2,11 @@
 
 namespace App\Listeners;
 
+use App\Mail\SendBackupMail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 
 class BackupZipWasCreatedListner
 {
@@ -26,6 +28,8 @@ class BackupZipWasCreatedListner
      */
     public function handle($event)
     {
-        Log::info('BackupZipWasCreatedListner: ' . $event->pathToZip);
+        // sending Email to user
+        Log::info('Backup Zip was created');
+        Mail::to(env('APP_BACKUP_EMAIL'))->send(new SendBackupMail($event->pathToZip));
     }
 }
