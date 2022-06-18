@@ -22,19 +22,19 @@
                                     <div>
                                         <label for="name" class="form-label mt-3">Legal Name</label>
                                         <input id="name" name="name" type="text" class="form-control"
-                                            placeholder="Legal Name" value="{{ auth()->user()->kyc->name }}">
+                                            placeholder="Legal Name" value="{{ auth()->user()->kyc->name ?? "" }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="address" class="form-label mt-3">Address</label>
                                         <input id="address" name="address" type="text" class="form-control"
-                                            placeholder="Address"  value="{{ auth()->user()->kyc->address }}">
+                                            placeholder="Address"  value="{{ auth()->user()->kyc->address ?? "" }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
-                                        <label for="country" class="form-label mt-3">Country: {{ auth()->user()->kyc->country }}</label>
+                                        <label for="country" class="form-label mt-3">Country: {{ auth()->user()->kyc->country ?? "" }}</label>
                                         <select name="country" id="country" class="form-control">
                                             <option>select country</option>
                                             <option value="AF">Afghanistan</option>
@@ -296,7 +296,7 @@
                                     <div>
                                         <label for="phone" class="form-label mt-3">Phone #</label>
                                         <input id="phone" name="phone" type="text" class="form-control"
-                                            placeholder="Phone"  value="{{ auth()->user()->kyc->phone }}">
+                                            placeholder="Phone"  value="{{ auth()->user()->kyc->phone ?? "" }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
