@@ -4,6 +4,26 @@
 @endsection
 @section('content')
     <x-profile />
+    @if (auth()->user()->kyc_status == 1)
+        <div class="col-md-12">
+            <div class="alert alert-primary mt-5" role="alert">
+                <div class="d-flex align-items-center">
+                    <div class="fw-medium fs-lg">KYC Status!</div>
+                </div>
+                <div class="mt-3 text-capitalize">Your KYC Successfully Approved. Now you can unlock all features of
+                    {{ env('APP_NAME') }}</div>
+            </div>
+        </div>
+    @elseif (auth()->user()->kyc_status == 2)
+        <div class="col-md-12">
+            <div class="alert alert-warning mt-5" role="alert">
+                <div class="d-flex align-items-center">
+                    <div class="fw-medium fs-lg">KYC Status!</div>
+                </div>
+                <div class="mt-3 text-capitalize">Your KYC Reject. Please try again with Legal Documents in Clear Resulation.</div>
+            </div>
+        </div>
+    @endif
     <div class="g-col-12 g-col-lg-8 g-col-xxl-9">
         <!-- BEGIN: Display Information -->
         <div class="intro-y box mt-lg-5">
@@ -22,19 +42,20 @@
                                     <div>
                                         <label for="name" class="form-label mt-3">Legal Name</label>
                                         <input id="name" name="name" type="text" class="form-control"
-                                            placeholder="Legal Name" value="{{ auth()->user()->kyc->name ?? "" }}">
+                                            placeholder="Legal Name" value="{{ auth()->user()->kyc->name ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
                                         <label for="address" class="form-label mt-3">Address</label>
                                         <input id="address" name="address" type="text" class="form-control"
-                                            placeholder="Address"  value="{{ auth()->user()->kyc->address ?? "" }}">
+                                            placeholder="Address" value="{{ auth()->user()->kyc->address ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
                                     <div>
-                                        <label for="country" class="form-label mt-3">Country: {{ auth()->user()->kyc->country ?? "" }}</label>
+                                        <label for="country" class="form-label mt-3">Country:
+                                            {{ auth()->user()->kyc->country ?? '' }}</label>
                                         <select name="country" id="country" class="form-control">
                                             <option>select country</option>
                                             <option value="AF">Afghanistan</option>
@@ -296,7 +317,7 @@
                                     <div>
                                         <label for="phone" class="form-label mt-3">Phone #</label>
                                         <input id="phone" name="phone" type="text" class="form-control"
-                                            placeholder="Phone"  value="{{ auth()->user()->kyc->phone ?? "" }}">
+                                            placeholder="Phone" value="{{ auth()->user()->kyc->phone ?? '' }}">
                                     </div>
                                 </div>
                                 <div class="g-col-12 g-col-xxl-6">
@@ -308,7 +329,7 @@
                                 </div>
                             </div>
                             @if (auth()->user()->kyc_status == 0 || auth()->user()->kyc_status == 2)
-                            <button type="submit" class="btn btn-primary mt-4">Submit KYC Approval</button>
+                                <button type="submit" class="btn btn-primary mt-4">Submit KYC Approval</button>
                             @endif
                         </div>
                     </div>
