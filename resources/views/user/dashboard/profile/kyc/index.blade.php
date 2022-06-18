@@ -14,13 +14,15 @@
                     {{ env('APP_NAME') }}</div>
             </div>
         </div>
-    @elseif (auth()->user()->kyc_status == 2)
+    @endif
+    @if (auth()->user()->kyc_status == 2)
         <div class="col-md-12">
             <div class="alert alert-warning mt-5" role="alert">
                 <div class="d-flex align-items-center">
                     <div class="fw-medium fs-lg">KYC Status!</div>
                 </div>
-                <div class="mt-3 text-capitalize">Your KYC Reject. Please try again with Legal Documents in Clear Resulation.</div>
+                <div class="mt-3 text-capitalize">Your KYC Reject. Please try again with Legal Documents in Clear
+                    Resulation.</div>
             </div>
         </div>
     @endif
