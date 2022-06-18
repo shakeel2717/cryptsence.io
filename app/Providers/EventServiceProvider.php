@@ -6,6 +6,7 @@ use App\Events\BackupZipWasCreated;
 use App\Events\ReferralCommission;
 use App\Events\RegisterBonus;
 use App\Listeners\BackupZipWasCreatedListner;
+use App\Listeners\MailSuccessfulDatabaseBackup;
 use App\Listeners\ProccessReferralCommission;
 use App\Listeners\ProccessRegisterBonus;
 use Illuminate\Auth\Events\Registered;
