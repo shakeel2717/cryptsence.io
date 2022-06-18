@@ -44,6 +44,12 @@ class KYCController extends Controller
             'document' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
+
+        // checking if this user already verified
+        if (auth()->user()->kyc_status == 1) {
+            return redirect()->back()->withErrors('You already verified your KYC');
+        }
+
         $kyc = new Kyc();
         $kyc->user_id = auth()->user()->id;
         $kyc->name = $validatedData['name'];

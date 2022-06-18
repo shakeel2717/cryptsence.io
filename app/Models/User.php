@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\user\Kyc;
 use App\Models\user\Referral;
 use App\Models\user\UserNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -86,5 +87,10 @@ class User extends Authenticatable
     function withdraws()
     {
         return $this->hasMany(Withdraw::class);
+    }
+
+    function kyc()
+    {
+        return $this->hasOne(Kyc::class);
     }
 }

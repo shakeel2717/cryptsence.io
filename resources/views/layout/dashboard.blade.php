@@ -102,7 +102,7 @@
                         <li class="p-2">
                             <div class="fw-medium text-white">{{ auth()->user()->name }}</div>
                             <div class="fs-xs text-theme-28 mt-0.5 dark-text-gray-600 text-uppercase">
-                                {{ auth()->user()->status }}</div>
+                                KYC Status: {{ (auth()->user()->kyc_status == 1 ? "Verified" : "Pending") }}</div>
                         </li>
                         <li>
                             <hr class="dropdown-divider border-theme-27 dark-border-dark-3">

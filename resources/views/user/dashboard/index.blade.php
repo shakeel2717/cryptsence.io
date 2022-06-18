@@ -81,7 +81,8 @@
                     <div class="fw-medium fs-lg">Important News!</div>
                     <div class="fs-xs bg-white px-1 rounded-2 text-gray-800 ms-auto">New</div>
                 </div>
-                <div class="mt-3 text-capitalize">Hi beloved CTSE community we are pleased to announce start UAE time 12.00 PM
+                <div class="mt-3 text-capitalize">Hi beloved CTSE community we are pleased to announce start UAE time 12.00
+                    PM
                     june 16, all users those using referral link to referral anyone can instantly Swap / Stake or Hold CTSE
                     on daily price increase on your own choice. Best wishes from CRYPTSENCE</div>
             </div>
@@ -155,7 +156,8 @@
                                 <div class="text-gray-600 mt-1">3rd Level Business:</div>
                             </div>
                             <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt=""
+                                    class="w-10">
                             </div>
                         </div>
                     </div>
@@ -208,7 +210,8 @@
                                 <div class="text-gray-600 mt-1">My Refferals:</div>
                             </div>
                             <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/icons/refers.png') }}" alt="" class="w-10">
+                                <img src="{{ asset('assets/images/icons/refers.png') }}" alt=""
+                                    class="w-10">
                             </div>
                         </div>
                     </div>
@@ -253,6 +256,9 @@
                             This
                             will auto update with your current Available CTSE Balance .</div>
                         <div class="mt-4 text-gray-600 dark-text-gray-600">Track and trade your coins in one place.</div>
+                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">My Investment</span><br>
+                            ${{ number_format(myPurchase(auth()->user()->id), 2) }}
+                        </div>
                         <a href="{{ route('user.convert.index') }}"
                             class="btn btn-outline-secondary position-relative justify-content-start rounded-pill mt-12">
                             Get CTSE Coin
