@@ -21,7 +21,7 @@
                         $i = 1;
                     @endphp
                     @forelse ($users as $user)
-                        @if (myPurchaseDirectSellUnderFivek($user->id) > 9999)
+                        @if (myPurchaseDirectSellUnderFivek($user->id) > 9999 && myPurchase($user->id) < 4999)
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $user->name }}</td>
@@ -30,9 +30,9 @@
                                 <td>{{ $user->status }}</td>
                                 <td>{{ number_format(myPurchaseDirectSellUnderFivek($user->id), 2) }}</td>
                             </tr>
-                        @php
-                            $i++;
-                        @endphp
+                            @php
+                                $i++;
+                            @endphp
                         @endif
                     @empty
                         <tr>
