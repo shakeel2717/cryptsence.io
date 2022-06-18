@@ -222,24 +222,20 @@ function levelsSellUnderFivek($user_id)
             if (myPurchase($firstLevelRefer->id) < 5000) {
                 $business += myPurchase($firstLevelRefer->id);
             }
-            Log::info($directRefer->username . "Busienss:" . myPurchase($directRefer->id) . ", Total Busienss:" . $business);
             $secondLevelRefers = User::where('refer', $firstLevelRefer->username)->where('status', 'active')->get();
             foreach ($secondLevelRefers as $secondLevelRefer) {
                 if (myPurchase($secondLevelRefer->id) < 5000) {
                     $business += myPurchase($secondLevelRefer->id);
                 }
-                Log::info($directRefer->username . "Busienss:" . myPurchase($directRefer->id) . ", Total Busienss:" . $business);
                 $thirdLevelRefers = User::where('refer', $secondLevelRefer->username)->where('status', 'active')->get();
                 foreach ($thirdLevelRefers as $thirdLevelRefer) {
                     if (myPurchase($thirdLevelRefer->id) < 5000) {
                         $business += myPurchase($thirdLevelRefer->id);
                     }
-                    Log::info($directRefer->username . "Busienss:" . myPurchase($directRefer->id) . ", Total Busienss:" . $business);
                 }
             }
         }
     }
-    Log::info("Loop End, Total Busienss:" . $business);
     return $business;
 }
 
