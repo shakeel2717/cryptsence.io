@@ -30,9 +30,9 @@ class EventServiceProvider extends ServiceProvider
         RegisterBonus::class => [
             ProccessRegisterBonus::class
         ],
-        'Spatie\Backup\Events\BackupWasSuccessful' => [
-            BackupZipWasCreatedListner::class
-        ]
+        \Spatie\Backup\Events\BackupZipWasCreated::class => [
+            MailSuccessfulDatabaseBackup::class
+        ],
     ];
 
     /**
