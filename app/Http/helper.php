@@ -196,13 +196,20 @@ function myPurchase($user_id)
 }
 
 
+function myPurchaseSelfSellWinner($user_id)
+{
+    $out = Transaction::where('user_id', $user_id)->where('type', 'convert')->where('coin_id', 1)->where('sum', 'out')->where('winner', true)->sum('amount');
+    return $out;
+}
+
+
 function myPurchaseDirectSellUnderFivek($user_id)
 {
     $directSell = 0;
     $user = User::find($user_id);
     $refers = User::where('refer', $user->username)->where('status', 'active')->where('winner', true)->get();
     foreach ($refers as $refer) {
-        $business = myPurchase($refer->id);
+        $business = myPurchaseSelfSellWinner($refer->id);
         if ($business < 4999) {
             $directSell += $business;
         }
@@ -219,18 +226,18 @@ function levelsSellUnderFivek($user_id)
     foreach ($directRefers as $directRefer) {
         $firstLevelRefers = User::where('refer', $directRefer->username)->where('status', 'active')->where('winner', true)->get();
         foreach ($firstLevelRefers as $firstLevelRefer) {
-            if (myPurchase($firstLevelRefer->id) < 5000) {
-                $business += myPurchase($firstLevelRefer->id);
+            if (myPurchaseSelfSellWinner($firstLevelRefer->id) < 5000) {
+                $business += myPurchaseSelfSellWinner($firstLevelRefer->id);
             }
             $secondLevelRefers = User::where('refer', $firstLevelRefer->username)->where('status', 'active')->where('winner', true)->get();
             foreach ($secondLevelRefers as $secondLevelRefer) {
-                if (myPurchase($secondLevelRefer->id) < 5000) {
-                    $business += myPurchase($secondLevelRefer->id);
+                if (myPurchaseSelfSellWinner($secondLevelRefer->id) < 5000) {
+                    $business += myPurchaseSelfSellWinner($secondLevelRefer->id);
                 }
                 $thirdLevelRefers = User::where('refer', $secondLevelRefer->username)->where('status', 'active')->where('winner', true)->get();
                 foreach ($thirdLevelRefers as $thirdLevelRefer) {
-                    if (myPurchase($thirdLevelRefer->id) < 5000) {
-                        $business += myPurchase($thirdLevelRefer->id);
+                    if (myPurchaseSelfSellWinner($thirdLevelRefer->id) < 5000) {
+                        $business += myPurchaseSelfSellWinner($thirdLevelRefer->id);
                     }
                 }
             }
