@@ -22,7 +22,7 @@
                         $i = 1;
                     @endphp
                     @forelse ($users as $user)
-                        @if (myPurchaseSelfSellWinner($user->id) > 4999)
+                        @if (myPurchase($user->id) > 4999 && $user->winner == true)
                             <tr>
                                 <td>{{ $i }}</td>
                                 <td>{{ $user->name }}</td>
@@ -30,7 +30,7 @@
                                 <td>{{ $user->refer }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
-                                <td>{{ number_format(myPurchaseSelfSellWinner($user->id), 2) }}</td>
+                                <td>{{ number_format(myPurchase($user->id), 2) }}</td>
                             </tr>
                             @php
                                 $i++;
