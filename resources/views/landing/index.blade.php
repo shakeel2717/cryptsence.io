@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-xl-7 col-12 col-lg-10 offset-lg-1 offset-xl-0">
                         <div class="hero-contents">
-                            <h1 class="text-uppercase">Super-Fast, decentralised blockchain network</h1>
+                            <h1 class="text-uppercase">Ultra-fast, decentralised blockchain network</h1>
                             <a href="#" class="app-download-btn"><img src="{{ asset('landing/img/android.png') }}"
                                     alt=""></a>
                             <div class="tri-arrow">
