@@ -11,6 +11,7 @@
                         <th>#</th>
                         <th>Full Name</th>
                         <th>Username</th>
+                        <th>Sponser</th>
                         <th>Email</th>
                         <th>Status</th>
                         <th>Business</th>
@@ -26,6 +27,7 @@
                                 <td>{{ $i }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->username }}</td>
+                                <td>{{ $user->refer }}</td>
                                 <td>{{ $user->email }}</td>
                                 <td>{{ $user->status }}</td>
                                 <td>{{ number_format(myPurchase($user->id), 2) }}</td>
