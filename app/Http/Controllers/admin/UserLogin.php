@@ -25,6 +25,16 @@ class UserLogin extends Controller
         //login Auth
         Auth::guard('web')->loginUsingId($user->id);
 
-        return redirect('/');
+        return redirect()->route('user.index.index');
+    }
+
+
+    public function usersWinner($user)
+    {
+        $user = User::findOrFail($user);
+        // Toggle the user's active status
+        $user->winner = $user->winner ? false : true;
+        $user->save();
+        return redirect()->back()->with('success', 'User Winner Status has been updated.');
     }
 }

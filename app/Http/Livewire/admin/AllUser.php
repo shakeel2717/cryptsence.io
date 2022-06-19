@@ -96,7 +96,7 @@ final class AllUser extends PowerGridComponent
                 return balanceIn('usdt.trc20', $model->id);
             })
             ->addColumn('reward', function (User $model) {
-                return number_format(ReferralBalance($model->id),2);
+                return number_format(ReferralBalance($model->id), 2);
             })
             ->addColumn('business', function (User $model) {
                 return myPurchase($model->id);
@@ -178,9 +178,15 @@ final class AllUser extends PowerGridComponent
     {
         return [
             Button::make('edit', 'Login')
-                ->class('bg-indigo-500 cursor-pointer text-theme-1 px-3 py-2.5 m-1 rounded text-sm')
+                ->class('bg-theme-9 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
                 ->target("")
                 ->route('admin.user.login', ['id' => 'id']),
+
+
+            Button::make('winner', 'Winner')
+                ->class('bg-theme-1 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+                ->target("")
+                ->route('admin.user.winner', ['user' => 'id']),
 
             // Button::make('destroy', 'Delete')
             //     ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')

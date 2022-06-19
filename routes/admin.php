@@ -30,6 +30,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('logentry', AdminLogController::class);
 
     Route::get('login/{id?}', [UserLogin::class, 'usersLogin'])->name('user.login');
+    Route::get('winner/{user?}', [UserLogin::class, 'usersWinner'])->name('user.winner');
 
     Route::get('/options/index', [OptionController::class, 'index'])->name('option.index');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
