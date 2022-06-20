@@ -92,6 +92,7 @@ class CoinPaymentController extends Controller
                 Log::info('CoinPayment Payment Success from Deposit');
             }
         } else {
+            Log::info('This is not Deposit Request');
             $amount1 = floatval($request->amount1); //IN USD
             $amount2 = floatval($request->amount2); //IN BTC
             $currency1 = $request->currency1; //USD
@@ -195,5 +196,6 @@ class CoinPaymentController extends Controller
                 $notification->save();
             }
         }
+        Log::info('Coin Payment Finish');
     }
 }
