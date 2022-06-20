@@ -75,18 +75,6 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <div class="alert alert-primary mt-5" role="alert">
-                <div class="d-flex align-items-center">
-                    <div class="fw-medium fs-lg">Important News!</div>
-                    <div class="fs-xs bg-white px-1 rounded-2 text-gray-800 ms-auto">New</div>
-                </div>
-                <div class="mt-3 text-capitalize">Hi beloved CTSE community we are pleased to announce start UAE time 12.00
-                    PM
-                    june 16, all users those using referral link to referral anyone can instantly Swap / Stake or Hold CTSE
-                    on daily price increase on your own choice. Best wishes from CRYPTSENCE</div>
-            </div>
-        </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <a href="{{ route('user.referral.direct') }}">

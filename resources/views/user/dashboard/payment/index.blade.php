@@ -5,6 +5,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 mx-auto">
+            <div class="alert alert-primary mt-5" role="alert">
+                <div class="d-flex align-items-center">
+                    <div class="fw-medium fs-lg">Deposit Funds to your Account.!</div>
+                </div>
+                <div class="mt-3 text-capitalize">Your Payment will be automatically Added into your account once it's Confirmed.</div>
+            </div>
+        </div>
+        <div class="col-md-8 mx-auto">
             <div class="box">
                 <div class="p-5 border-bottom border-gray-200 dark-border-dark-5">
                     <h2 class="fw-medium fs-base me-auto"> Deposit Funds </h2>
@@ -15,7 +23,8 @@
                             alt="" class="mx-auto img-fluid" width="250">
                         <div class="row">
                             <div class="text-center mt-5">
-                                <h2 class="fs-base text-theme-1">Scan QR or Copy the Following Address, Only send {{ $address->coin->symbol }} to this address!</h2>
+                                <h2 class="fs-base text-theme-1">Scan QR or Copy the Following Address, Only send
+                                    {{ $address->coin->symbol }} to this address!</h2>
                             </div>
                         </div>
                         <div class="row">
