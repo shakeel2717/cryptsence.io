@@ -22,7 +22,7 @@ class CoinPaymentController extends Controller
         $ipn_secret = env('IPN_SECRET');
         Log::info('CoinPayment webhook  Init');
         $txn_id = $request->txn_id;
-        $payment = btcPayments::where("txn_id", $txn_id)->firstOrFail();
+        $payment = btcPayments::where("txn_id", $txn_id)->first();
         $order_currency = $payment->to_currency; //BTC
         $order_total = $payment->amount; //BTC
 
