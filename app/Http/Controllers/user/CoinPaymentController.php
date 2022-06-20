@@ -23,8 +23,6 @@ class CoinPaymentController extends Controller
         Log::info('CoinPayment webhook  Init');
         $txn_id = $request->txn_id;
         $payment = btcPayments::where("txn_id", $txn_id)->first();
-        $order_currency = $payment->to_currency; //BTC
-        $order_total = $payment->amount; //BTC
 
 
 
@@ -92,6 +90,8 @@ class CoinPaymentController extends Controller
                 Log::info('CoinPayment Payment Success from Deposit');
             }
         } else {
+            $order_currency = $payment->to_currency; //BTC
+            $order_total = $payment->amount; //BTC
             Log::info('This is not Deposit Request');
             $amount1 = floatval($request->amount1); //IN USD
             $amount2 = floatval($request->amount2); //IN BTC
