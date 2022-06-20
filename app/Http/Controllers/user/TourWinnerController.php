@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\Expense;
 use Illuminate\Http\Request;
 
-class ExpenseController extends Controller
+class TourWinnerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return view('user.dashboard.tour.index');
     }
 
     /**
@@ -42,10 +41,10 @@ class ExpenseController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Expense $r)
+    public function show($id)
     {
         //
     }
@@ -53,10 +52,10 @@ class ExpenseController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Expense $r)
+    public function edit($id)
     {
         //
     }
@@ -65,10 +64,10 @@ class ExpenseController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Expense $r)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -76,10 +75,10 @@ class ExpenseController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\r  $r
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Expense $r)
+    public function destroy($id)
     {
         //
     }

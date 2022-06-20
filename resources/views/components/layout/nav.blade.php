@@ -47,6 +47,14 @@
     </a>
 </li>
 
+<li>
+    <a href="{{ route('user.tour.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="repeat"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Malaysia Tour </div>
+    </a>
+</li>
+
+
 
 <li>
     <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
