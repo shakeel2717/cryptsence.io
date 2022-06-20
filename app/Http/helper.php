@@ -3,6 +3,7 @@
 use App\Models\admin\Option;
 use App\Models\BonusPolicy;
 use App\Models\Coin;
+use App\Models\Expense;
 use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
 use App\Models\User;
@@ -394,4 +395,10 @@ function getRate($coin)
     // getting live rates from database
     $rate = LiveRate::where('name', $coin)->first();
     return $rate->price;
+}
+
+
+function expenseManager()
+{
+    return Expense::sum('amount');
 }

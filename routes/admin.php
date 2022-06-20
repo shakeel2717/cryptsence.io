@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AdminDepositFundsController;
 use App\Http\Controllers\admin\AdminLogController;
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ExpenseController;
 use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\KYCController;
 use App\Http\Controllers\admin\OptionController;
@@ -20,6 +21,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::post('profile/password/update', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('profile', ProfileController::class);
+    Route::resource('expense', ExpenseController::class);
     Route::get('admin/deposit/usdt', [AdminDepositFundsController::class, 'usdt'])->name('deposit.usdt');
     Route::get('admin/deposit/ctse', [AdminDepositFundsController::class, 'ctse'])->name('deposit.ctse');
     Route::get('payment/pending', [PaymentController::class, 'pending'])->name('payment.pending');

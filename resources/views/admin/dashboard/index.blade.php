@@ -245,7 +245,8 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format($transactions->where('type', 'withdraw')->where('status','approved')->sum('amount'), 2) }}</div>
+                                {{ number_format($transactions->where('type', 'withdraw')->where('status', 'approved')->sum('amount'),2) }}
+                            </div>
                             <div class="fs-base text-gray-600 mt-1">Approved Withdraw</div>
                         </div>
                     </div>
@@ -262,7 +263,8 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format($transactions->where('type', 'withdraw')->where('status','pending')->sum('amount'), 2) }}</div>
+                                {{ number_format($transactions->where('type', 'withdraw')->where('status', 'pending')->sum('amount'),2) }}
+                            </div>
                             <div class="fs-base text-gray-600 mt-1">Pending Withdraw</div>
                         </div>
                     </div>
@@ -279,8 +281,27 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format($transactions->where('type', 'withdrawal fees')->sum('amount'), 2) }}</div>
+                                {{ number_format($transactions->where('type', 'withdrawal fees')->sum('amount'), 2) }}
+                            </div>
                             <div class="fs-base text-gray-600 mt-1">Withdrawal fees</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> {{ now() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6 text-theme-6">
+                                {{ number_format(expenseManager(), 2) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">Total Expense</div>
                         </div>
                     </div>
                 </div>
@@ -320,7 +341,8 @@
                                         {{ $login_history->device }}
                                     </td>
                                     <td>
-                                        <a href="" class="fw-medium text-nowrap">{{ $login_history->browser }}</a>
+                                        <a href=""
+                                            class="fw-medium text-nowrap">{{ $login_history->browser }}</a>
                                         <div class="text-gray-600 fs-xs text-nowrap mt-0.5">
                                             {{ $login_history->browser_version }}</div>
                                     </td>
