@@ -31,7 +31,6 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::resource('withdraw', WithdrawController::class)->middleware('kyc');
     Route::resource('kyc', KYCController::class);
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
-    Route::post('payment/storeTemp', [PaymentController::class, 'storeTemp'])->name('payment.storeTemp');
     Route::resource('payment', PaymentController::class);
     Route::resource('convert', ConvertController::class);
     Route::resource('sell', CTSESellController::class);
