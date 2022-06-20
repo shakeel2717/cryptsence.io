@@ -9,7 +9,8 @@
                 <div class="d-flex align-items-center">
                     <div class="fw-medium fs-lg">Deposit Funds to your Account.!</div>
                 </div>
-                <div class="mt-3 text-capitalize">Your Payment will be automatically Added into your account once it's Confirmed.</div>
+                <div class="mt-3 text-capitalize">Please Send As Much as Payment You Want To Deposit Into Your Account. Your
+                    Payment Will Be Automatically Added Into Your Account Once It's confirmed.</div>
             </div>
         </div>
         <div class="col-md-8 mx-auto">
