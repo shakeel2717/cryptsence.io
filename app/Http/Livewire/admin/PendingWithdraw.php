@@ -98,6 +98,10 @@ final class PendingWithdraw extends PowerGridComponent
             ->addColumn('coin_id')
             ->addColumn('amount')
             ->addColumn('address')
+            ->addColumn('qr', function (Withdraw $model) {
+                return '<img src="https://chart.googleapis.com/chart?chs=300x300&cht=qr&chl=' . $model->address . '&choe=UTF-8&chld=L|0"
+                alt="" class="mx-auto img-fluid" width="250">';
+            })
             ->addColumn('created_at_formatted', fn (Withdraw $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
@@ -136,6 +140,9 @@ final class PendingWithdraw extends PowerGridComponent
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
+
+
+            Column::make('QR', 'qr'),
 
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
