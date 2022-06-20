@@ -90,6 +90,8 @@ class ExpenseController extends Controller
      */
     public function destroy(Expense $expense)
     {
-        //
+        $expense->delete();
+
+        return redirect()->route('admin.expense.index')->with('success', 'Expense deleted successfully.');
     }
 }

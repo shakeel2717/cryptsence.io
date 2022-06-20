@@ -153,21 +153,22 @@ final class AllExpense extends PowerGridComponent
      * @return array<int, Button>
      */
 
-    /*
+
     public function actions(): array
     {
        return [
-           Button::make('edit', 'Edit')
-               ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('expense.edit', ['expense' => 'id']),
+        //    Button::make('edit', 'Edit')
+        //        ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
+        //        ->route('expense.edit', ['expense' => 'id']),
 
            Button::make('destroy', 'Delete')
-               ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('expense.destroy', ['expense' => 'id'])
+               ->class('bg-theme-6 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
+               ->route('admin.expense.destroy', ['expense' => 'id'])
+               ->target("")
                ->method('delete')
         ];
     }
-    */
+
 
     /*
     |--------------------------------------------------------------------------
