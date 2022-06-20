@@ -49,7 +49,7 @@ class CoinPaymentController extends Controller
         }
 
         // checking if this Request comes from ipn_type=Deposit
-        if (isset($request->ipn_type) || $request->ipn_type != 'deposit') {
+        if (isset($request->ipn_type) || $request->ipn_type == 'deposit') {
             Log::info('Deposit Request Found');
             if ($request->status == 100 && $request->status_text == "Deposit confirmed") {
                 // Proccess for Payment
