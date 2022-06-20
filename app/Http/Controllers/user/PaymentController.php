@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
+use App\Models\Address;
 use App\Models\btcPayments;
+use App\Models\Coin;
 use App\Models\user\UserNotification;
 use Illuminate\Http\Request;
 use CoinpaymentsAPI;
@@ -98,6 +100,50 @@ class PaymentController extends Controller
             Log::info(print_r($information, true) . "Result of create transaction");
             return "Please send USDT TRC20 to this address(TD3JBrzzjJPANa3fDtacJ8wophuLaZtehR), and take a screenshot of your payment. After successful payment, don't forget to send the payment proof or transaction id for instant Deposit. Our WhatsApp Number: (+971561559810)";
         }
+    }
+
+
+    public function storeTemp(Request $request)
+    {
+        $validatedData = $request->validate([
+            'method' => 'required|string',
+            'amount' => 'required|numeric|min:1',
+        ]);
+
+        $coin = Coin::where('symbol', $validatedData['method'])->firstOrFail();
+
+        // checking if this user already have address
+        $address = Address::where('user_id', auth()->user()->id)->where('coin_id', $coin->id)->first();
+        if ($address) {
+            return view('user.dashboard.payment.temp', compact('address'));
+        }
+        // getting address from the api
+
+        $private_key = env('PRIKEY');
+        $public_key = env('PUBKEY');
+        $method = $validatedData['method'];
+
+
+        try {
+            $cps_api = new CoinpaymentsAPI($private_key, $public_key, 'json');
+            $amount = $validatedData['amount'];;
+            $currency1 = "USD";
+            $currency2 = $method;
+            $buyer_email = auth()->user()->email;
+            $ipn_url = env('IPN_URL');
+            $information = $cps_api->GetCallbackAddressWithIpn($currency2, $ipn_url, $buyer_email);
+        } catch (Exception $e) {
+            echo 'Error: ' . $e->getMessage();
+            exit();
+        }
+
+        $address = new Address();
+        $address->user_id = auth()->user()->id;
+        $address->coin_id = $coin->id;
+        $address->address = $information['result']['address'];
+        $address->save();
+
+        return view('user.dashboard.payment.temp', compact('address'));
     }
 
     /**
