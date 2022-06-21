@@ -15,7 +15,7 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.dashboard.expense.index');
     }
 
     /**
@@ -25,7 +25,7 @@ class ExpenseController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.dashboard.expense.create');
     }
 
     /**
