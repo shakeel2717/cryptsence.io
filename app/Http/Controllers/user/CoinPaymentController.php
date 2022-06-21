@@ -67,6 +67,7 @@ class CoinPaymentController extends Controller
                 $task->timeout = "Deposit TID";
                 $task->dest_tag = $request->label;
                 $task->from_currency = "N/A";
+                $task->status = "complete";
                 $task->to_currency = "N/A";
                 $task->txn_id = $request->txn_id;
                 $task->confirms_needed = $request->confirms;
