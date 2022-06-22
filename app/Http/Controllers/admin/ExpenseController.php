@@ -36,7 +36,20 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required',
+            'description' => 'nullable',
+            'amount' => 'required'
+        ]);
+
+        $expense = new Expense();
+        $expense->title = $validatedData['title'];
+        $expense->description = $validatedData['description'];
+        $expense->amount = $validatedData['amount'];
+        $expense->save();
+
+        return redirect()->route('admin.expense.index')->with('success','Expense Entry Added');
+
     }
 
     /**
