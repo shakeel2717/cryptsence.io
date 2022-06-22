@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="row">
-        @for ($i = 1; $i < 12; $i++)
+        @for ($i = 1; $i < 18; $i++)
             <div class="col-md-4">
                 <div class="card mt-5">
                     <div class="card-body">
