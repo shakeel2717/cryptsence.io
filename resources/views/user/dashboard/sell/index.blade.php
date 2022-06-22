@@ -37,7 +37,7 @@
                             <label class="mt-4">Amount</label>
                             <div class="my-2">
                                 <input type="text" class="form-control" name="amount" id="amount"
-                                    placeholder="Enter USDT Amount">
+                                    placeholder="Enter CTSE Amount">
                             </div>
                             <small class="mt-2">Available to Swap ({{ number_format(ReferralBalance(auth()->user()->id),6) }} CTSE)</small>
                         </div>
