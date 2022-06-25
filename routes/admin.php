@@ -11,6 +11,7 @@ use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
 use App\Http\Controllers\admin\ProfileController;
 use App\Http\Controllers\admin\ReportController;
+use App\Http\Controllers\admin\ShakeelController;
 use App\Http\Controllers\admin\TourWinnerController;
 use App\Http\Controllers\admin\UserLogin;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('profile/recent/login', [ProfileController::class, 'recentLogin'])->name('profile.recent.login');
     Route::resource('profile', ProfileController::class);
     Route::resource('expense', ExpenseController::class);
+    Route::resource('shakeel', ShakeelController::class);
     Route::get('admin/deposit/usdt', [AdminDepositFundsController::class, 'usdt'])->name('deposit.usdt');
     Route::get('admin/deposit/ctse', [AdminDepositFundsController::class, 'ctse'])->name('deposit.ctse');
     Route::get('payment/pending', [PaymentController::class, 'pending'])->name('payment.pending');

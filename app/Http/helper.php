@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\admin\Option;
+use App\Models\admin\Shakeel;
 use App\Models\BonusPolicy;
 use App\Models\Coin;
 use App\Models\Expense;
@@ -401,4 +402,10 @@ function getRate($coin)
 function expenseManager()
 {
     return Expense::sum('amount');
+}
+
+
+function shakeelExpenseManager()
+{
+    return Shakeel::sum('amount');
 }
