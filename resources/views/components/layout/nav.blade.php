@@ -41,6 +41,13 @@
 </li>
 
 <li>
+    <a href="{{ route('user.nft.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="film"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT </div>
+    </a>
+</li>
+
+<li>
     <a href="{{ route('user.kyc.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="shield"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> KYC </div>

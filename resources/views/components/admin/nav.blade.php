@@ -29,6 +29,21 @@
 
 
 <li>
+    <a href="{{ route('admin.nft.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All NFT </div>
+    </a>
+</li>
+
+<li>
+    <a href="{{ route('admin.nft.create') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Add new NFT </div>
+    </a>
+</li>
+
+
+<li>
     <a href="{{ route('admin.report.kyc') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="inbox"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> KYC Request </div>
