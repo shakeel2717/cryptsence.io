@@ -7,6 +7,7 @@ use App\Models\Coin;
 use App\Models\Expense;
 use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
+use App\Models\NftBonus;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
@@ -408,4 +409,11 @@ function expenseManager()
 function shakeelExpenseManager()
 {
     return Shakeel::sum('amount');
+}
+
+function nftBouns($user_id)
+{
+    $in = NftBonus::where('user_id', $user_id)->where('sum', 'in')->sum('amount');
+    $out = NftBonus::where('user_id', $user_id)->where('sum', 'out')->sum('amount');
+    return $in - $out;
 }

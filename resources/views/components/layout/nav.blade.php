@@ -44,6 +44,7 @@
     <a href="{{ route('user.nft.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="film"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT </div>
+        <div class="fs-xs bg-white px-1 rounded-2 text-gray-800 ms-auto">New</div>
     </a>
 </li>
 
