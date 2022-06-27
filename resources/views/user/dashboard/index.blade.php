@@ -144,8 +144,7 @@
                                 <div class="text-gray-600 mt-1">3rd Level Business:</div>
                             </div>
                             <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt=""
-                                    class="w-10">
+                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
                             </div>
                         </div>
                     </div>
@@ -169,7 +168,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3 mt-5">
+        {{-- <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
@@ -184,6 +183,25 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div> --}}
+        <div class="col-md-3 mt-5">
+            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
+                <a href="{{ route('user.nft.index') }}">
+                    <div class="box p-5 zoom-in">
+                        <div class="d-flex align-items-center">
+                            <div class="w-2/4 flex-none">
+                                <div class="fs-xl fw-medium truncate text-uppercase">
+                                    {{ number_format(nftProfitBalance(auth()->user()->id), 2) }} CTSE
+                                </div>
+                                <div class="text-gray-600 mt-1">NFT Profit:</div>
+                            </div>
+                            <div class="flex-none ms-auto position-relative">
+                                <img src="{{ asset('assets/images/icons/nft.png') }}" alt="" class="w-10">
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
         <div class="col-md-3 mt-5">
@@ -244,7 +262,8 @@
                             This
                             will auto update with your current Available CTSE Balance .</div>
                         <div class="mt-4 text-gray-600 dark-text-gray-600">Track and trade your coins in one place.</div>
-                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">My Investment</span><br>
+                        <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">My
+                                Investment</span><br>
                             ${{ number_format(myPurchase(auth()->user()->id), 2) }}
                         </div>
                         <a href="{{ route('user.convert.index') }}"

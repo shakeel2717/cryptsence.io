@@ -2,6 +2,7 @@
 
 namespace App\Models\admin;
 
+use App\Models\NftCategory;
 use App\Models\Subscription;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -13,13 +14,8 @@ class Nft extends Model
 
 
     protected $fillable = [
-        'name',
         'title',
-        'price',
-        'profit',
-        'duration',
         'status',
-        'stock',
         'nft',
     ];
 
@@ -33,4 +29,11 @@ class Nft extends Model
     {
         return $this->hasMany(Subscription::class);
     }
+
+    public function nft_category()
+    {
+        return $this->belongsTo(NftCategory::class);
+    }
+
+
 }

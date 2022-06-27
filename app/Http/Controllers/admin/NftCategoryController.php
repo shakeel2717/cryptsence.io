@@ -3,11 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Nft;
 use App\Models\NftCategory;
 use Illuminate\Http\Request;
 
-class NftController extends Controller
+class NftCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class NftController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.nft.index');
+        return view('admin.dashboard.nft_category.index');
     }
 
     /**
@@ -26,8 +25,7 @@ class NftController extends Controller
      */
     public function create()
     {
-        $nftCategories = NftCategory::where('status', true)->get();
-        return view('admin.dashboard.nft.create',compact('nftCategories'));
+        return view('admin.dashboard.nft_category.create');
     }
 
     /**
@@ -39,24 +37,30 @@ class NftController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'title' => 'required|max:255',
-            'nft' => 'required|max:255',
-            'nft_category_id' => 'required|integer',
+            'name' => 'required|max:255',
+            'price' => 'required|integer',
+            'profit' => 'required|numeric',
+            'duration' => 'required|integer',
+            'stock' => 'required|integer',
+            'nft' => 'required',
         ]);
 
         // getting a picture from request
         $image = $request->file('nft');
         $imageName = time() . '.' . $image->getClientOriginalExtension();
-        $image->move(public_path('assets/nft'), $imageName);
+        $image->move(public_path('assets/nft/categories'), $imageName);
 
         // adding new nft to database
-        $nft = new Nft();
-        $nft->title = $validatedData['title'];
-        $nft->nft_category_id = $validatedData['nft_category_id'];
-        $nft->nft = $imageName;
+        $nft = new NftCategory();
+        $nft->name = $validatedData['name'];
+        $nft->price = $validatedData['price'];
+        $nft->profit = $validatedData['profit'];
+        $nft->duration = $validatedData['duration'];
+        $nft->stock = $validatedData['stock'];
+        $nft->picture = $imageName;
         $nft->save();
 
-        return redirect()->route('admin.nft.index')->with('success', 'NFT added successfully');
+        return redirect()->route('admin.nft_category.index')->with('success', 'NFT added successfully');
     }
 
     /**

@@ -411,7 +411,14 @@ function shakeelExpenseManager()
     return Shakeel::sum('amount');
 }
 
-function nftBouns($user_id)
+function nftBouns($user_id, $subscriptionId)
+{
+    $in = NftBonus::where('user_id', $user_id)->where('subscription_id', $subscriptionId)->where('sum', 'in')->sum('amount');
+    return $in;
+}
+
+
+function nftProfitBalance($user_id)
 {
     $in = NftBonus::where('user_id', $user_id)->where('sum', 'in')->sum('amount');
     $out = NftBonus::where('user_id', $user_id)->where('sum', 'out')->sum('amount');

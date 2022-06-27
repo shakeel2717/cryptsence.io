@@ -13,12 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('nfts', function (Blueprint $table) {
+        Schema::create('nft_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('nft_category_id')->constrained()->onDelete('cascade');
-            $table->string('title');
-            $table->boolean('status')->default(1);
-            $table->string('nft');
+            $table->string('name');
+            $table->double('price');
+            $table->integer('duration');
+            $table->double('profit');
+            $table->integer('stock');
+            $table->text('note')->nullable();
+            $table->string('picture');
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('nfts');
+        Schema::dropIfExists('categories');
     }
 };

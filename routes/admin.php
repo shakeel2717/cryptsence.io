@@ -6,6 +6,7 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ExpenseController;
 use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\KYCController;
+use App\Http\Controllers\admin\NftCategoryController;
 use App\Http\Controllers\admin\NftController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\PaymentController;
@@ -25,6 +26,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('profile', ProfileController::class);
     Route::resource('expense', ExpenseController::class);
     Route::resource('shakeel', ShakeelController::class);
+    Route::resource('nft_category', NftCategoryController::class);
     Route::resource('nft', NftController::class);
     Route::get('admin/deposit/usdt', [AdminDepositFundsController::class, 'usdt'])->name('deposit.usdt');
     Route::get('admin/deposit/ctse', [AdminDepositFundsController::class, 'ctse'])->name('deposit.ctse');
@@ -55,5 +57,4 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('/report/tour/self', [TourWinnerController::class, 'tourSelf'])->name('report.tour.self');
     Route::get('/report/tour/direct', [TourWinnerController::class, 'tourDirect'])->name('report.tour.direct');
     Route::get('/report/tour/levels', [TourWinnerController::class, 'tourLevel'])->name('report.tour.levels');
-
 });

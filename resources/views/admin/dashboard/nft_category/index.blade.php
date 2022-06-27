@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('title')
-    All NFT
+    All NFT Categories
 @endsection
 @section('head')
     @livewireStyles
@@ -10,11 +10,11 @@
     <div class="row">
         <div class="col-md-12 mb-5 mt-5">
             <div class="d-flex justify-content-end">
-                <a href="{{ route('admin.nft.create') }}" class="btn btn-primary">Add new NFT</a>
+                <a href="{{ route('admin.nft_category.create') }}" class="btn btn-primary">Add new NFT Category</a>
             </div>
         </div>
     </div>
-    <livewire:admin.all-nfts/>
+    <livewire:admin.all-nft-category/>
 @endsection
 @section('footer')
     @livewireScripts
