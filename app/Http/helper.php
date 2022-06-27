@@ -435,3 +435,22 @@ function solidNfts($nft_id)
     }
     return false;
 }
+
+
+function NftCount($user_id, $category)
+{
+    $subscriptions = Subscription::where('user_id', $user_id)
+        ->where('user_id', $user_id)
+        ->where('type', 'nft')
+        ->where('status', true)
+        ->get();
+
+    // checking if this is from $category nft
+    $count = 0;
+    foreach ($subscriptions as $subscription) {
+        if ($subscription->nft->nft_category->id == $category) {
+            $count++;
+        }
+    }
+    return $count;
+}

@@ -38,7 +38,7 @@
     <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
         <li>
             <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="sliders"></i> </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
                     NFT Category
                     <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i
@@ -47,14 +47,18 @@
             </a>
             <ul class="">
                 <li>
-                    <a href="{{ route('admin.nft_category.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                    <a href="{{ route('admin.nft_category.index') }}"
+                        class="{{ $mode == true ? 'side-' : '' }}menu">
+                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                                data-feather="corner-down-right"></i> </div>
                         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">All Categories</div>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('admin.nft_category.create') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                    <a href="{{ route('admin.nft_category.create') }}"
+                        class="{{ $mode == true ? 'side-' : '' }}menu">
+                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                                data-feather="corner-down-right"></i> </div>
                         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">Add new Category</div>
                     </a>
                 </li>
@@ -62,7 +66,7 @@
         </li>
         <li>
             <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="sliders"></i> </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
                     NFT's
                     <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i
@@ -72,17 +76,28 @@
             <ul class="">
                 <li>
                     <a href="{{ route('admin.nft.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                                data-feather="corner-down-right"></i> </div>
                         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">All NFT's</div>
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('admin.nft.create') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                                data-feather="corner-down-right"></i> </div>
                         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">Add new NFT</div>
                     </a>
                 </li>
             </ul>
+        </li>
+        <li>
+            <a href="{{ route('admin.report.nft') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i> </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+                    NFT's Report
+                    <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> </div>
+                </div>
+            </a>
         </li>
     </ul>
 </li>
@@ -145,7 +160,8 @@
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="coffee"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
             Tour Winner
-            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i>
+            </div>
         </div>
     </a>
     <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
@@ -213,14 +229,16 @@
     <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
         <li>
             <a href="{{ route('admin.expense.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                        data-feather="corner-down-right"></i>
                 </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Expenses </div>
             </a>
         </li>
         <li>
             <a href="{{ route('admin.expense.create') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
-                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                        data-feather="corner-down-right"></i>
                 </div>
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Add new Expense </div>
             </a>

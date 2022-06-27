@@ -73,7 +73,7 @@ class ReportController extends Controller
         // approving this transaction
         $transaction = Transaction::where('user_id', $withdraw->user_id)->where('type', 'withdraw')->where('amount', $withdraw->amount)->where('status', 'pending')->first();
         // getting this Transaction fee
-        $transactionFees = Transaction::where('note',$transaction->id)->first();
+        $transactionFees = Transaction::where('note', $transaction->id)->first();
         $transactionFees->delete();
         $transaction->delete();
 
@@ -81,4 +81,9 @@ class ReportController extends Controller
         return redirect()->back()->with('success', 'Withdrawal Request Rejected');
     }
 
+
+    public function nft()
+    {
+        return view('admin.dashboard.report.nft');
+    }
 }
