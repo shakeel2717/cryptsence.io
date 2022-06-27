@@ -44,6 +44,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/kyc', [ReportController::class, 'kyc'])->name('report.kyc');
     Route::get('report/nft', [ReportController::class, 'nft'])->name('report.nft');
+    Route::get('report/transactions/nft', [ReportController::class, 'nftTransactions'])->name('report.transactions.nft');
     Route::get('report/kyc/approve/{id}', [KYCController::class, 'approve'])->name('kyc.approve');
     Route::get('report/kyc/decline/{id}', [KYCController::class, 'decline'])->name('kyc.decline');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');

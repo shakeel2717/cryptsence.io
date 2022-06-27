@@ -358,6 +358,14 @@
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All Convert </div>
             </a>
         </li>
+        <li>
+            <a href="{{ route('admin.report.transactions.nft') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i
+                        data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> All NFT's Purchase </div>
+            </a>
+        </li>
     </ul>
 </li>
 
