@@ -187,7 +187,7 @@
         </div> --}}
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <a href="{{ route('user.nft.index') }}">
+                <a href="{{ route('user.report.transactions.nft.profit') }}">
                     <div class="box p-5 zoom-in">
                         <div class="d-flex align-items-center">
                             <div class="w-2/4 flex-none">

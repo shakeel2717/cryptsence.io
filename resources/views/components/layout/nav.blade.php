@@ -132,6 +132,14 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('user.report.transactions.nft.profit') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT Profit Report </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('user.notification.index') }}"
                 class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>

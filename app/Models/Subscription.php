@@ -21,4 +21,9 @@ class Subscription extends Model
     {
         return $this->belongsTo(Nft::class);
     }
+
+    public function nftBonus()
+    {
+        return $this->hasMany(NftBonus::class);
+    }
 }
