@@ -29,8 +29,12 @@
                                     <span>${{ number_format($nft->nft_category->price, 2) }}/- USDT</span>
                                 </h1>
                                 <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
-                                    <span class="text-gray-700">Daily ROI:</span>
+                                    <span class="text-gray-700">Monthly Profit:</span>
                                     <span>{{ $nft->nft_category->profit }}%</span>
+                                </h1>
+                                <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
+                                    <span class="text-gray-700">Daily Profit:</span>
+                                    <span>{{ $nft->nft_category->profit / 30 }}%</span>
                                 </h1>
                                 <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
                                     <span class="text-gray-700">USDT Balance:</span>
