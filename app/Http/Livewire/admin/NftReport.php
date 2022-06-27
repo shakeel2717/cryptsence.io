@@ -97,7 +97,11 @@ final class NftReport extends PowerGridComponent
             })
             ->addColumn('diamond', function ($model) {
                 return NftCount($model->id, 5);
+            })
+            ->addColumn('totalInvestInNFT', function ($model) {
+                return totalInvestInNFT($model->id);
             });
+
     }
 
     /*
@@ -127,6 +131,7 @@ final class NftReport extends PowerGridComponent
             Column::make('Gold', 'gold'),
             Column::make('Platinum', 'platinum'),
             Column::make('Diamond', 'diamond'),
+            Column::make('Total Invest', 'totalInvestInNFT'),
 
         ];
     }

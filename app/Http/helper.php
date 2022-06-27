@@ -454,3 +454,19 @@ function NftCount($user_id, $category)
     }
     return $count;
 }
+
+
+function totalInvestInNFT($user_id)
+{
+    $subscriptions = Subscription::where('user_id', $user_id)
+        ->where('user_id', $user_id)
+        ->where('type', 'nft')
+        ->where('status', true)
+        ->get();
+    $count = 0;
+    foreach ($subscriptions as $subscription) {
+        $count += $subscription->nft->nft_category->price;
+    }
+
+    return $count;
+}
