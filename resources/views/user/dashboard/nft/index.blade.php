@@ -80,7 +80,7 @@
                                 src="{{ asset('assets/nft/categories') }}/{{ $category->picture }}"
                                 alt="{{ env('APP_DESC') }}">
                             <div class="card-body">
-                                <h5 class="card-title fw-medium fs-lg">NFT Slab: {{ $category->name }}</h5>
+                                <h5 class="card-title fw-medium fs-lg">NFT: {{ $category->name }}</h5>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Price:</span>
                                     <span>${{ number_format($category->price, 2) }}/- USDT</span>

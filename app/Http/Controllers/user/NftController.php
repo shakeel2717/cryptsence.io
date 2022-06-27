@@ -79,10 +79,15 @@ class NftController extends Controller
 
         $nft = Nft::findOrFail($id);
 
+        if (solidNfts($id)) {
+            return redirect()->back()->withErrors('This NFT is sold out.');
+        }
+
         // checking if balance is sufficient
         if (balance('USDT.TRC20', auth()->user()->id) < $nft->nft_category->price) {
             return redirect()->back()->withErrors('Insufficient Balance, Please Top Up');
         }
+
 
         // activating the NFT Subscriptions
         $subscription = new Subscription();

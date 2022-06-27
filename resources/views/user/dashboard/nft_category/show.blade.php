@@ -12,7 +12,14 @@
                             <img class="card-img-top" src="{{ asset('assets/nft') }}/{{ $nft->nft }}"
                                 alt="{{ env('APP_DESC') }}">
                             <div class="card-body">
-                                <h5 class="card-title fw-medium fs-lg">{{ $nft->title }}</h5>
+                                <div class="d-flex">
+                                    <h5 class="card-title fw-medium fs-lg">{{ $nft->title }} </h5>
+                                    @if (solidNfts($nft->id))
+                                        <div
+                                            class="fs-lg bg-theme-6 px-2 rounded-2 text-white ms-5 d-flex align-items-center">
+                                            Solid</div>
+                                    @endif
+                                </div>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Price:</span>
                                     <span>${{ number_format($nft->nft_category->price, 2) }}/- USDT</span>

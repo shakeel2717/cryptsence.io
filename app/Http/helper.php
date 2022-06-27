@@ -8,6 +8,7 @@ use App\Models\Expense;
 use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
 use App\Models\NftBonus;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
@@ -423,4 +424,14 @@ function nftProfitBalance($user_id)
     $in = NftBonus::where('user_id', $user_id)->where('sum', 'in')->sum('amount');
     $out = NftBonus::where('user_id', $user_id)->where('sum', 'out')->sum('amount');
     return $in - $out;
+}
+
+
+function solidNfts($nft_id)
+{
+    $subscriptions = Subscription::where('type', 'nft')->where('nft_id', $nft_id)->get();
+    if (count($subscriptions) > 0) {
+        return true;
+    }
+    return false;
 }
