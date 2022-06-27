@@ -3,13 +3,10 @@
 namespace App\Http\Controllers\user;
 
 use App\Http\Controllers\Controller;
-use App\Models\admin\Nft;
 use App\Models\NftCategory;
-use App\Models\Subscription;
-use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
-class NftController extends Controller
+class NftCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +15,7 @@ class NftController extends Controller
      */
     public function index()
     {
-        $nftCategories = NftCategory::where('status', true)->get();
-        $myNfts = Subscription::where('user_id', auth()->user()->id)->where('type', 'nft')->get();
-        return view('user.dashboard.nft.index', compact('nftCategories', 'myNfts'));
+        //
     }
 
     /**
@@ -52,8 +47,8 @@ class NftController extends Controller
      */
     public function show($id)
     {
-        $nft = Nft::findOrFail($id);
-        return view('user.dashboard.nft.show', compact('nft'));
+        $nfts = NftCategory::findOrFail($id)->nfts;
+        return view('user.dashboard.nft_category.show', compact('nfts'));
     }
 
     /**
@@ -76,33 +71,7 @@ class NftController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $nft = Nft::findOrFail($id);
-
-        // checking if balance is sufficient
-        if (balance('USDT.TRC20', auth()->user()->id) < $nft->nft_category->price) {
-            return redirect()->back()->withErrors('Insufficient Balance, Please Top Up');
-        }
-
-        // activating the NFT Subscriptions
-        $subscription = new Subscription();
-        $subscription->user_id = auth()->user()->id;
-        $subscription->nft_id = $nft->id;
-        $subscription->type = 'nft';
-        $subscription->status = true;
-        $subscription->save();
-
-        // deducting balance
-        Transaction::create([
-            'user_id' => auth()->user()->id,
-            'coin_id' => 1,
-            'amount' => $nft->nft_category->price,
-            'sum' => 'out',
-            'type' => 'nft purchase',
-            'status' => 'success',
-        ]);
-
-        return redirect()->route('user.nft.index')->with('success', 'Congratulations! You have successfully purchased a NFT.');
+        //
     }
 
     /**

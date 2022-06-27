@@ -122,16 +122,16 @@ class Blockchain extends Command
         // NFT Blockchian Run
         Log::info('NFT Started!');
         // getting all users who have NFT
-        $subscriptions = Subscription::where('status', true)->get();
+        $subscriptions = Subscription::where('status', true)->where('type','nft')->get();
         foreach ($subscriptions as $subscription) {
             Log::info('Active Subscription\'s NFT Found, User: ' . $subscription->user->username);
             // delivering the NFT Profit.
-            $proifitRatio = $subscription->nft->profit;
-            Log::info('Daily ROI Ratio: ' . $subscription->nft->profit);
+            $proifitRatio = $subscription->nft->nft_category->profit;
+            Log::info('Daily ROI Ratio: ' . $subscription->nft->nft_category->profit);
             // get current price of CTSE
             $ctsePrice = options('coin_exchange_rate');
-            $profit = $subscription->nft->price / $ctsePrice;
-            $perMonthProfit = $profit * $subscription->nft->profit / 100;
+            $profit = $subscription->nft->nft_category->price / $ctsePrice;
+            $perMonthProfit = $profit * $subscription->nft->nft_category->profit / 100;
             $perDayProfit = $perMonthProfit / 30;
 
             // checking if already delivered profit today
@@ -149,7 +149,7 @@ class Blockchain extends Command
                 $stakingBonus->sum = "in";
                 $stakingBonus->status = "approved";
                 $stakingBonus->amount = $perDayProfit;
-                $stakingBonus->nft_price = $subscription->nft->price;
+                $stakingBonus->nft_price = $subscription->nft->nft_category->price;
                 $stakingBonus->note = "blockchain";
                 $stakingBonus->save();
                 Log::info('Profit Successfully Delivered: ' . $perDayProfit);

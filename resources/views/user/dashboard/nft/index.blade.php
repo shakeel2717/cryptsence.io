@@ -11,8 +11,8 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="image-fluid justify-content-center-around">
-                                    <img alt="{{ env('APP_DESC') }}" class="rounded-3"
-                                        src="{{ asset('assets/nft/sm/1.jpg') }}">
+                                    <img alt="{{ env('APP_DESC') }}" class="rounded-3 img-fluid"
+                                        src="{{ asset('assets/nft') }}/{{ $myNft->nft->nft }}">
                                 </div>
                             </div>
                             <div class="col-md-8">
@@ -32,7 +32,7 @@
                                     </h1>
                                     <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
                                         <span class="text-gray-700">Total NFT Profit:</span>
-                                        <span>{{ number_format(nftBouns(auth()->user()->id,$myNft->id),2) }}/- CTSE</span>
+                                        <span>{{ number_format(nftBouns(auth()->user()->id, $myNft->id), 2) }}/- CTSE</span>
                                     </h1>
                                     <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
                                         <span class="text-gray-700">CTSE Rate:</span>
@@ -74,34 +74,35 @@
         <div class="col-md-8 mx-auto">
             <div class="mt-4">
                 <div class="row">
-                    @forelse ($nfts as $nft)
+                    @forelse ($nftCategories as $category)
                         <div class="col-md-4 bg-gray-200 rounded">
-                            <img class="card-img-top" src="{{ asset('assets/nft') }}/{{ $nft->nft }}"
+                            <img class="card-img-top"
+                                src="{{ asset('assets/nft/categories') }}/{{ $category->picture }}"
                                 alt="{{ env('APP_DESC') }}">
                             <div class="card-body">
-                                <h5 class="card-title fw-medium fs-lg">{{ $nft->title }}</h5>
+                                <h5 class="card-title fw-medium fs-lg">NFT Slab: {{ $category->name }}</h5>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Price:</span>
-                                    <span>${{ number_format($nft->price, 2) }}/- USDT</span>
+                                    <span>${{ number_format($category->price, 2) }}/- USDT</span>
                                 </h1>
                                 <br>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Holding Profit:</span>
-                                    <span>{{ $nft->profit }}%</span>
+                                    <span>{{ $category->profit }}%</span>
                                 </h1>
                                 <br>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Contract Period:</span>
-                                    <span>{{ $nft->duration }} Days</span>
+                                    <span>{{ $category->duration }} Days</span>
                                 </h1>
-                                <a href="{{ route('user.nft.show', ['nft' => $nft->id]) }}"
-                                    class="btn btn-primary mt-3">Buy NFT Now</a>
+                                <a href="{{ route('user.nft_category.show', ['nft_category' => $category->id]) }}"
+                                    class="btn btn-primary mt-3">NFT Catalog</a>
                             </div>
                         </div>
                     @empty
                         <div class="col-md-4 bg-gray-200 rounded">
                             <div class="card-body">
-                                <h5 class="card-title fw-medium fs-lg">No NFT Found at this Time</h5>
+                                <h5 class="card-title fw-medium fs-lg">No NFT Category Found at this Time</h5>
                             </div>
                         </div>
                     @endforelse

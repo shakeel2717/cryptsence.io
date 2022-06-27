@@ -9,6 +9,7 @@ use App\Http\Controllers\user\ConvertController;
 use App\Http\Controllers\user\DashboardController;
 use App\Http\Controllers\user\GoogleAuthController;
 use App\Http\Controllers\user\KYCController;
+use App\Http\Controllers\user\NftCategoryController;
 use App\Http\Controllers\user\NftController;
 use App\Http\Controllers\user\NotificationController;
 use App\Http\Controllers\user\PaymentController;
@@ -37,6 +38,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
     Route::resource('sell', CTSESellController::class);
     Route::resource('tour', TourWinnerController::class);
     Route::resource('nft', NftController::class);
+    Route::resource('nft_category', NftCategoryController::class);
     Route::get('report/transactions/recent', [ReportController::class, 'recent'])->name('report.transactions.recent');
     Route::get('report/transactions/deposits', [ReportController::class, 'deposits'])->name('report.transactions.deposits');
     Route::get('report/transactions/withdrawals', [ReportController::class, 'withdrawals'])->name('report.transactions.withdrawals');
