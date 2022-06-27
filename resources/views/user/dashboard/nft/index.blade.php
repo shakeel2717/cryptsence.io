@@ -28,11 +28,12 @@
                                     <br>
                                     <h1 class="fs-xl fw-medium lh-1 justify-content-center-between">
                                         <span class="text-gray-700">Price:</span>
-                                        <span>${{ number_format($myNft->nft->price, 2) }}/- USDT</span>
+                                        <span>${{ number_format($myNft->nft->nft_category->price, 2) }}/- USDT</span>
                                     </h1>
                                     <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
                                         <span class="text-gray-700">Total NFT Profit:</span>
-                                        <span>{{ number_format(nftBouns(auth()->user()->id, $myNft->id), 2) }}/- CTSE</span>
+                                        <span>{{ number_format(nftBouns(auth()->user()->id, $myNft->id), 2) }}/-
+                                            CTSE</span>
                                     </h1>
                                     <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
                                         <span class="text-gray-700">CTSE Rate:</span>
