@@ -56,7 +56,7 @@ class NftController extends Controller
         $nft->nft = $imageName;
         $nft->save();
 
-        return redirect()->route('admin.nft.index')->with('success', 'NFT added successfully');
+        return redirect()->back()->with('success', 'NFT added successfully');
     }
 
     /**
