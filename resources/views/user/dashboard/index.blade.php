@@ -96,63 +96,6 @@
         </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <a href="{{ route('user.referral.level1') }}">
-                    <div class="box p-5 zoom-in">
-                        <div class="d-flex align-items-center">
-                            <div class="w-2/4 flex-none">
-                                <div class="fs-xl fw-medium truncate">
-                                    ${{ number_format(ReferralsFirstLevel(auth()->user()->id), 2) }}
-                                </div>
-                                <div class="text-gray-600 mt-1">1st Level Business:</div>
-                            </div>
-                            <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3 mt-5">
-            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <a href="{{ route('user.referral.level2') }}">
-                    <div class="box p-5 zoom-in">
-                        <div class="d-flex align-items-center">
-                            <div class="w-2/4 flex-none">
-                                <div class="fs-xl fw-medium truncate">
-                                    ${{ number_format(ReferralsSecondLevel(auth()->user()->id), 2) }}
-                                </div>
-                                <div class="text-gray-600 mt-1">2nd Level Business:</div>
-                            </div>
-                            <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3 mt-5">
-            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
-                <a href="{{ route('user.referral.level3') }}">
-                    <div class="box p-5 zoom-in">
-                        <div class="d-flex align-items-center">
-                            <div class="w-2/4 flex-none">
-                                <div class="fs-xl fw-medium truncate">
-                                    ${{ number_format(ReferralsThirdLevel(auth()->user()->id), 2) }}
-                                </div>
-                                <div class="text-gray-600 mt-1">3rd Level Business:</div>
-                            </div>
-                            <div class="flex-none ms-auto position-relative">
-                                <img src="{{ asset('assets/images/coins/tether.png') }}" alt="" class="w-10">
-                            </div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        <div class="col-md-3 mt-5">
-            <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
                         <div class="w-2/4 flex-none">
@@ -168,7 +111,7 @@
                 </div>
             </div>
         </div>
-        {{-- <div class="col-md-3 mt-5">
+        <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <div class="box p-5 zoom-in">
                     <div class="d-flex align-items-center">
@@ -184,7 +127,7 @@
                     </div>
                 </div>
             </div>
-        </div> --}}
+        </div>
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
                 <a href="{{ route('user.report.transactions.nft.profit') }}">
@@ -372,7 +315,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-lg-4">
             <div class="g-col-12 g-col-xl-8 mt-6">
                 <div class="intro-y d-block d-sm-flex align-items-center h-10">
                     <h2 class="fs-lg fw-medium truncate me-5">
@@ -406,7 +349,57 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-lg-4">
+            <div class="g-col-12 g-col-xl-4 mt-6">
+                <div class="intro-y d-flex align-items-center h-10">
+                    <h2 class="fs-lg fw-medium truncate me-5">
+                        Downline Total Business
+                    </h2>
+                </div>
+                <div class="mt-5">
+                    <div class="intro-y">
+                        <div class="box px-4 py-4 mb-3 d-flex align-items-center zoom-in">
+                            <div class="ms-4 me-auto">
+                                <div class="fw-medium">${{ number_format(ReferralsFirstLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 fs-xs mt-0.5">1st Level Business:</div>
+                            </div>
+                            <div class="w-10 h-10 flex-none image-fit rounded-2 overflow-hidden">
+                                <img alt="Rubick Bootstrap HTML Admin Template"
+                                    src="{{ asset('assets/images/icons/statistic.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-y">
+                        <div class="box px-4 py-4 mb-3 d-flex align-items-center zoom-in">
+                            <div class="ms-4 me-auto">
+                                <div class="fw-medium">${{ number_format(ReferralsSecondLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 fs-xs mt-0.5">2nd Level Business:</div>
+                            </div>
+                            <div class="w-10 h-10 flex-none image-fit rounded-2 overflow-hidden">
+                                <img alt="Rubick Bootstrap HTML Admin Template"
+                                    src="{{ asset('assets/images/icons/statistic.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="intro-y">
+                        <div class="box px-4 py-4 mb-3 d-flex align-items-center zoom-in">
+                            <div class="ms-4 me-auto">
+                                <div class="fw-medium">${{ number_format(ReferralsThirdLevel(auth()->user()->id), 2) }}
+                                </div>
+                                <div class="text-gray-600 fs-xs mt-0.5">3rd Level Business:</div>
+                            </div>
+                            <div class="w-10 h-10 flex-none image-fit rounded-2 overflow-hidden">
+                                <img alt="Rubick Bootstrap HTML Admin Template"
+                                    src="{{ asset('assets/images/icons/statistic.png') }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
             <!-- BEGIN: Important Notes -->
             <div
                 class="g-col-12 g-col-md-6 g-col-xl-12 g-start-xl-1 g-row-start-xl-1 g-start-xxl-auto g-row-start-xxl-auto mt-6">
