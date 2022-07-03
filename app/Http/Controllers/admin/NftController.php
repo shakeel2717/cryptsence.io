@@ -40,7 +40,7 @@ class NftController extends Controller
     {
         $validatedData = $request->validate([
             'title' => 'required|max:255',
-            'nft' => 'required|max:255',
+            'nft' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'nft_category_id' => 'required|integer',
         ]);
 

@@ -42,7 +42,7 @@ class NftCategoryController extends Controller
             'profit' => 'required|numeric',
             'duration' => 'required|integer',
             'stock' => 'required|integer',
-            'nft' => 'required',
+            'nft' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // getting a picture from request
