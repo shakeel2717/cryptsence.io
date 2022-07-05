@@ -470,3 +470,56 @@ function totalInvestInNFT($user_id)
 
     return $count;
 }
+
+function firstLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $firstLevelRefer = User::where('username', $user->refer)->first();
+    if (!$firstLevelRefer) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('user_id', $firstLevelRefer->id)->where('type', '1st level reward')->sum('amount');
+    return $tansactions;
+}
+
+
+function secondLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $firstLevelRefer = User::where('username', $user->refer)->first();
+    if (!$firstLevelRefer) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('user_id', $user_id)->where('type', '2nd level reward')->sum('amount');
+    return $user_id;
+}
+
+
+function thirdLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $firstLevelRefer = User::where('username', $user->refer)->first();
+    if (!$firstLevelRefer) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('user_id', $firstLevelRefer->id)->where('type', '3rd level reward')->sum('amount');
+    return $tansactions;
+}

@@ -73,7 +73,7 @@ class ProccessReferralCommission
                     'coin_id' => $event->coin_id,
                     'amount' => $amount,
                     'sum' => 'in',
-                    'type' => 'reward',
+                    'type' => '1st level reward',
                     'status' => 'approved',
                     'note' => 'Referral Reward From ' . $user->username,
                 ]);
@@ -100,7 +100,7 @@ class ProccessReferralCommission
                         'coin_id' => $event->coin_id,
                         'amount' => $amount,
                         'sum' => 'in',
-                        'type' => 'reward',
+                        'type' => '2nd level reward',
                         'status' => 'approved',
                         'note' => 'Referral Reward From ' . $user->username,
                     ]);
@@ -127,7 +127,7 @@ class ProccessReferralCommission
                             'coin_id' => $event->coin_id,
                             'amount' => $amount,
                             'sum' => 'in',
-                            'type' => 'reward',
+                            'type' => '3rd level reward',
                             'status' => 'approved',
                             'note' => 'Referral Reward From ' . $user->username,
                         ]);

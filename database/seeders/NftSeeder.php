@@ -18,7 +18,7 @@ class NftSeeder extends Seeder
     {
         // adding a parrent category
         $nftCategory = new NftCategory();
-        $nftCategory->name = 'Silver';
+        $nftCategory->name = 'Browns';
         $nftCategory->price = 250;
         $nftCategory->duration = 365;
         $nftCategory->profit = 7.5;
@@ -29,16 +29,16 @@ class NftSeeder extends Seeder
         $a = 1;
         while ($a <= 100) {
             $nft = new Nft();
-            $nft->title = 'NFT # ' . $a;
+            $nft->title = 'NFT Browns # ' . $a;
             $nft->nft_category_id = 1;
-            $nft->nft = "nft" . $a . ".jpg";
+            $nft->nft = "nft_browns" . $a . ".jpg";
             $nft->save();
             $a++;
         }
 
         // adding a parrent category
         $nftCategory = new NftCategory();
-        $nftCategory->name = 'Browns';
+        $nftCategory->name = 'Silver';
         $nftCategory->price = 500;
         $nftCategory->duration = 365;
         $nftCategory->profit = 10;
@@ -46,12 +46,12 @@ class NftSeeder extends Seeder
         $nftCategory->picture = '2.jpg';
         $nftCategory->save();
 
-        $a = 101;
-        while ($a <= 175) {
+        $a = 1;
+        while ($a <= 75) {
             $nft = new Nft();
-            $nft->title = 'NFT # ' . $a;
+            $nft->title = 'NFT Silver # ' . $a;
             $nft->nft_category_id = 2;
-            $nft->nft = "nft" . $a . ".jpg";
+            $nft->nft = "nft_silver" . $a . ".jpg";
             $nft->save();
             $a++;
         }
@@ -66,12 +66,12 @@ class NftSeeder extends Seeder
         $nftCategory->picture = '3.jpg';
         $nftCategory->save();
 
-        $a = 176;
-        while ($a <= 225) {
+        $a = 1;
+        while ($a <= 50) {
             $nft = new Nft();
-            $nft->title = 'NFT # ' . $a;
+            $nft->title = 'NFT Gold # ' . $a;
             $nft->nft_category_id = 3;
-            $nft->nft = "nft" . $a . ".jpg";
+            $nft->nft = "nft_gold" . $a . ".jpg";
             $nft->save();
             $a++;
         }
@@ -86,19 +86,19 @@ class NftSeeder extends Seeder
         $nftCategory->picture = '4.jpg';
         $nftCategory->save();
 
-        $a = 226;
-        while ($a <= 255) {
+        $a = 1;
+        while ($a <= 30) {
             $nft = new Nft();
-            $nft->title = 'NFT # ' . $a;
+            $nft->title = 'NFT Platinum # ' . $a;
             $nft->nft_category_id = 4;
-            $nft->nft = "nft" . $a . ".jpg";
+            $nft->nft = "nft_platinum" . $a . ".jpg";
             $nft->save();
             $a++;
         }
 
         // adding a parrent category
         $nftCategory = new NftCategory();
-        $nftCategory->name = 'Browns';
+        $nftCategory->name = 'Diamond';
         $nftCategory->price = 5000;
         $nftCategory->duration = 365;
         $nftCategory->profit = 20;
@@ -106,12 +106,12 @@ class NftSeeder extends Seeder
         $nftCategory->picture = '5.jpg';
         $nftCategory->save();
 
-        $a = 256;
-        while ($a <= 275) {
+        $a = 1;
+        while ($a <= 20) {
             $nft = new Nft();
-            $nft->title = 'NFT # ' . $a;
+            $nft->title = 'NFT Diamond # ' . $a;
             $nft->nft_category_id = 5;
-            $nft->nft = "nft" . $a . ".jpg";
+            $nft->nft = "nft_diamond" . $a . ".jpg";
             $nft->save();
             $a++;
         }

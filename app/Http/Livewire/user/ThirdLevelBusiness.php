@@ -102,6 +102,9 @@ final class ThirdLevelBusiness extends PowerGridComponent
             ->addColumn('balance', function (User $model) {
                 return "$" . number_format(myPurchase($model->id), 2);
             })
+            ->addColumn('rewards', function (User $model) {
+                return number_format(thirdLevelReward(auth()->user()->id), 2) . " CTSE";
+            })
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
@@ -138,8 +141,12 @@ final class ThirdLevelBusiness extends PowerGridComponent
                 ->makeInputText(),
 
             Column::add()
-                ->title('ID')
+                ->title('Business')
                 ->field('balance'),
+
+            Column::add()
+                ->title('Commission')
+                ->field('rewards'),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
                 ->searchable()
