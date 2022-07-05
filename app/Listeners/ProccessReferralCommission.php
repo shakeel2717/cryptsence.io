@@ -40,7 +40,6 @@ class ProccessReferralCommission
         if ($upline) {
             Log::info('user have Valid refer');
 
-
             // adding a transaction for this user upliner
             Transaction::create([
                 'user_id' => $upline->id,
@@ -54,13 +53,103 @@ class ProccessReferralCommission
 
             // inserting notification
             $notification = new UserNotification();
-            $notification->user_id = $user->id;
+            $notification->user_id = $upline->id;
             $notification->type = 'award';
             $notification->title = 'Referral Reward';
             $notification->content = 'You have received ' . $amount . ' CTSE for your referral Reward';
             $notification->save();
 
             Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $upline->username);
+
+            $uplineSecond = User::where('username', $upline->refer)->first();
+            if ($uplineSecond) {
+                $commission = 2;
+                $amount = $event->balance * $commission / 100;
+                Log::info('user have Valid Indirect 1 refer');
+
+                // adding a transaction for this user upliner
+                Transaction::create([
+                    'user_id' => $uplineSecond->id,
+                    'coin_id' => $event->coin_id,
+                    'amount' => $amount,
+                    'sum' => 'in',
+                    'type' => 'reward',
+                    'status' => 'approved',
+                    'note' => 'Referral Reward From ' . $user->username,
+                ]);
+
+                // inserting notification
+                $notification = new UserNotification();
+                $notification->user_id = $uplineSecond->id;
+                $notification->type = 'award';
+                $notification->title = 'Referral Reward';
+                $notification->content = 'You have received ' . $amount . ' CTSE for your referral Reward';
+                $notification->save();
+
+                Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $uplineSecond->username);
+
+                $uplineThird = User::where('username', $uplineSecond->refer)->first();
+                if ($uplineThird) {
+                    $commission = 2;
+                    $amount = $event->balance * $commission / 100;
+                    Log::info('user have Valid Indirect 2 refer');
+
+                    // adding a transaction for this user upliner
+                    Transaction::create([
+                        'user_id' => $uplineThird->id,
+                        'coin_id' => $event->coin_id,
+                        'amount' => $amount,
+                        'sum' => 'in',
+                        'type' => 'reward',
+                        'status' => 'approved',
+                        'note' => 'Referral Reward From ' . $user->username,
+                    ]);
+
+                    // inserting notification
+                    $notification = new UserNotification();
+                    $notification->user_id = $uplineThird->id;
+                    $notification->type = 'award';
+                    $notification->title = 'Referral Reward';
+                    $notification->content = 'You have received ' . $amount . ' CTSE for your referral Reward';
+                    $notification->save();
+
+                    Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $uplineThird->username);
+
+                    $uplineFourth = User::where('username', $uplineThird->refer)->first();
+                    if ($uplineFourth) {
+                        $commission = 3;
+                        $amount = $event->balance * $commission / 100;
+                        Log::info('user have Valid Indirect 3 refer');
+
+                        // adding a transaction for this user upliner
+                        Transaction::create([
+                            'user_id' => $uplineFourth->id,
+                            'coin_id' => $event->coin_id,
+                            'amount' => $amount,
+                            'sum' => 'in',
+                            'type' => 'reward',
+                            'status' => 'approved',
+                            'note' => 'Referral Reward From ' . $user->username,
+                        ]);
+
+                        // inserting notification
+                        $notification = new UserNotification();
+                        $notification->user_id = $uplineFourth->id;
+                        $notification->type = 'award';
+                        $notification->title = 'Referral Reward';
+                        $notification->content = 'You have received ' . $amount . ' CTSE for your referral Reward';
+                        $notification->save();
+
+                        Log::info('Refer Reward for ' . $user->username . ' has been added to ' . $uplineFourth->username);
+                    } else {
+                        Log::info('NO Indirect 1 Refer Found Refer Fund');
+                    }
+                } else {
+                    Log::info('NO Indirect 1 Refer Found Refer Fund');
+                }
+            } else {
+                Log::info('NO Indirect 1 Refer Found Refer Fund');
+            }
         } else {
             Log::info('NO Refer Fund');
         }
