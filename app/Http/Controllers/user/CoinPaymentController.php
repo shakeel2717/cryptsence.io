@@ -59,6 +59,10 @@ class CoinPaymentController extends Controller
                     edie("User not Found. User Email: " . $request->label);
                 }
 
+                if($request->currency != "USDT.TRC20"){
+                    edie("TRX Request, not a USDT: " . $request->label);
+                }
+
                 // Inserting New Transaction Request Storing into session
                 $task = new btcPayments();
                 $task->user_id = $user->id;
