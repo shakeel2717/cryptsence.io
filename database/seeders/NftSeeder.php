@@ -19,6 +19,7 @@ class NftSeeder extends Seeder
         // adding a parrent category
         $nftCategory = new NftCategory();
         $nftCategory->name = 'Browns';
+
         $nftCategory->price = 250;
         $nftCategory->duration = 365;
         $nftCategory->profit = 7.5;
