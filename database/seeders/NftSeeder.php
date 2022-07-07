@@ -227,5 +227,32 @@ class NftSeeder extends Seeder
         ]);
 
 
+        $user = new User();
+        $user->name = 'Test6';
+        $user->username = 'test6';
+        $user->email = 'test6@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test5';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+        $user = new User();
+        $user->name = 'Test7';
+        $user->username = 'test7';
+        $user->email = 'test7@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test6';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
     }
 }
