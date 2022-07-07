@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\ShakeelController;
 use App\Http\Controllers\admin\TourWinnerController;
 use App\Http\Controllers\admin\UserLogin;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
@@ -59,4 +60,9 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('/report/tour/self', [TourWinnerController::class, 'tourSelf'])->name('report.tour.self');
     Route::get('/report/tour/direct', [TourWinnerController::class, 'tourDirect'])->name('report.tour.direct');
     Route::get('/report/tour/levels', [TourWinnerController::class, 'tourLevel'])->name('report.tour.levels');
+    Route::post('/data-wash', function () {
+        // run command
+        Artisan::call('make:clean');
+        return redirect()->route('admin.index.index');
+    })->name('data-wash');
 });

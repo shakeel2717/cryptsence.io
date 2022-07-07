@@ -6,6 +6,20 @@
     @livewireStyles()
 @endsection
 @section('content')
+    @if (env('APP_ENV') == 'local')
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body p-5 m-3">
+                        <form action="{{ route('admin.data-wash') }}" method="POST">
+                            @csrf
+                            <button class="btn btn-primary btn-lg" type="submit">Clear All Data</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-12">
             <div class="row">
