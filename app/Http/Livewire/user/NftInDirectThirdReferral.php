@@ -2,14 +2,14 @@
 
 namespace App\Http\Livewire\user;
 
-use App\Models\User;
+use App\Models\user\Transaction;
 use Illuminate\Support\Carbon;
 use Illuminate\Database\Eloquent\Builder;
 use PowerComponents\LivewirePowerGrid\Rules\{Rule, RuleActions};
 use PowerComponents\LivewirePowerGrid\Traits\ActionButton;
 use PowerComponents\LivewirePowerGrid\{Button, Column, Exportable, Footer, Header, PowerGrid, PowerGridComponent, PowerGridEloquent};
 
-final class FirstLevelBusiness extends PowerGridComponent
+final class NftInDirectThirdReferral extends PowerGridComponent
 {
     use ActionButton;
 
@@ -46,19 +46,14 @@ final class FirstLevelBusiness extends PowerGridComponent
     /**
      * PowerGrid datasource.
      *
-     * @return Builder<\App\Models\User>
+     * @return Builder<\App\Models\user\Transaction>
      */
     public function datasource(): Builder
     {
-        $firstLevelRefers = [];
-        $refers = User::where('refer', auth()->user()->username)->get();
-        foreach ($refers as $refer) {
-            $refers1 = User::where('refer', $refer->username)->get();
-            foreach ($refers1 as $refer1) {
-                $firstLevelRefers[] = $refer1->id;
-            }
-        }
-        return User::query()->whereIn('id', $firstLevelRefers);
+        return Transaction::query()
+            ->join('coins', 'transactions.coin_id', '=', 'coins.id')
+            ->select('transactions.*', 'coins.symbol as coin_name')
+            ->where('user_id', auth()->user()->id)->where('reference', 'nft in-direct 3 reward');
     }
 
     /*
@@ -76,7 +71,11 @@ final class FirstLevelBusiness extends PowerGridComponent
      */
     public function relationSearch(): array
     {
-        return [];
+        return [
+            'Coin' => [
+                'symbol'
+            ]
+        ];
     }
 
     /*
@@ -90,16 +89,12 @@ final class FirstLevelBusiness extends PowerGridComponent
     public function addColumns(): PowerGridEloquent
     {
         return PowerGrid::eloquent()
-            ->addColumn('name')
-            ->addColumn('username')
-            ->addColumn('country')
-            ->addColumn('balance', function (User $model) {
-                return "$" . number_format(myPurchase($model->id), 2);
-            })
-            ->addColumn('rewards', function (User $model) {
-                return number_format(firstLevelReward($model->id), 2) . " CTSE";
-            })
-            ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
+            ->addColumn('type')
+            ->addColumn('amount')
+            ->addColumn('status')
+            ->addColumn('coin_id')
+            ->addColumn('note')
+            ->addColumn('created_at_formatted', fn (Transaction $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
 
     /*
@@ -119,33 +114,33 @@ final class FirstLevelBusiness extends PowerGridComponent
     public function columns(): array
     {
         return [
-            Column::make('NAME', 'name')
+            Column::make('TYPE', 'type')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('USERNAME', 'username')
+            Column::make('AMOUNT', 'amount')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::make('COUNTRY', 'country')
+            Column::make('STATUS', 'status')
                 ->sortable()
                 ->searchable()
                 ->makeInputText(),
 
-            Column::add()
-                ->title('Business')
-                ->field('balance'),
+            Column::make('COIN', 'coin_name'),
 
-            Column::add()
-                ->title('Commission')
-                ->field('rewards'),
+            Column::make('NOTE', 'note')
+                ->sortable()
+                ->searchable()
+                ->makeInputText(),
 
             Column::make('CREATED AT', 'created_at_formatted', 'created_at')
                 ->searchable()
                 ->sortable()
                 ->makeInputDatePicker(),
+
         ];
     }
 
@@ -158,7 +153,7 @@ final class FirstLevelBusiness extends PowerGridComponent
     */
 
     /**
-     * PowerGrid User Action Buttons.
+     * PowerGrid Transaction Action Buttons.
      *
      * @return array<int, Button>
      */
@@ -169,11 +164,11 @@ final class FirstLevelBusiness extends PowerGridComponent
        return [
            Button::make('edit', 'Edit')
                ->class('bg-indigo-500 cursor-pointer text-white px-3 py-2.5 m-1 rounded text-sm')
-               ->route('user.edit', ['user' => 'id']),
+               ->route('transaction.edit', ['transaction' => 'id']),
 
            Button::make('destroy', 'Delete')
                ->class('bg-red-500 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
-               ->route('user.destroy', ['user' => 'id'])
+               ->route('transaction.destroy', ['transaction' => 'id'])
                ->method('delete')
         ];
     }
@@ -188,7 +183,7 @@ final class FirstLevelBusiness extends PowerGridComponent
     */
 
     /**
-     * PowerGrid User Action Rules.
+     * PowerGrid Transaction Action Rules.
      *
      * @return array<int, RuleActions>
      */
@@ -200,7 +195,7 @@ final class FirstLevelBusiness extends PowerGridComponent
 
            //Hide button edit for ID 1
             Rule::button('edit')
-                ->when(fn($user) => $user->id === 1)
+                ->when(fn($transaction) => $transaction->id === 1)
                 ->hide(),
         ];
     }

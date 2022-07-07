@@ -302,11 +302,9 @@ function coinPaymentDeposit()
 
 function ReferralBalance($user_id)
 {
-    // get only 15 days old transactions
     $transaction = Transaction::where('user_id', $user_id)
         ->where('type', 'reward')
         ->where('sum', 'in')
-        // ->where('created_at', '<=', Carbon::now()->subDays(15))
         ->sum('amount');
 
     $transactionOut = Transaction::where('user_id', $user_id)
@@ -471,6 +469,24 @@ function totalInvestInNFT($user_id)
     return $count;
 }
 
+
+function directReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    // $firstLevelRefer = User::where('username', $user->refer)->first();
+    // if (!$firstLevelRefer) {
+    //     return 0;
+    // }
+
+    $tansactions = Transaction::where('note', $user->username)->where('reference', 'direct reward')->sum('amount');
+    return $tansactions;
+}
+
 function firstLevelReward($user_id)
 {
     // getting this user first Level Reward
@@ -479,12 +495,7 @@ function firstLevelReward($user_id)
         return 0;
     }
 
-    $firstLevelRefer = User::where('username', $user->refer)->first();
-    if (!$firstLevelRefer) {
-        return 0;
-    }
-
-    $tansactions = Transaction::where('user_id', $firstLevelRefer->id)->where('type', '1st level reward')->sum('amount');
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '1st level reward')->sum('amount');
     return $tansactions;
 }
 
@@ -497,12 +508,7 @@ function secondLevelReward($user_id)
         return 0;
     }
 
-    $firstLevelRefer = User::where('username', $user->refer)->first();
-    if (!$firstLevelRefer) {
-        return 0;
-    }
-
-    $tansactions = Transaction::where('user_id', $user_id)->where('type', '2nd level reward')->sum('amount');
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '2nd level reward')->sum('amount');
     return $user_id;
 }
 
@@ -515,11 +521,6 @@ function thirdLevelReward($user_id)
         return 0;
     }
 
-    $firstLevelRefer = User::where('username', $user->refer)->first();
-    if (!$firstLevelRefer) {
-        return 0;
-    }
-
-    $tansactions = Transaction::where('user_id', $firstLevelRefer->id)->where('type', '3rd level reward')->sum('amount');
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '3rd level reward')->sum('amount');
     return $tansactions;
 }

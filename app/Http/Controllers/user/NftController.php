@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\user;
 
+use App\Events\NftReferCommissionEvent;
 use App\Http\Controllers\Controller;
 use App\Models\admin\Nft;
 use App\Models\NftCategory;
@@ -106,6 +107,8 @@ class NftController extends Controller
             'type' => 'nft purchase',
             'status' => 'success',
         ]);
+
+        event(new NftReferCommissionEvent($nft));
 
         return redirect()->route('user.nft.index')->with('success', 'Congratulations! You have successfully purchased a NFT.');
     }

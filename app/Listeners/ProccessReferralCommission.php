@@ -48,7 +48,8 @@ class ProccessReferralCommission
                 'sum' => 'in',
                 'type' => 'reward',
                 'status' => 'approved',
-                'note' => 'Referral Reward From ' . $user->username,
+                'note' => $user->username,
+                'reference' => 'direct reward',
             ]);
 
             // inserting notification
@@ -73,9 +74,10 @@ class ProccessReferralCommission
                     'coin_id' => $event->coin_id,
                     'amount' => $amount,
                     'sum' => 'in',
-                    'type' => '1st level reward',
+                    'type' => 'reward',
                     'status' => 'approved',
-                    'note' => 'Referral Reward From ' . $user->username,
+                    'note' => $user->username,
+                    'reference' => '1st level reward',
                 ]);
 
                 // inserting notification
@@ -100,9 +102,11 @@ class ProccessReferralCommission
                         'coin_id' => $event->coin_id,
                         'amount' => $amount,
                         'sum' => 'in',
-                        'type' => '2nd level reward',
+                        'type' => 'reward',
                         'status' => 'approved',
-                        'note' => 'Referral Reward From ' . $user->username,
+                        'note' => $user->username,
+                        'reference' => '2nd level reward',
+
                     ]);
 
                     // inserting notification
@@ -127,9 +131,10 @@ class ProccessReferralCommission
                             'coin_id' => $event->coin_id,
                             'amount' => $amount,
                             'sum' => 'in',
-                            'type' => '3rd level reward',
+                            'type' => 'reward',
                             'status' => 'approved',
-                            'note' => 'Referral Reward From ' . $user->username,
+                            'note' => $user->username,
+                            'reference' => '3rd level reward',
                         ]);
 
                         // inserting notification

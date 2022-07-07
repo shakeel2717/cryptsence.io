@@ -1,6 +1,6 @@
 @extends('layout.dashboard')
 @section('title')
-    Level 1 Referral Report
+    Level 3 Referral Report
 @endsection
 @section('head')
     @livewireStyles

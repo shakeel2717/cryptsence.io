@@ -3,7 +3,10 @@
 namespace Database\Seeders;
 
 use App\Models\admin\Nft;
+use App\Models\admin\Option;
 use App\Models\NftCategory;
+use App\Models\User;
+use App\Models\user\Referral;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -116,5 +119,113 @@ class NftSeeder extends Seeder
             $nft->save();
             $a++;
         }
+
+
+        // adding options
+        $option = new Option();
+        $option->name = "nft_direct_refer_commission";
+        $option->value = "7";
+        $option->save();
+
+        $option = new Option();
+        $option->name = "nft_in_direct_1_refer_commission";
+        $option->value = "2";
+        $option->save();
+
+        $option = new Option();
+        $option->name = "nft_in_direct_2_refer_commission";
+        $option->value = "3";
+        $option->save();
+
+        $option = new Option();
+        $option->name = "nft_in_direct_3_refer_commission";
+        $option->value = "4";
+        $option->save();
+
+
+
+        $user = new User();
+        $user->name = 'Shakeel Ahmad';
+        $user->username = 'shakeel2717';
+        $user->email = 'shakeel2717@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'default';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
+        $user = new User();
+        $user->name = 'Test1';
+        $user->username = 'test1';
+        $user->email = 'test1@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'shakeel2717';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+        $user = new User();
+        $user->name = 'Test2';
+        $user->username = 'test2';
+        $user->email = 'test2@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test1';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
+        $user = new User();
+        $user->name = 'Test3';
+        $user->username = 'test3';
+        $user->email = 'test3@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test2';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
+        $user = new User();
+        $user->name = 'Test4';
+        $user->username = 'test4';
+        $user->email = 'test4@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test3';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
+        $user = new User();
+        $user->name = 'Test5';
+        $user->username = 'test5';
+        $user->email = 'test5@gmail.com';
+        $user->password = bcrypt('asdfasdf');
+        $user->refer = 'test4';
+        $user->save();
+
+        $referral = Referral::create([
+            'user_id' => $user->id,
+            'referral_code' => random(10),
+        ]);
+
+
     }
 }

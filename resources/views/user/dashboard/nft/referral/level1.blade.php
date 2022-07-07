@@ -1,13 +1,13 @@
 @extends('layout.dashboard')
 @section('title')
-    Level 2 Referral Report
+    NFT In-Direct Level 1 Referral Rewards Reports
 @endsection
 @section('head')
     @livewireStyles
     @powerGridStyles
 @endsection
 @section('content')
-    <livewire:user.second-level-business />
+    <livewire:user.nft-in-direct-first-referral />
 @endsection
 @section('footer')
     @livewireScripts

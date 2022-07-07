@@ -49,6 +49,50 @@
 </li>
 
 <li>
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="file-text"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            NFT Referral
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
+    </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('user.nft.referral.direct') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Direct Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level1') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 1st Level Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level2') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 2nd Level Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level3') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 3rd Level Rewards </div>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li>
     <a href="{{ route('user.kyc.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="shield"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> KYC </div>
@@ -194,6 +238,7 @@
         </li>
     </ul>
 </li>
+
 
 
 <li>

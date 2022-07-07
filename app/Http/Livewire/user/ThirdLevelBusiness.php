@@ -103,7 +103,7 @@ final class ThirdLevelBusiness extends PowerGridComponent
                 return "$" . number_format(myPurchase($model->id), 2);
             })
             ->addColumn('rewards', function (User $model) {
-                return number_format(thirdLevelReward(auth()->user()->id), 2) . " CTSE";
+                return number_format(thirdLevelReward($model->id), 2) . " CTSE";
             })
             ->addColumn('created_at_formatted', fn (User $model) => Carbon::parse($model->created_at)->format('d/m/Y H:i:s'));
     }
