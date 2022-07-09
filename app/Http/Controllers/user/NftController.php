@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\admin\Nft;
 use App\Models\NftCategory;
 use App\Models\Subscription;
+use App\Models\User;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
@@ -97,6 +98,10 @@ class NftController extends Controller
         $subscription->type = 'nft';
         $subscription->status = true;
         $subscription->save();
+
+        $user = User::find(auth()->user()->id);
+        $user->nft = true;
+        $user->save();
 
         // deducting balance
         Transaction::create([

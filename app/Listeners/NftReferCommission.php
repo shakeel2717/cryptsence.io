@@ -34,7 +34,7 @@ class NftReferCommission
         // getting this user
         $user = User::find(auth()->user()->id);
         // checking if this user has valid refer
-        $directRefer = User::where('username', $user->refer)->first();
+        $directRefer = User::where('username', $user->refer)->where('nft', true)->first();
         if ($directRefer != "") {
             Log::info('Direct Refer Found, Proccess Start');
             $commission = options('nft_direct_refer_commission');
@@ -53,7 +53,7 @@ class NftReferCommission
             ]);
 
             // checking if this user has valid refer
-            $inDirectRefer1 = User::where('username', $directRefer->refer)->first();
+            $inDirectRefer1 = User::where('username', $directRefer->refer)->where('nft', true)->first();
             if ($inDirectRefer1 != "") {
                 Log::info('InDirect 1 Refer Found, Proccess Start');
                 $commission = options('nft_in_direct_1_refer_commission');
@@ -72,7 +72,7 @@ class NftReferCommission
                 ]);
 
                 // checking if this user has valid refer
-                $inDirectRefer2 = User::where('username', $inDirectRefer1->refer)->first();
+                $inDirectRefer2 = User::where('username', $inDirectRefer1->refer)->where('nft', true)->first();
                 if ($inDirectRefer2 != "") {
                     Log::info('InDirect 2 Refer Found, Proccess Start');
                     $commission = options('nft_in_direct_2_refer_commission');
@@ -91,7 +91,7 @@ class NftReferCommission
                     ]);
 
                     // checking if this user has valid refer
-                    $inDirectRefer3 = User::where('username', $inDirectRefer2->refer)->first();
+                    $inDirectRefer3 = User::where('username', $inDirectRefer2->refer)->where('nft', true)->first();
                     if ($inDirectRefer3 != "") {
                         Log::info('InDirect 3 Refer Found, Proccess Start');
                         $commission = options('nft_in_direct_3_refer_commission');
