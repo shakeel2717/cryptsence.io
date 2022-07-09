@@ -409,6 +409,13 @@
     </ul>
 </li>
 <li>
+    <a href="{{ route('admin.mail.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="settings"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Send Emails </div>
+    </a>
+</li>
+
+<li>
     <a href="{{ route('admin.option.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="settings"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Website Configuration </div>

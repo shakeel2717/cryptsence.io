@@ -246,6 +246,7 @@ class NftSeeder extends Seeder
         $user->email = 'test7@gmail.com';
         $user->password = bcrypt('asdfasdf');
         $user->refer = 'test6';
+        $user->kyc_status = true;
         $user->save();
 
         $referral = Referral::create([
