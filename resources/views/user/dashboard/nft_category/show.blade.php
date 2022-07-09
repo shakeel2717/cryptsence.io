@@ -24,6 +24,18 @@
                                     <span class="text-gray-700">Price:</span>
                                     <span>${{ number_format($nft->nft_category->price, 2) }}/- USDT</span>
                                 </h1>
+                                @if (nftOffer())
+                                    <div class="bg-gray-400 p-3 mt-2">
+                                        <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
+                                            <span class="text-gray-700">Discount:</span>
+                                            <span>{{ number_format(nftOffer()->value, 0) }}%</span>
+                                        </h1>
+                                        <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
+                                            <span class="text-gray-700">New Price:</span>
+                                            <span>${{ number_format($nft->nft_category->price - ($nft->nft_category->price * nftOffer()->value) / 100, 2) }}</span>
+                                        </h1>
+                                    </div>
+                                @endif
                                 <br>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Holding Profit:</span>

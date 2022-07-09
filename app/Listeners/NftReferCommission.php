@@ -33,12 +33,19 @@ class NftReferCommission
         $nft = $event->nft;
         // getting this user
         $user = User::find(auth()->user()->id);
+
+        $nftPrice = $nft->nft_category->price;
+        if (nftOffer()) {
+            $nftPrice = $nft->nft_category->price - ($nft->nft_category->price * nftOffer()->value / 100);
+        }
+
+
         // checking if this user has valid refer
         $directRefer = User::where('username', $user->refer)->where('nft', true)->first();
         if ($directRefer != "") {
             Log::info('Direct Refer Found, Proccess Start');
             $commission = options('nft_direct_refer_commission');
-            $amount = ($nft->nft_category->price / options('coin_exchange_rate')) * $commission / 100;
+            $amount = ($nftPrice / options('coin_exchange_rate')) * $commission / 100;
 
             // deducting balance
             Transaction::create([
@@ -57,7 +64,7 @@ class NftReferCommission
             if ($inDirectRefer1 != "") {
                 Log::info('InDirect 1 Refer Found, Proccess Start');
                 $commission = options('nft_in_direct_1_refer_commission');
-                $amount = ($nft->nft_category->price / options('coin_exchange_rate')) * $commission / 100;
+                $amount = ($nftPrice / options('coin_exchange_rate')) * $commission / 100;
 
                 // deducting balance
                 Transaction::create([
@@ -76,7 +83,7 @@ class NftReferCommission
                 if ($inDirectRefer2 != "") {
                     Log::info('InDirect 2 Refer Found, Proccess Start');
                     $commission = options('nft_in_direct_2_refer_commission');
-                    $amount = ($nft->nft_category->price / options('coin_exchange_rate')) * $commission / 100;
+                    $amount = ($nftPrice / options('coin_exchange_rate')) * $commission / 100;
 
                     // deducting balance
                     Transaction::create([
@@ -95,7 +102,7 @@ class NftReferCommission
                     if ($inDirectRefer3 != "") {
                         Log::info('InDirect 3 Refer Found, Proccess Start');
                         $commission = options('nft_in_direct_3_refer_commission');
-                        $amount = ($nft->nft_category->price / options('coin_exchange_rate')) * $commission / 100;
+                        $amount = ($nftPrice / options('coin_exchange_rate')) * $commission / 100;
 
                         // deducting balance
                         Transaction::create([

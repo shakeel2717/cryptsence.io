@@ -3,6 +3,18 @@
     MY NFT(s) ({{ $myNfts->count() }})
 @endsection
 @section('content')
+    @if (nftOffer())
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="alert alert-success mt-5" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="fw-medium fs-lg">Buy any NFT with our Special ({{ nftOffer()->title }}) and get
+                            ({{ nftOffer()->value }}% Discount), Limited time Offer. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         @forelse ($myNfts as $myNft)
             <div class="col-md-8 mx-auto mt-4">
@@ -86,6 +98,18 @@
                                     <span class="text-gray-700">Price:</span>
                                     <span>${{ number_format($category->price, 2) }}/- USDT</span>
                                 </h1>
+                                @if (nftOffer())
+                                    <div class="bg-gray-400 p-3 mt-2">
+                                        <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
+                                            <span class="text-gray-700">Discount:</span>
+                                            <span>{{ number_format(nftOffer()->value, 0) }}%</span>
+                                        </h1>
+                                        <h1 class="fs-xl fw-medium lh-1 justify-content-center-between mt-3">
+                                            <span class="text-gray-700">New Price:</span>
+                                            <span>${{ number_format($category->price - ($category->price * nftOffer()->value) / 100, 2) }}</span>
+                                        </h1>
+                                    </div>
+                                @endif
                                 <br>
                                 <h1 class="fs-sm fw-medium lh-1 justify-content-center-between">
                                     <span class="text-gray-700">Holding Profit:</span>

@@ -8,6 +8,7 @@ use App\Models\Expense;
 use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
 use App\Models\NftBonus;
+use App\Models\NftPromotionDiscount;
 use App\Models\Subscription;
 use App\Models\User;
 use App\Models\user\StakingBonus;
@@ -523,4 +524,14 @@ function thirdLevelReward($user_id)
 
     $tansactions = Transaction::where('note', $user->username)->where('reference', '3rd level reward')->sum('amount');
     return $tansactions;
+}
+
+
+function nftOffer()
+{
+    $nftOffer = NftPromotionDiscount::where('status', true)->first();
+    if (!$nftOffer) {
+        return 0;
+    }
+    return $nftOffer;
 }

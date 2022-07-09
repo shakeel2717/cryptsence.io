@@ -8,6 +8,7 @@ use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\KYCController;
 use App\Http\Controllers\admin\NftCategoryController;
 use App\Http\Controllers\admin\NftController;
+use App\Http\Controllers\admin\NftPromotionController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
@@ -64,6 +65,7 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
 
 
     Route::resource('mail', SendPromotionMailController::class);
+    Route::resource('nftpromotion', NftPromotionController::class);
 
 
 

@@ -102,6 +102,13 @@
     </ul>
 </li>
 
+<li>
+    <a href="{{ route('admin.nftpromotion.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="settings"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT Promotion </div>
+    </a>
+</li>
+
 
 <li>
     <a href="{{ route('admin.report.kyc') }}" class="{{ $mode == true ? 'side-' : '' }}menu">

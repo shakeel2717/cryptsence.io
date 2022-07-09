@@ -85,8 +85,13 @@ class NftController extends Controller
             return redirect()->back()->withErrors('This NFT is sold out.');
         }
 
+        $nftPrice = $nft->nft_category->price;
+        if (nftOffer()) {
+            $nftPrice = $nft->nft_category->price - ($nft->nft_category->price * nftOffer()->value / 100);
+        }
+
         // checking if balance is sufficient
-        if (balance('USDT.TRC20', auth()->user()->id) < $nft->nft_category->price) {
+        if (balance('USDT.TRC20', auth()->user()->id) < $nftPrice) {
             return redirect()->back()->withErrors('Insufficient Balance, Please Top Up');
         }
 
@@ -107,7 +112,7 @@ class NftController extends Controller
         Transaction::create([
             'user_id' => auth()->user()->id,
             'coin_id' => 1,
-            'amount' => $nft->nft_category->price,
+            'amount' => $nftPrice,
             'sum' => 'out',
             'type' => 'nft purchase',
             'status' => 'success',
