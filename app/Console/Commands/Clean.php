@@ -38,6 +38,7 @@ class Clean extends Command
         $this->call('config:clear');
         $this->call('view:clear');
         $this->call('route:clear');
+        $this->call('db:seed');
 
 
         $user = new User();

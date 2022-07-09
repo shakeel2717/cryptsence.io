@@ -7,6 +7,8 @@ use App\Models\Coin;
 use App\Models\Expense;
 use App\Models\LiveRate;
 use App\Models\Log as ModelsLog;
+use App\Models\NftBonus;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
@@ -300,11 +302,9 @@ function coinPaymentDeposit()
 
 function ReferralBalance($user_id)
 {
-    // get only 15 days old transactions
     $transaction = Transaction::where('user_id', $user_id)
         ->where('type', 'reward')
         ->where('sum', 'in')
-        // ->where('created_at', '<=', Carbon::now()->subDays(15))
         ->sum('amount');
 
     $transactionOut = Transaction::where('user_id', $user_id)
@@ -408,4 +408,119 @@ function expenseManager()
 function shakeelExpenseManager()
 {
     return Shakeel::sum('amount');
+}
+
+function nftBouns($user_id, $subscriptionId)
+{
+    $in = NftBonus::where('user_id', $user_id)->where('subscription_id', $subscriptionId)->where('sum', 'in')->sum('amount');
+    return $in;
+}
+
+
+function nftProfitBalance($user_id)
+{
+    $in = NftBonus::where('user_id', $user_id)->where('sum', 'in')->sum('amount');
+    $out = NftBonus::where('user_id', $user_id)->where('sum', 'out')->sum('amount');
+    return $in - $out;
+}
+
+
+function solidNfts($nft_id)
+{
+    $subscriptions = Subscription::where('type', 'nft')->where('nft_id', $nft_id)->get();
+    if (count($subscriptions) > 0) {
+        return true;
+    }
+    return false;
+}
+
+
+function NftCount($user_id, $category)
+{
+    $subscriptions = Subscription::where('user_id', $user_id)
+        ->where('user_id', $user_id)
+        ->where('type', 'nft')
+        ->where('status', true)
+        ->get();
+
+    // checking if this is from $category nft
+    $count = 0;
+    foreach ($subscriptions as $subscription) {
+        if ($subscription->nft->nft_category->id == $category) {
+            $count++;
+        }
+    }
+    return $count;
+}
+
+
+function totalInvestInNFT($user_id)
+{
+    $subscriptions = Subscription::where('user_id', $user_id)
+        ->where('user_id', $user_id)
+        ->where('type', 'nft')
+        ->where('status', true)
+        ->get();
+    $count = 0;
+    foreach ($subscriptions as $subscription) {
+        $count += $subscription->nft->nft_category->price;
+    }
+
+    return $count;
+}
+
+
+function directReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    // $firstLevelRefer = User::where('username', $user->refer)->first();
+    // if (!$firstLevelRefer) {
+    //     return 0;
+    // }
+
+    $tansactions = Transaction::where('note', $user->username)->where('reference', 'direct reward')->sum('amount');
+    return $tansactions;
+}
+
+function firstLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '1st level reward')->sum('amount');
+    return $tansactions;
+}
+
+
+function secondLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '2nd level reward')->sum('amount');
+    return $user_id;
+}
+
+
+function thirdLevelReward($user_id)
+{
+    // getting this user first Level Reward
+    $user = User::find($user_id);
+    if (!$user) {
+        return 0;
+    }
+
+    $tansactions = Transaction::where('note', $user->username)->where('reference', '3rd level reward')->sum('amount');
+    return $tansactions;
 }

@@ -21,6 +21,7 @@ class Transaction extends Model
         'coin_id',
         'txn_id',
         'note',
+        'reference',
     ];
 
     public function user()

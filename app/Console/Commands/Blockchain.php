@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use App\Models\admin\Option;
+use App\Models\NftBonus;
+use App\Models\Subscription;
 use App\Models\User;
 use App\Models\user\StakingBonus;
 use App\Models\user\Transaction;
@@ -117,6 +119,46 @@ class Blockchain extends Command
         endRate:
 
 
+        // NFT Blockchian Run
+        Log::info('NFT Started!');
+        // getting all users who have NFT
+        $subscriptions = Subscription::where('status', true)->where('type','nft')->get();
+        foreach ($subscriptions as $subscription) {
+            Log::info('Active Subscription\'s NFT Found, User: ' . $subscription->user->username);
+            // delivering the NFT Profit.
+            $proifitRatio = $subscription->nft->nft_category->profit;
+            Log::info('Daily ROI Ratio: ' . $subscription->nft->nft_category->profit);
+            // get current price of CTSE
+            $ctsePrice = options('coin_exchange_rate');
+            $profit = $subscription->nft->nft_category->price / $ctsePrice;
+            $perMonthProfit = $profit * $subscription->nft->nft_category->profit / 100;
+            $perDayProfit = $perMonthProfit / 30;
+
+            // checking if already delivered profit today
+
+            $nftBonus = NftBonus::where('user_id', $subscription->user_id)
+                ->where('subscription_id', $subscription->id)
+                ->whereDate('created_at', date('Y-m-d'))
+                ->get();
+
+            if ($nftBonus->count() < 1) {
+                // inserting profit for this user
+                $stakingBonus = new NftBonus();
+                $stakingBonus->user_id = $subscription->user_id;
+                $stakingBonus->subscription_id = $subscription->id;
+                $stakingBonus->sum = "in";
+                $stakingBonus->status = "approved";
+                $stakingBonus->amount = $perDayProfit;
+                $stakingBonus->nft_price = $subscription->nft->nft_category->price;
+                $stakingBonus->note = "blockchain";
+                $stakingBonus->save();
+                Log::info('Profit Successfully Delivered: ' . $perDayProfit);
+            } else {
+                Log::info('Profit Already Delivered');
+            }
+        }
+
+        Log::info('NFT Ended!');
         return 0;
     }
 }
