@@ -3,6 +3,18 @@
     Dashboard
 @endsection
 @section('content')
+    @if (nftOffer())
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="alert alert-success mt-5" role="alert">
+                    <div class="d-flex align-items-center">
+                        <div class="fw-medium fs-lg">Buy any NFT with our Special ({{ nftOffer()->title }}) and get
+                            ({{ nftOffer()->value }}% Discount), Limited time Offer. </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <div class="row">
         <div class="col-md-3 mt-5">
             <div class="g-col-12 g-col-sm-6 g-col-xxl-3 intro-y">
