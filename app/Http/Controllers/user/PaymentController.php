@@ -47,6 +47,10 @@ class PaymentController extends Controller
             exit();
         }
 
+        if($information['error'] != 'ok'){
+            return "<h3>Please send USDT TRC20 to this address(TMWT4WwTmvMe3VghDGZQ3fshcGARidpTsU), and take a screenshot of your payment. After successful payment, don't forget to send the payment proof or transaction id for instant Deposit. Our WhatsApp Number: (+971 56 241 9415)</h3>";
+        }
+
         $address = new Address();
         $address->user_id = auth()->user()->id;
         $address->coin_id = $coin->id;

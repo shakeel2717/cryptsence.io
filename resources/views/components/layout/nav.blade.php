@@ -41,6 +41,58 @@
 </li>
 
 <li>
+    <a href="{{ route('user.nft.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="film"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT </div>
+        <div class="fs-xs bg-white px-1 rounded-2 text-gray-800 ms-auto">New</div>
+    </a>
+</li>
+
+<li>
+    <a href="javascript:;" class="{{ $mode == true ? 'side-' : '' }}menu">
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="file-text"></i> </div>
+        <div class="{{ $mode == true ? 'side-' : '' }}menu__title">
+            NFT Referral
+            <div class="{{ $mode == true ? 'side-' : '' }}menu__sub-icon"> <i data-feather="chevron-down"></i> </div>
+        </div>
+    </a>
+    <ul class="{{ $mode == true ? 'side-' : '' }}menu__sub">
+        <li>
+            <a href="{{ route('user.nft.referral.direct') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> Direct Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level1') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 1st Level Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level2') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 2nd Level Rewards </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.nft.referral.level3') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> 3rd Level Rewards </div>
+            </a>
+        </li>
+    </ul>
+</li>
+
+<li>
     <a href="{{ route('user.kyc.index') }}" class="{{ $mode == true ? 'side-' : '' }}menu">
         <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="shield"></i> </div>
         <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> KYC </div>
@@ -116,6 +168,22 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('user.report.transactions.nft') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT Report </div>
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('user.report.transactions.nft.profit') }}"
+                class="{{ $mode == true ? 'side-' : '' }}menu">
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
+                </div>
+                <div class="{{ $mode == true ? 'side-' : '' }}menu__title"> NFT Profit Report </div>
+            </a>
+        </li>
+        <li>
             <a href="{{ route('user.notification.index') }}"
                 class="{{ $mode == true ? 'side-' : '' }}menu">
                 <div class="{{ $mode == true ? 'side-' : '' }}menu__icon"> <i data-feather="corner-down-right"></i>
@@ -170,6 +238,7 @@
         </li>
     </ul>
 </li>
+
 
 
 <li>

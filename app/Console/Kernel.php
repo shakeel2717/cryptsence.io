@@ -19,7 +19,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('backup:run')
             ->withoutOverlapping()
             ->everyThirtyMinutes()
-            ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
                 Log::info('backup:run command Starting in Scheduler');
             })
@@ -32,7 +31,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('blockchain:run')
             ->withoutOverlapping()
             ->twiceDaily()
-            ->emailOutputTo('shakeel2717@gmail.com')
             ->before(function () {
                 Log::info('blockchain:run command Starting in Scheduler');
             })
@@ -51,6 +49,30 @@ class Kernel extends ConsoleKernel
             ->after(function () {
                 Log::info('get:rates command Finished in Scheduler');
             });
+
+
+        $schedule->command('queue:work --max-time=300 --tries=1')
+            ->withoutOverlapping()
+            ->everyTenMinutes()
+            ->before(function () {
+                Log::info('queue:work --max-time=300 --tries=1 command Starting in Scheduler');
+            })
+            ->after(function () {
+                Log::info('queue:work --max-time=300 --tries=1 command Finished in Scheduler');
+            })
+            ->runsInMaintenanceMode();
+
+
+        $schedule->command('queue:retry --queue=default')
+            ->withoutOverlapping()
+            ->everyMinute()
+            ->before(function () {
+                Log::info('queue:retry --queue=default command Starting in Scheduler');
+            })
+            ->after(function () {
+                Log::info('queue:retry --queue=default command Finished in Scheduler');
+            })
+            ->runsInMaintenanceMode();
     }
 
     /**

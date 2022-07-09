@@ -42,4 +42,16 @@ class ReportController extends Controller
     }
 
 
+    public function nft()
+    {
+        return view('user.dashboard.report.transaction.nft');
+    }
+
+
+    public function nftProfit()
+    {
+        return view('user.dashboard.report.transaction.nftProfit');
+    }
+
+
 }

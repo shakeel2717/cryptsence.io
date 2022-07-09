@@ -6,6 +6,8 @@ use App\Http\Controllers\admin\DashboardController;
 use App\Http\Controllers\admin\ExpenseController;
 use App\Http\Controllers\admin\FinanceController;
 use App\Http\Controllers\admin\KYCController;
+use App\Http\Controllers\admin\NftCategoryController;
+use App\Http\Controllers\admin\NftController;
 use App\Http\Controllers\admin\OptionController;
 use App\Http\Controllers\admin\PaymentController;
 use App\Http\Controllers\admin\PolicyController;
@@ -14,6 +16,8 @@ use App\Http\Controllers\admin\ReportController;
 use App\Http\Controllers\admin\ShakeelController;
 use App\Http\Controllers\admin\TourWinnerController;
 use App\Http\Controllers\admin\UserLogin;
+use App\Http\Controllers\SendPromotionMailController;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])->group(function () {
@@ -24,6 +28,8 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::resource('profile', ProfileController::class);
     Route::resource('expense', ExpenseController::class);
     Route::resource('shakeel', ShakeelController::class);
+    Route::resource('nft_category', NftCategoryController::class);
+    Route::resource('nft', NftController::class);
     Route::get('admin/deposit/usdt', [AdminDepositFundsController::class, 'usdt'])->name('deposit.usdt');
     Route::get('admin/deposit/ctse', [AdminDepositFundsController::class, 'ctse'])->name('deposit.ctse');
     Route::get('payment/pending', [PaymentController::class, 'pending'])->name('payment.pending');
@@ -39,6 +45,8 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('/options/index', [OptionController::class, 'index'])->name('option.index');
     Route::get('report/users', [ReportController::class, 'users'])->name('report.users');
     Route::get('report/kyc', [ReportController::class, 'kyc'])->name('report.kyc');
+    Route::get('report/nft', [ReportController::class, 'nft'])->name('report.nft');
+    Route::get('report/transactions/nft', [ReportController::class, 'nftTransactions'])->name('report.transactions.nft');
     Route::get('report/kyc/approve/{id}', [KYCController::class, 'approve'])->name('kyc.approve');
     Route::get('report/kyc/decline/{id}', [KYCController::class, 'decline'])->name('kyc.decline');
     Route::get('report/deposits', [ReportController::class, 'deposits'])->name('report.deposits');
@@ -53,5 +61,17 @@ Route::prefix('admin/dashboard')->name('admin.')->middleware(['auth', 'admin'])-
     Route::get('/report/tour/self', [TourWinnerController::class, 'tourSelf'])->name('report.tour.self');
     Route::get('/report/tour/direct', [TourWinnerController::class, 'tourDirect'])->name('report.tour.direct');
     Route::get('/report/tour/levels', [TourWinnerController::class, 'tourLevel'])->name('report.tour.levels');
+
+
+    Route::resource('mail', SendPromotionMailController::class);
+
+
+
+    Route::post('/data-wash', function () {
+        // run command
+        Artisan::call('make:clean');
+        return redirect()->route('admin.index.index');
+    })->name('data-wash');
+
 
 });

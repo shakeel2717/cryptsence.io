@@ -3,10 +3,12 @@
 namespace App\Providers;
 
 use App\Events\BackupZipWasCreated;
+use App\Events\NftReferCommissionEvent;
 use App\Events\ReferralCommission;
 use App\Events\RegisterBonus;
 use App\Listeners\BackupZipWasCreatedListner;
 use App\Listeners\MailSuccessfulDatabaseBackup;
+use App\Listeners\NftReferCommission;
 use App\Listeners\ProccessReferralCommission;
 use App\Listeners\ProccessRegisterBonus;
 use Illuminate\Auth\Events\Registered;
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ReferralCommission::class => [
             ProccessReferralCommission::class
+        ],
+        NftReferCommissionEvent::class => [
+            NftReferCommission::class
         ],
         RegisterBonus::class => [
             ProccessRegisterBonus::class
