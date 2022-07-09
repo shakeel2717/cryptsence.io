@@ -5,6 +5,11 @@
 @section('content')
     @if (nftOffer())
         <div class="row">
+            <div class="col-md-12 mx-auto">
+                <img src="{{ asset('assets/eid.jpg') }}" alt="{{ env('APP_DESC') }}" class="mx-auto text-center img-fluid">
+            </div>
+        </div>
+        <div class="row">
             <div class="col-md-8 mx-auto">
                 <div class="alert alert-success mt-5" role="alert">
                     <div class="d-flex align-items-center">
