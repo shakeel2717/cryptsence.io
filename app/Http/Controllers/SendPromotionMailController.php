@@ -45,6 +45,8 @@ class SendPromotionMailController extends Controller
         foreach ($users as $user) {
             Mail::to($user->email)->send(new PromotionMail($validatedData['message'], $user, "Announcement"));
         }
+
+        return redirect()->back()->with('success', 'Mail sent successfully');
     }
 
     /**
