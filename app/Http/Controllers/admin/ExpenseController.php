@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Expense;
+use App\Models\Log;
 use Illuminate\Http\Request;
 
 class ExpenseController extends Controller
@@ -95,6 +96,11 @@ class ExpenseController extends Controller
     public function destroy(Expense $expense)
     {
         $expense->delete();
+        $history = Log::create([
+            'type' => 'Deleted Expense Entry',
+            'message' => 'Admin Delete Entry' . 'Title: ' . $expense->title . ' Amount: ' . $expense->amount . ' Description: ' . $expense->description,
+        ]);
+
         return redirect()->back()->with('success','Expense Entry Deleted');
     }
 }
