@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\admin\Shakeel;
+use App\Models\Log;
 use Illuminate\Http\Request;
 
 class ShakeelController extends Controller
@@ -94,6 +95,14 @@ class ShakeelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $shakeel = Shakeel::findOrFail($id);
+        $shakeel->delete();
+        
+        $history = Log::create([
+            'type' => 'Deleted Expense Entry',
+            'message' => 'Admin Delete Entry' . 'Title: ' . $shakeel->title . ' Amount: ' . $shakeel->amount . ' Description: ' . $shakeel->description,
+        ]);
+
+        return redirect()->route('admin.shakeel.index')->with('success','Expense Entry Deleted');
     }
 }
