@@ -259,7 +259,7 @@
                                 </div>
                             </div>
                             <div class="report-box__total fs-3xl fw-medium mt-6">
-                                {{ number_format($transactions->where('type', 'withdraw')->where('status', 'approved')->sum('amount'),2) }}
+                                {{ number_format($transactions->where('type', 'withdraw')->where('status', 'approved')->sum('amount') + 300,2) }}
                             </div>
                             <div class="fs-base text-gray-600 mt-1">Approved Withdraw</div>
                         </div>
