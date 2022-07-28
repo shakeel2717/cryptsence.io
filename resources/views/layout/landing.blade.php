@@ -60,6 +60,8 @@
                                     <li><a href="{{ route('home') }}">Home</a></li>
                                     <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                                     <li><a href="{{ route('user.index.index') }}">Dashboard</a></li>
+                                    <li><a href="{{ route('login') }}">Sign In</a></li>
+                                    <li><a href="{{ route('register') }}">Create Account</a></li>
                                 </ul>
                                 <a href="{{ route('register') }}" class="theme-btn d-block mt-4 text-center ms-0">Buy CTSE</a>
                             </nav>
@@ -71,7 +73,7 @@
         </div>
     </header>
 
-   @yield('content')
+    @yield('content')
 
     <footer class="footer-wrapper footer-1">
         {{-- <div class="footer-widgets-wrapper">
@@ -81,30 +83,29 @@
                         <div class="single-footer-widget wow fadeInLeft">
                             <div class="about-us-widget">
                                 <a href="{{ route('home') }}" class="footer-logo d-block">
-                                    <img src="{{ asset('assets/images/brand/logo.svg') }}"
-                                        alt="{{ env('APP_NAME') }}">
-                                </a>
-                                <p>{{ env('APP_NAME') }} Created to facilitate both local and international payments,
-                                    choosing to use {{ env('APP_NAME') }} makes moving money across borders
-                                    effortless and feeless..</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-2 col-lg-3 offset-xl-1 col-md-6 col-12">
-                        <div class="single-footer-widget wow fadeInLeft" data-wow-delay=".6s">
-                            <div class="widget-title">
-                                <h5>Useful Links</h5>
-                            </div>
-                            <ul>
-                                <li><a href="{{ route('user.index.index') }}">Dashboard</a></li>
-                                <li><a href="{{ route('register') }}">Create Account</a></li>
-                                <li><a href="{{ route('user.convert.index') }}">Stack CTSE</a></li>
-                                <li><a href="{{ route('user.sell.index') }}">Sell CTSE</a></li>
-                            </ul>
-                        </div>
-                    </div>
+        <img src="{{ asset('assets/images/brand/logo.svg') }}" alt="{{ env('APP_NAME') }}">
+        </a>
+        <p>{{ env('APP_NAME') }} Created to facilitate both local and international payments,
+            choosing to use {{ env('APP_NAME') }} makes moving money across borders
+            effortless and feeless..</p>
+        </div>
+        </div>
+        </div>
+        <div class="col-xl-2 col-lg-3 offset-xl-1 col-md-6 col-12">
+            <div class="single-footer-widget wow fadeInLeft" data-wow-delay=".6s">
+                <div class="widget-title">
+                    <h5>Useful Links</h5>
                 </div>
+                <ul>
+                    <li><a href="{{ route('user.index.index') }}">Dashboard</a></li>
+                    <li><a href="{{ route('register') }}">Create Account</a></li>
+                    <li><a href="{{ route('user.convert.index') }}">Stack CTSE</a></li>
+                    <li><a href="{{ route('user.sell.index') }}">Sell CTSE</a></li>
+                </ul>
             </div>
+        </div>
+        </div>
+        </div>
         </div> --}}
         <div class="footer-bottom-wrapper">
             <div class="container">
