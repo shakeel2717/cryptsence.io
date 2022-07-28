@@ -37,6 +37,8 @@
                                 <li><a href="{{ route('home') }}">Home</a></li>
                                 <li><a href="{{ route('privacy') }}">Privacy Policy</a></li>
                                 <li><a href="{{ route('user.index.index') }}">Dashboard</a></li>
+                                <li><a href="{{ route('login') }}">Sign In</a></li>
+                                <li><a href="{{ route('register') }}">Create Account</a></li>
                             </ul>
                         </div>
                     </div>
