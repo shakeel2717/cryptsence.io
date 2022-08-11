@@ -56,6 +56,7 @@ class CryptsenceController extends Controller
 
         // getting this address user
         $user = User::where('address',$validated['address'])->firstOrFail();
+        info('User Found with the Address');
         // adding balance
         Transaction::create([
             'user_id' => $user->id,
@@ -66,6 +67,7 @@ class CryptsenceController extends Controller
             'status' => 'success',
             'note' => $validated['address'],
         ]);
+        info('Balance Added into wallet');
 
         return true;
     }
