@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
@@ -53,15 +54,17 @@ class CryptsenceController extends Controller
         info('webhook Request: ' . json_encode($request));
         info('validated: ' . json_encode($validated));
 
+        // getting this address user
+        $user = User::where('address',$validated['address'])->firstOrFail();
         // adding balance
         Transaction::create([
-            'user_id' => $validated['user_id'],
+            'user_id' => $user->id,
             'coin_id' => 2,
             'amount' => $validated['amount'],
             'sum' => 'in',
             'type' => 'received',
             'status' => 'success',
-            'note' => 'migrate balance',
+            'note' => $validated['address'],
         ]);
 
         return true;
