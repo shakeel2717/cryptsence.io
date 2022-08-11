@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\User;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,6 +23,12 @@ class UserMiddleware
                 if (!$request->session()->exists('googleauth')) {
                     return redirect()->route('googleauth')->withErrors('Google Authentication Required');
                 }
+            }
+            if (auth()->user()->address == "") {
+                $user = User::find(auth()->user()->id);
+                $user->address = addressGenerate();
+                $user->save();
+                auth()->user()->address = $user->address;
             }
             return $next($request);
         } elseif (Auth::user()->role == 'admin') {

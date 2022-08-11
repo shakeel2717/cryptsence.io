@@ -17,6 +17,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Jenssegers\Agent\Facades\Agent;
 use Stevebauman\Location\Facades\Location;
+use Illuminate\Support\Str;
 
 
 function balance($method, $user_id)
@@ -534,4 +535,16 @@ function nftOffer()
         return 0;
     }
     return $nftOffer;
+}
+
+
+function addressGenerate()
+{
+    $address = "CTSE" . strtoupper(Str::random(25));
+    // checking if this user already in database
+    $user = User::where('address', $address)->get();
+    if ($user->count() > 0) {
+        addressGenerate();
+    }
+    return $address;
 }

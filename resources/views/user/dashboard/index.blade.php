@@ -4,57 +4,26 @@ Dashboard
 @endsection
 @section('content')
 <div class="row">
-    <div class="col-md-12 mx-auto">
-        <div class="card card-body bg-theme-1 text-white mt-5" role="alert">
-            <div class="d-flex align-items-center">
-                <div class="fw-medium fs-lg">
-                    CRYPTSENCE is inviting you to a scheduled Zoom meeting. <br>
-
-                    Topic: CRYPTSENCE's Academy & CTSE COIN Training and Weekly Education. <br>
-
-
-                    Day : Wednesday <br>
-                    <p>
-                    Malaysia 🇲🇾 8.30 pm
-                    Singapore 🇸🇬 8.30 pm
-                    Philippines 🇵🇭 8.30 pm
-                    Dubai 🇦🇪 5.30 pm
-                    Kenya 🇰🇪 4.30 pm
-                    Japan 🇯🇵 10.30 pm
-                    Nigeria 🇳🇬 2.30 pm
-                    India 🇮🇳 7.00 pm
-                    Tanzania 🇹🇿 4.30 pm
-                    Pakistan 🇵🇰 6.30 pm
-                    Ghana 🇬🇭 1.30 pm
-                    South Africa 🇿🇦 3.30 pm
-                    Indonesia 🇮🇩 7.30 pm
-                    Austria 🇦🇹 3.30 pm
-                    Hong kong 🇭🇰 9.30 pm
-                    Uk 🇬🇧 2.30 pm
-                    Ukraine 🇺🇦 4.30 pm
-                    New York 🇺🇸 9.30 am
-                    Vietnam 🇻🇳 8.30 pm
-                    Bangladesh 🇧🇩 7.30 pm
-                    Uganda 🇺🇬 4.30 pm
-                    France 🇫🇷 3.30 pm
-                    Uzbekistan 🇺🇿 6.30 pm
-                    Saudi arabia 🇸🇦 4.30 pm
-                    Azerbaijan 🇦🇿 5.30 pm
-                    Italy 🇮🇹 3.30 pm
-                    Turkey 🇹🇷 4.30 pm
-                    Canada 🇨🇦 9.30 am
-                    Russia 🇷🇺 4.30 pm
-                    Poland 🇵🇱 3.30 pm
-                    Ethiopia 🇪🇹 4.30 pm
-                    Zimbabwe 🇿🇼 3.30 pm
-                    </p>
-
-                     <br>
-
-
-                    <a href="https://us02web.zoom.us/j/9884026382?pwd=eERVU0lCYmhna1NmLzNQTW5lRVRMUT09">Join Zoom Meeting</a> <br> <br>
-                    Meeting ID: 988 402 6382 <br>
-                    Passcode: 724242 <br>
+    <div class="col-lg-4">
+        <div class="g-col-12 g-col-xl-8 mt-6">
+            <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    CTSE Address
+                </h2>
+            </div>
+            <div class="intro-y box p-5 mt-12 mt-sm-5">
+                <div class="justify-content-center-around">
+                    <div class="left">
+                        <div class="fs-2xl text-theme-1 fw-medium">Get your CTSE Address
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="{{ asset('assets/images/coins/wallet.png') }}" alt="{{ env('APP_DESC') }}" width="80">
+                    </div>
+                </div>
+                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
+                    <input class="form-control pe-10" value="{{ auth()->user()->address }}" readonly>
+                    <i data-feather="copy" onclick="myFunction();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                 </div>
             </div>
         </div>
