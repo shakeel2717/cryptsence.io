@@ -22,8 +22,8 @@ Dashboard
                     </div>
                 </div>
                 <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
-                    <input class="form-control pe-10" value="{{ auth()->user()->address }}" readonly>
-                    <i data-feather="copy" onclick="myFunction();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
+                    <input class="form-control wallet-address pe-10" value="{{ auth()->user()->address }}" readonly>
+                    <i data-feather="copy" onclick="myFunctionWallet();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                 </div>
             </div>
         </div>
@@ -377,7 +377,7 @@ Dashboard
                     </div>
                 </div>
                 <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
-                    <input class="form-control pe-10" value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}" readonly>
+                    <input class="form-control refer-link pe-10" value="{{ route('register', ['refer' => auth()->user()->referral->referral_code]) }}" readonly>
                     <i data-feather="copy" onclick="myFunction();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                 </div>
             </div>
@@ -616,7 +616,15 @@ Dashboard
 <script>
     // create a click to copy function
     function myFunction() {
-        var copyText = document.getElementsByClassName("form-control")[0];
+        var copyText = document.getElementsByClassName("refer-link")[0];
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
+
+
+    function myFunctionWallet() {
+        var copyText = document.getElementsByClassName("wallet-address")[0];
         copyText.select();
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
