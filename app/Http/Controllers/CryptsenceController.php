@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\user\Transaction;
 use Illuminate\Http\Request;
 
 class CryptsenceController extends Controller
@@ -39,11 +40,31 @@ class CryptsenceController extends Controller
             'amount' => 'required|numeric',
             'address' => 'required|string',
             'user_id' => 'required|integer',
+            'secret' => 'required|string',
         ]);
+
+        $secret = env("CTSE_SECRET_KEY");
+        // checking if API is valid
+        if ($secret != $validated['secret']) {
+            return redirect()->back()->withErrors("Invalid API");
+        }
+
         info("reached hoook");
         info('webhook Request: ' . json_encode($request));
         info('validated: ' . json_encode($validated));
 
+        // adding balance
+        Transaction::create([
+            'user_id' => $validated['user_id'],
+            'coin_id' => 2,
+            'amount' => $validated['amount'],
+            'sum' => 'in',
+            'type' => 'received',
+            'status' => 'success',
+            'note' => 'migrate balance',
+        ]);
+
+        return true;
     }
 
     /**
