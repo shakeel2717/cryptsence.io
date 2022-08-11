@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\CTSESellController;
+use App\Http\Controllers\CryptsenceController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\ReferralReportController;
 use App\Http\Controllers\user\CalculatorController;
@@ -76,6 +77,7 @@ Route::prefix('user/dashboard')->name('user.')->middleware(['auth', 'user'])->gr
 // group route
 Route::prefix('payment')->group(function () {
     Route::post('/webhook', [CoinPaymentController::class, 'webhook'])->name('webhook');
+    Route::post('/cryptsence', [CryptsenceController::class, 'store'])->name('cryptsence.store');
 });
 
 require __DIR__ . '/auth.php';
