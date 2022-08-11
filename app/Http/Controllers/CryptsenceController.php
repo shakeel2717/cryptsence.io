@@ -35,8 +35,15 @@ class CryptsenceController extends Controller
     public function store(Request $request)
     {
         info("reached hoook");
-        $request->test = "sdafsdaf";
+        $validated = $request->validate([
+            'amount' => 'required|numeric',
+            'address' => 'required|string',
+            'user_id' => 'required|integer',
+        ]);
+        info("reached hoook");
         info('webhook Request: ' . json_encode($request));
+        info('validated: ' . json_encode($validated));
+
     }
 
     /**
