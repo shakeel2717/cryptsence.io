@@ -556,3 +556,10 @@ function cryptsenceReceived()
         ->where('sum', 'in')->sum('amount');
     return $in;
 }
+
+function cryptsenceReceivedCount()
+{
+    $in = Transaction::where('type','received')
+        ->where('sum', 'in')->count();
+    return $in;
+}
