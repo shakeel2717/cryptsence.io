@@ -45,13 +45,13 @@ class Blockchain extends Command
             if ($balance > 0) {
                 // checking if this user fullfill the staking requirement
 
-                $staking_requirement = options('register_bonus_ctse');
+                // $staking_requirement = options('register_bonus_ctse');
 
-                $convertTransactions = Transaction::where('user_id', $user->id)->where('type', 'convert')->sum('amount');
-                if ($convertTransactions < $staking_requirement) {
-                    Log::info('User ' . $user->username . ' not fullfill the staking requirement');
-                    goto endStakeBouns;
-                }
+                // $convertTransactions = Transaction::where('user_id', $user->id)->where('type', 'convert')->sum('amount');
+                // if ($convertTransactions < $staking_requirement) {
+                //     Log::info('User ' . $user->username . ' not fullfill the staking requirement');
+                //     goto endStakeBouns;
+                // }
 
                 Log::info('User: ' . $user->username . ' has ' . $balance . ' CTSE');
                 // delivering the Staking Profit

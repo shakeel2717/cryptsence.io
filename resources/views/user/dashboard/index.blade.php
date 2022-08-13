@@ -239,7 +239,7 @@ Dashboard
                     {{-- <i data-feather="shopping-bag" class="w-10 h-10 text-theme-12"></i> --}}
                     <div class="position-relative fs-3xl fw-medium mt-5 "><span class="text-theme-1 fw-medium">Stack
                             CTSE</span><br>
-                        {{ validateStaking(auth()->user()->id) == true ? number_format(balance('CTSE', auth()->user()->id), 8) : '0.0000' }}
+                        {{ number_format(balance('CTSE', auth()->user()->id) + stakeBounsAll('CTSE', auth()->user()->id), 2) }}
                     </div>
                     <div class="report-box-2__indicator bg-theme-9 tooltip cursor-pointer"> {{ now() }} <i data-feather="chevron-up" class="w-4 h-4 ms-0.5"></i>
                     </div>
