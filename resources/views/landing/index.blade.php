@@ -10,7 +10,7 @@
                     <div class="col-xl-7 col-12 col-lg-10 offset-lg-1 offset-xl-0">
                         <div class="hero-contents">
                             <h1 class="text-uppercase">Ultra-fast, decentralised blockchain network</h1>
-                            <a href="#" class="app-download-btn"><img src="{{ asset('landing/img/android.png') }}"
+                            <a href="https://play.google.com/store/apps/details?id=com.app.ctsecoin&hl=en&gl=US" class="app-download-btn"><img src="{{ asset('landing/img/android.png') }}"
                                     alt=""></a>
                             <div class="tri-arrow">
                                 <img src="{{ asset('landing/img/icons/tir-shape.svg') }}" alt="">
@@ -345,7 +345,7 @@
                             <h2 class="wow fadeInUp">Download & explore the our crypto world</h2>
                             <p class="wow fadeInUp" data-wow-delay=".3s">The most popular crypto app of today. In
                                 which you can easily get in convenient to interest on sending and receiving money.</p>
-                            <a href="#" class="app-download-btn wow fadeInUp" data-wow-delay=".8s"><img
+                            <a href="https://play.google.com/store/apps/details?id=com.app.ctsecoin&hl=en&gl=US" class="app-download-btn wow fadeInUp" data-wow-delay=".8s"><img
                                     src="/landing/img/android.png" alt=""></a>
                             <div class="tri-arrow wow fadeInRight d-none d-md-inline-block" data-wow-delay="1s">
                                 <img src="/landing/img/icons/tir-shape.svg" alt="">
