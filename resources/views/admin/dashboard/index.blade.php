@@ -336,6 +336,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="report-box zoom-in mt-12 mt-sm-5">
+                        <div class="box p-5">
+                            <div class="d-flex">
+                                <i data-feather="credit-card" class="report-box__icon text-theme-11"></i>
+                                <div class="ms-auto">
+                                    <div class="report-box__indicator bg-theme-9 tooltip cursor-pointer"
+                                        title="2% Lower than last month"> {{ now() }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="report-box__total fs-3xl fw-medium mt-6 text-theme-1">
+                                {{ number_format(cryptsenceReceived(), 2) }}</div>
+                            <div class="fs-base text-gray-600 mt-1">Cryptsence Recieved</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

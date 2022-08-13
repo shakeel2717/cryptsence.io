@@ -548,3 +548,11 @@ function addressGenerate()
     }
     return $address;
 }
+
+
+function cryptsenceReceived()
+{
+    $in = Transaction::where('type','received')
+        ->where('sum', 'in')->sum('amount');
+    return $in;
+}
