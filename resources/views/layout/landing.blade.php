@@ -140,6 +140,8 @@
     <script src="{{ asset('landing/js/wow.min.js') }}"></script>
     <script src="{{ asset('landing/js/metismenu.js') }}"></script>
     <script src="{{ asset('landing/js/active.js') }}"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7650815467793833"
+     crossorigin="anonymous"></script>
 </body>
 
 </html>
