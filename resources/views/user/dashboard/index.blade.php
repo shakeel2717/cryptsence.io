@@ -28,6 +28,31 @@ Dashboard
             </div>
         </div>
     </div>
+    <div class="col-lg-4">
+        <div class="g-col-12 g-col-xl-8 mt-6">
+            <div class="intro-y d-block d-sm-flex align-items-center h-10">
+                <h2 class="fs-lg fw-medium truncate me-5">
+                    CTSE Contact Address
+                </h2>
+            </div>
+            <div class="intro-y box p-5 mt-12 mt-sm-5">
+                <div class="justify-content-center-around">
+                    <div class="left">
+                        <div class="fs-2xl text-theme-1 fw-medium">Get CTSE Contract Address
+                        </div>
+                    </div>
+                    <div class="right">
+                        <img src="{{ asset('assets/images/coins/ctse.png') }}" alt="{{ env('APP_DESC') }}" width="80">
+                    </div>
+                </div>
+                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
+                    <input class="form-control contract-address pe-10" value="0x00269896BA134955B0EC3036077a953A821698F1" readonly>
+                    <i data-feather="copy" onclick="contractWallet();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    @livewire("address")
 </div>
 
 @if (nftOffer())
@@ -629,6 +654,16 @@ Dashboard
         copyText.setSelectionRange(0, 99999);
         document.execCommand("copy");
     }
+
+    function contractWallet() {
+        var copyText = document.getElementsByClassName("contract-address")[0];
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+    }
+
+
+
 
     // make a timer countdown function for the timer
     var countDownDate = new Date("{{ date('M d, Y H:i:s', strtotime('2022-07-13 12:59:59')) }}").getTime();
