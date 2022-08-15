@@ -50,6 +50,12 @@ class KYCController extends Controller
             return redirect()->back()->withErrors('You already verified your KYC');
         }
 
+        // checking if already request in queue
+        $security = Kyc::where('user_id', auth()->user()->id)->where('status','pending')->count();
+        if ($security > 0) {
+            return redirect()->back()->withErrors('Yor KYC Request Already in Progress.. Please Wait...!');
+        }
+
         $kyc = new Kyc();
         $kyc->user_id = auth()->user()->id;
         $kyc->name = $validatedData['name'];
