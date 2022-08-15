@@ -682,4 +682,19 @@ Dashboard
         }
     }, 1000);
 </script>
+<script type="text/javascript">
+    window.onload = function() {
+        Livewire.on('address0Duplicate', () => {
+           alert("This Address is Already in Used");
+        })
+
+        Livewire.on('addressSaved', () => {
+           alert("Address Saved Successfully");
+        })
+
+        Livewire.on('addressRemoved', () => {
+           alert("Address Removed Successfully");
+        })
+    }
+</script>
 @endsection
