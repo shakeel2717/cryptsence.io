@@ -21,7 +21,7 @@ Dashboard
                         <img src="{{ asset('assets/images/coins/wallet.png') }}" alt="{{ env('APP_DESC') }}" width="80">
                     </div>
                 </div>
-                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
+                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="Your CTSE Address">
                     <input class="form-control wallet-address pe-10" value="{{ auth()->user()->address }}" readonly>
                     <i data-feather="copy" onclick="myFunctionWallet();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                 </div>
@@ -45,7 +45,7 @@ Dashboard
                         <img src="{{ asset('assets/images/coins/ctse.png') }}" alt="{{ env('APP_DESC') }}" width="80">
                     </div>
                 </div>
-                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="{{ validateStaking(auth()->user()->id) ? 'Copy Referral Link' : 'To available this link for reference you are required to purchase minimum 1000 CTSE for activate this referral link' }}">
+                <div class="w-100 position-relative mt-6 cursor-pointer tooltip" title="CTSE Contact Address">
                     <input class="form-control contract-address pe-10" value="0x00269896BA134955B0EC3036077a953A821698F1" readonly>
                     <i data-feather="copy" onclick="contractWallet();" class="position-absolute end-0 top-0 bottom-0 my-auto me-4 w-4 h-4"></i>
                 </div>
