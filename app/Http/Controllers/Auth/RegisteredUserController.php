@@ -64,7 +64,7 @@ class RegisteredUserController extends Controller
             Log::info('Refer Username Got');
         } else {
             Log::info('NO Refer FOund');
-            $refer = 'shakoorpkr';
+            $refer = 'ctse';
         }
 
         $location = Location::get();
