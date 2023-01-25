@@ -28,51 +28,51 @@ class Kernel extends ConsoleKernel
         //     ->runsInMaintenanceMode();
 
 
-        $schedule->command('blockchain:run')
-            ->withoutOverlapping()
-            ->twiceDaily()
-            ->before(function () {
-                Log::info('blockchain:run command Starting in Scheduler');
-            })
-            ->after(function () {
-                Log::info('blockchain:run command Finished in Scheduler');
-            })
-            ->runsInMaintenanceMode();
+        // $schedule->command('blockchain:run')
+        //     ->withoutOverlapping()
+        //     ->twiceDaily()
+        //     ->before(function () {
+        //         Log::info('blockchain:run command Starting in Scheduler');
+        //     })
+        //     ->after(function () {
+        //         Log::info('blockchain:run command Finished in Scheduler');
+        //     })
+        //     ->runsInMaintenanceMode();
 
 
-        $schedule->command('get:rates')
-            ->withoutOverlapping()
-            ->everyTenMinutes()
-            ->before(function () {
-                Log::info('get:rates command Starting in Scheduler');
-            })
-            ->after(function () {
-                Log::info('get:rates command Finished in Scheduler');
-            });
+        // $schedule->command('get:rates')
+        //     ->withoutOverlapping()
+        //     ->everyTenMinutes()
+        //     ->before(function () {
+        //         Log::info('get:rates command Starting in Scheduler');
+        //     })
+        //     ->after(function () {
+        //         Log::info('get:rates command Finished in Scheduler');
+        //     });
 
 
-        $schedule->command('queue:work --max-time=300 --tries=1')
-            ->withoutOverlapping()
-            ->everyTenMinutes()
-            ->before(function () {
-                Log::info('queue:work --max-time=300 --tries=1 command Starting in Scheduler');
-            })
-            ->after(function () {
-                Log::info('queue:work --max-time=300 --tries=1 command Finished in Scheduler');
-            })
-            ->runsInMaintenanceMode();
+        // $schedule->command('queue:work --max-time=300 --tries=1')
+        //     ->withoutOverlapping()
+        //     ->everyTenMinutes()
+        //     ->before(function () {
+        //         Log::info('queue:work --max-time=300 --tries=1 command Starting in Scheduler');
+        //     })
+        //     ->after(function () {
+        //         Log::info('queue:work --max-time=300 --tries=1 command Finished in Scheduler');
+        //     })
+        //     ->runsInMaintenanceMode();
 
 
-        $schedule->command('queue:retry --queue=default')
-            ->withoutOverlapping()
-            ->everyMinute()
-            ->before(function () {
-                Log::info('queue:retry --queue=default command Starting in Scheduler');
-            })
-            ->after(function () {
-                Log::info('queue:retry --queue=default command Finished in Scheduler');
-            })
-            ->runsInMaintenanceMode();
+        // $schedule->command('queue:retry --queue=default')
+        //     ->withoutOverlapping()
+        //     ->everyMinute()
+        //     ->before(function () {
+        //         Log::info('queue:retry --queue=default command Starting in Scheduler');
+        //     })
+        //     ->after(function () {
+        //         Log::info('queue:retry --queue=default command Finished in Scheduler');
+        //     })
+        //     ->runsInMaintenanceMode();
     }
 
     /**
