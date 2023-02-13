@@ -18,6 +18,15 @@ class UserMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
+        // checking suspend status
+        if (auth()->user()->status == 'suspend') {
+            // logout
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return redirect()->route("login")->withErrors("Account Suspended, Please Contact Support");
+        }
+        
         if (Auth::user()->role == 'user') {
             if (auth()->user()->google != null) {
                 if (!$request->session()->exists('googleauth')) {

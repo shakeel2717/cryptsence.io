@@ -182,6 +182,14 @@ final class AllUser extends PowerGridComponent
                 ->target("")
                 ->route('admin.user.login', ['id' => 'id']),
 
+                Button::make('suspend', 'Suspend')
+                ->class('btn btn-danger')
+                ->emit('suspend', ['id' => 'id']),
+
+            Button::make('activate', 'Activate')
+                ->class('btn btn-success')
+                ->emit('activate', ['id' => 'id']),
+
 
             Button::make('winner', 'Winner')
                 ->class('bg-theme-1 cursor-pointer text-white px-3 py-2 m-1 rounded text-sm')
@@ -193,6 +201,35 @@ final class AllUser extends PowerGridComponent
             //     ->route('user.destroy', ['user' => 'id'])
             //     ->method('delete')
         ];
+    }
+
+
+
+    protected function getListeners()
+    {
+        return array_merge(
+            parent::getListeners(),
+            [
+                'suspend',
+                'activate',
+            ]
+        );
+    }
+
+
+    public function suspend($id)
+    {
+        $user = User::find($id['id']);
+        $user->status = "suspend";
+        $user->save();
+    }
+
+
+    public function activate($id)
+    {
+        $user = User::find($id['id']);
+        $user->status = "activate";
+        $user->save();
     }
 
     /*
@@ -209,16 +246,26 @@ final class AllUser extends PowerGridComponent
      * @return array<int, RuleActions>
      */
 
-    /*
+    
     public function actionRules(): array
     {
        return [
 
            //Hide button edit for ID 1
-            Rule::button('edit')
-                ->when(fn($user) => $user->id === 1)
+            // Rule::button('edit')
+            //     ->when(fn($user) => $user->id === 1)
+            //     ->hide(),
+
+
+            //Hide button edit for ID 1
+            Rule::button('suspend')
+                ->when(fn ($user) => $user->status === "suspend")
+                ->hide(),
+
+            Rule::button('activate')
+                ->when(fn ($user) => $user->status === "activate" || $user->status === "pending")
                 ->hide(),
         ];
     }
-    */
+    
 }
